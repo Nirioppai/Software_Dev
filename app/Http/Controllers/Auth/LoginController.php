@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -26,15 +27,30 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+
+    public function index()
+    {
+      //prevent accessing login when no users are registered
+      $users = User::all();
+      if(count ($users) == 0) {
+          Auth::logout();
+          return redirect('/register');
+        }
+    }
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function username()
+    {
+      return 'username';
     }
 }
