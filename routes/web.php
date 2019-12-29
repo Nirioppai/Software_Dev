@@ -1,4 +1,5 @@
 <?php
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,9 +13,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $UserDb = User::all();
+    if(!count($UserDb))
+    {
+        return view('auth.register');
+    }
+    if(count($UserDb))
+    {
+        return view('auth.login');
+    }
+    
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/register/submit', 'CustomRegisterController@submit');
