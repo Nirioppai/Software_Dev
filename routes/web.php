@@ -26,9 +26,11 @@ Route::get('/', function () {
     
 });
 
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 Auth::routes();
 
 Route::post('/register/submit', 'CustomRegisterController@submit');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/students', 'HomeController@students')->name('students');

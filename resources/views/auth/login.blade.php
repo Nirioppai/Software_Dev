@@ -14,9 +14,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
       <div class="container px-4">
-        <a class="navbar-brand" href="../index.html">
-         <img src="{{asset('../img/brand/white.png')}}"/>
-        </a>
+        <img src="{{asset('./img/brand/brand.png')}}" class="navbar-brand-img" alt="...">
       </div>
     </nav>
     <!-- Header -->
@@ -30,12 +28,12 @@
     <!-- Page content -->
     <div class="container mt--8 pb-5">
       <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-7">
+        <div class="col-lg-4 col-md-7">
           <div class="card bg-secondary shadow border-0">
             <div class="card-body px-lg-5 py-lg-5">
                 <div class=" text-center mt-1 mb-1"><h1>Welcome!</h1></div>
               <div class="btn-wrapper text-center">
-                <p class="text-lead">Use your credentials to gain access to the Olsat Management System.</p>
+                <p class="text-lead">Use your credentials to gain access to the OLSAT Monitoring System.</p>
               </div>
               <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -66,7 +64,7 @@
                   </div>
                 </div>
                 <div class="text-center">
-                <button type="submit" class="btn btn-primary my-3">
+                <button type="submit" class="btn btn-primary my-1">
                     {{ __('Sign in') }}
                 </button>
                 </div>
@@ -77,7 +75,7 @@
       </div>
     </div>
     <footer>
-      <div class="container">
+      <div class="container my-3">
         <div class="row align-items-center justify-content-xl-between">
           <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
