@@ -4510,7 +4510,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
   color: #fff;
-  background-color: #5e72e4;
+  background-color: #134886;
 }
 
 .nav-fill .nav-item {
@@ -13472,6 +13472,10 @@ button.bg-lighter:focus {
   background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
 }
 
+.bg-gradient-xs-blue {
+  background: linear-gradient(87deg, #134886 0, #134886 100%) !important;
+}
+
 .bg-gradient-secondary {
   background: linear-gradient(87deg, #f7fafc 0, #f7f8fc 100%) !important;
 }
@@ -16675,7 +16679,7 @@ textarea[resize="horizontal"] {
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
   color: #fff;
-  background-color: #5e72e4;
+  background-color: #134886;
 }
 
 @media (max-width: 575.98px) {
@@ -16894,7 +16898,7 @@ textarea[resize="horizontal"] {
   left: 0;
   top: 0.25rem;
   bottom: 0.25rem;
-  border-left: 2px solid #5e72e4;
+  border-left: 2px solid #134886;
 }
 
 .navbar-vertical .navbar-nav .nav-link>i {
@@ -17018,7 +17022,7 @@ textarea[resize="horizontal"] {
   bottom: 0.25rem;
   left: 0;
   right: auto;
-  border-left: 2px solid #5e72e4;
+  border-left: 2px solid #134886;
   border-bottom: 0;
 }
 
@@ -17127,7 +17131,7 @@ textarea[resize="horizontal"] {
     bottom: 0.25rem;
     left: 0;
     right: auto;
-    border-left: 2px solid #5e72e4;
+    border-left: 2px solid #134886;
     border-bottom: 0;
   }
 
@@ -17237,7 +17241,7 @@ textarea[resize="horizontal"] {
     bottom: 0.25rem;
     left: 0;
     right: auto;
-    border-left: 2px solid #5e72e4;
+    border-left: 2px solid #134886;
     border-bottom: 0;
   }
 
@@ -17347,7 +17351,7 @@ textarea[resize="horizontal"] {
     bottom: 0.25rem;
     left: 0;
     right: auto;
-    border-left: 2px solid #5e72e4;
+    border-left: 2px solid #134886;
     border-bottom: 0;
   }
 
@@ -17457,7 +17461,7 @@ textarea[resize="horizontal"] {
     bottom: 0.25rem;
     left: 0;
     right: auto;
-    border-left: 2px solid #5e72e4;
+    border-left: 2px solid #134886;
     border-bottom: 0;
   }
 
@@ -19874,7 +19878,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 
 .ct-example .nav-tabs-code .nav-link:active,
 .ct-example .nav-tabs-code .nav-link.active {
-  color: #5e72e4;
+  color: #134886;
 }
 
 .icon-examples {
@@ -20669,3 +20673,20 @@ pre>code.highlight {
 }
 
 /*# sourceMappingURL=dashboard-free.css.map */
+
+.breadcrumb-separator {
+  left: 15 px;
+}
+
+.custom-breadcrumb {
+  font-size: 15px;
+}
+
+.current-breadcrumb {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.left {
+  text-align: left;
+}

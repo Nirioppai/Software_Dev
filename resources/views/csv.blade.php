@@ -7,8 +7,8 @@
 @section('nav')
 <!-- Navigation -->
 <ul class="navbar-nav">
-  <li class="nav-item  active ">
-    <a class="nav-link  active " href="/home">
+  <li class="nav-item">
+    <a class="nav-link" href="/home">
       <i class="ni ni-tv-2 text-primary"></i> Dashboard
     </a>
   </li>
@@ -17,8 +17,8 @@
       <i class="ni ni-planet text-blue"></i> Students
     </a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link " href="/csv">
+  <li class="nav-item active">
+    <a class="nav-link active" href="/csv">
       <i class="ni ni-bullet-list-67 text-red"></i> CSV
     </a>
   </li>
@@ -51,6 +51,6 @@
   <a class="custom-breadcrumb text-dark" href="/home">Dashboard</a>
   <a>/</a>
    -->
-  <a class="current-breadcrumb text-dark">> Dashboard</a>
+  <a class="current-breadcrumb text-dark">> CSV</a>
 </div>
 @endsection
