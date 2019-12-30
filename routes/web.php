@@ -13,22 +13,14 @@ use App\User;
 */
 
 Route::get('/', function () {
-
-    $UserDb = User::all();
-    if(!count($UserDb))
-    {
-        return redirect('/register');
-    }
-    if(count($UserDb))
-    {
-        return redirect('/login');
-    }
-    
+        return redirect('/login');    
 });
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 Auth::routes();
 
+Route::get('/login', 'CustomRegisterController@login')->name('login' );
+Route::get('/register', 'CustomRegisterController@register')->name('register' );
 Route::post('/register/submit', 'CustomRegisterController@submit');
 
 

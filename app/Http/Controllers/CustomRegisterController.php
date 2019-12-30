@@ -21,6 +21,30 @@ class CustomRegisterController extends Controller
     	}
     }
 
+    public function login()
+    {
+      $UserDb = User::all();
+      if(!count($UserDb))
+      {
+          return redirect('/register');
+      }
+
+      return view('auth.login');
+    }
+
+    public function register()
+    {
+      $UserDb = User::all();
+      if(count($UserDb))
+      {
+          return redirect('/login');
+      }
+
+      return view('auth.register');
+    }
+
+
+
     //Validates Input
     public function submit(Request $request){
       $this->validate($request, [
@@ -28,6 +52,12 @@ class CustomRegisterController extends Controller
           'username' => ['required', 'string', 'max:25', 'unique:users'],
           'password' => ['required', 'confirmed', 'string', 'max:25', 'min:8'],
       ]);
+
+      $UserDb = User::all();
+      if(count($UserDb))
+      {
+          return redirect('/login');
+      }
 
       //Registers the User
       $UserDB = new User;
