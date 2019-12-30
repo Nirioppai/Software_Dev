@@ -17,11 +17,11 @@ Route::get('/', function () {
     $UserDb = User::all();
     if(!count($UserDb))
     {
-        return view('auth.register');
+        return redirect('/register');
     }
     if(count($UserDb))
     {
-        return view('auth.login');
+        return redirect('/login');
     }
     
 });
