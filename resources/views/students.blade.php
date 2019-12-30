@@ -9,22 +9,22 @@
 <ul class="navbar-nav">
   <li class="nav-item">
     <a class="nav-link" href="/home">
-      <i class="ni ni-tv-2 text-primary"></i> Dashboard
+      <i class="ni ni-tv-2 text-indigo"></i> Dashboard
     </a>
   </li>
   <li class="nav-item active">
     <a class="nav-link active" href="/students">
-      <i class="ni ni-planet text-blue"></i> Students
+      <i class="ni ni-planet text-indigo"></i> Students
     </a>
   </li>
   <li class="nav-item">
     <a class="nav-link " href="/csv">
-      <i class="ni ni-bullet-list-67 text-red"></i> CSV
+      <i class="fas fa-file-excel text-indigo"></i> CSV
     </a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/monitoring">
-      <i class="ni ni-key-25 text-info"></i> Monitoring
+  <li class="nav-item ">
+    <a class="nav-link " href="/monitoring">
+      <i class="ni ni-key-25 text-indigo"></i> Monitoring
     </a>
   </li>
 </ul>
@@ -36,7 +36,7 @@
 <ul class="navbar-nav mb-md-3">
   <li class="nav-item">
     <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
-      <i class="ni ni-spaceship"></i> Accounts
+      <i class="fas fa-user-circle"></i> Accounts
     </a>
   </li>
 </ul>
