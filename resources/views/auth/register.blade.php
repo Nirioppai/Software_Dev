@@ -28,8 +28,8 @@
         
           {!! Form::open(['url' => '/register/submit', 'class' => 'bg-white text-center border border-light p-5 ', 'method' => 'POST']) !!}
             @csrf
-            <img src="{{asset('./img/brand/brand.png')}}" class=" text-left mt--4" alt="...">
-            <p class="h2 mt-2 text-left">Create account</p>
+            <img src="{{asset('./img/brand/brand_downscaled.png')}}" class=" text-left mt--4" alt="...">
+            <p class="h2 mt-2 text-left text-center">Create an account</p>
 
             <div class="md-form mt--1">
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror mt-3" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -67,7 +67,7 @@
             </div>
 
             <div class="text-center">
-            <button type="submit" class="btn btn-sm btn-outline-primary btn-block mb--3">
+            <button type="submit" class="btn  btn-outline-xs-blue mb--3">
                 {{ __('Register') }}
             </button>
             </div>
