@@ -124,13 +124,11 @@ trait ManagesFrequencies
     /**
      * Schedule the event to run hourly at a given offset in the hour.
      *
-     * @param  array|int  $offset
+     * @param  int  $offset
      * @return $this
      */
     public function hourlyAt($offset)
     {
-        $offset = is_array($offset) ? implode(',', $offset) : $offset;
-
         return $this->spliceIntoPosition(1, $offset);
     }
 

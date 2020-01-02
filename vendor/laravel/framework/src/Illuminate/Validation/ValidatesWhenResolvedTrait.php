@@ -25,8 +25,6 @@ trait ValidatesWhenResolvedTrait
         if ($instance->fails()) {
             $this->failedValidation($instance);
         }
-
-        $this->passedValidation();
     }
 
     /**
@@ -36,7 +34,7 @@ trait ValidatesWhenResolvedTrait
      */
     protected function prepareForValidation()
     {
-        //
+        // no default action
     }
 
     /**
@@ -47,16 +45,6 @@ trait ValidatesWhenResolvedTrait
     protected function getValidatorInstance()
     {
         return $this->validator();
-    }
-
-    /**
-     * Handle a passed validation attempt.
-     *
-     * @return void
-     */
-    protected function passedValidation()
-    {
-        //
     }
 
     /**
