@@ -72,29 +72,13 @@ final class Run implements RunInterface
     }
 
     /**
-     * See removeFirstHandler and removeLastHandler
+     * Removes the last handler in the stack and returns it.
+     * Returns null if there"s nothing else to pop.
      * @return null|HandlerInterface
      */
     public function popHandler()
     {
         return array_pop($this->handlerStack);
-    }
-
-
-    /**
-     * Removes the first handler
-     */
-    public function removeFirstHandler()
-    {
-        array_pop($this->handlerStack);
-    }
-
-    /**
-     * Removes the last handler
-     */
-    public function removeLastHandler()
-    {
-        array_shift($this->handlerStack);
     }
 
     /**

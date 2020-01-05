@@ -118,11 +118,6 @@
       </div>
     </div>
     <div class="container-fluid mt--1">
-
-      @yield('importcsv')
-      @yield('importfields')
-      @yield('importsuccess')
-
       <!-- Footer -->
       <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
