@@ -36,6 +36,8 @@ use Illuminate\Contracts\Support\Arrayable;
  * @property-read HigherOrderCollectionProxy $sortByDesc
  * @property-read HigherOrderCollectionProxy $sum
  * @property-read HigherOrderCollectionProxy $unique
+ *
+ * Class Collection
  */
 class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate, Jsonable, JsonSerializable
 {
@@ -182,7 +184,7 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
 
         $count = $values->count();
 
-        if ($count === 0) {
+        if ($count == 0) {
             return;
         }
 
@@ -403,64 +405,6 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     public function diffKeysUsing($items, callable $callback)
     {
         return new static(array_diff_ukey($this->items, $this->getArrayableItems($items), $callback));
-    }
-
-    /**
-     * Retrieve duplicate items from the collection.
-     *
-     * @param  callable|null  $callback
-     * @param  bool  $strict
-     * @return static
-     */
-    public function duplicates($callback = null, $strict = false)
-    {
-        $items = $this->map($this->valueRetriever($callback));
-
-        $uniqueItems = $items->unique(null, $strict);
-
-        $compare = $this->duplicateComparator($strict);
-
-        $duplicates = new static;
-
-        foreach ($items as $key => $value) {
-            if ($uniqueItems->isNotEmpty() && $compare($value, $uniqueItems->first())) {
-                $uniqueItems->shift();
-            } else {
-                $duplicates[$key] = $value;
-            }
-        }
-
-        return $duplicates;
-    }
-
-    /**
-     * Retrieve duplicate items from the collection using strict comparison.
-     *
-     * @param  callable|null  $callback
-     * @return static
-     */
-    public function duplicatesStrict($callback = null)
-    {
-        return $this->duplicates($callback, true);
-    }
-
-    /**
-     * Get the comparison function to detect duplicates.
-     *
-     * @param  bool  $strict
-     * @return \Closure
-     */
-    protected function duplicateComparator($strict)
-    {
-        if ($strict) {
-            return function ($a, $b) {
-                return $a === $b;
-            };
-        }
-
-        return function ($a, $b) {
-            return $a == $b;
-        };
     }
 
     /**
@@ -804,7 +748,7 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     }
 
     /**
-     * Get the first item from the collection passing the given truth test.
+     * Get the first item from the collection.
      *
      * @param  callable|null  $callback
      * @param  mixed  $default
@@ -823,7 +767,7 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
      * @param  mixed  $value
      * @return mixed
      */
-    public function firstWhere($key, $operator = null, $value = null)
+    public function firstWhere($key, $operator, $value = null)
     {
         return $this->first($this->operatorForWhere(...func_get_args()));
     }
@@ -1044,36 +988,6 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     }
 
     /**
-     * Join all items from the collection using a string. The final items can use a separate glue string.
-     *
-     * @param  string  $glue
-     * @param  string  $finalGlue
-     * @return string
-     */
-    public function join($glue, $finalGlue = '')
-    {
-        if ($finalGlue === '') {
-            return $this->implode($glue);
-        }
-
-        $count = $this->count();
-
-        if ($count === 0) {
-            return '';
-        }
-
-        if ($count === 1) {
-            return $this->last();
-        }
-
-        $collection = new static($this->items);
-
-        $finalItem = $collection->pop();
-
-        return $collection->implode($glue).$finalGlue.$finalItem;
-    }
-
-    /**
      * Get the keys of the collection items.
      *
      * @return static
@@ -1256,17 +1170,6 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     public function merge($items)
     {
         return new static(array_merge($this->items, $this->getArrayableItems($items)));
-    }
-
-    /**
-     * Recursively merge the collection with the given items.
-     *
-     * @param  mixed  $items
-     * @return static
-     */
-    public function mergeRecursive($items)
-    {
-        return new static(array_merge_recursive($this->items, $this->getArrayableItems($items)));
     }
 
     /**
@@ -1518,37 +1421,17 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
      * @param  callable|mixed  $callback
      * @return static
      */
-    public function reject($callback = true)
+    public function reject($callback)
     {
-        $useAsCallable = $this->useAsCallable($callback);
+        if ($this->useAsCallable($callback)) {
+            return $this->filter(function ($value, $key) use ($callback) {
+                return ! $callback($value, $key);
+            });
+        }
 
-        return $this->filter(function ($value, $key) use ($callback, $useAsCallable) {
-            return $useAsCallable
-                ? ! $callback($value, $key)
-                : $value != $callback;
+        return $this->filter(function ($item) use ($callback) {
+            return $item != $callback;
         });
-    }
-
-    /**
-     * Replace the collection items with the given items.
-     *
-     * @param  mixed  $items
-     * @return static
-     */
-    public function replace($items)
-    {
-        return new static(array_replace($this->items, $this->getArrayableItems($items)));
-    }
-
-    /**
-     * Recursively replace the collection items with the given items.
-     *
-     * @param  mixed  $items
-     * @return static
-     */
-    public function replaceRecursive($items)
-    {
-        return new static(array_replace_recursive($this->items, $this->getArrayableItems($items)));
     }
 
     /**
@@ -1887,7 +1770,7 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     /**
      * Get a value retrieving callback.
      *
-     * @param  callable|string|null  $value
+     * @param  string  $value
      * @return callable
      */
     protected function valueRetriever($value)
@@ -2010,38 +1893,6 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     }
 
     /**
-     * Count the number of items in the collection using a given truth test.
-     *
-     * @param  callable|null  $callback
-     * @return static
-     */
-    public function countBy($callback = null)
-    {
-        if (is_null($callback)) {
-            $callback = function ($value) {
-                return $value;
-            };
-        }
-
-        return new static($this->groupBy($callback)->map(function ($value) {
-            return $value->count();
-        }));
-    }
-
-    /**
-     * Add an item to the collection.
-     *
-     * @param  mixed  $item
-     * @return $this
-     */
-    public function add($item)
-    {
-        $this->items[] = $item;
-
-        return $this;
-    }
-
-    /**
      * Get a base Support collection instance from this collection.
      *
      * @return \Illuminate\Support\Collection
@@ -2127,7 +1978,7 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
         } elseif ($items instanceof Jsonable) {
             return json_decode($items->toJson(), true);
         } elseif ($items instanceof JsonSerializable) {
-            return (array) $items->jsonSerialize();
+            return $items->jsonSerialize();
         } elseif ($items instanceof Traversable) {
             return iterator_to_array($items);
         }

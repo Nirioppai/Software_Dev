@@ -3,7 +3,6 @@
 namespace Collective\Html;
 
 use BadMethodCallException;
-use Illuminate\Support\Arr;
 use Illuminate\Support\HtmlString;
 
 trait Componentable
@@ -48,7 +47,7 @@ trait Componentable
      * @param        $name
      * @param  array $arguments
      *
-     * @return HtmlString
+     * @return \Illuminate\Contracts\View\View
      */
     protected function renderComponent($name, array $arguments)
     {
@@ -82,7 +81,7 @@ trait Componentable
                 $default = null;
             }
 
-            $data[$variable] = Arr::get($arguments, $i, $default);
+            $data[$variable] = array_get($arguments, $i, $default);
 
             $i++;
         }

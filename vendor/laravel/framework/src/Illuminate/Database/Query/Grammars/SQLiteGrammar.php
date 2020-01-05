@@ -171,23 +171,38 @@ class SQLiteGrammar extends Grammar
      */
     public function compileInsert(Builder $query, array $values)
     {
+        // Essentially we will force every insert to be treated as a batch insert which
+        // simply makes creating the SQL easier for us since we can utilize the same
+        // basic routine regardless of an amount of records given to us to insert.
         $table = $this->wrapTable($query->from);
 
-        return empty($values)
-                ? "insert into {$table} DEFAULT VALUES"
-                : parent::compileInsert($query, $values);
-    }
+        if (! is_array(reset($values))) {
+            $values = [$values];
+        }
 
-    /**
-     * Compile an insert ignore statement into SQL.
-     *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  array  $values
-     * @return string
-     */
-    public function compileInsertOrIgnore(Builder $query, array $values)
-    {
-        return Str::replaceFirst('insert', 'insert or ignore', $this->compileInsert($query, $values));
+        // If there is only one record being inserted, we will just use the usual query
+        // grammar insert builder because no special syntax is needed for the single
+        // row inserts in SQLite. However, if there are multiples, we'll continue.
+        if (count($values) === 1) {
+            return empty(reset($values))
+                    ? "insert into $table default values"
+                    : parent::compileInsert($query, reset($values));
+        }
+
+        $names = $this->columnize(array_keys(reset($values)));
+
+        $columns = [];
+
+        // SQLite requires us to build the multi-row insert as a listing of select with
+        // unions joining them together. So we'll build out this list of columns and
+        // then join them all together with select unions to complete the queries.
+        foreach (array_keys(reset($values)) as $column) {
+            $columns[] = '? as '.$this->wrap($column);
+        }
+
+        $columns = array_fill(0, count($values), implode(', ', $columns));
+
+        return "insert into $table ($names) select ".implode(' union all select ', $columns);
     }
 
     /**
@@ -201,33 +216,17 @@ class SQLiteGrammar extends Grammar
     {
         $table = $this->wrapTable($query->from);
 
-        $columns = collect($values)->map(function ($value, $key) {
-            return $this->wrap(Str::after($key, '.')).' = '.$this->parameter($value);
+        $columns = collect($values)->map(function ($value, $key) use ($query) {
+            return $this->wrap(Str::after($key, $query->from.'.')).' = '.$this->parameter($value);
         })->implode(', ');
 
         if (isset($query->joins) || isset($query->limit)) {
-            return $this->compileUpdateWithJoinsOrLimit($query, $columns);
+            $selectSql = parent::compileSelect($query->select("{$query->from}.rowid"));
+
+            return "update {$table} set $columns where {$this->wrap('rowid')} in ({$selectSql})";
         }
 
         return trim("update {$table} set {$columns} {$this->compileWheres($query)}");
-    }
-
-    /**
-     * Compile an update statement with joins or limit into SQL.
-     *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  string  $columns
-     * @return string
-     */
-    protected function compileUpdateWithJoinsOrLimit(Builder $query, $columns)
-    {
-        $segments = preg_split('/\s+as\s+/i', $query->from);
-
-        $alias = $segments[1] ?? $segments[0];
-
-        $selectSql = parent::compileSelect($query->select($alias.'.rowid'));
-
-        return "update {$this->wrapTable($query->from)} set {$columns} where {$this->wrap('rowid')} in ({$selectSql})";
     }
 
     /**
@@ -239,10 +238,10 @@ class SQLiteGrammar extends Grammar
      */
     public function prepareBindingsForUpdate(array $bindings, array $values)
     {
-        $cleanBindings = Arr::except($bindings, 'select');
+        $cleanBindings = Arr::except($bindings, ['select', 'join']);
 
         return array_values(
-            array_merge($values, Arr::flatten($cleanBindings))
+            array_merge($values, $bindings['join'], Arr::flatten($cleanBindings))
         );
     }
 
@@ -255,7 +254,9 @@ class SQLiteGrammar extends Grammar
     public function compileDelete(Builder $query)
     {
         if (isset($query->joins) || isset($query->limit)) {
-            return $this->compileDeleteWithJoinsOrLimit($query);
+            $selectSql = parent::compileSelect($query->select("{$query->from}.rowid"));
+
+            return "delete from {$this->wrapTable($query->from)} where {$this->wrap('rowid')} in ({$selectSql})";
         }
 
         $wheres = is_array($query->wheres) ? $this->compileWheres($query) : '';
@@ -264,20 +265,18 @@ class SQLiteGrammar extends Grammar
     }
 
     /**
-     * Compile a delete statement with joins or limit into SQL.
+     * Prepare the bindings for a delete statement.
      *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @return string
+     * @param  array  $bindings
+     * @return array
      */
-    protected function compileDeleteWithJoinsOrLimit(Builder $query)
+    public function prepareBindingsForDelete(array $bindings)
     {
-        $segments = preg_split('/\s+as\s+/i', $query->from);
+        $cleanBindings = Arr::except($bindings, ['select', 'join']);
 
-        $alias = $segments[1] ?? $segments[0];
-
-        $selectSql = parent::compileSelect($query->select($alias.'.rowid'));
-
-        return "delete from {$this->wrapTable($query->from)} where {$this->wrap('rowid')} in ({$selectSql})";
+        return array_values(
+            array_merge($bindings['join'], Arr::flatten($cleanBindings))
+        );
     }
 
     /**
@@ -302,7 +301,11 @@ class SQLiteGrammar extends Grammar
      */
     protected function wrapJsonSelector($value)
     {
-        [$field, $path] = $this->wrapJsonFieldAndPath($value);
+        $parts = explode('->', $value, 2);
+
+        $field = $this->wrap($parts[0]);
+
+        $path = count($parts) > 1 ? ', '.$this->wrapJsonPath($parts[1]) : '';
 
         return 'json_extract('.$field.$path.')';
     }

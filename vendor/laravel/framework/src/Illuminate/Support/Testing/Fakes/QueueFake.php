@@ -2,7 +2,6 @@
 
 namespace Illuminate\Support\Testing\Fakes;
 
-use BadMethodCallException;
 use Illuminate\Queue\QueueManager;
 use Illuminate\Contracts\Queue\Queue;
 use PHPUnit\Framework\Assert as PHPUnit;
@@ -224,14 +223,12 @@ class QueueFake extends QueueManager implements Queue
     /**
      * Get the size of the queue.
      *
-     * @param  string|null  $queue
+     * @param  string  $queue
      * @return int
      */
     public function size($queue = null)
     {
-        return collect($this->jobs)->flatten(1)->filter(function ($job) use ($queue) {
-            return $job['queue'] === $queue;
-        })->count();
+        return count($this->jobs);
     }
 
     /**
@@ -239,7 +236,7 @@ class QueueFake extends QueueManager implements Queue
      *
      * @param  string  $job
      * @param  mixed   $data
-     * @param  string|null  $queue
+     * @param  string  $queue
      * @return mixed
      */
     public function push($job, $data = '', $queue = null)
@@ -254,7 +251,7 @@ class QueueFake extends QueueManager implements Queue
      * Push a raw payload onto the queue.
      *
      * @param  string  $payload
-     * @param  string|null  $queue
+     * @param  string  $queue
      * @param  array   $options
      * @return mixed
      */
@@ -266,10 +263,10 @@ class QueueFake extends QueueManager implements Queue
     /**
      * Push a new job onto the queue after a delay.
      *
-     * @param  \DateTimeInterface|\DateInterval|int  $delay
+     * @param  \DateTime|int  $delay
      * @param  string  $job
      * @param  mixed   $data
-     * @param  string|null  $queue
+     * @param  string  $queue
      * @return mixed
      */
     public function later($delay, $job, $data = '', $queue = null)
@@ -294,7 +291,7 @@ class QueueFake extends QueueManager implements Queue
      * Push a new job onto the queue after a delay.
      *
      * @param  string  $queue
-     * @param  \DateTimeInterface|\DateInterval|int  $delay
+     * @param  \DateTime|int  $delay
      * @param  string  $job
      * @param  mixed   $data
      * @return mixed
@@ -307,7 +304,7 @@ class QueueFake extends QueueManager implements Queue
     /**
      * Pop the next job off of the queue.
      *
-     * @param  string|null  $queue
+     * @param  string  $queue
      * @return \Illuminate\Contracts\Queue\Job|null
      */
     public function pop($queue = null)
@@ -320,7 +317,7 @@ class QueueFake extends QueueManager implements Queue
      *
      * @param  array $jobs
      * @param  mixed $data
-     * @param  string|null $queue
+     * @param  string $queue
      * @return mixed
      */
     public function bulk($jobs, $data = '', $queue = null)
@@ -359,19 +356,5 @@ class QueueFake extends QueueManager implements Queue
     public function setConnectionName($name)
     {
         return $this;
-    }
-
-    /**
-     * Override the QueueManager to prevent circular dependency.
-     *
-     * @param  string  $method
-     * @param  array   $parameters
-     * @return mixed
-     */
-    public function __call($method, $parameters)
-    {
-        throw new BadMethodCallException(sprintf(
-            'Call to undefined method %s::%s()', static::class, $method
-        ));
     }
 }
