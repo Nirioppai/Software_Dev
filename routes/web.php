@@ -13,9 +13,8 @@ use App\User;
 */
 
 Route::get('/', function () {
-        return redirect('/login');    
+        return redirect('/login');
 });
-
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 Auth::routes();
 
@@ -23,8 +22,10 @@ Route::get('/login', 'CustomRegisterController@login')->name('login' );
 Route::get('/register', 'CustomRegisterController@register')->name('register' );
 Route::post('/register/submit', 'CustomRegisterController@submit');
 
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/students', 'HomeController@students')->name('students');
 Route::get('/csv', 'HomeController@csv')->name('csv');
 Route::get('/monitoring', 'HomeController@monitoring')->name('monitoring');
+
+Route::post('/csv/import_parse', 'ImportController@parseImport')->name('import_parse');
+Route::post('/csv/import_process', 'ImportController@processImport')->name('import_process');
