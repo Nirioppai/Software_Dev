@@ -26,8 +26,8 @@
         
            <form method="POST" class="bg-white text-center border border-light p-5" action="{{ route('login') }}">
             @csrf
-            <img src="{{asset('./img/brand/brand_downscaled.png')}}" class=" text-left mt--4" alt="...">
-            <p class="h2 mt-2 text-center">Enter credentials</p>
+            <img src="{{asset('./img/brand/brand.png')}}" class=" text-left mt--4" alt="...">
+            <p class="h2 mt-2 text-left">Enter credentials</p>
 
             <div class="md-form mt--1">
                 <input id="username" type="text"  class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
