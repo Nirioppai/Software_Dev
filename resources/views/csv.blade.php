@@ -63,7 +63,10 @@
       <div class="card hoverable">
 
         <!-- Card image -->
-        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
+        <img class="card-img-top" src="{{asset('./img/brand/admin-icon-blue.png')}}" alt="Card image cap">
+
+
+
 
         <!-- Card content -->
         <div class="card-body">
@@ -85,7 +88,7 @@
       <div class="card hoverable">
 
         <!-- Card image -->
-        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
+        <img class="card-img-top" src="student_data.png" alt="Card image cap">
 
         <!-- Card content -->
         <div class="card-body">
