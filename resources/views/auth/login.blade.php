@@ -30,27 +30,30 @@
             <p class="h2 mt-2 text-left">Enter credentials</p>
 
             <div class="md-form mt--1">
-                <input id="username" type="text"  class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
-                @error('username')
+
+                <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
+
+                @if ($errors->has('username'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        <strong>{{ $errors->first('username') }}</strong>
                     </span>
-                @enderror
+                @endif
                 <label for="materialLoginFormUsername"><i class="fas fa-id-card-alt"></i> <small>Username</small></label>
             </div>
 
             <div class="md-form mt--1">
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                @error('password')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                @enderror
+                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                @if ($errors->has('password'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
                 <label for="materialLoginFormPassword"><i class="ni ni-lock-circle-open"></i> <small>Password</small></label>
             </div>
 
             <div class="text-center">
-            <button type="submit" class="btn btn-md btn-outline-xs-blue mb--3">
+            <button type="submit" class="btn btn-md btn-outline-primary mb--3">
                 {{ __('Sign in') }}
             </button>
             </div>

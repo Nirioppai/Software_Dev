@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name')->default('Not Set');
             $table->string('username')->unique()->default('Not Set');
             $table->string('password')->default('Not Set');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

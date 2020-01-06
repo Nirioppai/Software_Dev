@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use Auth;
 
 class HomeController extends Controller
 {
@@ -25,25 +23,31 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         return view('home');
     }
-
     public function students()
     {
-
         return view('students');
     }
-
     public function csv()
     {
-
         return view('csv');
     }
-
-    public function monitoring()
+    public function monitoring() 
     {
-
         return view('monitoring');
     }
+
+    public function uploadStudent()
+    {
+        return view('csv_student_upload');
+    }
+
+    public function uploadReferences()
+    {
+        $scaled_score = 1;
+        return view('csv_references')->with('scaled_score', $scaled_score);
+    }
+
+    
 }

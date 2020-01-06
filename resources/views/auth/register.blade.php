@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('title')
-<title>OLSAT | Register</title>
-@endsection
-
 @section('body')
 <body class="bg-default">
   <!-- Extra details for Live View on GitHub Pages -->
@@ -32,37 +28,41 @@
             <p class="h2 mt-2 text-left">Create account</p>
 
             <div class="md-form mt--1">
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror mt-3" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <input id="name" type="text" class="form-control mt-3{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
                 <label for="materialLoginFormName"><i class="ni ni-circle-08"></i> <small>Name</small></label>
             </div>
 
             <div class="md-form mt--1">
-                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
-                @error('username')
+                <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required>
+
+                @if ($errors->has('username'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        <strong>{{ $errors->first('username') }}</strong>
                     </span>
-                @enderror
+                @endif
                 <label for="materialLoginFormUsername"><i class="fas fa-id-card-alt"></i> <small>Username</small></label>
             </div>
 
             <div class="md-form mt--1">
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                @error('password')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                @enderror
+
+                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                @if ($errors->has('password'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
                 <label for="materialLoginFormPassword"><i class="ni ni-lock-circle-open"></i> <small>Password</small></label>
             </div>
 
             <div class="md-form mt--1">
-                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                 <label for="materialLoginFormConfirmPassword"><i class="fas fa-lock"></i> <small>Confirm Password</small></label>
             </div>
 

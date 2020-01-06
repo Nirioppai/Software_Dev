@@ -55,4 +55,140 @@ class ImportController extends Controller
       }
       return view('import_success');
   }
+
+
+
+  public function uploadStudent1 () {
+
+    $step = 1;
+    $uploader = 'student';
+    return view ('csv_student_upload')->with('step', $step)->with('uploader', $uploader);
+
+  }
+
+
+  public function uploadStudent2 () {
+
+    $step = 2;
+    $uploader = 'student';
+    return view ('csv_student_upload')->with('step', $step)->with('uploader', $uploader);
+
+  }
+
+
+  public function uploadStudent3 () {
+
+    $step = 3;
+    $uploader = 'student';
+    return view ('csv_student_upload')->with('step', $step)->with('uploader', $uploader);
+
+  }
+
+
+  public function uploadStudent3Submit () {
+
+    return redirect ('/csv');
+
+  }
+
+  public function uploadScaledScore1 () {
+
+    $step = 1;
+    $uploader = 'scaled_scores';
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
+
+  }
+
+
+  public function uploadScaledScore2 () {
+
+    $step = 2;
+    $uploader = 'scaled_scores';
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
+
+  }
+
+
+  public function uploadScaledScore3 () {
+
+    $step = 3;
+    $uploader = 'scaled_scores';
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
+
+  }
+
+
+  public function uploadScaledScore3Submit () {
+
+    return redirect ('/csv/references');
+
+  }
+
+  public function uploadSAI1 () {
+
+    $step = 1;
+    $uploader = 'sai';
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
+
+  }
+
+
+  public function uploadSAI2 () {
+
+    $step = 2;
+    $uploader = 'sai';
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
+
+  }
+
+
+  public function uploadSAI3 () {
+
+    $step = 3;
+    $uploader = 'sai';
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
+
+  }
+
+
+  public function uploadSAI3Submit () {
+
+    return redirect ('/csv/references');
+
+  }
+
+
+  public function uploadStanine1 () {
+
+    $step = 1;
+    $uploader = 'percentile_stanine';
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
+
+  }
+
+
+  public function uploadStanine2 () {
+
+    $step = 2;
+    $uploader = 'percentile_stanine';
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
+
+  }
+
+
+  public function uploadStanine3 () {
+
+    $step = 3;
+    $uploader = 'percentile_stanine';
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
+
+  }
+
+
+  public function uploadStanine3Submit () {
+
+    return redirect ('/csv/references');
+
+  }
+  
 }

@@ -11,21 +11,57 @@ use App\User;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
+Auth::routes();
 
 Route::get('/', function () {
         return redirect('/login');
 });
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
-Auth::routes();
-
 Route::get('/login', 'CustomRegisterController@login')->name('login' );
-Route::get('/register', 'CustomRegisterController@register')->name('register' );
 Route::post('/register/submit', 'CustomRegisterController@submit');
 
+
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/students', 'HomeController@students')->name('students');
-Route::get('/csv', 'HomeController@csv')->name('csv');
-Route::get('/monitoring', 'HomeController@monitoring')->name('monitoring');
+
+Route::get('/csv', 'HomeController@csv')->name('csv'); 
+Route::get('/csv/students', 'HomeController@uploadStudent')->name('uploadStudent');
+
+Route::get('/csv/students/1', 'ImportController@uploadStudent1')->name('uploadStudent1');
+
+Route::post('/csv/students/2', 'ImportController@uploadStudent2')->name('uploadStudent2');
+
+Route::post('/csv/students/3', 'ImportController@uploadStudent3')->name('uploadStudent3');
+Route::post('/csv/students/3/submit', 'ImportController@uploadStudent3Submit')->name('uploadStudent3Submit');
+
+Route::get('/csv/references', 'HomeController@uploadReferences')->name('uploadReferences');
+
+Route::get('/csv/references/scaledscores/1', 'ImportController@uploadScaledScore1')->name('uploadScaledScore1');
+
+Route::post('/csv/references/scaledscores/2', 'ImportController@uploadScaledScore2')->name('uploadScaledScore2');
+
+Route::post('/csv/references/scaledscores/3', 'ImportController@uploadScaledScore3')->name('uploadScaledScore3');
+Route::post('/csv/references/scaledscores/3/submit', 'ImportController@uploadScaledScore3Submit')->name('uploadScaledScore3Submit');
+
+Route::get('/csv/references/sai/1', 'ImportController@uploadSAI1')->name('uploadSAI1');
+
+Route::post('/csv/references/sai/2', 'ImportController@uploadSAI2')->name('uploadSAI2');
+
+Route::post('/csv/references/sai/3', 'ImportController@uploadSAI3')->name('uploadSAI3');
+Route::post('/csv/references/sai/3/submit', 'ImportController@uploadSAI3Submit')->name('uploadSAI3Submit');
+
+Route::get('/csv/references/percentile_stanine/1', 'ImportController@uploadStanine1')->name('uploadStanine1');
+
+Route::post('/csv/references/percentile_stanine/2', 'ImportController@uploadStanine2')->name('uploadStanine2');
+
+Route::post('/csv/references/percentile_stanine/3', 'ImportController@uploadStanine3')->name('uploadStanine3');
+Route::post('/csv/references/percentile_stanine/3/submit', 'ImportController@uploadStanine3Submit')->name('uploadStanine3Submit');
 
 Route::post('/csv/import_parse', 'ImportController@parseImport')->name('import_parse');
 Route::post('/csv/import_process', 'ImportController@processImport')->name('import_process');
+
+Route::get('/monitoring', 'HomeController@monitoring')->name('monitoring');
+
+
+
+
+

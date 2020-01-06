@@ -56,11 +56,12 @@
 @endsection
 
 @section('content')
+
 <div class="container">
   <div class="row justify-content-center align-items-center">
-    <div class="col-sm-4 ">
+    <div class="col-sm-4">
       <!-- Card -->
-      <div class="card hoverable">
+      <div class="card">
 
         <!-- Card image -->
         <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
@@ -69,11 +70,11 @@
         <div class="card-body">
 
           <!-- Title -->
-          <h4 class="card-title"><a>Student Data</a></h4>
+          <h4 class="card-title"><a>Scaled scores</a></h4>
           <!-- Text -->
-          <p class="card-text">Upload Student Data to monitor their IQ statistics.</p>
+
           <!-- Button -->
-          <a href="/csv/students/1" class="btn btn-primary">Next</a>
+          <a href="/csv/references/scaledscores/1" class="btn btn-primary">Next</a>
 
         </div>
 
@@ -82,7 +83,7 @@
     </div>
     <div class="col-sm-4">
       <!-- Card -->
-      <div class="card hoverable">
+      <div class="card">
 
         <!-- Card image -->
         <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
@@ -91,11 +92,33 @@
         <div class="card-body">
 
           <!-- Title -->
-          <h4 class="card-title"><a>OLSAT Tables</a></h4>
+          <h4 class="card-title"><a>School Ability Index (SAI)</a></h4>
           <!-- Text -->
-          <p class="card-text">Update the OLSAT references. <br>&nbsp;</p>
+
           <!-- Button -->
-          <a href="/csv/references" class="btn btn-primary">Next</a>
+          <a href="/csv/references/sai/1" class=" btn btn-primary ">Next</a>
+
+        </div>
+
+      </div>
+      <!-- Card -->
+    </div>
+    <div class="col-sm-4">
+      <!-- Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
+
+        <!-- Card content -->
+        <div class="card-body">
+
+          <!-- Title -->
+          <h4 class="card-title"><a>Percentile rank & Stanine</a></h4>
+          <!-- Text -->
+
+          <!-- Button -->
+          <a href="/csv/references/percentile_stanine/1" class="btn btn-primary">Next</a>
 
         </div>
 

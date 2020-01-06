@@ -18,7 +18,7 @@
     <!-- CSS Files -->
     <link href="{{asset('./css/argon-dashboard.css?v=1.1.1')}}" rel="stylesheet" />
     </head>
-    <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+    <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white shadow-none" id="sidenav-main shadow-none">
     <div class="container-fluid">
       <!-- Toggler -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +74,7 @@
   </nav>
   <div class="main-content">
     <!-- Navbar -->
-    <nav class="navbar navbar-top navbar-expand-md navbar-light bg-yellow" id="navbar-main">
+    <nav class="navbar navbar-top navbar-expand-md navbar-light bg-yellow shadow-none" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
         @yield('breadcrumb')
@@ -107,19 +107,19 @@
     </nav>
     <!-- End Navbar -->
     <!-- Header -->
-    <div class="header bg-gradient-xs-blue pb-8 pt-5 pt-md-8">
+    <div class="header bg-gray pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
         <div class="header-body">
           <!-- Card stats -->
-          <div class="row">
+
             @yield('content')
-          </div>
+
         </div>
       </div>
     </div>
-    <div class="container-fluid mt--1">
+    <div class="container-fluid mt--1 bg-gray ">
       <!-- Footer -->
-      <footer class="footer">
+      <footer class="footer bg-gray">
         <div class="row align-items-center justify-content-xl-between">
           <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
@@ -127,7 +127,7 @@
             </div>
           </div>
           <div class="col-xl-6">
-            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+            <ul class="nav nav-footer justify-content-center justify-content-xl-end ">
               <li class="nav-item">
                 <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
               </li>

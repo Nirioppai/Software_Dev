@@ -9,29 +9,29 @@
 <ul class="navbar-nav">
   <li class="nav-item">
     <a class="nav-link" href="/home">
-      <i class="ni ni-tv-2 text-indigo"></i> Dashboard
+      <i class="ni ni-tv-2 text-primary"></i> Dashboard
     </a>
   </li>
   <li class="nav-item">
     <a class="nav-link " href="/students">
-      <i class="ni ni-planet text-indigo"></i> Students
+      <i class="ni ni-planet text-primary"></i> Students
     </a>
   </li>
   <li class="nav-item">
     <a class="nav-link " href="/csv">
-      <i class="fas fa-file-excel text-indigo"></i> CSV
+      <i class="fas fa-file-excel text-primary"></i> Upload CSV
     </a>
   </li>
   <li class="nav-item active">
     <a class="nav-link active" href="/monitoring">
-      <i class="ni ni-key-25 text-indigo"></i> Monitoring
+      <i class="ni ni-key-25 text-primary"></i> Monitoring
     </a>
   </li>
 </ul>
 <!-- Divider -->
 <hr class="my-3">
 <!-- Heading -->
-<h6 class="navbar-heading text-muted">Administrator actions</h6>
+<h6 class="navbar-heading text-dark">Administrator actions</h6>
 <!-- Navigation -->
 <ul class="navbar-nav mb-md-3">
   <li class="nav-item">
