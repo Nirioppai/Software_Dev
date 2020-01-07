@@ -199,8 +199,37 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
     ],
+
     'db_fields' => [
-      'student_id', 'name', 'overall_total_score', 'verbal_number_correct',
-      'non_verbal_number_correct', 'birthday', 'level'
+      'student_id',
+      'name',
+      'overall_total_score',
+      'verbal_number_correct',
+      'non_verbal_number_correct',
+      'birthday',
+      'level'
+    ],
+
+    'db_raw_to_scaleds' => [
+      'rawscore',
+      'scaledscore',
+      'type'
+    ],
+
+    'db_scaled_to_sais' => [
+      'gradescore',
+      'sai',
+      'age',
+      'month',
+      'type'
+    ],
+
+    'db_sai_to_percentile_ranks' => [
+      'sai',
+      'percentile_rank',
+      'stanine',
+      'type'
     ]
+
+
 ];
