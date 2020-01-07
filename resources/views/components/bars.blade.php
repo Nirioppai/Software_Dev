@@ -113,6 +113,7 @@
           <!-- Card stats -->
 
             @yield('content')
+            @yield('content_students')
 
         </div>
       </div>

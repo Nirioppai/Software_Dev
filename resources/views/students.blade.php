@@ -1,7 +1,7 @@
 @extends('components.bars')
 
 @section('title')
-<title>OLSAT | Dashboard</title>
+<title>OLSAT | Students</title>
 @endsection
 
 @section('nav')
@@ -13,12 +13,12 @@
     </a>
   </li>
   <li class="nav-item active">
-    <a class="nav-link active" href="/students">
+    <a class="nav-link " href="/students">
       <i class="ni ni-planet text-primary"></i> Students
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link " href="/csv">
+    <a class="nav-link" href="/csv">
       <i class="fas fa-file-excel text-primary"></i> Upload CSV
     </a>
   </li>
@@ -55,40 +55,95 @@
 </div>
 @endsection
 
-@section('content')
-<style>
+@section('content_students')
 
-.upper_part{
-  padding-left: 5rem;
-  width: 1000px
-}
+<!-- Search form -->
 
-</style>
+<div class="col">
 
-<div class="upper_part">
+    <div class="row-md-8">
 
-  <span class="d-block p-2 bg-dark text-white">Student Corner</span>
-  <!-- Default input -->
-    <label for="inputDisabledEx2" class="enabled">Student Number</label>
-      <input type="text" id="inputDisabledEx2" class="form-control" enabled>
 
-  <div class="md-form input-group">
-        <div class="input-group-prepend">
-        <span class="input-group-text md-addon">Last, First, and Middle Name</span>
+      <div class="input-group">
+           <div class="input-group-prepend">
+             <button id="button-addon8" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+           </div>
+           <input type="search" placeholder="Search Here" aria-describedby="button-addon8" class="form-control">
+         </div>
+
+    </div>
+
+    <div class="row-md-5">
+
+
+      <div class="container py-3">
+
+<div class="row py-0">
+  <div class="col-lg-13 mx-auto">
+    <div class="card rounded shadow border-8">
+      <div class="card-body p-4 bg-white rounded">
+        <div class="table-responsive">
+          <table id="example" style="width:100%" class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th class="th-lg"><a href="">Student Number<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Last Name<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">First Name<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Birthdate<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Year level<i class="fas fa-sort ml-1"></a></i></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+
+                <td><a href="">2018-02454</a></td>
+                <td><a href="">Recierdo</a></td>
+                <td><a href="">Rafael John</a></td>
+                <td><a href="">12-08-1999</a></td>
+                <td><a href="">Grade 9</a></td>
+
+              </tr>
+              <tr>
+                <td>2018-45353</td>
+                <td>Del Rosario</td>
+                <td>Nico</td>
+                <td>12-05-2000</td>
+                <td>Grade 7</td>
+
+              </tr>
+              <tr>
+                <td>2018-65492</td>
+                <td>Pinggoy</td>
+                <td>Dennise</td>
+                <td>07-02-2003</td>
+                <td>Grade 8</td>
+
+              </tr>
+              <tr>
+                <td>2018-78210</td>
+                <td>Velarde</td>
+                <td>Prince</td>
+                <td>08-23-2001</td>
+                <td>Grade 9</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
-  <input type="text" aria-label="Last name" class="form-control" placeholder="Type the Last name">
-  <input type="text" aria-label="First name" class="form-control" placeholder="Type First name">
-  <input type="text" aria-label="Middle name" class="form-control" placeholder="Type Middle name">
-  <div class="md-form input-group">
-        <div class="input-group-prepend_1">
-        <span class="input-group-text md-addon">Year Level or School Year</span>
-  </div>
-  <input type="text" aria-label="year level" class="form-control" placeholder="Type the Year Level">
-  <input type="text" aria-label="school year" class="form-control" placeholder="Type School Year">
+</div>
+</div>
+
+      </div>
+
+
 
 </div>
 
 
-</div>
+
+
 
 @endsection

@@ -33,12 +33,12 @@ class HomeController extends Controller
     {
         return view('csv');
     }
-    public function monitoring() 
+    public function monitoring()
     {
         return view('monitoring');
     }
 
-    public function uploadStudent()
+        public function uploadStudent()
     {
         return view('csv_student_upload');
     }
@@ -49,5 +49,5 @@ class HomeController extends Controller
         return view('csv_references')->with('scaled_score', $scaled_score);
     }
 
-    
+
 }

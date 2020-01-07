@@ -64,7 +64,7 @@
       <div class="card">
 
         <!-- Card image -->
-        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
+        <img class="card-img-top" src="{{asset('./img/brand/analytics.png')}}" alt="Card image cap">
 
         <!-- Card content -->
         <div class="card-body">
@@ -86,7 +86,7 @@
       <div class="card">
 
         <!-- Card image -->
-        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
+        <img class="card-img-top" src="{{asset('./img/brand/thought.png')}}" alt="Card image cap">
 
         <!-- Card content -->
         <div class="card-body">
@@ -108,7 +108,7 @@
       <div class="card">
 
         <!-- Card image -->
-        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
+        <img class="card-img-top" src="{{asset('./img/brand/idea.png')}}" alt="Card image cap">
 
         <!-- Card content -->
         <div class="card-body">
