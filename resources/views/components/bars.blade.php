@@ -9,7 +9,7 @@
 
     @yield('title')
     <!-- Ajax Dependencies -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
     <!-- Favicon -->
     <link href="{{asset('./img/brand/favicon.png')}}" rel="icon" type="image/png">
     <!-- Fonts -->
@@ -175,7 +175,7 @@
        dataType:'json',
        success:function(data)
        {
-        $('tbody').html(data.table_data);
+        $('.searchrows').html(data.table_data);
         $('#total_records').text(data.total_data);
        }
       })

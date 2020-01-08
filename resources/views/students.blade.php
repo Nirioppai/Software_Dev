@@ -106,22 +106,22 @@
                       </a>
                     </th>
                     <th class="th-lg">
-                      <a href="">Last Name
+                      <a href="">Name
                         <i class="fas fa-sort ml-1"></i>
                       </a>
                     </th>
                     <th class="th-lg">
-                      <a href="">First Name
+                      <a href="">Overall Total Score
                         <i class="fas fa-sort ml-1"></i>
                       </a>
                     </th>
                     <th class="th-lg">
-                      <a href="">Birthdate
+                      <a href="">Birthday
                         <i class="fas fa-sort ml-1"></i>
                       </a>
                     </th>
                     <th class="th-lg">
-                      <a href="">Year Level
+                      <a href="">Level
                         <i class="fas fa-sort ml-1"></i>
                       </a>
                     </th>
@@ -133,7 +133,7 @@
                 <!--Table body-->
 
                 <!-- left tbody empty for table response -->
-                <tbody>
+                <tbody class="searchrows">
 
                    <!-- <tr class="bs-table-row">
                       <a class="bs-row-link" href="">
@@ -185,9 +185,6 @@
 
 
 </div>
-
-
-
 
 
 @endsection
