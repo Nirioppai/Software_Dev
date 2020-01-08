@@ -63,7 +63,8 @@
 
     <div class="row-md-8">
 
-      <input class="form-control mt-0" type="text" placeholder="Search Here" aria-label="Search">
+      <!-- just added id and name here -->
+      <input type="text" name="search" id="search" class="form-control mt-0" type="text" placeholder="Search Student" aria-label="Search">
 
     </div>
 
@@ -86,7 +87,12 @@
 
           <div class="px-4">
 
-            <div class="table-wrapper">
+            <!-- added table-responsive class -->
+            <div class="table-wrapper" class="table-responsive">
+
+              <!-- to show total queries -->
+              <h3 align="center">Total Data : <span id="total_records"></span></h3>
+
               <!--Table-->
               <table class="table table-hover mb-0">
 
@@ -126,9 +132,10 @@
 
                 <!--Table body-->
 
+                <!-- left tbody empty for table response -->
                 <tbody>
 
-                   <tr class="bs-table-row">
+                   <!-- <tr class="bs-table-row">
                       <a class="bs-row-link" href="">
                       <td>2018-02454</td>
                       <td>Recierdo</td>
@@ -158,7 +165,7 @@
                     <td>2019-2020</td>
 
                </tr>
-               </a>
+               </a> -->
 
 
 

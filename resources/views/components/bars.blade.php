@@ -8,6 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @yield('title')
+    <!-- Ajax Dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <!-- Favicon -->
     <link href="{{asset('./img/brand/favicon.png')}}" rel="icon" type="image/png">
     <!-- Fonts -->
@@ -156,3 +158,33 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
 </html>
+
+<!-- Ajax Script -->
+
+<script>
+  $(document).ready(function(){
+
+   fetch_student_data();
+
+   function fetch_student_data(query = '')
+   {
+      $.ajax({
+       url:"{{ route('liveSearchAction') }}",
+       method:'GET',
+       data:{query:query},
+       dataType:'json',
+       success:function(data)
+       {
+        $('tbody').html(data.table_data);
+        $('#total_records').text(data.total_data);
+       }
+      })
+   }
+
+   $(document).on('keyup', '#search', function(){
+    var query = $(this).val();
+    fetch_student_data(query);
+    });
+
+  });
+</script>
