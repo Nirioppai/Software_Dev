@@ -64,14 +64,6 @@
     <div class="row-md-8">
 
 
-      <div class="input-group">
-           <div class="input-group-prepend">
-             <button id="button-addon8" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-           </div>
-           <input type="search" placeholder="Search Here" aria-describedby="button-addon8" class="form-control">
-         </div>
-
-    </div>
 
     <div class="row-md-5">
 
