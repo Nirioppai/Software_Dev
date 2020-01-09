@@ -14,24 +14,25 @@ class LiveSearchController extends Controller
     return view('students');
   }
 
-  public function action(Request $request)
+  public function action(Request $search_request)
   {
-    if($request->ajax())
+    if($search_request->ajax())
    {
       $output = '';
-      $query = $request->get('query');
+      $query = $search_request->get('query');
       if($query != '')
       {
         //  EDIT TABLE NAME HERE
 
-         $data = DB::table('student_datas')
-           ->where('StudentNumber', 'like', '%'.$query.'%')
-           ->orWhere('LastName', 'like', '%'.$query.'%')
-           ->orWhere('FirstName', 'like', '%'.$query.'%')
-           ->orWhere('Birthdate', 'like', '%'.$query.'%')
+         $search_data = DB::table('student_datas')
+           ->where('student_id', 'like', '%'.$query.'%')
+           ->orWhere('name', 'like', '%'.$query.'%')
+           //->orWhere('overall_total_score', 'like', '%'.$query.'%')
+           ->orWhere('birthday', 'like', '%'.$query.'%')
+           //->orWhere('level', 'like', '%'.$query.'%')
 
            //->orWhere('YearLevel', 'like', '%'.$query.'%')
-           ->orderBy('id', 'desc')
+           ->orderBy('name', 'asc')
            ->get();
       }
 
@@ -40,24 +41,24 @@ class LiveSearchController extends Controller
         // Show All Data Available
         //  EDIT TABLE NAME HERE
 
-         $data = DB::table('student_datas')
-           ->orderBy('id', 'asc')
+         $search_data = DB::table('student_datas')
+           ->orderBy('name', 'asc')
            ->get();
       }
 
-      $total_row = $data->count();
+      $total_row = $search_data->count();
 
       if($total_row > 0)
       {
-         foreach($data as $row)
+         foreach($search_data as $search_row)
          {
             $output .= '
             <tr>
-             <td>'.$row->StudentNumber.'</td>
-             <td>'.$row->LastName.'</td>
-             <td>'.$row->FirstName.'</td>
-             <td>'.$row->Birthdate.'</td>
-             <td>'.$row->YearLevel.'</td>
+             <td>'.$search_row->student_id.'</td>
+             <td>'.$search_row->name.'</td>
+             <td>'.$search_row->overall_total_score.'</td>
+             <td>'.$search_row->birthday.'</td>
+             <td>'.$search_row->level.'</td>
             </tr>
             ';
          }
@@ -71,12 +72,12 @@ class LiveSearchController extends Controller
          ';
       }
 
-      $data = array(
+      $search_data = array(
        'table_data'  => $output,
        'total_data'  => $total_row
       );
 
-      echo json_encode($data);
+      echo json_encode($search_data);
    }
   }
 }
