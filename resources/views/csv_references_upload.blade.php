@@ -70,7 +70,7 @@
           <li @if($step == 1) class="active" @endif>
             <a href="#!">
               <span class="circle">1</span>
-              <span class="label">Upload CSV 1</span>
+              <span class="label">Upload CSV Scaled Scores</span>
             </a>
 
             @if($step == 1)
@@ -82,7 +82,7 @@
               consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
               proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                {!! Form::open(['url' => '/csv/references/scaledscores/2']) !!}
+                <!-- {!! Form::open(['url' => '/csv/references/scaledscores/2']) !!}
                 @csrf
                 <div class="input-group down col-sm-6">
                     <div class="custom-file down">
@@ -93,8 +93,57 @@
                       <button class="btn btn-outline-primary up" type="submit">Submit</button>
                     </div>
                   </div>
-                {!! Form::close() !!}
+                {!! Form::close() !!} -->
             </div>
+              <!-- Native Form Scaled Score-->
+              <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><!--CSV Import--></div>
+
+                            <div class="panel-body">
+                                <form class="form-horizontal" method="POST" action="{{ route('uploadScaledScore2') }}" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+
+                                    <div class="form-group{{ $errors->has('csv_file') ? ' has-error' : '' }}">
+                                        <label for="csv_file" class="col-md-4 control-label"><!--CSV file to import--></label>
+
+                                        <div class="col-md-6">
+                                            <input id="csv_file" type="file" class="form-control" name="csv_file" required>
+
+                                            @if ($errors->has('csv_file'))
+                                                <span class="help-block">
+                                                <strong>{{ $errors->first('csv_file') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div hidden class="form-group">
+                                        <div class="col-md-6 col-md-offset-4">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="header" checked> File contains header row?
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-8 col-md-offset-4">
+                                            <button type="submit" class="btn btn-primary">
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             @endif
           </li>
 
@@ -116,7 +165,7 @@
               consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
               proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <table class="table">
+                <!-- <table class="table">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -148,24 +197,73 @@
             </table>
                 {!! Form::open(['url' => '/csv/references/scaledscores/3']) !!}
                 @csrf
-
                       <button class="btn btn-outline-primary up" type="submit">Submit</button>
-
-                {!! Form::close() !!}
+                {!! Form::close() !!} -->
             </div>
+
+            <!-- Display Preview Scaled Score-->
+              <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">CSV Import</div>
+
+                            <div class="panel-body">
+                                <form class="form-horizontal" method="POST" action="{{ route('uploadScaledScore3') }}">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="csv_data_file_id" value="{{ $csv_data_file->id }}" />
+
+                                    <table class="table">
+                                        @if (isset($csv_header_fields))
+                                        <tr>
+                                            @foreach ($csv_header_fields as $csv_header_field)
+                                                <th>{{ $csv_header_field }}</th>
+                                            @endforeach
+                                        </tr>
+                                        @endif
+                                        @foreach ($csv_data as $csv_row)
+                                            <tr>
+                                            @foreach ($csv_row as $key => $value)
+                                                <td>{{ $value }}</td>
+                                            @endforeach
+                                            </tr>
+                                        @endforeach
+                                        <tr>
+                                            @foreach ($csv_data[0] as $key => $value)
+                                                <td>
+                                                    <select name="fields[{{ $key }}]">
+                                                        @foreach (config('app.db_raw_to_scaleds') as $db_raw_to_scaled)
+                                                            <option value="{{ (\Request::has('header')) ? $db_raw_to_scaled : $loop->index }}"
+                                                                @if ($key === $db_raw_to_scaled) selected @endif>{{ $db_raw_to_scaled }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            @endforeach
+                                        </tr>
+                                    </table>
+
+                                    <button type="submit" class="btn btn-primary">
+                                        Confirm
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             @endif
           </li>
 
           <!-- Third Step -->
-          <li @if($step==3) class="active" @endif>
+          <!-- <li @if($step==3) class="active" @endif>
             <a href="#!">
               <span class="circle">3</span>
               <span class="label">Confirmation</span>
             </a>
-
-            @if($step == 3)
+            @if($step == 3) -->
             <!-- Section Description -->
-            <div class="step-content grey lighten-3">
+            <!-- <div class="step-content grey lighten-3">
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse cupiditate voluptate facere
                 iusto
                 quaerat
@@ -173,7 +271,6 @@
                 nostrum
                 ut,
                 nobis porro sapiente.</p>
-
                 <div class="container">
                   <div class="row">
                     <div class="col-sm-2">
@@ -181,15 +278,15 @@
                     </div>
                     <div class="col-sm-2">
                       {!! Form::open(['url' => '/csv/references/scaledscores/3/submit']) !!}
-                      @csrf      
+                      @csrf
                       <button class="btn btn-outline-primary up" type="submit">Confirm</button>
-                      {!! Form::close() !!}  
+                      {!! Form::close() !!}
                     </div>
                   </div>
                 </div>
             </div>
             @endif
-          </li>          
+          </li> -->
 
         </ul>
         <!-- /.Stepers Wrapper -->
@@ -203,7 +300,7 @@
           <li @if($step == 1) class="active" @endif>
             <a href="#!">
               <span class="circle">1</span>
-              <span class="label">Upload CSV 2</span>
+              <span class="label">Upload CSV School Ability Index (SAI)</span>
             </a>
 
             @if($step == 1)
@@ -215,7 +312,7 @@
               consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
               proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                {!! Form::open(['url' => '/csv/references/percentile_stanine/2']) !!}
+                <!-- {!! Form::open(['url' => '/csv/references/percentile_stanine/2']) !!}
                 @csrf
                 <div class="input-group down col-sm-6">
                     <div class="custom-file down">
@@ -226,8 +323,57 @@
                       <button class="btn btn-outline-primary up" type="submit">Submit</button>
                     </div>
                   </div>
-                {!! Form::close() !!}
+                {!! Form::close() !!} -->
             </div>
+            <!-- Native Form SAI -->
+              <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><!--CSV Import--></div>
+
+                            <div class="panel-body">
+                                <form class="form-horizontal" method="POST" action="{{ route('uploadSAI2') }}" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+
+                                    <div class="form-group{{ $errors->has('csv_file') ? ' has-error' : '' }}">
+                                        <label for="csv_file" class="col-md-4 control-label"><!--CSV file to import--></label>
+
+                                        <div class="col-md-6">
+                                            <input id="csv_file" type="file" class="form-control" name="csv_file" required>
+
+                                            @if ($errors->has('csv_file'))
+                                                <span class="help-block">
+                                                <strong>{{ $errors->first('csv_file') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div hidden class="form-group">
+                                        <div class="col-md-6 col-md-offset-4">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="header" checked> File contains header row?
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-8 col-md-offset-4">
+                                            <button type="submit" class="btn btn-primary">
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             @endif
           </li>
 
@@ -249,7 +395,7 @@
               consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
               proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <table class="table">
+                <!-- <table class="table">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -281,24 +427,73 @@
             </table>
                 {!! Form::open(['url' => '/csv/references/percentile_stanine/3']) !!}
                 @csrf
-
                       <button class="btn btn-outline-primary up" type="submit">Submit</button>
-
-                {!! Form::close() !!}
+                {!! Form::close() !!} -->
             </div>
+
+            <!-- Display Preview SAI-->
+              <div class="container" >
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">CSV Import</div>
+
+                            <div class="panel-body">
+                                <form class="form-horizontal" method="POST" action="{{ route('uploadSAI3') }}">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="csv_data_file_id" value="{{ $csv_data_file->id }}" />
+
+                                    <table class="table">
+                                        @if (isset($csv_header_fields))
+                                        <tr>
+                                            @foreach ($csv_header_fields as $csv_header_field)
+                                                <th>{{ $csv_header_field }}</th>
+                                            @endforeach
+                                        </tr>
+                                        @endif
+                                        @foreach ($csv_data as $csv_row)
+                                            <tr>
+                                            @foreach ($csv_row as $key => $value)
+                                                <td>{{ $value }}</td>
+                                            @endforeach
+                                            </tr>
+                                        @endforeach
+                                        <tr>
+                                            @foreach ($csv_data[0] as $key => $value)
+                                                <td>
+                                                    <select name="fields[{{ $key }}]">
+                                                        @foreach (config('app.db_scaled_to_sais') as $db_scaled_to_sai)
+                                                            <option value="{{ (\Request::has('header')) ? $db_scaled_to_sai : $loop->index }}"
+                                                                @if ($key === $db_scaled_to_sai) selected @endif>{{ $db_scaled_to_sai }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            @endforeach
+                                        </tr>
+                                    </table>
+
+                                    <button type="submit" class="btn btn-primary">
+                                        Confirm
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             @endif
           </li>
 
           <!-- Third Step -->
-          <li @if($step==3) class="active" @endif>
+          <!-- <li @if($step==3) class="active" @endif>
             <a href="#!">
               <span class="circle">3</span>
               <span class="label">Confirmation</span>
             </a>
-
-            @if($step == 3)
+            @if($step == 3) -->
             <!-- Section Description -->
-            <div class="step-content grey lighten-3">
+            <!-- <div class="step-content grey lighten-3">
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse cupiditate voluptate facere
                 iusto
                 quaerat
@@ -306,7 +501,6 @@
                 nostrum
                 ut,
                 nobis porro sapiente.</p>
-
                 <div class="container">
                   <div class="row">
                     <div class="col-sm-2">
@@ -314,15 +508,15 @@
                     </div>
                     <div class="col-sm-2">
                       {!! Form::open(['url' => '/csv/references/percentile_stanine/3/submit']) !!}
-                      @csrf      
+                      @csrf
                       <button class="btn btn-outline-primary up" type="submit">Confirm</button>
-                      {!! Form::close() !!}  
+                      {!! Form::close() !!}
                     </div>
                   </div>
                 </div>
             </div>
             @endif
-          </li>          
+          </li> -->
 
         </ul>
         <!-- /.Stepers Wrapper -->
@@ -336,7 +530,7 @@
           <li @if($step == 1) class="active" @endif>
             <a href="#!">
               <span class="circle">1</span>
-              <span class="label">Upload CSV 3</span>
+              <span class="label">Upload CSV Percentile Rank and Stanine</span>
             </a>
 
             @if($step == 1)
@@ -348,7 +542,7 @@
               consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
               proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                {!! Form::open(['url' => '/csv/references/percentile_stanine/2']) !!}
+                <!-- {!! Form::open(['url' => '/csv/references/percentile_stanine/2']) !!}
                 @csrf
                 <div class="input-group down col-sm-6">
                     <div class="custom-file down">
@@ -359,8 +553,58 @@
                       <button class="btn btn-outline-primary up" type="submit">Submit</button>
                     </div>
                   </div>
-                {!! Form::close() !!}
+                {!! Form::close() !!} -->
             </div>
+
+            <!-- Native Form Percentile Stanine -->
+              <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><!--CSV Import--></div>
+
+                            <div class="panel-body">
+                                <form class="form-horizontal" method="POST" action="{{ route('uploadStanine2') }}" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+
+                                    <div class="form-group{{ $errors->has('csv_file') ? ' has-error' : '' }}">
+                                        <label for="csv_file" class="col-md-4 control-label"><!--CSV file to import--></label>
+
+                                        <div class="col-md-6">
+                                            <input id="csv_file" type="file" class="form-control" name="csv_file" required>
+
+                                            @if ($errors->has('csv_file'))
+                                                <span class="help-block">
+                                                <strong>{{ $errors->first('csv_file') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div hidden class="form-group">
+                                        <div class="col-md-6 col-md-offset-4">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="header" checked> File contains header row?
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-8 col-md-offset-4">
+                                            <button type="submit" class="btn btn-primary">
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             @endif
           </li>
 
@@ -382,7 +626,7 @@
               consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
               proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <table class="table">
+                <!-- <table class="table">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -414,24 +658,73 @@
             </table>
                 {!! Form::open(['url' => '/csv/references/percentile_stanine/3']) !!}
                 @csrf
-
                       <button class="btn btn-outline-primary up" type="submit">Submit</button>
-
-                {!! Form::close() !!}
+                {!! Form::close() !!} -->
             </div>
+
+            <!-- Display Preview Percentile Stanine-->
+              <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">CSV Import</div>
+
+                            <div class="panel-body">
+                                <form class="form-horizontal" method="POST" action="{{ route('uploadStanine3') }}">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="csv_data_file_id" value="{{ $csv_data_file->id }}" />
+
+                                    <table class="table">
+                                        @if (isset($csv_header_fields))
+                                        <tr>
+                                            @foreach ($csv_header_fields as $csv_header_field)
+                                                <th>{{ $csv_header_field }}</th>
+                                            @endforeach
+                                        </tr>
+                                        @endif
+                                        @foreach ($csv_data as $csv_row)
+                                            <tr>
+                                            @foreach ($csv_row as $key => $value)
+                                                <td>{{ $value }}</td>
+                                            @endforeach
+                                            </tr>
+                                        @endforeach
+                                        <tr>
+                                            @foreach ($csv_data[0] as $key => $value)
+                                                <td>
+                                                    <select name="fields[{{ $key }}]">
+                                                        @foreach (config('app.db_sai_to_percentile_ranks') as $db_sai_to_percentile_rank)
+                                                            <option value="{{ (\Request::has('header')) ? $db_sai_to_percentile_rank : $loop->index }}"
+                                                                @if ($key === $db_sai_to_percentile_rank) selected @endif>{{ $db_sai_to_percentile_rank }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            @endforeach
+                                        </tr>
+                                    </table>
+
+                                    <button type="submit" class="btn btn-primary">
+                                        Confirm
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             @endif
           </li>
 
           <!-- Third Step -->
-          <li @if($step==3) class="active" @endif>
+          <!-- <li @if($step==3) class="active" @endif>
             <a href="#!">
               <span class="circle">3</span>
               <span class="label">Confirmation</span>
             </a>
-
-            @if($step == 3)
+            @if($step == 3) -->
             <!-- Section Description -->
-            <div class="step-content grey lighten-3">
+            <!-- <div class="step-content grey lighten-3">
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse cupiditate voluptate facere
                 iusto
                 quaerat
@@ -439,7 +732,6 @@
                 nostrum
                 ut,
                 nobis porro sapiente.</p>
-
                 <div class="container">
                   <div class="row">
                     <div class="col-sm-2">
@@ -447,15 +739,15 @@
                     </div>
                     <div class="col-sm-2">
                       {!! Form::open(['url' => '/csv/references/percentile_stanine/3/submit']) !!}
-                      @csrf      
+                      @csrf
                       <button class="btn btn-outline-primary up" type="submit">Confirm</button>
-                      {!! Form::close() !!}  
+                      {!! Form::close() !!}
                     </div>
                   </div>
                 </div>
             </div>
             @endif
-          </li>          
+          </li> -->
 
         </ul>
         <!-- /.Stepers Wrapper -->
