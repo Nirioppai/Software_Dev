@@ -3,9 +3,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\StudentData;
 use App\CsvData;
-use App\RawScoreToScaledScore;
-use App\ScaledScoreToSai;
-use App\SaiToPercentileRankAndStanine;
 use App\Http\Requests\CsvImportRequest;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
@@ -70,6 +67,7 @@ class ImportController extends Controller
   }
 
 
+<<<<<<< HEAD
   public function uploadStudent2 (CsvImportRequest $request) {
 
     $path = $request->file('csv_file')->getRealPath();
@@ -94,15 +92,18 @@ class ImportController extends Controller
     } else {
         return redirect()->back();
     }
+=======
+  public function uploadStudent2 () {
+>>>>>>> parent of 144b12d... Merge pull request #3 from Nirioppai/AddImportField
 
     $step = 2;
     $uploader = 'student';
-
-    return view('csv_student_upload', compact( 'csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader);
+    return view ('csv_student_upload')->with('step', $step)->with('uploader', $uploader);
 
   }
 
 
+<<<<<<< HEAD
   public function uploadStudent3 (Request $request) {
 
     $student_data = CsvData::find($request->csv_data_file_id);
@@ -119,18 +120,22 @@ class ImportController extends Controller
         }
         $studentdata->save();
     }
+=======
+  public function uploadStudent3 () {
+>>>>>>> parent of 144b12d... Merge pull request #3 from Nirioppai/AddImportField
 
     $step = 3;
     $uploader = 'student';
-    return redirect ('/csv');
+    return view ('csv_student_upload')->with('step', $step)->with('uploader', $uploader);
+
   }
 
 
-  // public function uploadStudent3Submit () {
-  //
-  //   return redirect ('/csv');
-  //
-  // }
+  public function uploadStudent3Submit () {
+
+    return redirect ('/csv');
+
+  }
 
   public function uploadScaledScore1 () {
 
@@ -141,6 +146,7 @@ class ImportController extends Controller
   }
 
 
+<<<<<<< HEAD
   public function uploadScaledScore2 (CsvImportRequest $request) {
 
     $path = $request->file('csv_file')->getRealPath();
@@ -165,14 +171,18 @@ class ImportController extends Controller
     } else {
         return redirect()->back();
     }
+=======
+  public function uploadScaledScore2 () {
+>>>>>>> parent of 144b12d... Merge pull request #3 from Nirioppai/AddImportField
 
     $step = 2;
     $uploader = 'scaled_scores';
-    return view('csv_references_upload', compact( 'csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader);
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
 
   }
 
 
+<<<<<<< HEAD
   public function uploadScaledScore3 (Request $request) {
 
     $student_data = CsvData::find($request->csv_data_file_id);
@@ -189,19 +199,22 @@ class ImportController extends Controller
         }
         $rawtoscaledscore->save();
     }
+=======
+  public function uploadScaledScore3 () {
+>>>>>>> parent of 144b12d... Merge pull request #3 from Nirioppai/AddImportField
 
     $step = 3;
     $uploader = 'scaled_scores';
-    return redirect ('/csv/references');
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
 
   }
 
 
-  // public function uploadScaledScore3Submit () {
-  //
-  //  return redirect ('/csv/references');
-  //
-  // }
+  public function uploadScaledScore3Submit () {
+
+    return redirect ('/csv/references');
+
+  }
 
   public function uploadSAI1 () {
 
@@ -212,6 +225,7 @@ class ImportController extends Controller
   }
 
 
+<<<<<<< HEAD
   public function uploadSAI2 (CsvImportRequest $request) {
 
     $path = $request->file('csv_file')->getRealPath();
@@ -236,14 +250,18 @@ class ImportController extends Controller
     } else {
         return redirect()->back();
     }
+=======
+  public function uploadSAI2 () {
+>>>>>>> parent of 144b12d... Merge pull request #3 from Nirioppai/AddImportField
 
     $step = 2;
     $uploader = 'sai';
-    return view('csv_references_upload', compact( 'csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader);
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
 
   }
 
 
+<<<<<<< HEAD
   public function uploadSAI3 (Request $request) {
 
     $student_data = CsvData::find($request->csv_data_file_id);
@@ -260,19 +278,22 @@ class ImportController extends Controller
         }
         $scaledtosai->save();
     }
+=======
+  public function uploadSAI3 () {
+>>>>>>> parent of 144b12d... Merge pull request #3 from Nirioppai/AddImportField
 
     $step = 3;
     $uploader = 'sai';
-    return redirect ('/csv/references');
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
 
   }
 
 
-  // public function uploadSAI3Submit () {
-  //
-  //   return redirect ('/csv/references');
-  //
-  // }
+  public function uploadSAI3Submit () {
+
+    return redirect ('/csv/references');
+
+  }
 
 
   public function uploadStanine1 () {
@@ -284,6 +305,7 @@ class ImportController extends Controller
   }
 
 
+<<<<<<< HEAD
   public function uploadStanine2 (CsvImportRequest $request) {
 
     $path = $request->file('csv_file')->getRealPath();
@@ -308,14 +330,18 @@ class ImportController extends Controller
     } else {
         return redirect()->back();
     }
+=======
+  public function uploadStanine2 () {
+>>>>>>> parent of 144b12d... Merge pull request #3 from Nirioppai/AddImportField
 
     $step = 2;
     $uploader = 'percentile_stanine';
-    return view('csv_references_upload', compact( 'csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader);
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
 
   }
 
 
+<<<<<<< HEAD
   public function uploadStanine3 (Request $request) {
 
     $student_data = CsvData::find($request->csv_data_file_id);
@@ -332,18 +358,24 @@ class ImportController extends Controller
         }
         $saitopercentile->save();
     }
+=======
+  public function uploadStanine3 () {
+>>>>>>> parent of 144b12d... Merge pull request #3 from Nirioppai/AddImportField
 
     $step = 3;
     $uploader = 'percentile_stanine';
-    return redirect ('/csv/references');
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
 
   }
 
 
-  // public function uploadStanine3Submit (Request $request, $data, $csv_data) {
-  //
-  //   return redirect ('/csv/references');
-  //
-  // }
+  public function uploadStanine3Submit () {
 
+    return redirect ('/csv/references');
+
+<<<<<<< HEAD
+=======
+  }
+  
+>>>>>>> parent of 144b12d... Merge pull request #3 from Nirioppai/AddImportField
 }

@@ -71,7 +71,7 @@
           <li @if($step == 1) class="active" @endif>
             <a href="#!">
               <span class="circle">1</span>
-              <span class="label">Upload CSV Student</span>
+              <span class="label">Upload CSV 3</span>
             </a>
 
             @if($step == 1)
@@ -83,7 +83,7 @@
               consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
               proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <!-- {!! Form::open(['url' => '/csv/students/2']) !!}
+                {!! Form::open(['url' => '/csv/students/2']) !!}
                 @csrf
                 <div class="input-group down col-sm-6">
                     <div class="custom-file down">
@@ -94,57 +94,8 @@
                       <button class="btn btn-outline-primary up" type="submit">Submit</button>
                     </div>
                   </div>
-                {!! Form::close() !!} -->
+                {!! Form::close() !!}
             </div>
-              <!-- Native Form Student-->
-              <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="panel panel-default">
-                            <div class="panel-heading"><!--CSV Import--></div>
-
-                            <div class="panel-body">
-                                <form class="form-horizontal" method="POST" action="{{ route('uploadStudent2') }}" enctype="multipart/form-data">
-                                    {{ csrf_field() }}
-
-                                    <div class="form-group{{ $errors->has('csv_file') ? ' has-error' : '' }}">
-                                        <label for="csv_file" class="col-md-4 control-label"><!--CSV file to import--></label>
-
-                                        <div class="col-md-6">
-                                            <input id="csv_file" type="file" class="form-control" name="csv_file" required>
-
-                                            @if ($errors->has('csv_file'))
-                                                <span class="help-block">
-                                                <strong>{{ $errors->first('csv_file') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-
-                                    <div hidden class="form-group">
-                                        <div class="col-md-6 col-md-offset-4">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="header" checked> File contains header row?
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-8 col-md-offset-4">
-                                            <button type="submit" class="btn btn-primary">
-                                                Submit
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             @endif
           </li>
 
@@ -166,7 +117,7 @@
               consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
               proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <!-- <table class="table">
+                <table class="table">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -201,8 +152,9 @@
 
                       <button class="btn btn-outline-primary up" type="submit">Submit</button>
 
-                {!! Form::close() !!} -->
+                {!! Form::close() !!}
             </div>
+<<<<<<< HEAD
 
             <!-- Display Preview Student-->
               <div class="container">
@@ -255,19 +207,21 @@
                 </div>
             </div>
 
+=======
+>>>>>>> parent of 144b12d... Merge pull request #3 from Nirioppai/AddImportField
             @endif
           </li>
 
           <!-- Third Step -->
-          <!-- <li @if($step==3) class="active" @endif>
+          <li @if($step==3) class="active" @endif>
             <a href="#!">
               <span class="circle">3</span>
               <span class="label">Confirmation</span>
             </a>
 
-            @if($step == 3) -->
+            @if($step == 3)
             <!-- Section Description -->
-            <!-- <div class="step-content grey lighten-3">
+            <div class="step-content grey lighten-3">
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse cupiditate voluptate facere
                 iusto
                 quaerat
@@ -283,15 +237,15 @@
                     </div>
                     <div class="col-sm-2">
                       {!! Form::open(['url' => '/csv/students/3/submit']) !!}
-                      @csrf
+                      @csrf      
                       <button class="btn btn-outline-primary up" type="submit">Confirm</button>
-                      {!! Form::close() !!}
+                      {!! Form::close() !!}  
                     </div>
                   </div>
                 </div>
             </div>
             @endif
-          </li> -->
+          </li>          
 
         </ul>
         <!-- /.Stepers Wrapper -->
