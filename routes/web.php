@@ -59,8 +59,6 @@ Route::post('/csv/references/percentile_stanine/3/submit', 'ImportController@upl
 Route::post('/csv/import_parse', 'ImportController@parseImport')->name('import_parse');
 Route::post('/csv/import_process', 'ImportController@processImport')->name('import_process');
 
-//Route::get('/students', 'HomeController@students')->name('students');
-Route::get('/students', 'LiveSearchController@students')->name('students');
-Route::get('/students/action', 'LiveSearchController@action')->name('liveSearchAction');
+Route::get('/students', 'HomeController@students')->name('students');
 
 Route::get('/monitoring', 'HomeController@monitoring')->name('monitoring');

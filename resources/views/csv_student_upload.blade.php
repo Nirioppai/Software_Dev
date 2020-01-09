@@ -224,9 +224,9 @@
                                             @endforeach
                                         </tr>
                                         @endif
-                                        @foreach ($csv_data as $csv_row)
+                                        @foreach ($csv_data as $row)
                                             <tr>
-                                            @foreach ($csv_row as $key => $value)
+                                            @foreach ($row as $key => $value)
                                                 <td>{{ $value }}</td>
                                             @endforeach
                                             </tr>

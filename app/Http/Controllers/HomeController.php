@@ -25,10 +25,10 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    // public function students()
-    // {
-    //     return view('students');
-    // }
+    public function students()
+    {
+        return view('students');
+    }
     public function csv()
     {
         return view('csv');

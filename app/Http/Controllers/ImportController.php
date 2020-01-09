@@ -74,22 +74,22 @@ class ImportController extends Controller
 
     $path = $request->file('csv_file')->getRealPath();
     if ($request->has('header')) {
-        $student_data = Excel::load($path, function($reader) {})->get()->toArray();
+        $data = Excel::load($path, function($reader) {})->get()->toArray();
     } else {
-        $student_data = array_map('str_getcsv', file($path));
+        $data = array_map('str_getcsv', file($path));
     }
-    if (count($student_data) > 0) {
+    if (count($data) > 0) {
         if ($request->has('header')) {
             $csv_header_fields = [];
-            foreach ($student_data[0] as $key => $value) {
+            foreach ($data[0] as $key => $value) {
                 $csv_header_fields[] = $key;
             }
         }
-        $csv_data = array_slice($student_data, 0, 5);
+        $csv_data = array_slice($data, 0, 5);
         $csv_data_file = CsvData::create([
             'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
             'csv_header' => $request->has('header'),
-            'csv_data' => json_encode($student_data)
+            'csv_data' => json_encode($data)
         ]);
     } else {
         return redirect()->back();
@@ -105,16 +105,16 @@ class ImportController extends Controller
 
   public function uploadStudent3 (Request $request) {
 
-    $student_data = CsvData::find($request->csv_data_file_id);
-    $csv_data = json_decode($student_data->csv_data, true);
+    $data = CsvData::find($request->csv_data_file_id);
+    $csv_data = json_decode($data->csv_data, true);
 
-    foreach ($csv_data as $csv_row) {
+    foreach ($csv_data as $row) {
         $studentdata = new StudentData();
         foreach (config('app.db_fields') as $index => $field) {
-            if ($student_data->csv_header) {
-                $studentdata->$field = $csv_row[$request->fields[$field]];
+            if ($data->csv_header) {
+                $studentdata->$field = $row[$request->fields[$field]];
             } else {
-                $studentdata->$field = $csv_row[$request->fields[$index]];
+                $studentdata->$field = $row[$request->fields[$index]];
             }
         }
         $studentdata->save();
@@ -145,22 +145,22 @@ class ImportController extends Controller
 
     $path = $request->file('csv_file')->getRealPath();
     if ($request->has('header')) {
-        $student_data = Excel::load($path, function($reader) {})->get()->toArray();
+        $data = Excel::load($path, function($reader) {})->get()->toArray();
     } else {
-        $student_data = array_map('str_getcsv', file($path));
+        $data = array_map('str_getcsv', file($path));
     }
-    if (count($student_data) > 0) {
+    if (count($data) > 0) {
         if ($request->has('header')) {
             $csv_header_fields = [];
-            foreach ($student_data[0] as $key => $value) {
+            foreach ($data[0] as $key => $value) {
                 $csv_header_fields[] = $key;
             }
         }
-        $csv_data = array_slice($student_data, 0, 5);
+        $csv_data = array_slice($data, 0, 5);
         $csv_data_file = CsvData::create([
             'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
             'csv_header' => $request->has('header'),
-            'csv_data' => json_encode($student_data)
+            'csv_data' => json_encode($data)
         ]);
     } else {
         return redirect()->back();
@@ -175,16 +175,16 @@ class ImportController extends Controller
 
   public function uploadScaledScore3 (Request $request) {
 
-    $student_data = CsvData::find($request->csv_data_file_id);
-    $csv_data = json_decode($student_data->csv_data, true);
+    $data = CsvData::find($request->csv_data_file_id);
+    $csv_data = json_decode($data->csv_data, true);
 
-    foreach ($csv_data as $csv_row) {
+    foreach ($csv_data as $row) {
         $rawtoscaledscore = new RawScoreToScaledScore();
         foreach (config('app.db_raw_to_scaleds') as $index => $field) {
-            if ($student_data->csv_header) {
-                $rawtoscaledscore->$field = $csv_row[$request->fields[$field]];
+            if ($data->csv_header) {
+                $rawtoscaledscore->$field = $row[$request->fields[$field]];
             } else {
-                $rawtoscaledscore->$field = $csv_row[$request->fields[$index]];
+                $rawtoscaledscore->$field = $row[$request->fields[$index]];
             }
         }
         $rawtoscaledscore->save();
@@ -216,22 +216,22 @@ class ImportController extends Controller
 
     $path = $request->file('csv_file')->getRealPath();
     if ($request->has('header')) {
-        $student_data = Excel::load($path, function($reader) {})->get()->toArray();
+        $data = Excel::load($path, function($reader) {})->get()->toArray();
     } else {
-        $student_data = array_map('str_getcsv', file($path));
+        $data = array_map('str_getcsv', file($path));
     }
-    if (count($student_data) > 0) {
+    if (count($data) > 0) {
         if ($request->has('header')) {
             $csv_header_fields = [];
-            foreach ($student_data[0] as $key => $value) {
+            foreach ($data[0] as $key => $value) {
                 $csv_header_fields[] = $key;
             }
         }
-        $csv_data = array_slice($student_data, 0, 5);
+        $csv_data = array_slice($data, 0, 5);
         $csv_data_file = CsvData::create([
             'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
             'csv_header' => $request->has('header'),
-            'csv_data' => json_encode($student_data)
+            'csv_data' => json_encode($data)
         ]);
     } else {
         return redirect()->back();
@@ -246,16 +246,16 @@ class ImportController extends Controller
 
   public function uploadSAI3 (Request $request) {
 
-    $student_data = CsvData::find($request->csv_data_file_id);
-    $csv_data = json_decode($student_data->csv_data, true);
+    $data = CsvData::find($request->csv_data_file_id);
+    $csv_data = json_decode($data->csv_data, true);
 
-    foreach ($csv_data as $csv_row) {
+    foreach ($csv_data as $row) {
         $scaledtosai = new ScaledScoreToSai();
         foreach (config('app.db_scaled_to_sais') as $index => $field) {
-            if ($student_data->csv_header) {
-                $scaledtosai->$field = $csv_row[$request->fields[$field]];
+            if ($data->csv_header) {
+                $scaledtosai->$field = $row[$request->fields[$field]];
             } else {
-                $scaledtosai->$field = $csv_row[$request->fields[$index]];
+                $scaledtosai->$field = $row[$request->fields[$index]];
             }
         }
         $scaledtosai->save();
@@ -288,22 +288,22 @@ class ImportController extends Controller
 
     $path = $request->file('csv_file')->getRealPath();
     if ($request->has('header')) {
-        $student_data = Excel::load($path, function($reader) {})->get()->toArray();
+        $data = Excel::load($path, function($reader) {})->get()->toArray();
     } else {
-        $student_data = array_map('str_getcsv', file($path));
+        $data = array_map('str_getcsv', file($path));
     }
-    if (count($student_data) > 0) {
+    if (count($data) > 0) {
         if ($request->has('header')) {
             $csv_header_fields = [];
-            foreach ($student_data[0] as $key => $value) {
+            foreach ($data[0] as $key => $value) {
                 $csv_header_fields[] = $key;
             }
         }
-        $csv_data = array_slice($student_data, 0, 5);
+        $csv_data = array_slice($data, 0, 5);
         $csv_data_file = CsvData::create([
             'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
             'csv_header' => $request->has('header'),
-            'csv_data' => json_encode($student_data)
+            'csv_data' => json_encode($data)
         ]);
     } else {
         return redirect()->back();
@@ -318,16 +318,16 @@ class ImportController extends Controller
 
   public function uploadStanine3 (Request $request) {
 
-    $student_data = CsvData::find($request->csv_data_file_id);
-    $csv_data = json_decode($student_data->csv_data, true);
+    $data = CsvData::find($request->csv_data_file_id);
+    $csv_data = json_decode($data->csv_data, true);
 
-    foreach ($csv_data as $csv_row) {
+    foreach ($csv_data as $row) {
         $saitopercentile = new SaiToPercentileRankAndStanine();
         foreach (config('app.db_sai_to_percentile_ranks') as $index => $field) {
-            if ($student_data->csv_header) {
-                $saitopercentile->$field = $csv_row[$request->fields[$field]];
+            if ($data->csv_header) {
+                $saitopercentile->$field = $row[$request->fields[$field]];
             } else {
-                $saitopercentile->$field = $csv_row[$request->fields[$index]];
+                $saitopercentile->$field = $row[$request->fields[$index]];
             }
         }
         $saitopercentile->save();

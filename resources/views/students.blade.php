@@ -63,128 +63,87 @@
 
     <div class="row-md-8">
 
-      <!-- just added id and name here -->
-      <input type="text" name="search" id="search" class="form-control mt-0" type="text" placeholder="Search Student" aria-label="Search">
+
+      <div class="input-group">
+           <div class="input-group-prepend">
+             <button id="button-addon8" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+           </div>
+           <input type="search" placeholder="Search Here" aria-describedby="button-addon8" class="form-control">
+         </div>
 
     </div>
 
-    <div class="row-md-8">
+    <div class="row-md-5">
 
 
-        <div class="card card-cascade narrower mt-4 ">
+      <div class="container py-3">
 
-          <!--Card image-->
-          <div class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-5 mb-3 d-flex justify-content-between align-items-center">
+<div class="row py-0">
+  <div class="col-lg-13 mx-auto">
+    <div class="card rounded shadow border-8">
+      <div class="card-body p-4 bg-white rounded">
+        <div class="table-responsive">
+          <table id="example" style="width:100%" class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th class="th-lg"><a href="">Student Number<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Last Name<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">First Name<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Birthdate<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Year level<i class="fas fa-sort ml-1"></a></i></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
 
+                <td><a href="">2018-02454</a></td>
+                <td><a href="">Recierdo</a></td>
+                <td><a href="">Rafael John</a></td>
+                <td><a href="">12-08-1999</a></td>
+                <td><a href="">Grade 9</a></td>
 
+              </tr>
+              <tr>
+                <td>2018-45353</td>
+                <td>Del Rosario</td>
+                <td>Nico</td>
+                <td>12-05-2000</td>
+                <td>Grade 7</td>
 
-            <a href="" class="white-text mx-3 position-center">Student's Profile</a>
+              </tr>
+              <tr>
+                <td>2018-65492</td>
+                <td>Pinggoy</td>
+                <td>Dennise</td>
+                <td>07-02-2003</td>
+                <td>Grade 8</td>
 
+              </tr>
+              <tr>
+                <td>2018-78210</td>
+                <td>Velarde</td>
+                <td>Prince</td>
+                <td>08-23-2001</td>
+                <td>Grade 9</td>
+              </tr>
 
-
-          </div>
-          <!--/Card image-->
-
-          <div class="px-4">
-
-            <!-- added table-responsive class -->
-            <div class="table-wrapper" class="table-responsive">
-
-              <!-- to show total queries -->
-              <h3 align="center">Total Data : <span id="total_records"></span></h3>
-
-              <!--Table-->
-              <table class="table table-hover mb-0">
-
-                <!--Table head-->
-                <thead>
-                  <tr>
-
-                    <th class="th-lg">
-                      <a href="">Student Number
-                        <i class="fas fa-sort ml-1"></i>
-                      </a>
-                    </th>
-                    <th class="th-lg">
-                      <a href="">Name
-                        <i class="fas fa-sort ml-1"></i>
-                      </a>
-                    </th>
-                    <th class="th-lg">
-                      <a href="">Overall Total Score
-                        <i class="fas fa-sort ml-1"></i>
-                      </a>
-                    </th>
-                    <th class="th-lg">
-                      <a href="">Birthday
-                        <i class="fas fa-sort ml-1"></i>
-                      </a>
-                    </th>
-                    <th class="th-lg">
-                      <a href="">Level
-                        <i class="fas fa-sort ml-1"></i>
-                      </a>
-                    </th>
-
-                  </tr>
-                </thead>
-                <!--Table head-->
-
-                <!--Table body-->
-
-                <!-- left tbody empty for table response -->
-                <tbody class="searchrows">
-
-                   <!-- <tr class="bs-table-row">
-                      <a class="bs-row-link" href="">
-                      <td>2018-02454</td>
-                      <td>Recierdo</td>
-                      <td>Rafael John</td>
-                      <td>12-08-1999</td>
-                      <td>2019-2020</td>
-                        </a>
-                 </tr>
-
-                 </tbody>
-
-                 <tr class="bs-table-row">
-                    <a class="bs-row-link" href="">
-                     <td>2018-03453</td>
-                     <td>Del Rosario</td>
-                     <td>Nico</td>
-                     <td>12-08-1999</td>
-                     <td>2019-2020</td>
-
-                </tr>
-                <tr class="bs-table-row">
-                   <a class="bs-row-link" href="">
-                    <td>2018-05673</td>
-                    <td>Pinggoy</td>
-                    <td>Dennise</td>
-                    <td>12-08-1999</td>
-                    <td>2019-2020</td>
-
-               </tr>
-               </a> -->
-
-
-
-
-                </tbody>
-
-                <!--Table body-->
-              </table>
-              <!--Table-->
-            </div>
-
-          </div>
-
+            </tbody>
+          </table>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
       </div>
 
 
 
 </div>
+
+
+
 
 
 @endsection
