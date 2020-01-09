@@ -68,7 +68,7 @@
            <div class="input-group-prepend">
              <button id="button-addon8" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
            </div>
-           <input type="search" placeholder="Search Here" aria-describedby="button-addon8" class="form-control">
+           <input type="search" name="search" id="search" placeholder="Search Here" aria-describedby="button-addon8" class="form-control">
          </div>
 
     </div>
@@ -83,18 +83,20 @@
     <div class="card rounded shadow border-8">
       <div class="card-body p-4 bg-white rounded">
         <div class="table-responsive">
+          <h3 align="center">Total Data : <span id="total_records"></span></h3>
+
           <table id="example" style="width:100%" class="table table-striped table-bordered">
             <thead>
               <tr>
                 <th class="th-lg"><a href="">Student Number<i class="fas fa-sort ml-1"></a></i></th>
-                <th class="th-lg"><a href="">Last Name<i class="fas fa-sort ml-1"></a></i></th>
-                <th class="th-lg"><a href="">First Name<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Name<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Overall Total Score<i class="fas fa-sort ml-1"></a></i></th>
                 <th class="th-lg"><a href="">Birthdate<i class="fas fa-sort ml-1"></a></i></th>
-                <th class="th-lg"><a href="">Year level<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Year Level<i class="fas fa-sort ml-1"></a></i></th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
+            <tbody class="search_row">
+              <!-- <tr>
 
                 <td><a href="">2018-02454</a></td>
                 <td><a href="">Recierdo</a></td>
@@ -125,7 +127,7 @@
                 <td>Prince</td>
                 <td>08-23-2001</td>
                 <td>Grade 9</td>
-              </tr>
+              </tr> -->
 
             </tbody>
           </table>
