@@ -58,6 +58,13 @@
 @section('content')
 
 <div class="container">
+
+  @if(session('success'))
+    <div align="center" class="alert alert-success">
+      {{session('success')}}
+    </div>
+  @endif
+
   <div class="row justify-content-center align-items-center">
     <div class="col-sm-4">
       <!-- Card -->

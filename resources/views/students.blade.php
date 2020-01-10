@@ -64,12 +64,16 @@
     <div class="row-md-8">
 
 
+      </div>
       <div class="input-group">
-           <div class="input-group-prepend">
+
+           <input type="search" name="search" id="search" placeholder="Search Here" aria-describedby="button-addon8" class="form-control">
+           <div class="input-group-append">
              <button id="button-addon8" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
            </div>
-           <input type="search" name="search" id="search" placeholder="Search Here" aria-describedby="button-addon8" class="form-control">
+
          </div>
+
 
     </div>
 
@@ -79,7 +83,7 @@
       <div class="container py-3">
 
 <div class="row py-0">
-  <div class="col-lg-13 mx-auto">
+  <div class="col-lg-12 mx-auto">
     <div class="card rounded shadow border-8">
       <div class="card-body p-4 bg-white rounded">
         <div class="table-responsive">
@@ -93,6 +97,7 @@
                 <th class="th-lg"><a href="">Overall Total Score<i class="fas fa-sort ml-1"></a></i></th>
                 <th class="th-lg"><a href="">Birthdate<i class="fas fa-sort ml-1"></a></i></th>
                 <th class="th-lg"><a href="">Year Level<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Action</a></th>
               </tr>
             </thead>
             <tbody class="search_row">
@@ -137,6 +142,7 @@
   </div>
 </div>
 </div>
+
 
       </div>
 
