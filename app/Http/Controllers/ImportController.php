@@ -122,7 +122,8 @@ class ImportController extends Controller
 
     $step = 3;
     $uploader = 'student';
-    return redirect ('/csv')->with('success', 'CSV Upload Successful');
+    $success = ('success');
+    return redirect ('/csv')->with('success', $success);
   }
 
 
@@ -192,7 +193,8 @@ class ImportController extends Controller
 
     $step = 3;
     $uploader = 'scaled_scores';
-    return redirect ('/csv/references')->with('success', 'CSV Upload Successful');
+    $success = ('success');
+    return redirect ('/csv/references')->with('success', $success);
 
   }
 
@@ -263,7 +265,8 @@ class ImportController extends Controller
 
     $step = 3;
     $uploader = 'sai';
-    return redirect ('/csv/references')->with('success', 'CSV Upload Successful');
+    $success = ('success');
+    return redirect ('/csv/references')->with('success', $success);
 
   }
 
@@ -335,7 +338,8 @@ class ImportController extends Controller
 
     $step = 3;
     $uploader = 'percentile_stanine';
-    return redirect ('/csv/references')->with('success', 'CSV Upload Successful');
+    $success = ('success');
+    return redirect ('/csv/references')->with('success', $success);
 
   }
 

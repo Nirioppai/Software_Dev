@@ -31,7 +31,9 @@ class HomeController extends Controller
     // }
     public function csv()
     {
-        return view('csv');
+        $success = ('idle');
+        return view('csv')->with('success', $success);
+  
     }
     public function monitoring()
     {
@@ -46,7 +48,8 @@ class HomeController extends Controller
     public function uploadReferences()
     {
         $scaled_score = 1;
-        return view('csv_references')->with('scaled_score', $scaled_score);
+        $success = ('idle');
+        return view('csv_references')->with('scaled_score', $scaled_score)->with('success', $success);
     }
 
 
