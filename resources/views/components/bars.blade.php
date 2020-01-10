@@ -18,6 +18,7 @@
     <link href="{{asset('./js/plugins/nucleo/css/nucleo.css')}}" rel="stylesheet" />
     <link href="{{asset('./js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet" />
     <!-- CSS Files -->
+    <link rel="stylesheet" href="{{asset('./css/toastr.min.css')}}">
     <link href="{{asset('./css/argon-dashboard.css?v=1.1.1')}}" rel="stylesheet" />
     </head>
     <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white shadow-none" id="sidenav-main shadow-none">
@@ -52,6 +53,10 @@
           </div>
         </li>
       </ul>
+
+      
+
+
       <!-- Collapse -->
       <div class="collapse navbar-collapse" id="sidenav-collapse-main">
         <!-- Collapse header -->
@@ -157,6 +162,10 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
+
+<script type="text/javascript" src="{{asset('./js/jquery-3.4.1.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('./js/toastr.min.js')}}"></script>
+
 </html>
 
 
@@ -187,3 +196,30 @@
 
   });
 </script>
+
+
+
+<script>
+    $( document ).ready(function() {
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false, 
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+      toastr["success"]("CSV Import successful.", "Success ")
+    });
+</script>
+
+
