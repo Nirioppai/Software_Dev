@@ -66,4 +66,9 @@ Route::get('/students/action', 'LiveSearchController@action')->name('liveSearchA
 
 Route::get('/monitoring', 'HomeController@monitoring')->name('monitoring');
 
+Route::get('/monitoring/verbal_scores', 'HomeController@monitoring_verbal')->name('monitoring_verbal');
+Route::get('/monitoring/nonverbal_scores', 'HomeController@monitoring_nonverbal')->name('monitoring_nonverbal');
+
+
+
 Route::resource('studentinfo', 'LiveSearchController');

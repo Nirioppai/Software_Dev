@@ -59,15 +59,14 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Total Score</a>
+    <a class="nav-link" href="/monitoring">Total Score</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/monitoring/verbal_scores">Verbal Score</a>
+    <a class="nav-link active" href="/monitoring/verbal_scores">Verbal Score</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/monitoring/nonverbal_scores">Non-Verbal Score</a>
   </li>
-
 </ul>
 
 <div class="col">
@@ -105,7 +104,7 @@
               <tr>
                 <th class="th-lg"><a href="">Student Number<i class="fas fa-sort ml-1"></a></i></th>
                 <th class="th-lg"><a href="">Name<i class="fas fa-sort ml-1"></a></i></th>
-                <th class="th-lg"><a href="">Overall Total Score<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Verbal Score<i class="fas fa-sort ml-1"></a></i></th>
                 <th class="th-lg"><a href="">Birthdate<i class="fas fa-sort ml-1"></a></i></th>
                 <th class="th-lg"><a href="">Year Level<i class="fas fa-sort ml-1"></a></i></th>
                 <th class="th-lg"><a href="">Action</a></th>
