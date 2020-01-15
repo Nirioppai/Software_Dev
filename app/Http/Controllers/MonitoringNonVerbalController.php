@@ -75,7 +75,8 @@ class MonitoringNonVerbalController extends Controller
      */
     public function show($id)
     {
-        //
+      $nonverbal_score_details = DB::table('student_result_nonverbal')->find($id);
+      return view('nonverbal_score_info', compact('nonverbal_score_details'));
     }
 
     /**

@@ -75,7 +75,8 @@ class MonitoringTotalController extends Controller
      */
     public function show($id)
     {
-        //
+      $total_score_details = DB::table('student_result_total')->find($id);
+      return view('total_score_info', compact('total_score_details'));
     }
 
     /**

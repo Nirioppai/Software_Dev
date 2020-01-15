@@ -75,7 +75,6 @@ class LiveSearchController extends Controller
  public function show($id)
  {
     $student_details = DB::table('student_data')->find($id);
-    // $student_details = student_data::find($id);
     return view('student_info', compact('student_details'));
 
  }

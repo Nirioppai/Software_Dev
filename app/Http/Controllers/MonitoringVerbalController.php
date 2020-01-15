@@ -76,7 +76,8 @@ class MonitoringVerbalController extends Controller
      */
     public function show($id)
     {
-        //
+      $verbal_score_details = DB::table('student_result_verbal')->find($id);
+      return view('verbal_score_info', compact('verbal_score_details'));
     }
 
     /**
