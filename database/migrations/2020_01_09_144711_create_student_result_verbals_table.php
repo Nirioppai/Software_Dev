@@ -19,11 +19,11 @@ class CreateStudentResultVerbalsTable extends Migration
               olsat.student_data.id,
               olsat.student_data.student_id,
               olsat.student_data.name,
-              olsat.student_data.verbal_number_correct As `Verbal Raw Score`,
-              olsat.raw_to_scaled_verbal.scaledscore As `Verbal Scaled Score`,
-              olsat.scaled_to_sai_verbal.sai As `Verbal SAI`,
-              olsat.sai_to_percentile_rank_and_stanines.percentile_rank As `Verbal Percentile Rank`,
-              olsat.sai_to_percentile_rank_and_stanines.stanine As `Verbal Stanine`
+              olsat.student_data.verbal_number_correct As `verbal_raw_score`,
+              olsat.raw_to_scaled_verbal.scaledscore As `verbal_scaled_score`,
+              olsat.scaled_to_sai_verbal.sai As `verbal_sai`,
+              olsat.sai_to_percentile_rank_and_stanines.percentile_rank As `verbal_percentile_rank`,
+              olsat.sai_to_percentile_rank_and_stanines.stanine As `verbal_stanine`
           From
               olsat.student_data Inner Join
               olsat.scaled_to_sai_verbal On olsat.student_data.rounded_current_age_in_years = olsat.scaled_to_sai_verbal.age

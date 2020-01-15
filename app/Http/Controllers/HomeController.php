@@ -35,20 +35,21 @@ class HomeController extends Controller
         return view('csv')->with('success', $success);
 
     }
-    public function monitoring()
-    {
-        return view('monitoring');
-    }
 
-    public function monitoring_verbal()
-    {
-      return view('monitoring_verbal');
-    }
-
-    public function monitoring_nonverbal()
-    {
-      return view('monitoring_nonverbal');
-    }
+    // public function monitoring()
+    // {
+    //     return view('monitoring');
+    // }
+    //
+    // public function monitoring_verbal()
+    // {
+    //   return view('monitoring_verbal');
+    // }
+    //
+    // public function monitoring_nonverbal()
+    // {
+    //   return view('monitoring_nonverbal');
+    // }
 
         public function uploadStudent()
     {

@@ -57,14 +57,13 @@
 
 @section('content')
 
-    <h1> This is the page for individual Student Information</h1>
     <h2>Student Number </h2> <p> {{$student_details->student_id}}</p>
     <h2>Name </h2> <p> {{$student_details->name}}</p>
     <h2>Overall Total Score </h2> <p> {{$student_details->overall_total_score}}</p>
     <h2>Verbal Raw Score </h2> <p> {{$student_details->verbal_number_correct}}</p>
     <h2>Non-Verbal Raw Score </h2> <p> {{$student_details->non_verbal_number_correct}}</p>
-    <h2>Birthday </h2> <p> {{$student_details->birthday}}</p>
-    <h2>Year Level </h2> <p> {{$student_details->level}}</p>
+    <h2>Birthday </h2> <p> {{$student_details->date_of_birth}}</p>
+    <h2>Year Level </h2> <p> {{$student_details->grade_level}}</p>
 
 
 @endsection

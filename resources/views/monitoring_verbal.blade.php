@@ -1,7 +1,7 @@
 @extends('components.bars')
 
 @section('title')
-<title>OLSAT | Dashboard</title>
+<title>OLSAT | Monitoring</title>
 @endsection
 
 @section('nav')
@@ -62,10 +62,10 @@
     <a class="nav-link" href="/monitoring">Total Score</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="/monitoring/verbal_scores">Verbal Score</a>
+    <a class="nav-link active" href="/monitoring/verbal">Verbal Score</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/monitoring/nonverbal_scores">Non-Verbal Score</a>
+    <a class="nav-link" href="/monitoring/nonverbal">Non-Verbal Score</a>
   </li>
 </ul>
 
@@ -97,20 +97,24 @@
     <div class="card rounded shadow border-8">
       <div class="card-body p-4 bg-white rounded">
         <div class="table-responsive">
-          <h3 align="center">Total Data : <span id="total_records"></span></h3>
 
           <table id="example" style="width:100%" class="table table-striped table-bordered">
             <thead>
               <tr>
                 <th class="th-lg"><a href="">Student Number<i class="fas fa-sort ml-1"></a></i></th>
                 <th class="th-lg"><a href="">Name<i class="fas fa-sort ml-1"></a></i></th>
-                <th class="th-lg"><a href="">Verbal Score<i class="fas fa-sort ml-1"></a></i></th>
-                <th class="th-lg"><a href="">Birthdate<i class="fas fa-sort ml-1"></a></i></th>
-                <th class="th-lg"><a href="">Year Level<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Verbal Raw Score<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Verbal Scaled Score<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Verbal SAI<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Verbal Percentile Rank<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Verbal Stanine<i class="fas fa-sort ml-1"></a></i></th>
+
                 <th class="th-lg"><a href="">Action</a></th>
               </tr>
             </thead>
             <tbody class="search_row">
+              @include('pagination_data')
+
               <!-- <tr>
 
                 <td><a href="">2018-02454</a></td>
@@ -146,6 +150,8 @@
 
             </tbody>
           </table>
+          <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
+
         </div>
       </div>
     </div>
@@ -159,6 +165,49 @@
 
 
 </div>
+
+
+@endsection
+
+
+@section('monitoring_verbal')
+
+  <script>
+
+    $(document).ready(function(){
+
+     function fetch_data(page, query)
+     {
+      $.ajax({
+       url:"/monitoring/verbal/fetch_data?page="+page+"&query="+query,
+       success:function(data)
+       {
+        $('.search_row').html('');
+        $('.search_row').html(data);
+       }
+      })
+     }
+
+     $(document).on('keyup', '#search', function(){
+      var query = $('#search').val();
+      var page = $('#hidden_page').val();
+      fetch_data(page, query);
+     });
+
+     $(document).on('click', '.pagination a', function(event){
+      event.preventDefault();
+      var page = $(this).attr('href').split('page=')[1];
+      $('#hidden_page').val(page);
+
+      var query = $('#search').val();
+
+      $('li').removeClass('active');
+            $(this).parent().addClass('active');
+      fetch_data(page, query);
+     });
+
+    });
+  </script>
 
 
 @endsection

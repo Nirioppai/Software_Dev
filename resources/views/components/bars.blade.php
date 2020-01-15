@@ -54,7 +54,7 @@
         </li>
       </ul>
 
-      
+
 
 
       <!-- Collapse -->
@@ -168,33 +168,7 @@
 
 </html>
 
-
-<script>
-  $(document).ready(function(){
-
-   fetch_student_data();
-
-   function fetch_student_data(query = '')
-   {
-      $.ajax({
-       url:"{{ route('liveSearchAction') }}",
-       method:'GET',
-       data:{query:query},
-       dataType:'json',
-       success:function(data)
-       {
-        $('.search_row').html(data.table_data);
-        $('#total_records').text(data.total_data);
-       }
-      })
-   }
-
-   $(document).on('keyup', '#search', function(){
-    var query = $(this).val();
-    fetch_student_data(query);
-    });
-
-  });
-</script>
-
-
+@yield('student_data')
+@yield('monitoring_total')
+@yield('monitoring_verbal')
+@yield('monitoring_nonverbal')
