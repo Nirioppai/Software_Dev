@@ -77,10 +77,10 @@ Route::get('/monitoring/verbal', 'MonitoringVerbalController@monitoring_verbal')
 Route::get('monitoring/verbal/fetch_data', 'MonitoringVerbalController@fetch_data');
 Route::get('monitoring/verbalinfo', 'MonitoringVerbalController@verbalInfo')->name('verbalInfo');
 
-Route::resource('verbalinfo', 'MonitoringVerbalController');
+Route::resource('/monitoring/verbalinfo', 'MonitoringVerbalController');
 
 Route::get('/monitoring/nonverbal', 'MonitoringNonVerbalController@monitoring_nonverbal')->name('monitoring_nonverbal');
 Route::get('monitoring/nonverbal/fetch_data', 'MonitoringNonVerbalController@fetch_data');
 Route::get('monitoring/nonverbalinfo', 'MonitoringNonVerbalController@nonverbalInfo')->name('nonverbalInfo');
 
-Route::resource('nonverbalinfo', 'MonitoringNonVerbalController');
+Route::resource('/monitoring/nonverbalinfo', 'MonitoringNonVerbalController');

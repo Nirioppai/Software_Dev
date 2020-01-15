@@ -59,10 +59,10 @@
 
     <h2>Student Number </h2> <p> {{$verbal_score_details->student_id}}</p>
     <h2>Name </h2> <p> {{$verbal_score_details->name}}</p>
-    <h2>Verbal Raw Score</h2> <p>{{$verbal_score_details->total_raw_score}}</p>
-    <h2>Verbal Scaled Score</h2> <p>{{$verbal_score_details->total_scaled_score}}</p>
-    <h2>Verbal SAI</h2> <p>{{$verbal_score_details->total_sai}}</p>
-    <h2>Verbal Percentile Rank</h2> <p>{{$verbal_score_details->total_percentile_rank}}</p>
-    <h2>Verbal Stanine</h2> <p>{{$verbal_score_details->total_stanine}}</p>
+    <h2>Verbal Raw Score</h2> <p>{{$verbal_score_details->verbal_raw_score}}</p>
+    <h2>Verbal Scaled Score</h2> <p>{{$verbal_score_details->verbal_scaled_score}}</p>
+    <h2>Verbal SAI</h2> <p>{{$verbal_score_details->verbal_sai}}</p>
+    <h2>Verbal Percentile Rank</h2> <p>{{$verbal_score_details->verbal_percentile_rank}}</p>
+    <h2>Verbal Stanine</h2> <p>{{$verbal_score_details->verbal_stanine}}</p>
 
 @endsection
