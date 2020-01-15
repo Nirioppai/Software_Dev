@@ -1,7 +1,7 @@
 @extends('components.bars')
 
 @section('title')
-<title>OLSAT | Student Info</title>
+<title>OLSAT | Total Score Info</title>
 @endsection
 
 @section('nav')
@@ -57,13 +57,12 @@
 
 @section('content')
 
-    <h2>Student Number </h2> <p> {{$student_details->student_id}}</p>
-    <h2>Name </h2> <p> {{$student_details->name}}</p>
-    <h2>Overall Total Score </h2> <p> {{$student_details->overall_total_score}}</p>
-    <h2>Verbal Raw Score </h2> <p> {{$student_details->verbal_number_correct}}</p>
-    <h2>Non-Verbal Raw Score </h2> <p> {{$student_details->non_verbal_number_correct}}</p>
-    <h2>Birthday </h2> <p> {{$student_details->date_of_birth}}</p>
-    <h2>Year Level </h2> <p> {{$student_details->grade_level}}</p>
-
+    <h2>Student Number </h2> <p> {{$total_score_details->student_id}}</p>
+    <h2>Name </h2> <p> {{$total_score_details->name}}</p>
+    <h2>Total Raw Score</h2> <p>{{$total_score_details->total_raw_score}}</p>
+    <h2>Total Scaled Score</h2> <p>{{$total_score_details->total_scaled_score}}</p>
+    <h2>Total SAI</h2> <p>{{$total_score_details->total_sai}}</p>
+    <h2>Total Percentile Rank</h2> <p>{{$total_score_details->total_percentile_rank}}</p>
+    <h2>Total Stanine</h2> <p>{{$total_score_details->total_stanine}}</p>
 
 @endsection

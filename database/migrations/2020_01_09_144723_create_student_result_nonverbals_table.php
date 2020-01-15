@@ -19,11 +19,11 @@ class CreateStudentResultNonverbalsTable extends Migration
               olsat.student_data.id,
               olsat.student_data.student_id,
               olsat.student_data.name,
-              olsat.student_data.non_verbal_number_correct As `Non-Verbal Raw Score`,
-              olsat.raw_to_scaled_nonverbal.scaledscore As `Non-Verbal Scaled Score`,
-              olsat.scaled_to_sai_nonverbal.sai As `Non-Verbal SAI`,
-              olsat.sai_to_percentile_rank_and_stanines.percentile_rank As `Non-Verbal Percentile Rank`,
-              olsat.sai_to_percentile_rank_and_stanines.stanine As `Non-Verbal Stanine`
+              olsat.student_data.non_verbal_number_correct As `non_verbal_raw_score`,
+              olsat.raw_to_scaled_nonverbal.scaledscore As `non_verbal_scaled_score`,
+              olsat.scaled_to_sai_nonverbal.sai As `non_verbal_sai`,
+              olsat.sai_to_percentile_rank_and_stanines.percentile_rank As `non_verbal_percentile_rank`,
+              olsat.sai_to_percentile_rank_and_stanines.stanine As `non_verbal_stanine`
           From
               olsat.student_data Inner Join
               olsat.raw_to_scaled_nonverbal On olsat.student_data.non_verbal_number_correct =

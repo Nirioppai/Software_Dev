@@ -19,11 +19,11 @@ class CreateStudentResultTotalsTable extends Migration
               olsat.student_data.id,
               olsat.student_data.student_id,
               olsat.student_data.name,
-              olsat.student_data.overall_total_score As `Total Raw Score`,
-              olsat.raw_to_scaled_total.scaledscore As `Total Scaled Score`,
-              olsat.scaled_to_sai_total.sai As `Total SAI`,
-              olsat.sai_to_percentile_rank_and_stanines.percentile_rank As `Total Percentile Rank`,
-              olsat.sai_to_percentile_rank_and_stanines.stanine As `Total Stanine`
+              olsat.student_data.overall_total_score As `total_raw_score`,
+              olsat.raw_to_scaled_total.scaledscore As `total_scaled_score`,
+              olsat.scaled_to_sai_total.sai As `total_sai`,
+              olsat.sai_to_percentile_rank_and_stanines.percentile_rank As `total_percentile_rank`,
+              olsat.sai_to_percentile_rank_and_stanines.stanine As `total_stanine`
           From
               olsat.student_data Inner Join
               olsat.scaled_to_sai_total On olsat.scaled_to_sai_total.age = olsat.student_data.rounded_current_age_in_years

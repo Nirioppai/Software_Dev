@@ -59,15 +59,14 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Total Score</a>
+    <a class="nav-link" href="/monitoring">Total Score</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/monitoring/verbal">Verbal Score</a>
+    <a class="nav-link active" href="/monitoring/verbal">Verbal Score</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/monitoring/nonverbal">Non-Verbal Score</a>
   </li>
-
 </ul>
 
 <div class="col">
@@ -104,13 +103,13 @@
               <tr>
                 <th class="th-lg"><a href="">Student Number<i class="fas fa-sort ml-1"></a></i></th>
                 <th class="th-lg"><a href="">Name<i class="fas fa-sort ml-1"></a></i></th>
-                <th class="th-lg"><a href="">Overall Total Score<i class="fas fa-sort ml-1"></a></i></th>
-                <th class="th-lg"><a href="">Total Scaled Score<i class="fas fa-sort ml-1"></a></i></th>
-                <th class="th-lg"><a href="">Total SAI<i class="fas fa-sort ml-1"></a></i></th>
-                <th class="th-lg"><a href="">Total Percentile Rank<i class="fas fa-sort ml-1"></a></i></th>
-                <th class="th-lg"><a href="">Total Stanine<i class="fas fa-sort ml-1"></a></i></th>
-                <th class="th-lg"><a href="">Action</a></th>
+                <th class="th-lg"><a href="">Verbal Raw Score<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Verbal Scaled Score<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Verbal SAI<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Verbal Percentile Rank<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Verbal Stanine<i class="fas fa-sort ml-1"></a></i></th>
 
+                <th class="th-lg"><a href="">Action</a></th>
               </tr>
             </thead>
             <tbody class="search_row">
@@ -171,45 +170,44 @@
 @endsection
 
 
-@section('monitoring_total')
+@section('monitoring_verbal')
 
-<script>
+  <script>
 
-  $(document).ready(function(){
+    $(document).ready(function(){
 
-   function fetch_data(page, query)
-   {
-    $.ajax({
-     url:"/monitoring/fetch_data?page="+page+"&query="+query,
-     success:function(data)
+     function fetch_data(page, query)
      {
-      $('.search_row').html('');
-      $('.search_row').html(data);
+      $.ajax({
+       url:"/monitoring/verbal/fetch_data?page="+page+"&query="+query,
+       success:function(data)
+       {
+        $('.search_row').html('');
+        $('.search_row').html(data);
+       }
+      })
      }
-    })
-   }
 
-   $(document).on('keyup', '#search', function(){
-    var query = $('#search').val();
-    var page = $('#hidden_page').val();
-    fetch_data(page, query);
-   });
+     $(document).on('keyup', '#search', function(){
+      var query = $('#search').val();
+      var page = $('#hidden_page').val();
+      fetch_data(page, query);
+     });
 
-   $(document).on('click', '.pagination a', function(event){
-    event.preventDefault();
-    var page = $(this).attr('href').split('page=')[1];
-    $('#hidden_page').val(page);
+     $(document).on('click', '.pagination a', function(event){
+      event.preventDefault();
+      var page = $(this).attr('href').split('page=')[1];
+      $('#hidden_page').val(page);
 
-    var query = $('#search').val();
+      var query = $('#search').val();
 
-    $('li').removeClass('active');
-          $(this).parent().addClass('active');
-    fetch_data(page, query);
-   });
+      $('li').removeClass('active');
+            $(this).parent().addClass('active');
+      fetch_data(page, query);
+     });
 
-  });
-  
-</script>
+    });
+  </script>
 
 
 @endsection
