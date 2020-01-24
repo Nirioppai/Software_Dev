@@ -131,21 +131,21 @@
       <li>
         <a href="#!">
           <span class="circle">3.1</span>
-          <span class="label">School Ability Index - Upload</span>
+          <span class="label">Percentile Rank & Stanine - Upload</span>
         </a>
       </li>
 
        <li>
         <a href="#!">
           <span class="circle">3.2</span>
-          <span class="label">School Ability Index - Preview</span>
+          <span class="label">Percentile Rank & Stanine - Preview</span>
         </a>
       </li>
 
       <li>
         <a href="#!">
           <span class="circle">3.3</span>
-          <span class="label">School Ability Index - Confirmation</span>
+          <span class="label">Percentile Rank & Stanine - Confirmation</span>
         </a>
       </li>
 
