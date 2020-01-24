@@ -12,15 +12,17 @@ class CreateStudentDataTable extends Migration
     public function up()
     {
         Schema::create('student_datas', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('student_id');
-            $table->string('name');
-            $table->integer('overall_total_score');
-            $table->integer('verbal_number_correct');
-            $table->integer('non_verbal_number_correct');
-            $table->string('birthday');
-            $table->string('level');
+
+            $table->bigIncrements('id', 20);
+            $table->string('student_id', 10);
+            $table->string('name', 30);
+            $table->tinyInteger('overall_total_score');
+            $table->tinyInteger('verbal_number_correct');
+            $table->tinyInteger('non_verbal_number_correct');
+            $table->date('birthday');
+            $table->string('level', 10);
             $table->timestamps();
+            
         });
     }
     /**

@@ -15,10 +15,10 @@ class CreateSaiToPercentileRankAndStaninesTable extends Migration
     {
         Schema::create('sai_to_percentile_rank_and_stanines', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sai');
-            $table->integer('percentile_rank');
-            $table->integer('stanine');
-            $table->string('type');
+            $table->tinyInteger('sai');
+            $table->tinyInteger('percentile_rank');
+            $table->tinyInteger('stanine');
+            $table->string('type', 20);
             $table->timestamps();
         });
     }
