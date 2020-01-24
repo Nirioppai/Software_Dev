@@ -58,8 +58,114 @@
 @section('content')
 
 <div class="container">
+<!-- Vertical Steppers -->
+<div class="row mt-1">
+  <div class="col-md-12">
 
-  @if(session('success'))
+    <!-- Stepers Wrapper -->
+    <ul class="stepper stepper-vertical">
+
+      <li class="completed">
+        <a href="#!">
+          <span class="circle">1.1</span>
+          <span class="label">Scaled Scores - Upload</span>
+        </a>
+      </li>
+
+      <li class="active">
+
+        <a href="#!">
+          <span class="circle">1.2</span>
+          <span class="label">Scaled Scores - Preview</span>
+        </a>
+
+        <div class="step-content grey lighten-3">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse cupiditate voluptate facere
+            iusto
+            quaerat
+            vitae excepturi, accusantium ut aliquam repellat atque nesciunt nostrum similique. Inventore
+            nostrum
+            ut,
+            nobis porro sapiente.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore error excepturi veniam nemo
+            repellendus, distinctio soluta vitae at sit saepe. Optio eaque quia excepturi adipisci pariatur
+            totam,
+            atque odit fugiat.</p>
+          <p>Deserunt voluptatem illum quae nisi soluta eum perferendis nesciunt asperiores tempore saepe
+            reiciendis,
+            vero quod a dolor corporis natus qui magni quas fuga rem excepturi laboriosam. Quisquam
+            expedita ab
+            fugiat.</p>
+        </div>
+      </li>
+
+      <li class="active">
+        <a href="#!">
+          <span class="circle">1.3</span>
+          <span class="label">School Ability Index - Confirmation</span>
+        </a>
+      </li>
+
+
+      <li>
+        <a href="#!">
+          <span class="circle">2.1</span>
+          <span class="label">School Ability Index - Upload</span>
+        </a>
+      </li>
+
+       <li>
+        <a href="#!">
+          <span class="circle">2.2</span>
+          <span class="label">School Ability Index - Preview</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#!">
+          <span class="circle">2.3</span>
+          <span class="label">School Ability Index - Confirmation</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#!">
+          <span class="circle">3.1</span>
+          <span class="label">School Ability Index - Upload</span>
+        </a>
+      </li>
+
+       <li>
+        <a href="#!">
+          <span class="circle">3.2</span>
+          <span class="label">School Ability Index - Preview</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#!">
+          <span class="circle">3.3</span>
+          <span class="label">School Ability Index - Confirmation</span>
+        </a>
+      </li>
+
+    </ul>
+    <!-- /.Stepers Wrapper -->
+
+  </div>
+</div>
+
+<!-- Steppers Navigation -->
+<div class="row mt-1">
+  <div class="col-md-12 text-right">
+    <button class="btn btn-flat btn-sm">Cancel</button>
+    <button class="btn btn-primary btn-sm">Next</button>
+  </div>
+</div>
+<!-- /.Vertical Steppers -->
+  
+</div>
+@if(session('success'))
     <script>
     $( document ).ready(function() {
     toastr.options = {
@@ -82,77 +188,5 @@
       toastr["success"]("CSV Import successful.", "Success ")
     });
 </script>
-  @endif
-
-  <div class="row justify-content-center align-items-center">
-    <div class="col-sm-4">
-      <!-- Card -->
-      <div class="card">
-
-        <!-- Card image -->
-        <img class="card-img-top" src="{{asset('./img/brand/analytics.png')}}" alt="Card image cap">
-
-        <!-- Card content -->
-        <div class="card-body">
-
-          <!-- Title -->
-          <h4 class="card-title"><a>Scaled scores</a></h4>
-          <!-- Text -->
-
-          <!-- Button -->
-          <a href="/csv/references/scaledscores/1" class="btn btn-primary">Next</a>
-
-        </div>
-
-      </div>
-      <!-- Card -->
-    </div>
-    <div class="col-sm-4">
-      <!-- Card -->
-      <div class="card">
-
-        <!-- Card image -->
-        <img class="card-img-top" src="{{asset('./img/brand/thought.png')}}" alt="Card image cap">
-
-        <!-- Card content -->
-        <div class="card-body">
-
-          <!-- Title -->
-          <h4 class="card-title"><a>School Ability Index (SAI)</a></h4>
-          <!-- Text -->
-
-          <!-- Button -->
-          <a href="/csv/references/sai/1" class=" btn btn-primary ">Next</a>
-
-        </div>
-
-      </div>
-      <!-- Card -->
-    </div>
-    <div class="col-sm-4">
-      <!-- Card -->
-      <div class="card">
-
-        <!-- Card image -->
-        <img class="card-img-top" src="{{asset('./img/brand/idea.png')}}" alt="Card image cap">
-
-        <!-- Card content -->
-        <div class="card-body">
-
-          <!-- Title -->
-          <h4 class="card-title"><a>Percentile rank & Stanine</a></h4>
-          <!-- Text -->
-
-          <!-- Button -->
-          <a href="/csv/references/percentile_stanine/1" class="btn btn-primary">Next</a>
-
-        </div>
-
-      </div>
-      <!-- Card -->
-    </div>
-  </div>
-</div>
-
-
+@endif
 @endsection
