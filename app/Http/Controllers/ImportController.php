@@ -11,6 +11,12 @@ use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 class ImportController extends Controller
 {
+
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
   public function getImport()
   {
       return view('csv');

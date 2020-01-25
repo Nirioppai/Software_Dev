@@ -11,6 +11,11 @@ use DB;
 class MonitoringNonVerbalController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
   function monitoring_nonverbal()
   {
      $data = DB::table('student_result_nonverbal')->orderBy('name', 'asc')->paginate(7);

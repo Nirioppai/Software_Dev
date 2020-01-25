@@ -10,6 +10,11 @@ use DB;
 class LiveSearchController extends Controller
 {
 
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
   function students()
       {
        $data = DB::table('student_data')->orderBy('name', 'asc')->paginate(7);

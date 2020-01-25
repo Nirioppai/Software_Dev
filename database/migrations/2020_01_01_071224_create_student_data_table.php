@@ -19,7 +19,7 @@ class CreateStudentDataTable extends Migration
             $table->tinyInteger('overall_total_score');
             $table->tinyInteger('verbal_number_correct');
             $table->tinyInteger('non_verbal_number_correct');
-            $table->date('birthday');
+            $table->string('birthday', 11);
             $table->string('level', 10);
             $table->timestamps();
             

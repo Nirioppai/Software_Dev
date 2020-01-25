@@ -10,6 +10,11 @@ use DB;
 class MonitoringVerbalController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
   function monitoring_verbal()
   {
      $data = DB::table('student_result_verbal')->orderBy('name', 'asc')->paginate(7);

@@ -9,6 +9,10 @@ use DB;
 
 class MonitoringTotalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
   function monitor()
   {
