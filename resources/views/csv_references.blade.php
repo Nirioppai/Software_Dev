@@ -63,87 +63,124 @@
   <div class="col-md-12">
 
     <!-- Stepers Wrapper -->
-    <ul class="stepper stepper-vertical">
+    <ul class="stepper stepper-vertical mt--5">
 
-      <li class="completed">
-        <a href="#!">
+      <li class="active">
+
+        <a>
           <span class="circle">1.1</span>
           <span class="label">Scaled Scores - Upload</span>
         </a>
+
+        <div class="step-content grey lighten-3">
+          <p>First, choose a scaled score file and then upload it on the system by clicking on Submit.</p>
+
+        </div>
+
+        <!-- Form open here -->
+        <div class="input-group down ml-5 col-sm-6">
+          <div class="custom-file down">
+            <input type="file" class="custom-file-input down" id="inputGroupFile04">
+            <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+          </div>
+          <div class="input-group-append">
+            <button class="btn btn-outline-primary up" type="submit">Submit</button>
+          </div>
+        </div>
+        <!-- Form Close here -->
+
+
       </li>
 
       <li class="active">
 
-        <a href="#!">
+        <a>
           <span class="circle">1.2</span>
           <span class="label">Scaled Scores - Preview</span>
         </a>
 
         <div class="step-content grey lighten-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse cupiditate voluptate facere
-            iusto
-            quaerat
-            vitae excepturi, accusantium ut aliquam repellat atque nesciunt nostrum similique. Inventore
-            nostrum
-            ut,
-            nobis porro sapiente.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore error excepturi veniam nemo
-            repellendus, distinctio soluta vitae at sit saepe. Optio eaque quia excepturi adipisci pariatur
-            totam,
-            atque odit fugiat.</p>
-          <p>Deserunt voluptatem illum quae nisi soluta eum perferendis nesciunt asperiores tempore saepe
-            reiciendis,
-            vero quod a dolor corporis natus qui magni quas fuga rem excepturi laboriosam. Quisquam
-            expedita ab
-            fugiat.</p>
+          <p>Next, you can look at a preview of what is the data inside the uploaded CSV.</p>
+        </div>
+
+        <div class="ml-5">
+          <!-- Table here pliz, yung na aadjust na table ty -->
+
+          <!-- End table -->
+        </div>
+
+        <div class="step-content grey lighten-3">
+          <p>If the column data is not aligned with the column headers, feel free to rearrange using their dedicated dropdowns and assign them accordingly.</p>
+          <p>You may click on Continue if everything checks out.</p>
+        </div>
+
+        <div class="ml-6">
+          <button type="submit" class="btn btn-primary">
+            Continue
+        </button>
         </div>
       </li>
 
       <li class="active">
-        <a href="#!">
+        <a>
           <span class="circle">1.3</span>
-          <span class="label">School Ability Index - Confirmation</span>
+          <span class="label">Scaled Scores - Confirmation</span>
         </a>
+
+        <div class="step-content grey lighten-3">
+          <p>Proceed to <b>School Ability Index</b> uploading?</p>
+        </div>
+
+        <div class="ml-6">
+          <button type="submit" class="btn btn-secondary">
+            Cancel
+        </button>
+        <button type="submit" class="btn btn-primary">
+            Continue
+        </button>
+        </div>
       </li>
+
+      
 
 
       <li>
-        <a href="#!">
+        <a>
           <span class="circle">2.1</span>
           <span class="label">School Ability Index - Upload</span>
         </a>
       </li>
 
        <li>
-        <a href="#!">
+        <a>
           <span class="circle">2.2</span>
           <span class="label">School Ability Index - Preview</span>
         </a>
       </li>
 
       <li>
-        <a href="#!">
+        <a>
           <span class="circle">2.3</span>
           <span class="label">School Ability Index - Confirmation</span>
         </a>
       </li>
 
       <li>
-        <a href="#!">
+        <a>
           <span class="circle">3.1</span>
           <span class="label">Percentile Rank & Stanine - Upload</span>
         </a>
       </li>
 
        <li>
-        <a href="#!">
+        <a>
           <span class="circle">3.2</span>
           <span class="label">Percentile Rank & Stanine - Preview</span>
         </a>
       </li>
 
       <li>
-        <a href="#!">
+        <a>
           <span class="circle">3.3</span>
           <span class="label">Percentile Rank & Stanine - Confirmation</span>
         </a>
