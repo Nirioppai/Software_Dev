@@ -15,8 +15,8 @@ class CreateScaledScoreToSaisTable extends Migration
     {
         Schema::create('scaled_score_to_sais', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('gradescore');
-            $table->tinyInteger('sai');
+            $table->mediumInteger('gradescore');
+            $table->mediumInteger('sai');
             $table->tinyInteger('age');
             $table->tinyInteger('month');
             $table->string('type', 11);

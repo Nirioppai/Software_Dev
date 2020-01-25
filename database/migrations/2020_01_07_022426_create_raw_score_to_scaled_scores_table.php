@@ -16,7 +16,7 @@ class CreateRawScoreToScaledScoresTable extends Migration
         Schema::create('raw_score_to_scaled_scores', function (Blueprint $table) {
             $table->increments('id');
             $table->tinyInteger('rawscore');
-            $table->tinyInteger('scaledscore');
+            $table->mediumInteger('scaledscore');
             $table->string('type', 11);
             $table->timestamps();
         });
