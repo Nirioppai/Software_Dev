@@ -16,7 +16,7 @@ class ImportController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
   public function getImport()
   {
       return view('csv');
@@ -139,13 +139,13 @@ class ImportController extends Controller
   //
   // }
 
-  public function uploadScaledScore1 () {
-
-    $step = 1;
-    $uploader = 'scaled_scores';
-    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
-
-  }
+  // public function uploadScaledScore1 () {
+  //
+  //   $step = 1;
+  //   $uploader = 'scaled_scores';
+  //   return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
+  //
+  // }
 
 
   public function uploadScaledScore2 (CsvImportRequest $request) {
@@ -173,9 +173,11 @@ class ImportController extends Controller
         return redirect()->back();
     }
 
-    $step = 2;
-    $uploader = 'scaled_scores';
-    return view('csv_references_upload', compact( 'csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader);
+    $step = 1.2;
+    $uploader = 'scaled_scores_2';
+    $success = ('idle');
+
+    return view('csv_references', compact( 'csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader)->with('success', $success);
 
   }
 
@@ -197,25 +199,21 @@ class ImportController extends Controller
         $rawtoscaledscore->save();
     }
 
-    $step = 3;
-    $uploader = 'scaled_scores';
-    $success = ('success');
-    return redirect ('/csv/references')->with('success', $success);
+    $step = 1.3;
+    $success = ('idle');
+    $uploader = 'scaled_scores_3';
+
+    return view('csv_references')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
 
   }
 
 
-  // public function uploadScaledScore3Submit () {
-  //
-  //  return redirect ('/csv/references');
-  //
-  // }
-
   public function uploadSAI1 () {
 
-    $step = 1;
-    $uploader = 'sai';
-    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
+    $step = 2.1;
+    $uploader = 'sai_1';
+    $success = ('idle');
+    return view('csv_references')->with('step', $step)->with('success', $success)->with('uploader', $uploader);
 
   }
 
@@ -245,9 +243,10 @@ class ImportController extends Controller
         return redirect()->back();
     }
 
-    $step = 2;
-    $uploader = 'sai';
-    return view('csv_references_upload', compact( 'csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader);
+    $success = ('idle');
+    $step = 2.2;
+    $uploader = 'sai_2';
+    return view('csv_references', compact( 'csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader)->with('success', $success);
 
   }
 
@@ -269,11 +268,11 @@ class ImportController extends Controller
         $scaledtosai->save();
     }
 
-    $step = 3;
-    $uploader = 'sai';
-    $success = ('success');
-    return redirect ('/csv/references')->with('success', $success);
+    $success = ('idle');
+    $step = 2.3;
+    $uploader = 'sai_3';
 
+    return view('csv_references')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
   }
 
 
@@ -286,10 +285,10 @@ class ImportController extends Controller
 
   public function uploadStanine1 () {
 
-    $step = 1;
-    $uploader = 'percentile_stanine';
-    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
-
+    $step = 3.1;
+    $uploader = 'stanine_1';
+    $success = ('idle');
+    return view('csv_references')->with('step', $step)->with('success', $success)->with('uploader', $uploader);
   }
 
 
@@ -318,9 +317,10 @@ class ImportController extends Controller
         return redirect()->back();
     }
 
-    $step = 2;
-    $uploader = 'percentile_stanine';
-    return view('csv_references_upload', compact( 'csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader);
+    $success = ('idle');
+    $step = 3.2;
+    $uploader = 'stanine_2';
+    return view('csv_references', compact( 'csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader)->with('success', $success);
 
   }
 
@@ -342,18 +342,17 @@ class ImportController extends Controller
         $saitopercentile->save();
     }
 
-    $step = 3;
-    $uploader = 'percentile_stanine';
-    $success = ('success');
-    return redirect ('/csv/references')->with('success', $success);
+    $success = ('idle');
+    $step = 3.3;
+    $uploader = 'stanine_3';
+    return view('csv_references')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
 
   }
 
-
-  // public function uploadStanine3Submit (Request $request, $data, $csv_data) {
-  //
-  //   return redirect ('/csv/references');
-  //
-  // }
+  public function finalizeReferences()
+  {
+    $success = ('success');
+    return redirect('/csv')->with('success', $success);
+  }
 
 }
