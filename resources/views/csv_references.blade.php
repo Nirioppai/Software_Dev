@@ -47,7 +47,9 @@
    -->
     <a class="current-breadcrumb text-dark">> Upload CSV</a>
 </div>
-@endsection @section('content')
+@endsection
+
+@section('content')
 
 <div class="container">
     <!-- Vertical Steppers -->
@@ -68,6 +70,13 @@
 @if($uploader == 'scaled_scores_1')
                     <div class="step-content grey lighten-3">
                         <p>First, choose a Scaled Score file and then upload it on the system by clicking on Submit.</p>
+                        <form action="{{ route('uploadSAI1') }}" method="GET">
+                          <div class="ml-6">
+                              <button type="submit" class="btn btn-primary">
+                                Skip this step
+                              </button>
+                          </div>
+                        </form>
                     </div>
 
                     <!-- Form open here -->
@@ -107,6 +116,7 @@
 
                     <!-- Form Close here -->
                     </form>
+
 @endif
                 </li>
 
@@ -223,8 +233,8 @@
                                 Cancel
                             </button>
 
-                        <form method="POST" action="{{ route('uploadSAI1') }}">
-                          {{ csrf_field() }}
+                        <form method="GET" action="{{ route('uploadSAI1') }}">
+                          <!-- {{ csrf_field() }} -->
 
                             <button type="submit" class="btn btn-primary">
                                 Continue
@@ -246,6 +256,13 @@
 @if($uploader == 'sai_1')
                     <div class="step-content grey lighten-3">
                         <p>First, choose a School Ability Index file and then upload it on the system by clicking on Submit.</p>
+                        <form action="{{ route('uploadStanine1') }}" method="GET">
+                          <div class="ml-6">
+                              <button type="submit" class="btn btn-primary">
+                                Skip this step
+                              </button>
+                          </div>
+                        </form>
                     </div>
 
                     <!-- Form open here -->
@@ -285,6 +302,7 @@
 
                     <!-- Form Close here -->
                     </form>
+
 
                 </li>
 @endif
@@ -398,8 +416,8 @@
                               Cancel
                           </button>
 
-                      <form method="POST" action="{{ route('uploadStanine1') }}">
-                        {{ csrf_field() }}
+                      <form method="GET" action="{{ route('uploadStanine1') }}">
+                        <!-- {{ csrf_field() }} -->
 
                           <button type="submit" class="btn btn-primary">
                               Continue
@@ -570,7 +588,7 @@
                                 Cancel
                             </button>
 
-                        <form method="POST" action="{{ route('finalizeReferences') }}">
+                        <form method="POST" action="{{ route('finalizeUpload') }}">
                           {{ csrf_field() }}
                             <button type="submit" class="btn btn-primary">
                                 Continue
@@ -615,4 +633,6 @@
         toastr["success"]("CSV Import successful.", "Success ")
     });
 </script>
-@endif @endsection
+@endif
+
+@endsection

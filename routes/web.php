@@ -31,7 +31,8 @@ Route::get('/csv/students/1', 'ImportController@uploadStudent1')->name('uploadSt
 Route::post('/csv/students/2', 'ImportController@uploadStudent2')->name('uploadStudent2');
 
 Route::post('/csv/students/3', 'ImportController@uploadStudent3')->name('uploadStudent3');
-Route::post('/csv/students/3/submit', 'ImportController@uploadStudent3Submit')->name('uploadStudent3Submit');
+// Route::post('/csv/students/3/submit', 'ImportController@uploadStudent3Submit')->name('uploadStudent3Submit');
+
 
 Route::get('/csv/references', 'HomeController@uploadReferences')->name('uploadReferences');
 
@@ -40,22 +41,23 @@ Route::get('/csv/references/scaledscores/1', 'ImportController@uploadScaledScore
 Route::post('/csv/references/scaledscores/2', 'ImportController@uploadScaledScore2')->name('uploadScaledScore2');
 
 Route::post('/csv/references/scaledscores/3', 'ImportController@uploadScaledScore3')->name('uploadScaledScore3');
-Route::post('/csv/references/scaledscores/3/submit', 'ImportController@uploadScaledScore3Submit')->name('uploadScaledScore3Submit');
+// Route::post('/csv/references/scaledscores/3/submit', 'ImportController@uploadScaledScore3Submit')->name('uploadScaledScore3Submit');
 
-Route::post('/csv/references/sai/1', 'ImportController@uploadSAI1')->name('uploadSAI1');
+Route::get('/csv/references/sai/1', 'ImportController@uploadSAI1')->name('uploadSAI1');
 
 Route::post('/csv/references/sai/2', 'ImportController@uploadSAI2')->name('uploadSAI2');
 
 Route::post('/csv/references/sai/3', 'ImportController@uploadSAI3')->name('uploadSAI3');
-Route::post('/csv/references/sai/3/submit', 'ImportController@uploadSAI3Submit')->name('uploadSAI3Submit');
+// Route::post('/csv/references/sai/3/submit', 'ImportController@uploadSAI3Submit')->name('uploadSAI3Submit');
 
-Route::post('/csv/references/percentile_stanine/1', 'ImportController@uploadStanine1')->name('uploadStanine1');
+Route::get('/csv/references/percentile_stanine/1', 'ImportController@uploadStanine1')->name('uploadStanine1');
+// Route::post('/csv/references/percentile_stanine/1', 'ImportController@skipSAI')->name('skipSAI');
 
 Route::post('/csv/references/percentile_stanine/2', 'ImportController@uploadStanine2')->name('uploadStanine2');
 
 Route::post('/csv/references/percentile_stanine/3', 'ImportController@uploadStanine3')->name('uploadStanine3');
-Route::post('/csv/references/percentile_stanine/3/submit', 'ImportController@uploadStanine3Submit')->name('uploadStanine3Submit');
-Route::post('/csv', 'ImportController@finalizeReferences')->name('finalizeReferences');
+// Route::post('/csv/references/percentile_stanine/3/submit', 'ImportController@uploadStanine3Submit')->name('uploadStanine3Submit');
+Route::post('/csv', 'ImportController@finalizeUpload')->name('finalizeUpload');
 
 Route::post('/csv/import_parse', 'ImportController@parseImport')->name('import_parse');
 Route::post('/csv/import_process', 'ImportController@processImport')->name('import_process');
