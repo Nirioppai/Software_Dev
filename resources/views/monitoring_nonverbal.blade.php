@@ -84,14 +84,49 @@
 
 
         </div>
-        <div class="input-group">
 
-             <input type="search" name="search" id="search" placeholder="Search Here" aria-describedby="button-addon8" class="form-control">
+        <form action="{{ route('monitoring_nonverbal') }}" method="get">
+          {{ csrf_field() }}
+
+        <div class="input-group">
+             <input type="text" name="search" id="search" placeholder="Search in Non-Verbal" value="{{$input_search}}" aria-describedby="button-addon8" class="form-control">
              <div class="input-group-append">
                <button id="button-addon8" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
              </div>
-
            </div>
+
+          <br>
+           Show rows by:
+           <select name="filterby" id="filterby" onchange="this.form.submit()">
+             <option value="5" {{$paginateby == 5? 'selected':''}}> 5 </option>
+             <option value="10" {{$paginateby == 10? 'selected':''}}> 10 </option>
+             <option value="25" {{$paginateby == 25? 'selected':''}}> 25 </option>
+             <option value="50" {{$paginateby == 50? 'selected':''}}> 50 </option>
+             <option value="75" {{$paginateby == 75? 'selected':''}}> 75 </option>
+             <option value="100" {{$paginateby == 100? 'selected':''}}> 100 </option>
+             <option value="250" {{$paginateby == 250? 'selected':''}}> 250 </option>
+             <option value="500" {{$paginateby == 500? 'selected':''}}> 500 </option>
+             <option value="1000" {{$paginateby == 1000? 'selected':''}}> 1,000 </option>
+           </select>
+
+           Order by:
+           <select name="orderby" id="orderby" onchange="this.form.submit()">
+             <option value="name" {{$orderby == "name"? 'selected':''}}> Name </option>
+             <option value="student_id" {{$orderby == "student_id"? 'selected':''}}> Student Number </option>
+             <option value="non_verbal_raw_score" {{$orderby == "non_verbal_raw_score_raw_score"? 'selected':''}}> Raw Score </option>
+             <option value="non_verbal_raw_score_scaled_score" {{$orderby == "non_verbal_raw_score_scaled_score"? 'selected':''}}> Scaled Score </option>
+             <option value="non_verbal_raw_score_sai" {{$orderby == "non_verbal_raw_score_sai"? 'selected':''}}> SAI </option>
+             <option value="non_verbal_raw_score_percentile_rank" {{$orderby == "non_verbal_raw_score_percentile_rank"? 'selected':''}}> Percentile Rank </option>
+             <option value="non_verbal_raw_score_stanine" {{$orderby == "non_verbal_raw_score_stanine"? 'selected':''}}> Stanine </option>
+           </select>
+
+           Type:
+           <select name="ordertype" id="ordertype" onchange="this.form.submit()">
+             <option value="asc" {{$ordertype == "asc"? 'selected':''}}> Ascending </option>
+             <option value="desc" {{$ordertype == "desc"? 'selected':''}}> Descending </option>
+           </select>
+
+        </form>
 
 
       </div>
@@ -179,7 +214,7 @@
 @endsection
 
 
-@section('monitoring_nonverbal')
+<!-- @section('monitoring_nonverbal')
 
   <script>
 
@@ -218,4 +253,4 @@
     });
   </script>
 
-@endsection
+@endsection -->

@@ -64,26 +64,26 @@ Route::post('/csv/import_process', 'ImportController@processImport')->name('impo
 
 //Route::get('/students', 'HomeController@students')->name('students');
 Route::get('/students', 'LiveSearchController@students')->name('students');
-Route::get('/students/fetch_data', 'LiveSearchController@fetch_data');
+// Route::get('/students/fetch_data', 'LiveSearchController@fetch_data');
 Route::get('/students/info', 'LiveSearchController@studentInfo')->name('studentInfo');
 
 Route::resource('studentinfo', 'LiveSearchController');
 
 // Route::get('/monitoring/total', 'HomeController@monitoring')->name('monitoringTotal');
 Route::get('/monitoring', 'MonitoringTotalController@monitor')->name('monitoring');
-Route::get('monitoring/fetch_data', 'MonitoringTotalController@fetch_data');
+// Route::get('monitoring/fetch_data', 'MonitoringTotalController@fetch_data');
 Route::get('monitoring/info', 'MonitoringTotalController@totalInfo')->name('totalInfo');
 
 Route::resource('totalinfo', 'MonitoringTotalController');
 
 Route::get('/monitoring/verbal', 'MonitoringVerbalController@monitoring_verbal')->name('monitoring_verbal');
-Route::get('monitoring/verbal/fetch_data', 'MonitoringVerbalController@fetch_data');
+// Route::get('monitoring/verbal/fetch_data', 'MonitoringVerbalController@fetch_data');
 Route::get('monitoring/verbalinfo', 'MonitoringVerbalController@verbalInfo')->name('verbalInfo');
 
 Route::resource('/monitoring/verbalinfo', 'MonitoringVerbalController');
 
 Route::get('/monitoring/nonverbal', 'MonitoringNonVerbalController@monitoring_nonverbal')->name('monitoring_nonverbal');
-Route::get('monitoring/nonverbal/fetch_data', 'MonitoringNonVerbalController@fetch_data');
+// Route::get('monitoring/nonverbal/fetch_data', 'MonitoringNonVerbalController@fetch_data');
 Route::get('monitoring/nonverbalinfo', 'MonitoringNonVerbalController@nonverbalInfo')->name('nonverbalInfo');
 
 Route::resource('/monitoring/nonverbalinfo', 'MonitoringNonVerbalController');

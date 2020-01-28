@@ -168,8 +168,8 @@
 <script type="text/javascript" src="{{asset('./js/toastr.min.js')}}"></script>
 
 </html>
-
+<!-- 
 @yield('student_data')
 @yield('monitoring_total')
 @yield('monitoring_verbal')
-@yield('monitoring_nonverbal')
+@yield('monitoring_nonverbal') -->

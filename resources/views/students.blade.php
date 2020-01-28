@@ -65,17 +65,49 @@
 
 
       </div>
-      <div class="input-group">
+      
+      <form action="{{ route('students') }}" method="get">
+        {{ csrf_field() }}
 
-           <input type="search" name="search" id="search" placeholder="Search Here" aria-describedby="button-addon8" class="form-control">
+      <div class="input-group">
+           <input type="text" name="search" id="search" placeholder="Search Student" value="{{$input_search}}" aria-describedby="button-addon8" class="form-control">
            <div class="input-group-append">
              <button id="button-addon8" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
            </div>
-
          </div>
 
+        <br>
+         Show rows by:
+         <select name="filterby" id="filterby" onchange="this.form.submit()">
+           <option value="5" {{$paginateby == 5? 'selected':''}}> 5 </option>
+           <option value="10" {{$paginateby == 10? 'selected':''}}> 10 </option>
+           <option value="25" {{$paginateby == 25? 'selected':''}}> 25 </option>
+           <option value="50" {{$paginateby == 50? 'selected':''}}> 50 </option>
+           <option value="75" {{$paginateby == 75? 'selected':''}}> 75 </option>
+           <option value="100" {{$paginateby == 100? 'selected':''}}> 100 </option>
+           <option value="250" {{$paginateby == 250? 'selected':''}}> 250 </option>
+           <option value="500" {{$paginateby == 500? 'selected':''}}> 500 </option>
+           <option value="1000" {{$paginateby == 1000? 'selected':''}}> 1,000 </option>
+         </select>
 
-    </div>
+         Order by:
+         <select name="orderby" id="orderby" onchange="this.form.submit()">
+           <option value="name" {{$orderby == "name"? 'selected':''}}> Name </option>
+           <option value="student_id" {{$orderby == "student_id"? 'selected':''}}> Student Number </option>
+           <option value="date_of_birth" {{$orderby == "date_of_birth"? 'selected':''}}> Birthdate </option>
+           <option value="grade_level" {{$orderby == "grade_level"? 'selected':''}}> Year Level </option>
+         </select>
+
+         Type:
+         <select name="ordertype" id="ordertype" onchange="this.form.submit()">
+           <option value="asc" {{$ordertype == "asc"? 'selected':''}}> Ascending </option>
+           <option value="desc" {{$ordertype == "desc"? 'selected':''}}> Descending </option>
+         </select>
+
+      </form>
+
+
+</div>
 
     <div class="row-md-5">
 
@@ -140,7 +172,9 @@
             </tbody>
           </table>
           <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
-
+          <p align="right">Total Students: {{$count_rows}}</p>
+          <p align="right">Current Page: {{$current_page}}</p>
+          <p align="right">Showing _ of {{$count_rows}} </p>
         </div>
       </div>
     </div>
@@ -159,7 +193,7 @@
 @endsection
 
 
-@section('student_data')
+<!-- @section('student_data')
 
   <script>
 
@@ -198,4 +232,4 @@
     });
   </script>
 
-@endsection
+@endsection -->

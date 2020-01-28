@@ -16,30 +16,83 @@ class MonitoringNonVerbalController extends Controller
         $this->middleware('auth');
     }
 
-  function monitoring_nonverbal()
-  {
-     $data = DB::table('student_result_nonverbal')->orderBy('name', 'asc')->paginate(7);
-     $pager = 'monitorNonVerbal';
+    function monitoring_nonverbal(Request $req)
+    {
+      $pager = 'monitorNonVerbal';
 
-     return view('monitoring_nonverbal', compact('data'))->with('pager', $pager);
-  }
+      if(isset($req->filterby)) {
+        $paginateby = $req->filterby;
+      } else {
+        $paginateby = 5;
+      }
 
-  function fetch_data(Request $request)
-  {
-       if($request->ajax())
-       {
-        $query = $request->get('query');
-        $query = str_replace(" ", "%", $query);
-        $data = DB::table('student_result_nonverbal')
-                      ->where('student_id', 'like', '%'.$query.'%')
-                      ->orWhere('name', 'like', '%'.$query.'%')
-                      ->orderBy('name', 'asc')
-                      ->paginate(7);
-        $pager = 'monitorNonVerbal';
+      if(isset($req->orderby)) {
+        $orderby = $req->orderby;
+      } else {
+        $orderby = "name";
+      }
 
-        return view('pagination_data', compact('data'))->with('pager', $pager)->render();
+      if(isset($req->ordertype)) {
+        $ordertype = $req->ordertype;
+      } else {
+        $ordertype = "asc";
+      }
+
+      if($req->search == "")
+      {
+          $input_search = "";
+          $data = DB::table('student_result_non_verbal')->orderBy($orderby, $ordertype)->paginate($paginateby);
+          $count_rows = DB::table('student_result_non_verbal')->count();
+          $data->appends(['search' => $req->search, 'filterby' => $req->filterby, 'orderby' => $req->orderby, 'ordertype' => $req->ordertype]);
+          $current_page = $data->currentPage();
+
+          return view ('monitoring_nonverbal', compact('data'))->with('pager' , $pager)->with('input_search', $input_search)->with('paginateby', $paginateby)->with('orderby', $orderby)->with('ordertype', $ordertype)->with('count_rows', $count_rows)->with('current_page', $current_page);
+      }
+      else
+      {
+          $paginateby = $req->filterby;
+          $input_search = $req->search;
+          $data = DB::table('student_result_non_verbal')->where('student_id', 'like', ''.$req->search.'%')
+                ->orWhere('name', 'like', ''.$req->search.'%')
+                ->orderBy($orderby, $ordertype)
+                ->paginate($paginateby);
+
+          $search_result_count = DB::table('student_result_non_verbal')->where('student_id', 'like', ''.$req->search.'%')
+                ->orWhere('name', 'like', ''.$req->search.'%');
+
+          $count_rows = $search_result_count->count();
+          $data->appends(['search' => $req->search, 'filterby' => $req->filterby, 'orderby' => $req->orderby, 'ordertype' => $req->ordertype]);
+          $current_page = $data->currentPage();
+
+
+          return view ('monitoring_nonverbal', compact('data'))->with('pager' , $pager)->with('input_search', $input_search)->with('paginateby', $paginateby)->with('orderby', $orderby)->with('ordertype', $ordertype)->with('count_rows', $count_rows)->with('current_page', $current_page);
         }
-  }
+      }
+
+  // function monitoring_nonverbal()
+  // {
+  //    $data = DB::table('student_result_nonverbal')->orderBy('name', 'asc')->paginate(7);
+  //    $pager = 'monitorNonVerbal';
+  //
+  //    return view('monitoring_nonverbal', compact('data'))->with('pager', $pager);
+  // }
+  //
+  // function fetch_data(Request $request)
+  // {
+  //      if($request->ajax())
+  //      {
+  //       $query = $request->get('query');
+  //       $query = str_replace(" ", "%", $query);
+  //       $data = DB::table('student_result_nonverbal')
+  //                     ->where('student_id', 'like', '%'.$query.'%')
+  //                     ->orWhere('name', 'like', '%'.$query.'%')
+  //                     ->orderBy('name', 'asc')
+  //                     ->paginate(7);
+  //       $pager = 'monitorNonVerbal';
+  //
+  //       return view('pagination_data', compact('data'))->with('pager', $pager)->render();
+  //       }
+  // }
 
     /**
      * Display a listing of the resource.

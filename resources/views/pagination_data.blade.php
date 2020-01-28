@@ -40,7 +40,7 @@
   @endforeach
 
       <tr>
-       <td colspan="6" align="center">
+       <td colspan="8" align="center">
          {!! $data->links() !!}
        </td>
       </tr>
@@ -67,7 +67,7 @@
   @endforeach
 
       <tr>
-       <td colspan="6" align="center">
+       <td colspan="8" align="center">
          {!! $data->links() !!}
        </td>
       </tr>
@@ -93,7 +93,7 @@
   @endforeach
 
       <tr>
-       <td colspan="6" align="center">
+       <td colspan="8" align="center">
          {!! $data->links() !!}
        </td>
       </tr>
