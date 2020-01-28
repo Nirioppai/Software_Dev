@@ -137,6 +137,12 @@
 
                     <input type="hidden" name="csv_data_file_id" value="{{ $csv_data_file->id }}" />
 
+                    <div class="step-content grey lighten-3" align="center">
+                        <h3>Choose Date of Exam:</h3>
+                        <input type="date" name="date_of_exam" id="date_of_exam" value="{{$date_today}}" required>
+                    </div>
+
+
                     <div class="ml-5">
 
                         <!-- Table here pliz, yung na aadjust na table ty -->

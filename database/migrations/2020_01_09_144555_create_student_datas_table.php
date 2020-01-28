@@ -52,10 +52,10 @@ class CreateStudentDatasTable extends Migration
                         , verbal_number_correct
                         , non_verbal_number_correct
                         , date_of_birth
-                        , FLOOR(DATEDIFF(CURDATE(),date_of_birth)/365.30) current_age_in_years
-                        , FLOOR((DATEDIFF(CURDATE(),date_of_birth)/365.30 - FLOOR(DATEDIFF(CURDATE(),date_of_birth)/365))* 12) current_age_in_months
-                        , CEILING((((DATEDIFF(CURDATE(),date_of_birth)/365.30 - FLOOR(DATEDIFF(CURDATE(),date_of_birth)/365))* 12)
-                        - FLOOR((DATEDIFF(CURDATE(),date_of_birth)/365.30 - FLOOR(DATEDIFF(CURDATE(),date_of_birth)/365))* 12))* 30) current_age_in_days
+                        , FLOOR(DATEDIFF(exam_date,date_of_birth)/365.30) current_age_in_years
+                        , FLOOR((DATEDIFF(exam_date,date_of_birth)/365.30 - FLOOR(DATEDIFF(exam_date,date_of_birth)/365))* 12) current_age_in_months
+                        , CEILING((((DATEDIFF(exam_date,date_of_birth)/365.30 - FLOOR(DATEDIFF(exam_date,date_of_birth)/365))* 12)
+                        - FLOOR((DATEDIFF(exam_date,date_of_birth)/365.30 - FLOOR(DATEDIFF(exam_date,date_of_birth)/365))* 12))* 30) current_age_in_days
                         , grade_level
                       FROM
                         (
@@ -67,7 +67,8 @@ class CreateStudentDatasTable extends Migration
                       	verbal_number_correct,
                       	non_verbal_number_correct,
                       	STR_TO_DATE(birthday, '%c/%e/%Y ') as date_of_birth,
-                      	level as grade_level from student_datas
+                        exam_date,
+                      	level as grade_level from final_student_datas
                         ) AS current_age_current_date
                   ) AS current_age_current_date
             ) AS current_age_current_date)

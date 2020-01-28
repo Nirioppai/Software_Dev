@@ -21,6 +21,8 @@ class CreateStudentDataTable extends Migration
             $table->tinyInteger('non_verbal_number_correct');
             $table->string('birthday', 11);
             $table->string('level', 10);
+            $table->date('exam_date');
+            $table->integer('batch');
             $table->timestamps();
 
         });
