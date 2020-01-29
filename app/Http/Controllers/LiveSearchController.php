@@ -15,30 +15,86 @@ class LiveSearchController extends Controller
         $this->middleware('auth');
     }
 
-  function students()
-      {
-       $data = DB::table('student_data')->orderBy('name', 'asc')->paginate(7);
-       $pager = 'student';
-       return view('students', compact('data'))->with('pager', $pager);
-      }
+    function students(Request $req)
+  {
+    $pager = 'student';
+
+    if(isset($req->filterby)) {
+      $paginateby = $req->filterby;
+    } else {
+      $paginateby = 5;
+    }
+
+    if(isset($req->orderby)) {
+      $orderby = $req->orderby;
+    } else {
+      $orderby = "name";
+    }
+
+    if(isset($req->ordertype)) {
+      $ordertype = $req->ordertype;
+    } else {
+      $ordertype = "asc";
+    }
+
+    if($req->search == "")
+    {
+        $input_search = "";
+        $data = DB::table('batched_student_datas')->orderBy($orderby, $ordertype)->paginate($paginateby);
+        $count_rows = DB::table('batched_student_datas')->count();
+        $data->appends(['search' => $req->search, 'filterby' => $req->filterby, 'orderby' => $req->orderby, 'ordertype' => $req->ordertype]);
+        $current_page = $data->currentPage();
+
+        return view ('students', compact('data'))->with('pager' , $pager)->with('input_search', $input_search)->with('paginateby', $paginateby)->with('orderby', $orderby)->with('ordertype', $ordertype)->with('count_rows', $count_rows)->with('current_page', $current_page);
+    }
+    else
+    {
+        $paginateby = $req->filterby;
+        $input_search = $req->search;
+        $data = DB::table('batched_student_datas')->where('student_id', 'like', ''.$req->search.'%')
+              ->orWhere('name', 'like', ''.$req->search.'%')
+              ->orWhere('date_of_birth', 'like', ''.$req->search.'%')
+              ->orderBy($orderby, $ordertype)
+              ->paginate($paginateby);
+
+        $search_result_count = DB::table('batched_student_datas')->where('student_id', 'like', ''.$req->search.'%')
+              ->orWhere('name', 'like', ''.$req->search.'%')
+              ->orWhere('date_of_birth', 'like', ''.$req->search.'%');
+
+        $count_rows = $search_result_count->count();
+        $data->appends(['search' => $req->search, 'filterby' => $req->filterby, 'orderby' => $req->orderby, 'ordertype' => $req->ordertype]);
+        $current_page = $data->currentPage();
 
 
-  function fetch_data(Request $request)
-        {
-         if($request->ajax())
-         {
-          $query = $request->get('query');
-          $query = str_replace(" ", "%", $query);
-          $data = DB::table('student_data')
-                        ->where('student_id', 'like', '%'.$query.'%')
-                        ->orWhere('name', 'like', '%'.$query.'%')
-                        ->orWhere('date_of_birth', 'like', '%'.$query.'%')
-                        ->orderBy('name', 'asc')
-                        ->paginate(7);
-          $pager = 'student';
-          return view('pagination_data', compact('data'))->with('pager', $pager)->render();
-         }
-        }
+        return view ('students', compact('data'))->with('pager' , $pager)->with('input_search', $input_search)->with('paginateby', $paginateby)->with('orderby', $orderby)->with('ordertype', $ordertype)->with('count_rows', $count_rows)->with('current_page', $current_page);
+    }
+
+  }
+
+  // function students()
+  //     {
+  //      $data = DB::table('student_data')->orderBy('name', 'asc')->paginate(7);
+  //      $pager = 'student';
+  //      return view('students', compact('data'))->with('pager', $pager);
+  //     }
+
+
+  // function fetch_data(Request $request)
+  //       {
+  //        if($request->ajax())
+  //        {
+  //         $query = $request->get('query');
+  //         $query = str_replace(" ", "%", $query);
+  //         $data = DB::table('student_data')
+  //                       ->where('student_id', 'like', '%'.$query.'%')
+  //                       ->orWhere('name', 'like', '%'.$query.'%')
+  //                       ->orWhere('date_of_birth', 'like', '%'.$query.'%')
+  //                       ->orderBy('name', 'asc')
+  //                       ->paginate(7);
+  //         $pager = 'student';
+  //         return view('pagination_data', compact('data'))->with('pager', $pager)->render();
+  //        }
+  //       }
 
  /**
   * Display a listing of the resource.

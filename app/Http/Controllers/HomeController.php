@@ -58,9 +58,10 @@ class HomeController extends Controller
 
     public function uploadReferences()
     {
-        $scaled_score = 1;
+        $step = 1.1;
+        $uploader = 'scaled_scores_1';
         $success = ('idle');
-        return view('csv_references')->with('scaled_score', $scaled_score)->with('success', $success);
+        return view('csv_references')->with('success', $success)->with('uploader', $uploader)->with('step', $step);
     }
 
 
