@@ -57,22 +57,24 @@
 
 @section('content')
 
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Total Score</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/monitoring/verbal">Verbal Score</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/monitoring/nonverbal">Non-Verbal Score</a>
-  </li>
 
-</ul>
 
 <div class="col">
 
     <div class="row-md-8">
+
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Total Score</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/monitoring/verbal">Verbal Score</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/monitoring/nonverbal">Non-Verbal Score</a>
+        </li>
+
+      </ul>
 
 
       </div>

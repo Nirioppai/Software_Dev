@@ -65,7 +65,7 @@
 
 
       </div>
-      
+
       <form action="{{ route('students') }}" method="get">
         {{ csrf_field() }}
 
@@ -169,12 +169,35 @@
                 <td>Grade 9</td>
               </tr> -->
 
+
             </tbody>
+
           </table>
+
+
+
+
+
+        </div>
+
+        <div class="row">
+
           <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
-          <p align="right">Total Students: {{$count_rows}}</p>
-          <p align="right">Current Page: {{$current_page}}</p>
-          <p align="right">Showing _ of {{$count_rows}} </p>
+
+          <div class="col-md-4 ml--3">
+              <p align="right">Total Students: {{$count_rows}}</p>
+          </div>
+
+          <div class="col-md-4">
+             <p align="center">Current Page: {{$current_page}}</p>
+          </div>
+
+          <div class="col-md-4">
+
+              <p align="left">Showing _ of {{$count_rows}} </p>
+
+          </div>
+
         </div>
       </div>
     </div>

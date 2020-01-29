@@ -92,12 +92,29 @@
             <div class="card shadow">
                 <div class="card-body pt-0 pt-md-4">
                     <h2>
-                        Remarks           
+                        Remarks
                     </h2>
                     <form>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a remark about the student."></textarea>
                     </form>
+
+                    <div class="row">
+
+                      <div class="col">  </div>
+                      <div class="col">  </div>
+                      <div class="col">  </div>
+                      <div class="col">  </div>
+                      <div class="col-sm mt-2"> </div>
+                      <div class="col-sm mt-2">
+
+                              <a href=""  class="btn btn-primary btn-rounded">Edit</a>
+                      </div>
+
+                    </div>
+
                 </div>
+
+
             </div>
         </div>
         <div class="row-sm mt-4">

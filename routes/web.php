@@ -15,8 +15,11 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 Auth::routes();
 
 Route::get('/', function () {
-        return redirect('/home');
+        return redirect('/landing');
 });
+
+Route::get('landing', 'HomeController@landing')->name('landing');
+
 Route::get('/login', 'CustomRegisterController@login')->name('login' );
 Route::post('/register/submit', 'CustomRegisterController@submit');
 

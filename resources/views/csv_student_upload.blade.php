@@ -57,7 +57,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container container-responsive">
     <!-- Vertical Steppers -->
     <div class="row mt-1">
         <div class="col-md-12">
@@ -80,7 +80,8 @@
 
                     <!-- Form open here -->
 
-                      <div class="input-group down ml-5 col-sm-6">
+
+                      <div class="input-group down ml-5 col-sm-6 ">
 
                           <div class="custom-file down">
                             <form method="POST" action="{{ route('uploadStudent2') }}" enctype="multipart/form-data">
@@ -119,6 +120,7 @@
                 </li>
 
                 <!-- Student Data Step 2 -->
+
                 <li @if($step == 2) class="active" @endif>
 
                     <a>
@@ -132,83 +134,84 @@
                         <p>Next, you can look at a preview of what is the data inside the uploaded CSV.</p>
                     </div>
 
-                <form method="POST" action="{{ route('uploadStudent3') }}">
-                  {{ csrf_field() }}
 
-                    <input type="hidden" name="csv_data_file_id" value="{{ $csv_data_file->id }}" />
+                  <form method="POST" action="{{ route('uploadStudent3') }}">
+                    {{ csrf_field() }}
 
-                    <div class="ml-5">
+                      <input type="hidden" name="csv_data_file_id" value="{{ $csv_data_file->id }}" />
 
-                        <!-- Table here pliz, yung na aadjust na table ty -->
+                      <div class="ml-5">
 
-                        <div class="row-md-5">
+                          <div class="row-md-5">
 
+                            <div class="container py-3">
 
-                          <div class="container py-3">
+                      <div class="row py-0">
+                        <div class="col-lg-12 mx-auto">
+                          <div class="card rounded shadow border-8">
+                            <div class="card-body p-4 bg-white rounded">
+                              <div class="table-responsive" style="width:900px">
 
-                    <div class="row py-0">
-                      <div class="col-lg-12 mx-auto">
-                        <div class="card rounded shadow border-8">
-                          <div class="card-body p-4 bg-white rounded">
-                            <div class="table-responsive" style="width:900px">
-
-                              <table id="example" style="width:100%" class="table table-striped table-bordered">
-                                <thead>
-                                  @if(isset($csv_header_fields))
-                                  <tr>
-                                    @foreach($csv_header_fields as $csv_header_field)
-                                    <th class="th-lg"><a href="">{{ $csv_header_field }}</a></th>
+                                <table id="example" style="width:100%" class="table table-striped table-bordered">
+                                  <thead>
+                                    @if(isset($csv_header_fields))
+                                    <tr>
+                                      @foreach($csv_header_fields as $csv_header_field)
+                                      <th class="th-lg"><a href="">{{ $csv_header_field }}</a></th>
+                                      @endforeach
+                                    </tr>
+                                    @endif
+                                  </thead>
+                                  <tbody>
+                                    @foreach ($csv_data as $row)
+                                              <tr>
+                                              @foreach ($row as $key => $value)
+                                                  <td align="center" >{{ $value }}</td>
+                                              @endforeach
+                                              </tr>
                                     @endforeach
-                                  </tr>
-                                  @endif
-                                </thead>
-                                <tbody>
-                                  @foreach ($csv_data as $row)
-                                            <tr>
-                                            @foreach ($row as $key => $value)
-                                                <td align="center" >{{ $value }}</td>
-                                            @endforeach
-                                            </tr>
-                                  @endforeach
 
-                                  @foreach ($csv_data[0] as $key => $value)
-                                                <td align="center">
-                                                    <select class="selectionToUpper" name="fields[{{ $key }}]">
-                                                        @foreach (config('app.db_fields') as $db_field)
-                                                            <option value="{{ (\Request::has('header')) ? $db_field : $loop->index }}"
-                                                                @if ($key === $db_field) selected @endif>{{ $db_field }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </td>
-                                    @endforeach
-                                </tbody>
-                              </table>
+                                    @foreach ($csv_data[0] as $key => $value)
+                                                  <td align="center">
+                                                      <select class="selectionToUpper" name="fields[{{ $key }}]">
+                                                          @foreach (config('app.db_fields') as $db_field)
+                                                              <option value="{{ (\Request::has('header')) ? $db_field : $loop->index }}"
+                                                                  @if ($key === $db_field) selected @endif>{{ $db_field }}</option>
+                                                          @endforeach
+                                                      </select>
+                                                  </td>
+                                      @endforeach
+                                  </tbody>
+                                </table>
 
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    </div>
+                      </div>
 
 
-                          </div>
+                            </div>
 
-                        <!-- End table -->
+                          <!-- End table -->
 
-                    </div>
+                      </div>
 
-                    <div class="step-content grey lighten-3">
-                        <p>If the column data is not aligned with the column headers, feel free to rearrange using their dedicated dropdowns and assign them accordingly.</p>
-                        <p>You may click on Continue if everything checks out.</p>
-                    </div>
+                      <div class="step-content grey lighten-3">
+                          <p>If the column data is not aligned with the column headers, feel free to rearrange using their dedicated dropdowns and assign them accordingly.</p>
+                          <p>You may click on Continue if everything checks out.</p>
+                      </div>
 
-                    <div class="ml-6">
-                        <button type="submit" class="btn btn-primary">
-                            Continue
-                        </button>
-                    </div>
-                  </form>
+                      <div class="ml-6">
+                          <button type="submit" class="btn btn-primary">
+                              Continue
+                          </button>
+                      </div>
+                    </form>
+
+
+
 @endif
                 </li>
 
