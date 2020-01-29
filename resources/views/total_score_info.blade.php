@@ -122,7 +122,7 @@
                 <div class="card-body pt-0 pt-md-4">
                     <h2>
                         Student Result Report
-                        <a href=""  class=" float-right"><i class="fas fa-file-pdf text-red"></i> PDF</a>
+                        <a href="/export-pdf"  class=" float-right"><i class="fas fa-file-pdf text-red"></i> PDF</a>
                         <a href=""  class=" float-right mr-4"><i class="fas fa-file-excel text-green"></i> CSV</a>
                     </h2>
                     Below is a preview for the Student Result Report. You can export it using the icons on the upper right.
@@ -134,7 +134,13 @@
         </div>
         <div class="row-sm mt-4 picture-anchor">
             <img style="width: 100%; height: 100%;" src="{{asset('./img/pdf/PDF.png')}}">
-            <div class="text-2">Nirio</div>
+            <div class="text-2">Nico Del Rosario</div>
+            <div class="text-3">Pasig</div>
+            <div class="text-4">Philippine University of the Philippines</div>
+            <div class="text-5">2002 - 2010</div>
+            <div class="text-6">January 10, 2020</div>
+            <div class="text-7">August 6, 1999</div>
+            <div class="text-8">20.2 Years old</div>
         </div>
     </div>
 </div>

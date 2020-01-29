@@ -22266,7 +22266,7 @@ ul.stepper li.completed a .label {
 .picture-anchor {
   position: relative;
   text-align: center;
-  font-size: 70%;
+  font-size: 60%;
 }
 
 .picture-anchor>#wrapper {
@@ -22281,8 +22281,58 @@ ul.stepper li.completed a .label {
 
 .text-2 {
   position: absolute;
-  top: 16%;
-  left: 19%;
+  top: 17%;
+  left: 20.5%;
   font-weight: bolder;
   font-size: 4
 }
+
+.text-3 {
+  position: absolute;
+  top: 18.4%;
+  left: 20.5%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-4 {
+  position: absolute;
+  top: 19.8%;
+  left: 20.5%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-5 {
+  position: absolute;
+  top: 21.2%;
+  left: 20.5%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-6 {
+  position: absolute;
+  top: 16.9%;
+  left: 60%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-7 {
+  position: absolute;
+  top: 18.3%;
+  left: 60%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-8 {
+  position: absolute;
+  top: 19.7%;
+  left: 60%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+
