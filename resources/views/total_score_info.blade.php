@@ -8,7 +8,7 @@
             <i class="ni ni-tv-2 text-primary"></i> Dashboard
         </a>
     </li>
-    <li class="nav-item active">
+    <li class="nav-item ">
         <a class="nav-link " href="/students">
             <i class="ni ni-planet text-primary"></i> Students
         </a>
@@ -18,8 +18,8 @@
             <i class="fas fa-file-excel text-primary"></i> Upload CSV
         </a>
     </li>
-    <li class="nav-item ">
-        <a class="nav-link " href="/monitoring">
+    <li class="nav-item active">
+        <a class="nav-link active" href="/monitoring">
             <i class="ni ni-key-25 text-primary"></i> Monitoring
         </a>
     </li>
@@ -118,7 +118,23 @@
             </div>
         </div>
         <div class="row-sm mt-4">
+            <div class="card shadow">
+                <div class="card-body pt-0 pt-md-4">
+                    <h2>
+                        Student Result Report
+                        <a href=""  class=" float-right"><i class="fas fa-file-pdf text-red"></i> PDF</a>
+                        <a href=""  class=" float-right mr-4"><i class="fas fa-file-excel text-green"></i> CSV</a>
+                    </h2>
+                    Below is a preview for the Student Result Report. You can export it using the icons on the upper right.
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row-sm mt-4 picture-anchor">
             <img style="width: 100%; height: 100%;" src="{{asset('./img/pdf/PDF.png')}}">
+            <div class="text-2">Nirio</div>
         </div>
     </div>
 </div>

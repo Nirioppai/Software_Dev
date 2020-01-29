@@ -13,7 +13,7 @@
     </a>
   </li>
   <li class="nav-item active">
-    <a class="nav-link " href="/students">
+    <a class="nav-link active" href="/students">
       <i class="ni ni-planet text-primary"></i> Students
     </a>
   </li>
@@ -108,8 +108,9 @@
         </div>
     </div>
 
-        <div class="row-sm mt-1">
+        <div class="row-sm mt-1 picture-anchor">
             <img style="width: 100%; height: 100%;" src="{{asset('./img/pdf/PDF.png')}}">
+            <div class="text-1">Nirio</div>
         </div>
     </div>
 </div>

@@ -22262,3 +22262,27 @@ ul.stepper li.completed a .label {
 .down {
   z-index: 1;
 }
+
+.picture-anchor {
+  position: relative;
+  text-align: center;
+  font-size: 70%;
+}
+
+.picture-anchor>#wrapper {
+  font-size:1em;
+}
+
+.text-1 {
+  position: absolute;
+  top: 130px;
+  left: 130px;
+}
+
+.text-2 {
+  position: absolute;
+  top: 16%;
+  left: 19%;
+  font-weight: bolder;
+  font-size: 4
+}

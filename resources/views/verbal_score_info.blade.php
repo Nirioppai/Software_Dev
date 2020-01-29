@@ -12,7 +12,7 @@
       <i class="ni ni-tv-2 text-primary"></i> Dashboard
     </a>
   </li>
-  <li class="nav-item active">
+  <li class="nav-item ">
     <a class="nav-link " href="/students">
       <i class="ni ni-planet text-primary"></i> Students
     </a>
@@ -22,8 +22,8 @@
       <i class="fas fa-file-excel text-primary"></i> Upload CSV
     </a>
   </li>
-  <li class="nav-item ">
-    <a class="nav-link " href="/monitoring">
+  <li class="nav-item active">
+    <a class="nav-link active" href="/monitoring">
       <i class="ni ni-key-25 text-primary"></i> Monitoring
     </a>
   </li>

@@ -13,7 +13,7 @@
     </a>
   </li>
   <li class="nav-item active">
-    <a class="nav-link " href="/students">
+    <a class="nav-link active" href="/students">
       <i class="ni ni-planet text-primary"></i> Students
     </a>
   </li>
