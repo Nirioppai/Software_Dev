@@ -41,8 +41,8 @@ class MonitoringNonVerbalController extends Controller
       if($req->search == "")
       {
           $input_search = "";
-          $data = DB::table('student_result_non_verbal')->orderBy($orderby, $ordertype)->paginate($paginateby);
-          $count_rows = DB::table('student_result_non_verbal')->count();
+          $data = DB::table('student_result_nonverbal')->orderBy($orderby, $ordertype)->paginate($paginateby);
+          $count_rows = DB::table('student_result_nonverbal')->count();
           $data->appends(['search' => $req->search, 'filterby' => $req->filterby, 'orderby' => $req->orderby, 'ordertype' => $req->ordertype]);
           $current_page = $data->currentPage();
 
@@ -52,12 +52,12 @@ class MonitoringNonVerbalController extends Controller
       {
           $paginateby = $req->filterby;
           $input_search = $req->search;
-          $data = DB::table('student_result_non_verbal')->where('student_id', 'like', ''.$req->search.'%')
+          $data = DB::table('student_result_nonverbal')->where('student_id', 'like', ''.$req->search.'%')
                 ->orWhere('name', 'like', ''.$req->search.'%')
                 ->orderBy($orderby, $ordertype)
                 ->paginate($paginateby);
 
-          $search_result_count = DB::table('student_result_non_verbal')->where('student_id', 'like', ''.$req->search.'%')
+          $search_result_count = DB::table('student_result_nonverbal')->where('student_id', 'like', ''.$req->search.'%')
                 ->orWhere('name', 'like', ''.$req->search.'%');
 
           $count_rows = $search_result_count->count();
