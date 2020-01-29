@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\StudentData;
+use App\FinalStudentData;
 use App\CsvData;
 use App\RawScoreToScaledScore;
 use App\ScaledScoreToSai;
@@ -9,6 +10,8 @@ use App\SaiToPercentileRankAndStanine;
 use App\Http\Requests\CsvImportRequest;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use DB;
+
 class ImportController extends Controller
 {
 
@@ -79,6 +82,8 @@ class ImportController extends Controller
 
   public function uploadStudent2 (CsvImportRequest $request) {
 
+    $date_today = date("Y-m-d");
+
     $path = $request->file('csv_file')->getRealPath();
     if ($request->has('header')) {
         $data = Excel::load($path, function($reader) {})->get()->toArray();
@@ -106,40 +111,80 @@ class ImportController extends Controller
     $uploader = 'student_2';
     $success = ('idle');
 
-    return view('csv_student_upload', compact( 'csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+    return view('csv_student_upload', compact( 'csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader)->with('success', $success)->with('date_today', $date_today);
 
   }
 
 
   public function uploadStudent3 (Request $request) {
 
-    $data = CsvData::find($request->csv_data_file_id);
-    $csv_data = json_decode($data->csv_data, true);
+    $date_of_exam = $request->date_of_exam;
 
-    foreach ($csv_data as $row) {
-        $studentdata = new StudentData();
-        foreach (config('app.db_fields') as $index => $field) {
-            if ($data->csv_header) {
-                $studentdata->$field = $row[$request->fields[$field]];
-            } else {
-                $studentdata->$field = $row[$request->fields[$index]];
-            }
-        }
-        $studentdata->save();
+    $final_student = DB::table('batched_student_datas');
+
+    if(($final_student->count()) > 0 ) {
+      $price = $final_student->max('batch');
+      $batch = $price + 1;
+    }
+    else {
+      $batch = 1;
     }
 
-    $step = 3;
-    $uploader = 'student_3';
-    $success = ('idle');
+    function checkExamDate($date)
+    {
+      $tempDate = explode('-', $date);
+      return checkdate($tempDate[1], $tempDate[2], $tempDate[0]);
+    }
 
-    return view('csv_student_upload')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+    $validate_exam_date = checkExamDate($date_of_exam);
+
+      if(($validate_exam_date == TRUE))
+      {
+        $data = CsvData::find($request->csv_data_file_id);
+        $csv_data = json_decode($data->csv_data, true);
+
+        foreach ($csv_data as $row) {
+            $studentdata = new StudentData();
+            foreach (config('app.db_fields') as $index => $field) {
+                if ($data->csv_header) {
+                    $studentdata->$field = $row[$request->fields[$field]];
+                } else {
+                    $studentdata->$field = $row[$request->fields[$index]];
+                }
+            }
+            $studentdata->exam_date = $date_of_exam;
+            $studentdata->batch = $batch;
+            $studentdata->save();
+
+        }
+
+      // $add_batch = DB::table('batched_student_datas');
+      //
+      // if(($add_batch->count()) > 0 ) {
+      //   $batch = 2;
+      // }
+      // else {
+      //   $batch = 1;
+      // }
+      //
+      // $initial_student = DB::table('student_datas');
+      //
+      // foreach($initial_student as $row){
+      //
+      //   $insert_batch = new StudentData;
+      //   $insert_batch->batch = $batch;
+      //   $insert_batch->save();
+      //
+      // }
+
+      $step = 3;
+      $uploader = 'student_3';
+      $success = ('success');
+
+      return view('csv_student_upload')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+    }
   }
 
-  public function finalizeStudents()
-  {
-    $success = ('success');
-    return redirect('/csv')->with('success', $success);
-  }
 
   // public function uploadStudent3Submit () {
   //
@@ -147,13 +192,13 @@ class ImportController extends Controller
   //
   // }
 
-  // public function uploadScaledScore1 () {
-  //
-  //   $step = 1;
-  //   $uploader = 'scaled_scores';
-  //   return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
-  //
-  // }
+  public function uploadScaledScore1 () {
+
+    $step = 1;
+    $uploader = 'scaled_scores';
+    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
+
+  }
 
 
   public function uploadScaledScore2 (CsvImportRequest $request) {
@@ -206,6 +251,7 @@ class ImportController extends Controller
         }
         $rawtoscaledscore->save();
     }
+
 
     $step = 1.3;
     $success = ('idle');
@@ -357,6 +403,14 @@ class ImportController extends Controller
 
   public function finalizeUpload()
   {
+    DB::statement("INSERT INTO batched_student_datas (student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, birthday, level, exam_date, batch, created_at, updated_at)
+
+      SELECT student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, birthday, level, exam_date, batch, created_at, updated_at FROM student_datas;
+    ");
+
+    DB::statement("TRUNCATE TABLE student_datas;
+    ");
+
     $success = ('success');
     return redirect('/csv')->with('success', $success);
   }

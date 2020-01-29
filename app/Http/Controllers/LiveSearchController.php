@@ -40,8 +40,8 @@ class LiveSearchController extends Controller
     if($req->search == "")
     {
         $input_search = "";
-        $data = DB::table('student_data')->orderBy($orderby, $ordertype)->paginate($paginateby);
-        $count_rows = DB::table('student_data')->count();
+        $data = DB::table('batched_student_datas')->orderBy($orderby, $ordertype)->paginate($paginateby);
+        $count_rows = DB::table('batched_student_datas')->count();
         $data->appends(['search' => $req->search, 'filterby' => $req->filterby, 'orderby' => $req->orderby, 'ordertype' => $req->ordertype]);
         $current_page = $data->currentPage();
 
@@ -51,13 +51,13 @@ class LiveSearchController extends Controller
     {
         $paginateby = $req->filterby;
         $input_search = $req->search;
-        $data = DB::table('student_data')->where('student_id', 'like', ''.$req->search.'%')
+        $data = DB::table('batched_student_datas')->where('student_id', 'like', ''.$req->search.'%')
               ->orWhere('name', 'like', ''.$req->search.'%')
               ->orWhere('date_of_birth', 'like', ''.$req->search.'%')
               ->orderBy($orderby, $ordertype)
               ->paginate($paginateby);
 
-        $search_result_count = DB::table('student_data')->where('student_id', 'like', ''.$req->search.'%')
+        $search_result_count = DB::table('batched_student_datas')->where('student_id', 'like', ''.$req->search.'%')
               ->orWhere('name', 'like', ''.$req->search.'%')
               ->orWhere('date_of_birth', 'like', ''.$req->search.'%');
 
