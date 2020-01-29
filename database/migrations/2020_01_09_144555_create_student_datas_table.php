@@ -68,7 +68,7 @@ class CreateStudentDatasTable extends Migration
                       	non_verbal_number_correct,
                       	STR_TO_DATE(birthday, '%c/%e/%Y ') as date_of_birth,
                         exam_date,
-                      	level as grade_level from final_student_datas
+                      	level as grade_level from batched_student_datas
                         ) AS current_age_current_date
                   ) AS current_age_current_date
             ) AS current_age_current_date)

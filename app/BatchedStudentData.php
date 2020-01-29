@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FinalStudentData extends Model
+class BatchedStudentData extends Model
 {
-  protected $table = 'final_student_datas';
+  protected $table = 'batched_student_datas'; 
   protected $fillable = [
   'student_id',
   'name',
