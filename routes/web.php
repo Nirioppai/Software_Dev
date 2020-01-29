@@ -92,4 +92,4 @@ Route::get('monitoring/nonverbalinfo', 'MonitoringNonVerbalController@nonverbalI
 Route::resource('/monitoring/nonverbalinfo', 'MonitoringNonVerbalController');
 
 
-Route::post('/csv/references/percentile_stanine/3', 'ImportController@uploadStanine3')->name('uploadStanine3');
+Route::post('/export-pdf', 'PDFController@viewPDF')->name('viewPDF');
