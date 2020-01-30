@@ -20,11 +20,16 @@ class PDFController extends Controller
 
     	$pdf = PDF::loadView('student_result_export', array('student_number' => $student_number));
 		return $pdf->stream();
+    }
 
+    public function savePDF(Request $request)
+    {
 
+    	$student_number = $request->student_no;
 
+    	$student_number = DB::table('student_result_total')->where('student_id',  $request->student_no)->first();
 
-    	
-
+    	$pdf = PDF::loadView('student_result_export', array('student_number' => $student_number));
+		return $pdf->download('Student Data Result -.pdf');
     }
 }

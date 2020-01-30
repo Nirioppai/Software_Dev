@@ -121,7 +121,7 @@
             <div class="card shadow">
                 <div class="card-body pt-0 pt-md-4">
                     <h2>
-                        <form action="{{ route('viewPDF') }}" method="post">
+                        <form action="{{ route('savePDF') }}" method="post">
                         @csrf
                         Student Result Report
                         <input type="hidden" name="student_no" value="{{$total_score_details->student_id}}"></input>
@@ -129,14 +129,17 @@
                         <a href=""  class=" float-right mr-4"><i class="fas fa-file-excel text-green"></i> CSV</a>
                         </form>
                     </h2>
-                    Below is a preview for the Student Result Report. You can export it using the icons on the upper right.
-
+                    Below is a preview for the Student Result Report. You can export it using the icons on the upper right. For a preview, click on the document below to expand.
                 </div>
 
 
             </div> 
         </div>
-        <div class="row-sm mt-4 picture-anchor">
+        <form action="{{ route('viewPDF') }}" method="post">
+        @csrf
+        <input type="hidden" name="student_no" value="{{$total_score_details->student_id}}"></input>
+        <a href="javascript:$('form').submit()">
+        <div class="row-sm mt-4 picture-anchor" target="_blank">
             <img style="width: 100%; height: 100%;" src="{{asset('./img/pdf/PDF.png')}}">
             <div class="text-2">Nico Del Rosario</div>
             <div class="text-3">Pasig</div>
@@ -146,6 +149,9 @@
             <div class="text-7">August 6, 1999</div>
             <div class="text-8">20.2 Years old</div>
         </div>
+        </a>
+        </form>
+        
     </div>
 </div>
 
