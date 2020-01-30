@@ -1,0 +1,74 @@
+
+.picture-anchor {
+  position: relative;
+  text-align: center;
+  font-size:100%;
+}
+
+.picture-anchor>#wrapper {
+  font-size:1em;
+}
+
+.text-1 {
+  position: absolute;
+  top: 130px;
+  left: 130px;
+}
+
+.text-2 {
+  position: absolute;
+  top: 13.1%;
+  left: 8%;
+  font-weight: bolder;
+  font-size: 8
+}
+
+.text-3 {
+  position: absolute;
+  top: 14.8%;
+  left: 14.9%;
+  font-weight: bolder;
+  font-size: 8
+}
+
+.text-4 {
+  position: absolute;
+  top: 16.5%;
+  left: 8%;
+  font-weight: bolder;
+  font-size: 8
+}
+
+.text-5 {
+  position: absolute;
+  top: 18.2%;
+  left: 11.9%;
+  font-weight: bolder;
+  font-size: 8
+}
+
+.text-6 {
+  position: absolute;
+  top: 13%;
+  left: 63.9%;
+  font-weight: bolder;
+  font-size: 8
+}
+
+.text-7 {
+  position: absolute;
+  top: 14.7%;
+  left: 63%;
+  font-weight: bolder;
+  font-size: 8
+}
+
+.text-8 {
+  position: absolute;
+  top: 16.4%;
+  left: 56%;
+  font-weight: bolder;
+  font-size: 8
+}
+
+
