@@ -120,11 +120,11 @@ class ImportController extends Controller
 
     $date_of_exam = $request->date_of_exam;
 
-    $final_student = DB::table('batched_student_datas');
+    $final_student = DB::table('final_student_datas');
 
     if(($final_student->count()) > 0 ) {
-      $price = $final_student->max('batch');
-      $batch = $price + 1;
+      $max_batch = $final_student->max('batch');
+      $batch = $max_batch + 1;
     }
     else {
       $batch = 1;
@@ -158,7 +158,7 @@ class ImportController extends Controller
 
         }
 
-      // $add_batch = DB::table('batched_student_datas');
+      // $add_batch = DB::table('final_student_datas');
       //
       // if(($add_batch->count()) > 0 ) {
       //   $batch = 2;
@@ -403,9 +403,11 @@ class ImportController extends Controller
 
   public function finalizeUpload()
   {
-    DB::statement("INSERT INTO batched_student_datas (student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, birthday, level, exam_date, batch, created_at, updated_at)
+    // DITO ILILIPAT LAMAN NG VIEW SA final_STUDENT_DATAS
 
-      SELECT student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, birthday, level, exam_date, batch, created_at, updated_at FROM student_datas;
+    DB::statement("INSERT INTO final_student_datas (student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, current_age_in_days, grade_level)
+
+       SELECT student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, current_age_in_days, grade_level FROM student_data;
     ");
 
     DB::statement("TRUNCATE TABLE student_datas;
