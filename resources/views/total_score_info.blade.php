@@ -141,7 +141,8 @@
         <a href="javascript:$('form').submit()">
         <div class="row-sm mt-4 picture-anchor" target="_blank">
             <img style="width: 100%; height: 100%;" src="{{asset('./img/pdf/PDF.png')}}">
-            <div class="text-2">Nico Del Rosario</div>
+            </a>
+            <div class="text-2 text-black">Nico Del Rosario</div>
             <div class="text-3">Pasig</div>
             <div class="text-4">Philippine University of the Philippines</div>
             <div class="text-5">2002 - 2010</div>
@@ -149,7 +150,7 @@
             <div class="text-7">August 6, 1999</div>
             <div class="text-8">20.2 Years old</div>
         </div>
-        </a>
+        
         </form>
         
     </div>

@@ -16,9 +16,9 @@ class PDFController extends Controller
 
     	$student_number = $request->student_no;
 
-    	$student_number = DB::table('student_result_total')->where('student_id',  $request->student_no)->first();
+    	$student = DB::table('student_result_total')->where('student_id',  $request->student_no)->first();
 
-    	$pdf = PDF::loadView('student_result_export', array('student_number' => $student_number));
+    	$pdf = PDF::loadView('student_result_export', array('student' => $student));
 		return $pdf->stream();
     }
 
@@ -27,9 +27,9 @@ class PDFController extends Controller
 
     	$student_number = $request->student_no;
 
-    	$student_number = DB::table('student_result_total')->where('student_id',  $request->student_no)->first();
+    	$student = DB::table('student_result_total')->where('student_id',  $request->student_no)->first();
 
-    	$pdf = PDF::loadView('student_result_export', array('student_number' => $student_number));
+    	$pdf = PDF::loadView('student_result_export', array('student' => $student));
 		return $pdf->download('Student Data Result -.pdf');
     }
 }
