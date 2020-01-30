@@ -90,3 +90,6 @@ Route::get('/monitoring/nonverbal', 'MonitoringNonVerbalController@monitoring_no
 Route::get('monitoring/nonverbalinfo', 'MonitoringNonVerbalController@nonverbalInfo')->name('nonverbalInfo');
 
 Route::resource('/monitoring/nonverbalinfo', 'MonitoringNonVerbalController');
+
+Route::post('/export-pdf', 'PDFController@viewPDF')->name('viewPDF');
+
