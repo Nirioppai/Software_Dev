@@ -19,7 +19,7 @@ class PDFController extends Controller
     	$student_number = DB::table('student_result_total')->where('student_id',  $request->student_no)->first();
 
     	$pdf = PDF::loadView('student_result_export', array('student_number' => $student_number));
-		return $pdf->download('invoice.pdf');
+		return $pdf->stream();
 
 
 
