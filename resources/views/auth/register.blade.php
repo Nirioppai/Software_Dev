@@ -80,22 +80,22 @@
         <div class="row align-items-center justify-content-xl-between">
           <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
-              © 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1 text-white" target="_blank">Creative Tim</a>
+              © 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1 text-white" target="_blank">OLSAT MS</a>
             </div>
           </div>
           <div class="col-xl-6">
             <ul class="nav nav-footer justify-content-center justify-content-xl-end">
               <li class="nav-item">
-                <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                <a href="#" class="nav-link text-muted" target="_blank">OLSAT MS</a>
               </li>
               <li class="nav-item">
-                <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                <a href="#" class="nav-link text-muted" target="_blank">About Us</a>
               </li>
               <li class="nav-item">
-                <a href="http://blog.creative-tim.com" class="nav-link text-muted" target="_blank">Blog</a>
+                <a href="#" class="nav-link text-muted" target="_blank">Blog</a>
               </li>
               <li class="nav-item">
-                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link text-muted" target="_blank">MIT License</a>
+                <a href="#" class="nav-link text-muted" target="_blank">MIT License</a>
               </li>
             </ul>
           </div>

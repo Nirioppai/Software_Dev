@@ -15,7 +15,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 Auth::routes();
 
 Route::get('/', function () {
-        return redirect('/landing');
+        return redirect('/home');
 });
 
 Route::get('landing', 'HomeController@landing')->name('landing');
