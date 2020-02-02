@@ -405,9 +405,9 @@ class ImportController extends Controller
   {
     // DITO ILILIPAT LAMAN NG VIEW SA final_STUDENT_DATAS
 
-    DB::statement("INSERT INTO final_student_datas (student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, current_age_in_days, grade_level)
+    DB::statement("INSERT INTO final_student_datas (student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, current_age_in_days, grade_level, exam_date, batch)
 
-       SELECT student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, current_age_in_days, grade_level FROM student_data;
+       SELECT student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, current_age_in_days, grade_level, exam_date, batch FROM student_data;
     ");
 
     DB::statement("TRUNCATE TABLE student_datas;
