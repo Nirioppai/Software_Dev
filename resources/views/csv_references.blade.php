@@ -191,9 +191,12 @@
                 <div class="container ml-5">
                     <div class="row">
                         <div class="col-sm-2">
-                            <button type="submit" class="btn btn-secondary">
-                            Cancel
-                            </button>
+                          <form method="GET" action="{{ route('cancelScaledScores') }}">
+                              <!-- {{ csrf_field() }} -->
+                              <button type="submit" class="btn btn-secondary">
+                              Cancel
+                              </button>
+                          </form>
                         </div>
                         <div class="col-sm">
                             <form method="GET" action="{{ route('uploadSAI1') }}">
@@ -343,9 +346,12 @@
                 <div class="container ml-5">
                     <div class="row">
                         <div class="col-sm-2">
-                            <button type="submit" class="btn btn-secondary">
-                            Cancel
-                            </button>
+                          <form method="GET" action="{{ route('cancelSAI') }}">
+                              <!-- {{ csrf_field() }} -->
+                              <button type="submit" class="btn btn-secondary">
+                              Cancel
+                              </button>
+                          </form>
                         </div>
                         <div class="col-sm">
                             <form method="GET" action="{{ route('uploadStanine1') }}">
@@ -485,9 +491,12 @@
                 <div class="container ml-5">
                     <div class="row">
                         <div class="col-sm-2">
-                            <button type="submit" class="btn btn-secondary">
-                            Cancel
-                            </button>
+                          <form method="GET" action="{{ route('cancelStanine') }}">
+                              <!-- {{ csrf_field() }} -->
+                              <button type="submit" class="btn btn-secondary">
+                              Cancel
+                              </button>
+                          </form>
                         </div>
                         <div class="col-sm">
                             <form method="POST" action="{{ route('finalizeUpload') }}">

@@ -234,11 +234,7 @@
                         <p>Finalize <b>Student Data</b> uploading?</p>
                     </div>
 
-                      <div class="ml-6">
-                            <button type="submit" class="btn btn-secondary">
-                                Cancel
-                            </button>
-
+                    <div class="ml-6">
                         <form method="POST" action="{{ route('finalizeUpload') }}">
                           {{ csrf_field() }}
 
@@ -246,6 +242,16 @@
                                 Continue
                             </button>
                         </form>
+                      </div>
+
+                      <div class="ml-6">
+
+                        <form method="GET" action="{{ route('cancelStudent') }}">
+                            <button type="submit" class="btn btn-secondary">
+                                Cancel
+                            </button>
+                        </form>
+
                       </div>
 
                 </li>

@@ -35,6 +35,7 @@ Route::post('/csv/students/2', 'ImportController@uploadStudent2')->name('uploadS
 
 Route::post('/csv/students/3', 'ImportController@uploadStudent3')->name('uploadStudent3');
 // Route::post('/csv/students/3/submit', 'ImportController@uploadStudent3Submit')->name('uploadStudent3Submit');
+Route::get('/csv/students/1', 'CancelUploadController@cancelStudent')->name('cancelStudent');
 
 
 Route::get('/csv/references', 'HomeController@uploadReferences')->name('uploadReferences');
@@ -45,6 +46,7 @@ Route::post('/csv/references/scaledscores/2', 'ImportController@uploadScaledScor
 
 Route::post('/csv/references/scaledscores/3', 'ImportController@uploadScaledScore3')->name('uploadScaledScore3');
 // Route::post('/csv/references/scaledscores/3/submit', 'ImportController@uploadScaledScore3Submit')->name('uploadScaledScore3Submit');
+Route::get('/csv/references', 'CancelUploadController@cancelScaledScores')->name('cancelScaledScores');
 
 Route::get('/csv/references/sai/1', 'ImportController@uploadSAI1')->name('uploadSAI1');
 
@@ -52,6 +54,7 @@ Route::post('/csv/references/sai/2', 'ImportController@uploadSAI2')->name('uploa
 
 Route::post('/csv/references/sai/3', 'ImportController@uploadSAI3')->name('uploadSAI3');
 // Route::post('/csv/references/sai/3/submit', 'ImportController@uploadSAI3Submit')->name('uploadSAI3Submit');
+Route::get('/csv/references/sai/1', 'CancelUploadController@cancelSAI')->name('cancelSAI');
 
 Route::get('/csv/references/percentile_stanine/1', 'ImportController@uploadStanine1')->name('uploadStanine1');
 // Route::post('/csv/references/percentile_stanine/1', 'ImportController@skipSAI')->name('skipSAI');
@@ -60,6 +63,7 @@ Route::post('/csv/references/percentile_stanine/2', 'ImportController@uploadStan
 
 Route::post('/csv/references/percentile_stanine/3', 'ImportController@uploadStanine3')->name('uploadStanine3');
 // Route::post('/csv/references/percentile_stanine/3/submit', 'ImportController@uploadStanine3Submit')->name('uploadStanine3Submit');
+Route::get('/csv/references/percentile_stanine/1', 'CancelUploadController@cancelStanine')->name('cancelStanine');
 Route::post('/csv', 'ImportController@finalizeUpload')->name('finalizeUpload');
 
 Route::post('/csv/import_parse', 'ImportController@parseImport')->name('import_parse');
@@ -93,4 +97,3 @@ Route::resource('/monitoring/nonverbalinfo', 'MonitoringNonVerbalController');
 
 Route::post('/export-pdf', 'PDFController@viewPDF')->name('viewPDF');
 Route::post('/save-pdf', 'PDFController@savePDF')->name('savePDF');
-
