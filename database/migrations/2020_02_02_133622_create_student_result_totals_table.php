@@ -17,6 +17,7 @@ class CreateStudentResultTotalsTable extends Migration
         create view `student_result_total` as
               (
                 Select
+                    olsat.final_student_datas.id,
                     olsat.final_student_datas.student_id,
                     olsat.final_student_datas.name,
                     olsat.final_student_datas.overall_total_score As total_raw_score,

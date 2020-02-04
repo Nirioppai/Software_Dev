@@ -17,6 +17,7 @@ class CreateStudentResultVerbalsTable extends Migration
         create view `student_result_verbal` as
                 (
                   Select
+                      olsat.final_student_datas.id,
                       olsat.final_student_datas.student_id,
                       olsat.final_student_datas.name,
                       olsat.final_student_datas.verbal_number_correct As verbal_raw_score,

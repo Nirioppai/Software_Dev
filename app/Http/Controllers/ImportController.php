@@ -118,6 +118,9 @@ class ImportController extends Controller
 
   public function uploadStudent3 (Request $request) {
 
+    DB::statement("TRUNCATE TABLE student_datas;
+    ");
+
     $date_of_exam = $request->date_of_exam;
 
     $final_student = DB::table('final_student_datas');
@@ -237,6 +240,9 @@ class ImportController extends Controller
 
   public function uploadScaledScore3 (Request $request) {
 
+    DB::statement("TRUNCATE TABLE raw_score_to_scaled_scores;
+    ");
+
     $data = CsvData::find($request->csv_data_file_id);
     $csv_data = json_decode($data->csv_data, true);
 
@@ -305,6 +311,9 @@ class ImportController extends Controller
 
 
   public function uploadSAI3 (Request $request) {
+
+    DB::statement("TRUNCATE TABLE scaled_score_to_sais;
+    ");
 
     $data = CsvData::find($request->csv_data_file_id);
     $csv_data = json_decode($data->csv_data, true);
@@ -378,6 +387,9 @@ class ImportController extends Controller
 
 
   public function uploadStanine3 (Request $request) {
+
+    DB::statement("TRUNCATE TABLE sai_to_percentile_rank_and_stanines;
+    ");
 
     $data = CsvData::find($request->csv_data_file_id);
     $csv_data = json_decode($data->csv_data, true);

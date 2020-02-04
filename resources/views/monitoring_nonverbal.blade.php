@@ -106,11 +106,11 @@
            <select name="orderby" id="orderby" onchange="this.form.submit()">
              <option value="name" {{$orderby == "name"? 'selected':''}}> Name </option>
              <option value="student_id" {{$orderby == "student_id"? 'selected':''}}> Student Number </option>
-             <option value="non_verbal_raw_score" {{$orderby == "non_verbal_raw_score_raw_score"? 'selected':''}}> Raw Score </option>
-             <option value="non_verbal_raw_score_scaled_score" {{$orderby == "non_verbal_raw_score_scaled_score"? 'selected':''}}> Scaled Score </option>
-             <option value="non_verbal_raw_score_sai" {{$orderby == "non_verbal_raw_score_sai"? 'selected':''}}> SAI </option>
-             <option value="non_verbal_raw_score_percentile_rank" {{$orderby == "non_verbal_raw_score_percentile_rank"? 'selected':''}}> Percentile Rank </option>
-             <option value="non_verbal_raw_score_stanine" {{$orderby == "non_verbal_raw_score_stanine"? 'selected':''}}> Stanine </option>
+             <option value="nonverbal_raw_score" {{$orderby == "nonverbal_raw_score"? 'selected':''}}> Raw Score </option>
+             <option value="nonverbal_scaled_score" {{$orderby == "nonverbal_scaled_score"? 'selected':''}}> Scaled Score </option>
+             <option value="nonverbal_sai" {{$orderby == "nonverbal_sai"? 'selected':''}}> SAI </option>
+             <option value="nonverbal_percentile_rank" {{$orderby == "nonverbal_percentile_rank"? 'selected':''}}> Percentile Rank </option>
+             <option value="nonverbal_stanine" {{$orderby == "nonverbal_stanine"? 'selected':''}}> Stanine </option>
            </select>
 
            Type:

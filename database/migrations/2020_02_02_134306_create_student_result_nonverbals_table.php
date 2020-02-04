@@ -17,6 +17,7 @@ class CreateStudentResultNonverbalsTable extends Migration
         create view `student_result_nonverbal` as
                 (
                   Select
+                      olsat.final_student_datas.id,
                       olsat.final_student_datas.student_id,
                       olsat.final_student_datas.name,
                       olsat.final_student_datas.non_verbal_number_correct As nonverbal_raw_score,
