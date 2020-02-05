@@ -116,10 +116,10 @@
 
     <h2>Student Number </h2> <p> {{$non_verbal_score_details->student_id}}</p>
     <h2>Name </h2> <p> {{$non_verbal_score_details->name}}</p>
-    <h2>Non Verbal Raw Score</h2> <p>{{$non_verbal_score_details->non_verbal_raw_score}}</p>
-    <h2>Non Verbal Scaled Score</h2> <p>{{$non_verbal_score_details->non_verbal_scaled_score}}</p>
-    <h2>Non Verbal SAI</h2> <p>{{$non_verbal_score_details->non_verbal_sai}}</p>
-    <h2>Non Verbal Percentile Rank</h2> <p>{{$non_verbal_score_details->non_verbal_percentile_rank}}</p>
-    <h2>Non Verbal Stanine</h2> <p>{{$non_verbal_score_details->non_verbal_stanine}}</p>
+    <h2>Non Verbal Raw Score</h2> <p>{{$non_verbal_score_details->nonverbal_raw_score}}</p>
+    <h2>Non Verbal Scaled Score</h2> <p>{{$non_verbal_score_details->nonverbal_scaled_score}}</p>
+    <h2>Non Verbal SAI</h2> <p>{{$non_verbal_score_details->nonverbal_sai}}</p>
+    <h2>Non Verbal Percentile Rank</h2> <p>{{$non_verbal_score_details->nonverbal_percentile_rank}}</p>
+    <h2>Non Verbal Stanine</h2> <p>{{$non_verbal_score_details->nonverbal_stanine}}</p>
 
 @endsection

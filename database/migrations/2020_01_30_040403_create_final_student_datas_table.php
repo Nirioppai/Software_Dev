@@ -25,8 +25,9 @@ class CreateFinalStudentDatasTable extends Migration
           $table->bigInteger('rounded_current_age_in_months');
           $table->bigInteger('current_age_in_days');
           $table->string('grade_level', 10);
-          // $table->date('exam_date');
-          // $table->integer('batch');
+          $table->date('exam_date');
+          $table->integer('batch');
+          $table->timestamps();
         });
     }
 

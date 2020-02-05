@@ -118,6 +118,9 @@ class ImportController extends Controller
 
   public function uploadStudent3 (Request $request) {
 
+    DB::statement("TRUNCATE TABLE student_datas;
+    ");
+
     $date_of_exam = $request->date_of_exam;
 
     $final_student = DB::table('final_student_datas');
@@ -237,6 +240,9 @@ class ImportController extends Controller
 
   public function uploadScaledScore3 (Request $request) {
 
+    DB::statement("TRUNCATE TABLE raw_score_to_scaled_scores;
+    ");
+
     $data = CsvData::find($request->csv_data_file_id);
     $csv_data = json_decode($data->csv_data, true);
 
@@ -305,6 +311,9 @@ class ImportController extends Controller
 
 
   public function uploadSAI3 (Request $request) {
+
+    DB::statement("TRUNCATE TABLE scaled_score_to_sais;
+    ");
 
     $data = CsvData::find($request->csv_data_file_id);
     $csv_data = json_decode($data->csv_data, true);
@@ -379,6 +388,9 @@ class ImportController extends Controller
 
   public function uploadStanine3 (Request $request) {
 
+    DB::statement("TRUNCATE TABLE sai_to_percentile_rank_and_stanines;
+    ");
+
     $data = CsvData::find($request->csv_data_file_id);
     $csv_data = json_decode($data->csv_data, true);
 
@@ -405,9 +417,9 @@ class ImportController extends Controller
   {
     // DITO ILILIPAT LAMAN NG VIEW SA final_STUDENT_DATAS
 
-    DB::statement("INSERT INTO final_student_datas (student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, current_age_in_days, grade_level)
+    DB::statement("INSERT INTO final_student_datas (student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, current_age_in_days, grade_level, exam_date, batch, created_at, updated_at)
 
-       SELECT student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, current_age_in_days, grade_level FROM student_data;
+       SELECT student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, current_age_in_days, grade_level, exam_date, batch, created_at, updated_at FROM student_data;
     ");
 
     DB::statement("TRUNCATE TABLE student_datas;

@@ -81,11 +81,11 @@
       <tr>
        <td align="center">{{ $row->student_id }}</td>
        <td>{{ $row->name }}</td>
-       <td align="center">{{$row->non_verbal_raw_score}}</td>
-       <td align="center">{{$row->non_verbal_scaled_score}}</td>
-       <td align="center">{{$row->non_verbal_sai}}</td>
-       <td align="center">{{$row->non_verbal_percentile_rank}}</td>
-       <td align="center">{{$row->non_verbal_stanine}}</td>
+       <td align="center">{{$row->nonverbal_raw_score}}</td>
+       <td align="center">{{$row->nonverbal_scaled_score}}</td>
+       <td align="center">{{$row->nonverbal_sai}}</td>
+       <td align="center">{{$row->nonverbal_percentile_rank}}</td>
+       <td align="center">{{$row->nonverbal_stanine}}</td>
 
        <td align="center"><a href="nonverbalinfo/{{$row->id}}"><button type="button" class="btn btn-primary">View</button></a></td>
      </tr>

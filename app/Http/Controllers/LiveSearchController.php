@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\student_data;
+use App\FinalStudentData;
 use DB;
 
 class LiveSearchController extends Controller
@@ -148,7 +149,8 @@ class LiveSearchController extends Controller
   */
  public function edit($id)
  {
-    //
+   $student_details = DB::table('final_student_datas')->find($id);
+   return view('student_info', compact('student_details'));
  }
 
  /**
@@ -160,7 +162,14 @@ class LiveSearchController extends Controller
   */
  public function update(Request $request, $id)
  {
-     //
+   $student_details = FinalStudentData::find($id);
+   $student_details->overall_total_score = $request->input('overall_total_score');
+   $student_details->verbal_number_correct = $request->input('verbal_number_correct');
+   $student_details->non_verbal_number_correct = $request->input('non_verbal_number_correct');
+
+   $student_details->save();
+
+   return view('student_info', compact('student_details'));
  }
 
  /**

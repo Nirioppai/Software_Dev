@@ -69,11 +69,45 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Trigger Modal -->
             <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                 <div class="d-flex justify-content-between">
-                    <a href="#" class="btn btn-sm btn-default float-right ml--3">Edit Profile</a>
+                    <a href="/studentinfo/{{$student_details->id}}/edit" class="btn btn-sm btn-default float-right ml--3" data-toggle="modal" data-target="#editProfile">Edit Profile</a>
                 </div>
             </div>
+
+            <!-- Modal   -->
+              <form action="/studentinfo/{{$student_details->id}}" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('PATCH') }}
+
+                <div class="modal fade" id="editProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title" id="exampleModalLabel">Edit Raw Scores</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <h3>Overall Total Score:</h3>
+                        <input type="number" name="overall_total_score" value="{{$student_details->overall_total_score}}" required>
+                        <h3>Verbal Raw Score:</h3>
+                        <input type="number" name="verbal_number_correct" value="{{$student_details->verbal_number_correct}}" required>
+                        <h3>Non Verbal Raw Score:</h3>
+                        <input type="number" name="non_verbal_number_correct" value="{{$student_details->non_verbal_number_correct}}" required>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
             <div class="card-body pt-0 pt-md-4">
                 <div class="text-center mt-5">
                     <h1>
@@ -115,7 +149,7 @@
     </div>
 </div>
 
-    
+
 
 
 @endsection
