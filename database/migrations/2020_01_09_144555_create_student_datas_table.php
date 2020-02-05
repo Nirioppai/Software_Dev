@@ -29,7 +29,9 @@ class CreateStudentDatasTable extends Migration
           	current_age_in_days,
           	exam_date,
           	batch,
-          	grade_level
+          	grade_level,
+            created_at,
+            updated_at
           FROM
           	(
           		SELECT
@@ -45,7 +47,9 @@ class CreateStudentDatasTable extends Migration
           			current_age_in_days,
           			exam_date,
           			batch,
-          			grade_level
+          			grade_level,
+                created_at,
+                updated_at
           		FROM
           			(
           				SELECT
@@ -61,7 +65,9 @@ class CreateStudentDatasTable extends Migration
           					CEILING((((DATEDIFF(exam_date,date_of_birth)/365.30 - FLOOR(DATEDIFF(exam_date,date_of_birth)/365))* 12) - FLOOR((DATEDIFF(exam_date,date_of_birth)/365.30 - FLOOR(DATEDIFF(exam_date,date_of_birth)/365))* 12))* 30) current_age_in_days,
           					exam_date,
           					batch,
-          					grade_level
+          					grade_level,
+                    created_at,
+                    updated_at
           				FROM
           					(
           						SELECT
@@ -74,7 +80,9 @@ class CreateStudentDatasTable extends Migration
           							STR_TO_DATE(birthday, '%c/%e/%Y ') as date_of_birth,
           							exam_date,
           							batch,
-          							level as grade_level
+          							level as grade_level,
+                        created_at,
+                        updated_at
           						FROM
           							student_datas
           					) AS current_age_exam_date

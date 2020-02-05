@@ -27,6 +27,7 @@ class CreateFinalStudentDatasTable extends Migration
           $table->string('grade_level', 10);
           $table->date('exam_date');
           $table->integer('batch');
+          $table->timestamps();
         });
     }
 
