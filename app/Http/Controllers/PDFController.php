@@ -14,22 +14,32 @@ class PDFController extends Controller
     public function viewPDF(Request $request)
     {
 
-    	$student_number = $request->student_no;
+        $student_number = $request->student_no;
 
-    	$student = DB::table('student_result_total')->where('student_id',  $request->student_no)->first();
+        $student_details = DB::table('final_student_datas')->where('student_id',  $request->student_no)->first();
+        $verbal = DB::table('student_result_verbal')->where('student_id',  $request->student_no)->first();
+        $total = DB::table('student_result_total')->where('student_id',  $request->student_no)->first();
+        $nonverbal = DB::table('student_result_nonverbal')->where('student_id',  $request->student_no)->first();
 
-    	$pdf = PDF::loadView('student_result_export', array('student' => $student));
-		return $pdf->stream();
+
+
+        $pdf = PDF::loadView('student_result_export', array('student_details' => $student_details), array('verbal' => $verbal), array('total' => $total), array('nonverbal' => $nonverbal));
+        return $pdf->stream();
     }
 
     public function savePDF(Request $request)
     {
 
-    	$student_number = $request->student_no;
+        $student_number = $request->student_no;
 
-    	$student = DB::table('student_result_total')->where('student_id',  $request->student_no)->first();
+        $student_details = DB::table('final_student_datas')->where('student_id',  $request->student_no)->first();
+        $verbal = DB::table('student_result_verbal')->where('student_id',  $request->student_no)->first();
+        $total = DB::table('student_result_total')->where('student_id',  $request->student_no)->first();
+        $nonverbal = DB::table('student_result_nonverbal')->where('student_id',  $request->student_no)->first();
 
-    	$pdf = PDF::loadView('student_result_export', array('student' => $student));
-		return $pdf->download('Student Data Result -.pdf');
+
+
+        $pdf = PDF::loadView('student_result_export', array('student_details' => $student_details), array('verbal' => $verbal), array('total' => $total), array('nonverbal' => $nonverbal));
+        return $pdf->download('Student Result '.$student_number. '.pdf');
     }
 }
