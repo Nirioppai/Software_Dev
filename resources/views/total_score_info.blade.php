@@ -167,8 +167,8 @@
                         @csrf
                         Student Result Report
                         <input type="hidden" name="student_no" value="{{$total_score_details->student_id}}"></input>
-                        <a href="javascript:$('#savePDF').submit()"  class=" float-right"><i class="fas fa-file-pdf text-red"></i> PDF</a>
-                        <a href=""  class=" float-right mr-4"><i class="fas fa-file-excel text-green"></i> CSV</a>
+                        <a data-toggle="tooltip" data-placement="top" data-html="true" title="<b>Save</b> a PDF copy." href="javascript:$('#savePDF').submit()"  class=" float-right"><i class="fas fa-file-pdf text-red"></i> PDF</a>
+                        <a href="#"  class=" float-right mr-4"><i class="fas fa-file-excel text-green"></i> CSV</a>
                         </form>
                     </h2>
                     Below is a preview for the Student Result Report. You can export it using the icons on the upper right. For a preview, click on the document below to expand.
@@ -181,16 +181,34 @@
         @csrf
         <input  type="hidden" name="student_no" value="{{$total_score_details->student_id}}"></input>
         <a href="javascript:$('#viewPDF').submit()">
-        <div class="row-sm mt-4 picture-anchor" target="_blank">
-            <img style="width: 100%; height: 100%;" src="{{asset('./img/pdf/PDF.png')}}">
+        <div data-toggle="tooltip" data-placement="top" data-html="true" title="<b>Generate</b> a PDF preview." class="row-sm mt-4 picture-anchor" target="_blank">
+            <img  style="width: 100%; height: 100%;" src="{{asset('./img/pdf/PDF.png')}}">
             </a>
-            <div class="text-2 text-black">Nico Del Rosario</div>
-            <div class="text-3">Pasig</div>
-            <div class="text-4">Philippine University of the Philippines</div>
-            <div class="text-5">2002 - 2010</div>
-            <div class="text-6">January 10, 2020</div>
-            <div class="text-7">August 6, 1999</div>
-            <div class="text-8">20.2 Years old</div>
+            <div class="text-2 text-dark">Nico Del Rosario</div>
+            <div class="text-3 text-dark">Pasig</div>
+            <div class="text-4 text-dark">Philippine University of the Philippines</div>
+            <div class="text-5 text-dark">2002 - 2010</div>
+            <div class="text-6 text-dark">January 10, 2020</div>
+            <div class="text-7 text-dark">August 6, 1999</div>
+            <div class="text-8 text-dark">20.2 Years old</div>
+            <div class="text-9 text-dark">99</div>
+            <div class="text-10 text-dark">99</div>
+            <div class="text-11 text-dark">99</div>
+            <div class="text-12 text-dark">99</div>
+            <div class="text-13 text-dark">99</div>
+            <div class="text-14 text-dark">99</div>
+            <div class="text-15 text-dark">99</div>
+            <div class="text-16 text-dark">99</div>
+            <div class="text-17 text-dark">99</div>
+            <div class="text-18 text-dark">99</div>
+            <div class="text-19 text-dark">99</div>
+            <div class="text-20 text-dark">99</div>
+            <div class="text-21 text-dark">99</div>
+            <div class="text-22 text-dark">99</div>
+            <div class="text-23 text-dark">99</div>
+            <div class="text-24 text-dark">Average</div>
+            <div class="text-25 text-dark">Above Average</div>
+            <div class="text-26 text-dark">Average</div>
         </div>
         
         </form>

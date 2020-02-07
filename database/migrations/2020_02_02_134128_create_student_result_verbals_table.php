@@ -24,7 +24,10 @@ class CreateStudentResultVerbalsTable extends Migration
                       olsat.raw_to_scaled_verbal.scaledscore As verbal_scaled_score,
                       olsat.scaled_to_sai_verbal.sai As verbal_sai,
                       olsat.sai_to_percentile_rank_and_stanines.percentile_rank As verbal_percentile_rank,
-                      olsat.sai_to_percentile_rank_and_stanines.stanine As verbal_stanine
+                      olsat.sai_to_percentile_rank_and_stanines.stanine As verbal_stanine,
+                      olsat.final_student_datas.batch,
+                      olsat.final_student_datas.exam_date
+
                   From
                       olsat.final_student_datas Inner Join
                       olsat.raw_to_scaled_verbal On olsat.raw_to_scaled_verbal.rawscore = olsat.final_student_datas.verbal_number_correct

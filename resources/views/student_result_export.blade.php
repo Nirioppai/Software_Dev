@@ -25,6 +25,18 @@
             <div class="text-12">99</div>
             <div class="text-13">99</div>
             <div class="text-14">99</div>
+            <div class="text-15">99</div>
+            <div class="text-16">99</div>
+            <div class="text-17">99</div>
+            <div class="text-18">99</div>
+            <div class="text-19">99</div>
+            <div class="text-20">99</div>
+            <div class="text-21">99</div>
+            <div class="text-22">99</div>
+            <div class="text-23">99</div>
+            <div class="text-24">Above Average</div>
+            <div class="text-25">Average</div>
+            <div class="text-26">Average</div>
         </div>
 
 </body>

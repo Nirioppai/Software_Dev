@@ -14,7 +14,7 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-*/
+*/ 
 :root {
   --blue: #073b79;
   --indigo: #5603ad;
@@ -22282,7 +22282,7 @@ ul.stepper li.completed a .label {
 .text-2 {
   position: absolute;
   top: 17.2%;
-  left: 20.5%;
+  left: 14.5%;
   font-weight: bolder;
   font-size: 4
 }
@@ -22298,7 +22298,7 @@ ul.stepper li.completed a .label {
 .text-4 {
   position: absolute;
   top: 20%;
-  left: 20.5%;
+  left: 15.5%;
   font-weight: bolder;
   font-size: 4
 }
@@ -22306,7 +22306,7 @@ ul.stepper li.completed a .label {
 .text-5 {
   position: absolute;
   top: 21.4%;
-  left: 20.5%;
+  left: 18.5%;
   font-weight: bolder;
   font-size: 4
 }
@@ -22314,7 +22314,7 @@ ul.stepper li.completed a .label {
 .text-6 {
   position: absolute;
   top: 17.2%;
-  left: 60%;
+  left: 61%;
   font-weight: bolder;
   font-size: 4
 }
@@ -22330,7 +22330,155 @@ ul.stepper li.completed a .label {
 .text-8 {
   position: absolute;
   top: 19.9%;
-  left: 60%;
+  left: 55%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+
+
+.text-9 {
+  position: absolute;
+  top: 35.4%;
+  left: 37.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-10 {
+  position: absolute;
+  top: 37%;
+  left: 37.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-11 {
+  position: absolute;
+  top: 38.6%;
+  left: 37.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-12 {
+  position: absolute;
+  top: 35.4%;
+  left: 45.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-13 {
+  position: absolute;
+  top: 37%;
+  left: 45.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-14 {
+  position: absolute;
+  top: 38.6%;
+  left: 45.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+
+.text-15 {
+  position: absolute;
+  top: 35.4%;
+  left: 53.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-16 {
+  position: absolute;
+  top: 37%;
+  left: 53.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-17 {
+  position: absolute;
+  top: 38.6%;
+  left: 53.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+
+.text-18 {
+  position: absolute;
+  top: 35.4%;
+  left: 61.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-19 {
+  position: absolute;
+  top: 37%;
+  left: 61.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-20 {
+  position: absolute;
+  top: 38.6%;
+  left: 61.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-21 {
+  position: absolute;
+  top: 35.4%;
+  left: 69.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-22 {
+  position: absolute;
+  top: 37%;
+  left: 69.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-23 {
+  position: absolute;
+  top: 38.6%;
+  left: 69.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-24 {
+  position: absolute;
+  top: 35.3%;
+  left: 76.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-25 {
+  position: absolute;
+  top: 36.9%;
+  left: 76.2%;
+  font-weight: bolder;
+  font-size: 4
+}
+
+.text-26 {
+  position: absolute;
+  top: 38.5%;
+  left: 76.2%;
   font-weight: bolder;
   font-size: 4
 }

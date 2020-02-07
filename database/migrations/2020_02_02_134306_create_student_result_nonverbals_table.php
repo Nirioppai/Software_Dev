@@ -24,7 +24,9 @@ class CreateStudentResultNonverbalsTable extends Migration
                       olsat.raw_to_scaled_nonverbal.scaledscore As nonverbal_scaled_score,
                       olsat.scaled_to_sai_nonverbal.sai As nonverbal_sai,
                       olsat.sai_to_percentile_rank_and_stanines.percentile_rank As nonverbal_percentile_rank,
-                      olsat.sai_to_percentile_rank_and_stanines.stanine As nonverbal_stanine
+                      olsat.sai_to_percentile_rank_and_stanines.stanine As nonverbal_stanine,
+                      olsat.final_student_datas.batch,
+                      olsat.final_student_datas.exam_date
                   From
                       olsat.final_student_datas Inner Join
                       olsat.raw_to_scaled_nonverbal On
