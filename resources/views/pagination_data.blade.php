@@ -7,7 +7,7 @@
        <td align="center">{{ $row->date_of_birth }}</td>
        <td align="center">{{ $row->grade_level }}</td>
 
-       <td align="center"><a href="studentinfo/{{$row->id}}"><button type="button" class="btn btn-primary">View</button></a></td>
+       <td align="center"><a href="view/studentinfo/{{$row->id}}"><button type="button" class="btn btn-primary">View</button></a></td>
      </tr>
 
   @endforeach

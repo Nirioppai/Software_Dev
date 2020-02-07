@@ -48,10 +48,11 @@
   <!--
   <a class="custom-breadcrumb text-dark" href="/home">Dashboard</a>
   <a>/</a>
-  <a class="custom-breadcrumb text-dark" href="/home">Dashboard</a>
+     -->
+  <a class="custom-breadcrumb text-dark" href="/students">Students</a>
   <a>/</a>
-   -->
-  <a class="current-breadcrumb text-dark">> Upload CSV</a>
+
+  <a class="current-breadcrumb text-dark"><b>View Student List</b></a>
 </div>
 @endsection
 

@@ -70,9 +70,9 @@ Route::post('/csv/import_process', 'ImportController@processImport')->name('impo
 Route::get('/students/view', 'LiveSearchController@students')->name('students');
 // Route::get('/students/fetch_data', 'LiveSearchController@fetch_data');
 // Route::get('/students/info', 'LiveSearchController@studentInfo')->name('studentInfo');
-Route::resource('/students/studentinfo', 'LiveSearchController');
+Route::resource('/students/view/studentinfo', 'LiveSearchController');
 
-Route::patch('/studentinfo/{$student_details->id}', 'LiveSearchController@update');
+Route::patch('/view/studentinfo/{$student_details->id}', 'LiveSearchController@update');
 
 // Route::get('/monitoring/total', 'HomeController@monitoring')->name('monitoringTotal');
 Route::get('/monitoring', 'MonitoringTotalController@monitor')->name('monitoring');
