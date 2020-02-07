@@ -118,9 +118,6 @@ class ImportController extends Controller
 
   public function uploadStudent3 (Request $request) {
 
-    DB::statement("TRUNCATE TABLE student_datas;
-    ");
-
     $date_of_exam = $request->date_of_exam;
 
     $final_student = DB::table('final_student_datas');
@@ -426,7 +423,7 @@ class ImportController extends Controller
     ");
 
     $success = ('success');
-    return redirect('/csv')->with('success', $success);
+    return redirect('/students')->with('success', $success);
   }
 
 }

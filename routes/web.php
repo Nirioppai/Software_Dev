@@ -25,15 +25,16 @@ Route::post('/register/submit', 'CustomRegisterController@submit');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/students', 'HomeController@studentslist')->name('studentslist');
 
 Route::get('/csv', 'HomeController@csv')->name('csv');
 Route::get('/csv/students', 'HomeController@uploadStudent')->name('uploadStudent');
 
-Route::get('/csv/students/1', 'ImportController@uploadStudent1')->name('uploadStudent1');
+Route::get('/students/upload/1', 'ImportController@uploadStudent1')->name('uploadStudent1');
 
-Route::post('/csv/students/2', 'ImportController@uploadStudent2')->name('uploadStudent2');
+Route::post('/students/upload/2', 'ImportController@uploadStudent2')->name('uploadStudent2');
 
-Route::post('/csv/students/3', 'ImportController@uploadStudent3')->name('uploadStudent3');
+Route::post('/students/upload/3', 'ImportController@uploadStudent3')->name('uploadStudent3');
 // Route::post('/csv/students/3/submit', 'ImportController@uploadStudent3Submit')->name('uploadStudent3Submit');
 
 
@@ -66,10 +67,10 @@ Route::post('/csv/import_parse', 'ImportController@parseImport')->name('import_p
 Route::post('/csv/import_process', 'ImportController@processImport')->name('import_process');
 
 //Route::get('/students', 'HomeController@students')->name('students');
-Route::get('/students', 'LiveSearchController@students')->name('students');
+Route::get('/students/view', 'LiveSearchController@students')->name('students');
 // Route::get('/students/fetch_data', 'LiveSearchController@fetch_data');
-Route::get('/students/info', 'LiveSearchController@studentInfo')->name('studentInfo');
-Route::resource('studentinfo', 'LiveSearchController');
+// Route::get('/students/info', 'LiveSearchController@studentInfo')->name('studentInfo');
+Route::resource('/students/studentinfo', 'LiveSearchController');
 
 Route::patch('/studentinfo/{$student_details->id}', 'LiveSearchController@update');
 

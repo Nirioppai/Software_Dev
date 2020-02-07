@@ -42,6 +42,11 @@ class HomeController extends Controller
 
     }
 
+    public function studentslist()
+    {
+        return view('students');
+    }
+
     // public function monitoring()
     // {
     //     return view('monitoring');

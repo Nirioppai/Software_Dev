@@ -12,13 +12,13 @@
       <i class="ni ni-tv-2 text-primary"></i> Dashboard
     </a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link " href="/students">
+  <li class="nav-item active">
+    <a class="nav-link active" href="/students">
       <i class="ni ni-planet text-primary"></i> Students
     </a>
   </li>
-  <li class="nav-item active">
-    <a class="nav-link active" href="/csv">
+  <li class="nav-item ">
+    <a class="nav-link " href="/csv">
       <i class="fas fa-file-excel text-primary"></i> Upload CSV
     </a>
   </li>
@@ -139,8 +139,8 @@
 
                     <input type="hidden" name="csv_data_file_id" value="{{ $csv_data_file->id }}" />
 
-                    <div class="step-content grey lighten-3" align="center">
-                        <h3>Choose Date of Exam:</h3>
+                    <div class="step-content grey lighten-3 mt--4">
+                        <h3>Choose Date of Examination:</h3>
                         <input type="date" name="date_of_exam" id="date_of_exam" value="{{$date_today}}" required>
                     </div>
 
@@ -165,7 +165,7 @@
                                   @if(isset($csv_header_fields))
                                   <tr>
                                     @foreach($csv_header_fields as $csv_header_field)
-                                    <th class="th-lg"><a href="">{{ $csv_header_field }}</a></th>
+                                    <th class="text-center">{{ $csv_header_field }}</th>
                                     @endforeach
                                   </tr>
                                   @endif
@@ -234,18 +234,21 @@
                         <p>Finalize <b>Student Data</b> uploading?</p>
                     </div>
 
-                      <div class="ml-6">
-                            <button type="submit" class="btn btn-secondary">
+                      <div class="row ml-5">
+                        <div class="col-sm">
+                          <button type="submit" class="btn btn-secondary">
                                 Cancel
                             </button>
-
-                        <form method="POST" action="{{ route('finalizeUpload') }}">
+                        </div>
+                        <div class="col-sm">
+                          <form method="POST" action="{{ route('finalizeUpload') }}">
                           {{ csrf_field() }}
 
                             <button type="submit" class="btn btn-primary">
                                 Continue
                             </button>
                         </form>
+                        </div>
                       </div>
 
                 </li>
