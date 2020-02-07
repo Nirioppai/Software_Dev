@@ -12,8 +12,8 @@
       <i class="ni ni-tv-2 text-primary"></i> Dashboard
     </a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link " href="/students">
+  <li class="nav-item active">
+    <a class="nav-link active" href="/students">
       <i class="ni ni-planet text-primary"></i> Students
     </a>
   </li>
@@ -22,8 +22,8 @@
       <i class="fas fa-file-excel text-primary"></i> Upload CSV
     </a>
   </li>
-  <li class="nav-item active">
-    <a class="nav-link active" href="/monitoring">
+  <li class="nav-item ">
+    <a class="nav-link " href="/monitoring">
       <i class="ni ni-key-25 text-primary"></i> Monitoring
     </a>
   </li>
@@ -48,10 +48,11 @@
   <!--
   <a class="custom-breadcrumb text-dark" href="/home">Dashboard</a>
   <a>/</a>
-  <a class="custom-breadcrumb text-dark" href="/home">Dashboard</a>
+     -->
+  <a class="custom-breadcrumb text-dark" href="/students">Students</a>
   <a>/</a>
-   -->
-  <a class="current-breadcrumb text-dark">> Monitoring</a>
+
+  <a class="current-breadcrumb text-dark"><b>Result Monitoring</b></a>
 </div>
 @endsection
 

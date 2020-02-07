@@ -34,7 +34,7 @@
        <td align="center">{{ $row->total_stanine }}</td>
 
 
-       <td align="center"><a href="totalinfo/{{$row->id}}"><button type="button" class="btn btn-primary">View</button></a></td>
+       <td align="center"><a href="monitoring/totalinfo/{{$row->id}}"><button type="button" class="btn btn-primary">View</button></a></td>
      </tr>
 
   @endforeach
@@ -61,7 +61,7 @@
        <td align="center">{{$row->verbal_stanine}}</td>
 
 
-       <td align="center"><a href="verbalinfo/{{$row->id}}"><button type="button" class="btn btn-primary">View</button></a></td>
+       <td align="center"><a href="monitoring/verbalinfo/{{$row->id}}"><button type="button" class="btn btn-primary">View</button></a></td>
      </tr>
 
   @endforeach
@@ -87,7 +87,7 @@
        <td align="center">{{$row->nonverbal_percentile_rank}}</td>
        <td align="center">{{$row->nonverbal_stanine}}</td>
 
-       <td align="center"><a href="nonverbalinfo/{{$row->id}}"><button type="button" class="btn btn-primary">View</button></a></td>
+       <td align="center"><a href="monitoring/nonverbalinfo/{{$row->id}}"><button type="button" class="btn btn-primary">View</button></a></td>
      </tr>
 
   @endforeach

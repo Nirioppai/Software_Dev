@@ -8,8 +8,8 @@
             <i class="ni ni-tv-2 text-primary"></i> Dashboard
         </a>
     </li>
-    <li class="nav-item ">
-        <a class="nav-link " href="/students">
+    <li class="nav-item active">
+        <a class="nav-link active" href="/students">
             <i class="ni ni-planet text-primary"></i> Students
         </a>
     </li>
@@ -18,8 +18,8 @@
             <i class="fas fa-file-excel text-primary"></i> Upload CSV
         </a>
     </li>
-    <li class="nav-item active">
-        <a class="nav-link active" href="/monitoring">
+    <li class="nav-item ">
+        <a class="nav-link " href="/monitoring">
             <i class="ni ni-key-25 text-primary"></i> Monitoring
         </a>
     </li>
@@ -39,15 +39,57 @@
 @endsection @section('breadcrumb')
 <!-- Breadcrumb -->
 <div>
-    <!--
+  <!--
   <a class="custom-breadcrumb text-dark" href="/home">Dashboard</a>
   <a>/</a>
-  <a class="custom-breadcrumb text-dark" href="/home">Dashboard</a>
+     -->
+  <a class="custom-breadcrumb text-dark" href="/students">Students</a>
   <a>/</a>
-   -->
-    <a class="current-breadcrumb text-dark">> Students</a>
+
+  <a class="custom-breadcrumb text-dark" href="/students/monitoring">Result Monitoring</a>
+  <a>/</a>
+
+  <a class="current-breadcrumb text-dark"><b>Individual Result</b></a>
 </div>
 @endsection @section('content')
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="editModalLabel">Edit Student Raw Scores</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                </div>
+                <input class="form-control" placeholder="New Verbal score" type="text">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                </div>
+                <input class="form-control" placeholder="New Non-Verbal score" type="text">
+            </div>
+        </div>
+
+      </div>
+      <div class="modal-footer mt--5">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="row mt-4">
     <div class="col-xl-4  mb-5 mb-xl-0">
@@ -63,7 +105,7 @@
             </div>
             <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                 <div class="d-flex justify-content-between">
-                    <a href="#" class="btn btn-sm btn-default float-right ml--3">Edit Profile</a>
+                    <a href="#" class="btn btn-sm btn-default float-right ml--3" data-toggle="modal" data-target="#editModal">Edit Profile</a>
                 </div>
             </div>
             <div class="card-body pt-0 pt-md-4">
@@ -95,7 +137,7 @@
                         Remarks
                     </h2>
                     <form>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a remark about the student."></textarea>
+                        <textarea class="form-control form-control-alternative" id="exampleFormControlTextarea1" rows="3" placeholder="Write a remark about the student."></textarea>
                     </form>
 
                     <div class="row">

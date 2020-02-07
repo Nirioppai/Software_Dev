@@ -75,23 +75,23 @@ Route::resource('/students/view/studentinfo', 'LiveSearchController');
 Route::patch('/view/studentinfo/{$student_details->id}', 'LiveSearchController@update');
 
 // Route::get('/monitoring/total', 'HomeController@monitoring')->name('monitoringTotal');
-Route::get('/monitoring', 'MonitoringTotalController@monitor')->name('monitoring');
+Route::get('/students/monitoring', 'MonitoringTotalController@monitor')->name('monitoring');
 // Route::get('monitoring/fetch_data', 'MonitoringTotalController@fetch_data');
-Route::get('monitoring/info', 'MonitoringTotalController@totalInfo')->name('totalInfo');
+Route::get('/students/monitoring/info', 'MonitoringTotalController@totalInfo')->name('totalInfo');
 
-Route::resource('totalinfo', 'MonitoringTotalController');
+Route::resource('/students/monitoring/totalinfo', 'MonitoringTotalController');
 
-Route::get('/monitoring/verbal', 'MonitoringVerbalController@monitoring_verbal')->name('monitoring_verbal');
+Route::get('/students/monitoring/verbal', 'MonitoringVerbalController@monitoring_verbal')->name('monitoring_verbal');
 // Route::get('monitoring/verbal/fetch_data', 'MonitoringVerbalController@fetch_data');
-Route::get('monitoring/verbalinfo', 'MonitoringVerbalController@verbalInfo')->name('verbalInfo');
+Route::get('/students/monitoring/verbalinfo', 'MonitoringVerbalController@verbalInfo')->name('verbalInfo');
 
-Route::resource('/monitoring/verbalinfo', 'MonitoringVerbalController');
+Route::resource('/students/monitoring/verbalinfo', 'MonitoringVerbalController');
 
-Route::get('/monitoring/nonverbal', 'MonitoringNonVerbalController@monitoring_nonverbal')->name('monitoring_nonverbal');
+Route::get('/students/monitoring/nonverbal', 'MonitoringNonVerbalController@monitoring_nonverbal')->name('monitoring_nonverbal');
 // Route::get('monitoring/nonverbal/fetch_data', 'MonitoringNonVerbalController@fetch_data');
-Route::get('monitoring/nonverbalinfo', 'MonitoringNonVerbalController@nonverbalInfo')->name('nonverbalInfo');
+Route::get('/students/monitoring/nonverbalinfo', 'MonitoringNonVerbalController@nonverbalInfo')->name('nonverbalInfo');
 
-Route::resource('/monitoring/nonverbalinfo', 'MonitoringNonVerbalController');
+Route::resource('/students/monitoring/nonverbalinfo', 'MonitoringNonVerbalController');
 
 Route::post('/export-pdf', 'PDFController@viewPDF')->name('viewPDF');
 Route::post('/save-pdf', 'PDFController@savePDF')->name('savePDF');
