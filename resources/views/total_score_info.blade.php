@@ -49,6 +49,9 @@
   <a class="custom-breadcrumb text-dark" href="/students/monitoring">Result Monitoring</a>
   <a>/</a>
 
+  <a class="custom-breadcrumb text-dark" href="/students/monitoring/{{$total_score_details->batch}}">Batch Results</a>
+  <a>/</a>
+
   <a class="current-breadcrumb text-dark"><b>Individual Result</b></a>
 </div>
 @endsection @section('content')
@@ -63,7 +66,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body mt--3">
         <div class="form-group">
             <div class="input-group mb-4">
                 <div class="input-group-prepend">

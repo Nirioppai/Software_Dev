@@ -13,14 +13,14 @@
             <div class="row-sm mt-4 picture-anchor">
             <img style="width: 100%; height: 100%;" src="./img/pdf/PDF_Export.png">
             <div class="text-2">{{$student_details->name}}</div>
-            <div class="text-3">Pasig</div>
-            <div class="text-4">Philippine University of the Philippines</div>
-            <div class="text-5">2002 - 2010</div>
-            <div class="text-6">January 10, 2020</div>
-            <div class="text-7">August 6, 1999</div>
-            <div class="text-8">20.2 Years old</div>
-            <div class="text-9">99</div>
-            <div class="text-10">99</div>
+            <div class="text-3">{{$student_details->grade_level}}</div>
+            <div class="text-4">Xavier School San Juan</div>
+            <div class="text-5"></div>
+            <div class="text-6">{{$student_details->exam_date}}</div>
+            <div class="text-7">{{$student_details->date_of_birth}}</div>
+            <div class="text-8">{{$student_details->rounded_current_age_in_years}}.{{$student_details->rounded_current_age_in_months}} Years old</div>
+            <div class="text-9">{{$verbal_details->verbal_raw_score}}</div>
+            <div class="text-10">{{$total_details->total_raw_score}}</div>
             <div class="text-11">99</div>
             <div class="text-12">99</div>
             <div class="text-13">99</div>

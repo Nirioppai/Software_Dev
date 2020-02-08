@@ -11,6 +11,7 @@ return array(
     'App\\CsvData' => $baseDir . '/app/CsvData.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\FinalStudentData' => $baseDir . '/app/FinalStudentData.php',
+    'App\\FinalStudentResult' => $baseDir . '/app/FinalStudentResult.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',

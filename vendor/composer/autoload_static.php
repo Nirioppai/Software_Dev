@@ -528,6 +528,7 @@ class ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72
         'App\\CsvData' => __DIR__ . '/../..' . '/app/CsvData.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\FinalStudentData' => __DIR__ . '/../..' . '/app/FinalStudentData.php',
+        'App\\FinalStudentResult' => __DIR__ . '/../..' . '/app/FinalStudentResult.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',

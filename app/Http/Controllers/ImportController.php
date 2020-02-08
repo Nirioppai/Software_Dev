@@ -7,6 +7,10 @@ use App\CsvData;
 use App\RawScoreToScaledScore;
 use App\ScaledScoreToSai;
 use App\SaiToPercentileRankAndStanine;
+use App\FinalStudentResult;
+use App\student_result_total;
+use App\student_result_verbal;
+use App\student_result_nonverbal;
 use App\Http\Requests\CsvImportRequest;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
@@ -410,6 +414,7 @@ class ImportController extends Controller
 
   }
 
+
   public function finalizeUpload()
   {
     // DITO ILILIPAT LAMAN NG VIEW SA final_STUDENT_DATAS
@@ -421,6 +426,42 @@ class ImportController extends Controller
 
     DB::statement("TRUNCATE TABLE student_datas;
     ");
+
+
+    //get current batch
+    $max_batch = FinalStudentData::max('batch');
+    //insert where batch = current batch, to prevent duplicate entries
+    DB::statement("INSERT INTO final_student_results (id, student_id, name, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, grade_level, exam_date, batch, created_at)
+
+       SELECT id, student_id, name, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, grade_level, exam_date, batch, created_at  FROM final_student_datas WHERE batch = ".$max_batch.";
+    ");
+
+
+    //  * WORKS FINE ABOVE THIS LINE
+
+
+    // * WELCOME TO FUCK UP LAND, kinomment ko lang pu yung for loop to give u a fresh start
+
+
+    //medyo hindi pa stable, havent tested it that efficiently
+    $max_id = FinalStudentData::where('batch', $max_batch)->max('id');
+
+    //for loop to loop through every ID in student result total, and write it to final student result table
+    /*
+    for($i = 8; $i <= $max_id; $i++ )
+        {
+          //taga kuha ng total raw sa current ID 
+          $total_raw = DB::table('student_result_total')->where('id',  $i)->pluck('total_raw_score')->first();
+
+          // optimal magpasok dito ng function to check if $total_raw is null
+          // if null, plus 1 then check ulet, if not, proceed sa baba
+
+          $update = FinalStudentResult::where('id', $i)->update(['total_raw' => $total_raw]);
+
+        }
+        */
+
+    
 
     $success = ('success');
     return redirect('/students')->with('success', $success);
