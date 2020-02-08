@@ -75,7 +75,8 @@ Route::resource('/students/view/studentinfo', 'LiveSearchController');
 Route::patch('/view/studentinfo/{$student_details->id}', 'LiveSearchController@update');
 
 // Route::get('/monitoring/total', 'HomeController@monitoring')->name('monitoringTotal');
-Route::get('/students/monitoring', 'MonitoringTotalController@monitor')->name('monitoring');
+Route::get('/students/monitoring', 'BatchController@index')->name('batch_list');
+Route::get('/students/monitoring/{batch}', 'BatchController@monitor')->name('monitoring');
 // Route::get('monitoring/fetch_data', 'MonitoringTotalController@fetch_data');
 Route::get('/students/monitoring/info', 'MonitoringTotalController@totalInfo')->name('totalInfo');
 

@@ -98,9 +98,9 @@ class MonitoringTotalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($batch)
     {
-        //
+        return view ('monitoring')->with('batch', $batch);
     }
 
     /**

@@ -523,16 +523,18 @@ class ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72
     );
 
     public static $classMap = array (
-        'App\\BatchedStudentData' => __DIR__ . '/../..' . '/app/BatchedStudentData.php',
+        'App\\BatchList' => __DIR__ . '/../..' . '/app/BatchList.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\CsvData' => __DIR__ . '/../..' . '/app/CsvData.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\FinalStudentData' => __DIR__ . '/../..' . '/app/FinalStudentData.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\BatchController' => __DIR__ . '/../..' . '/app/Http/Controllers/BatchController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CustomRegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/CustomRegisterController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
@@ -541,6 +543,7 @@ class ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72
         'App\\Http\\Controllers\\MonitoringNonVerbalController' => __DIR__ . '/../..' . '/app/Http/Controllers/MonitoringNonVerbalController.php',
         'App\\Http\\Controllers\\MonitoringTotalController' => __DIR__ . '/../..' . '/app/Http/Controllers/MonitoringTotalController.php',
         'App\\Http\\Controllers\\MonitoringVerbalController' => __DIR__ . '/../..' . '/app/Http/Controllers/MonitoringVerbalController.php',
+        'App\\Http\\Controllers\\PDFController' => __DIR__ . '/../..' . '/app/Http/Controllers/PDFController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
