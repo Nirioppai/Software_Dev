@@ -482,9 +482,11 @@ class ImportController extends Controller
           // if null, plus 1 then check ulet, if not, proceed sa baba
 
 
-          $idExists = DB::table('student_result_total')->where('id',  $i)->exists();
+          $totalID = DB::table('student_result_total')->where('id',  $i)->exists();
+          $verbalID = DB::table('student_result_verbal')->where('id',  $i)->exists();
+          $nonverbalID = DB::table('student_result_nonverbal')->where('id',  $i)->exists();
 
-          if ($idExists == true)
+          if ($totalID == true && $verbalID == true && $nonverbalID == true)
           {
 
             // $update = FinalStudentResult::where('id', $i)->update(['total_raw' => $total_raw]);
