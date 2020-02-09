@@ -154,16 +154,16 @@
           <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
 
           <div class="col-md-4 ml--3">
-              <p align="right">Total Students: {{$count_rows}}</p>
+              <p align="right"></p>
           </div>
 
           <div class="col-md-4">
-             <p align="center">Current Page: {{$current_page}}</p>
+             <p align="center"> <strong>Total Students:</strong> {{$count_rows}}</p>
           </div>
 
           <div class="col-md-4">
 
-              <p align="left">Showing _ of {{$count_rows}} </p>
+              <p align="left"></p>
 
           </div>
 
@@ -183,5 +183,3 @@
 
 
 @endsection
-
-

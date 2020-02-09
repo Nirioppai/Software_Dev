@@ -8,6 +8,7 @@ use App\RawScoreToScaledScore;
 use App\ScaledScoreToSai;
 use App\SaiToPercentileRankAndStanine;
 use App\FinalStudentResult;
+use App\StudentRemark;
 use App\student_result_total;
 use App\student_result_verbal;
 use App\student_result_nonverbal;
@@ -439,9 +440,16 @@ class ImportController extends Controller
        SELECT id, student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, grade_level, exam_date, batch, created_at  FROM final_student_datas WHERE batch = ".$max_batch.";
     ");
 
+    $count_new_batch = DB::table('final_student_datas')->where('batch',  $max_batch)->count();
+
+    // for($j = 1; $j <= $count_new_batch; $j++ ){
+    //    $studentremarks = new StudentRemark();
+    //    $studentremarks->remarks = '';
+    //    $studentremarks->save();
+    // }
+
 
     //  * WORKS FINE ABOVE THIS LINE
-
 
     // * WELCOME TO FUCK UP LAND, kinomment ko lang pu yung for loop to give u a fresh start
 
@@ -450,7 +458,6 @@ class ImportController extends Controller
     $max_id = FinalStudentData::where('batch', $max_batch)->max('id');
 
     //for loop to loop through every ID in student result total, and write it to final student result table
-
 
     for($i = 1; $i <= $max_id; $i++ )
         {
