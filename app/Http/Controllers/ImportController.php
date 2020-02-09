@@ -122,6 +122,9 @@ class ImportController extends Controller
 
   public function uploadStudent3 (Request $request) {
 
+    DB::statement("TRUNCATE TABLE student_datas;
+    ");
+
     $date_of_exam = $request->date_of_exam;
 
     $final_student = DB::table('final_student_datas');
@@ -241,8 +244,8 @@ class ImportController extends Controller
 
   public function uploadScaledScore3 (Request $request) {
 
-    DB::statement("TRUNCATE TABLE raw_score_to_scaled_scores;
-    ");
+    // DB::statement("TRUNCATE TABLE raw_score_to_scaled_scores;
+    // ");
 
     $data = CsvData::find($request->csv_data_file_id);
     $csv_data = json_decode($data->csv_data, true);
@@ -313,8 +316,8 @@ class ImportController extends Controller
 
   public function uploadSAI3 (Request $request) {
 
-    DB::statement("TRUNCATE TABLE scaled_score_to_sais;
-    ");
+    // DB::statement("TRUNCATE TABLE scaled_score_to_sais;
+    // ");
 
     $data = CsvData::find($request->csv_data_file_id);
     $csv_data = json_decode($data->csv_data, true);
@@ -389,8 +392,8 @@ class ImportController extends Controller
 
   public function uploadStanine3 (Request $request) {
 
-    DB::statement("TRUNCATE TABLE sai_to_percentile_rank_and_stanines;
-    ");
+    // DB::statement("TRUNCATE TABLE sai_to_percentile_rank_and_stanines;
+    // ");
 
     $data = CsvData::find($request->csv_data_file_id);
     $csv_data = json_decode($data->csv_data, true);
@@ -431,9 +434,9 @@ class ImportController extends Controller
     //get current batch
     $max_batch = FinalStudentData::max('batch');
     //insert where batch = current batch, to prevent duplicate entries
-    DB::statement("INSERT INTO final_student_results (id, student_id, name, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, grade_level, exam_date, batch, created_at)
+    DB::statement("INSERT INTO final_student_results (id, student_id, name, total_raw, verbal_raw, nonverbal_raw, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, grade_level, exam_date, batch, created_at)
 
-       SELECT id, student_id, name, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, grade_level, exam_date, batch, created_at  FROM final_student_datas WHERE batch = ".$max_batch.";
+       SELECT id, student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, grade_level, exam_date, batch, created_at  FROM final_student_datas WHERE batch = ".$max_batch.";
     ");
 
 
@@ -447,21 +450,61 @@ class ImportController extends Controller
     $max_id = FinalStudentData::where('batch', $max_batch)->max('id');
 
     //for loop to loop through every ID in student result total, and write it to final student result table
-    /*
-    for($i = 8; $i <= $max_id; $i++ )
+
+
+    for($i = 1; $i <= $max_id; $i++ )
         {
-          //taga kuha ng total raw sa current ID 
-          $total_raw = DB::table('student_result_total')->where('id',  $i)->pluck('total_raw_score')->first();
+          //taga kuha ng total raw sa current ID
+          // $total_raw = DB::table('student_result_total')->where('id',  $i)->pluck('total_raw_score')->first();
+          $total_scaled = DB::table('student_result_total')->where('id',  $i)->pluck('total_scaled_score')->first();
+          $total_sai = DB::table('student_result_total')->where('id',  $i)->pluck('total_sai')->first();
+          $total_percentile = DB::table('student_result_total')->where('id',  $i)->pluck('total_percentile_rank')->first();
+          $total_stanine = DB::table('student_result_total')->where('id',  $i)->pluck('total_stanine')->first();
+
+          $verbal_scaled = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_scaled_score')->first();
+          $verbal_sai = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_sai')->first();
+          $verbal_percentile = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_percentile_rank')->first();
+          $verbal_stanine = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_stanine')->first();
+
+          $nonverbal_scaled = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_scaled_score')->first();
+          $nonverbal_sai = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_sai')->first();
+          $nonverbal_percentile = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_percentile_rank')->first();
+          $nonverbal_stanine = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_stanine')->first();
 
           // optimal magpasok dito ng function to check if $total_raw is null
           // if null, plus 1 then check ulet, if not, proceed sa baba
 
-          $update = FinalStudentResult::where('id', $i)->update(['total_raw' => $total_raw]);
+
+          $idExists = DB::table('student_result_total')->where('id',  $i)->exists();
+
+          if ($idExists == true)
+          {
+
+            // $update = FinalStudentResult::where('id', $i)->update(['total_raw' => $total_raw]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_scaled' => $total_scaled]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_sai' => $total_sai]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_percentile' => $total_percentile]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_stanine' => $total_stanine]);
+
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_scaled' => $verbal_scaled]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_percentile' => $verbal_percentile]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_sai' => $verbal_sai]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_stanine' => $verbal_stanine]);
+
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_scaled' => $nonverbal_scaled]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_percentile' => $nonverbal_percentile]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_sai' => $nonverbal_sai]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_stanine' => $nonverbal_stanine]);
+
+
+          }
+          else
+          {
+              continue;
+          }
 
         }
-        */
 
-    
 
     $success = ('success');
     return redirect('/students')->with('success', $success);
