@@ -57,42 +57,60 @@
 @endsection @section('content')
 
 <!-- Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="editModalLabel">Edit Student Raw Scores</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mt--3">
-        <div class="form-group">
-            <div class="input-group mb-4">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
-                </div>
-                <input class="form-control" placeholder="New Verbal score" type="text">
-            </div>
-        </div>
+<form action="/students/monitoring/totalinfo/{{$total_score_details->id}}" method="POST">
+      {{ csrf_field() }}
+      {{ method_field('PATCH') }}
 
-        <div class="form-group">
-            <div class="input-group mb-4">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
-                </div>
-                <input class="form-control" placeholder="New Non-Verbal score" type="text">
-            </div>
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="editModalLabel">Edit Student Raw Scores</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body mt--3">
 
-      </div>
-      <div class="modal-footer mt--5">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+          <!-- <div class="form-group">
+            Total
+              <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                  </div>
+                  <input class="form-control" name="overall_total_score" value="{{$total_score_details->total_raw}}" type="number" required>
+              </div>
+          </div> -->
+          <div class="form-group">
+            Verbal
+              <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                  </div>
+                  <input class="form-control" name="verbal_number_correct" value="{{$total_score_details->verbal_raw}}" type="number" required>
+              </div>
+          </div>
+
+          <div class="form-group">
+            Non-Verbal
+              <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                  </div>
+                  <input class="form-control" name="non_verbal_number_correct" value="{{$total_score_details->nonverbal_raw}}" type="number" required>
+              </div>
+          </div>
+
+        </div>
+        <div class="modal-footer mt--5">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+</form>
 
 <div class="row mt-4">
     <div class="col-xl-4  mb-5 mb-xl-0">
@@ -108,7 +126,7 @@
             </div>
             <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                 <div class="d-flex justify-content-between">
-                    <a href="#" class="btn btn-sm btn-default float-right ml--3" data-toggle="modal" data-target="#editModal">Edit Profile</a>
+                    <a href="/students/monitoring/totalinfo/{{$total_score_details->id}}/edit" class="btn btn-sm btn-default float-right ml--3" data-toggle="modal" data-target="#editModal">Edit Profile</a>
                 </div>
             </div>
             <div class="card-body pt-0 pt-md-4">
@@ -123,7 +141,48 @@
                         </h2>
                         <span class="font-weight-bold">Student No:</span> <span class="ml-1">{{$total_score_details->student_id}}</span>
                         <br>
-                        <span class="font-weight-bold">Birthdate:</span> <span class="ml-3">08-06-1999</span>
+                        <span class="font-weight-bold">Grade Level:</span> <span class="ml-3">{{$total_score_details->grade_level}}</span>
+                        <br>
+                        <br>
+                        <span class="font-weight-bold">Birthdate:</span> <span class="ml-3">{{$total_score_details->date_of_birth}}</span>
+                        <br>
+                        <span class="font-weight-bold">Age in Years:</span> <span class="ml-3">{{$total_score_details->rounded_current_age_in_years}}</span>
+                        <br>
+                        <span class="font-weight-bold">Age in Months:</span> <span class="ml-3">{{$total_score_details->rounded_current_age_in_months}}</span>
+                        <br>
+                        <br>
+                        <span class="font-weight-bold">Total Raw Score:</span> <span class="ml-3">{{$total_score_details->total_raw}}</span>
+                        <br>
+                        <span class="font-weight-bold">Total Scaled Score:</span> <span class="ml-3">{{$total_score_details->total_scaled}}</span>
+                        <br>
+                        <span class="font-weight-bold">Total SAI:</span> <span class="ml-3">{{$total_score_details->total_sai}}</span>
+                        <br>
+                        <span class="font-weight-bold">Total Percentile Rank:</span> <span class="ml-3">{{$total_score_details->total_percentile}}</span>
+                        <br>
+                        <span class="font-weight-bold">Total Stanine:</span> <span class="ml-3">{{$total_score_details->total_stanine}}</span>
+                        <br>
+                        <br>
+                        <span class="font-weight-bold">Verbal Raw Score:</span> <span class="ml-3">{{$total_score_details->verbal_raw}}</span>
+                        <br>
+                        <span class="font-weight-bold">Verbal Scaled Score:</span> <span class="ml-3">{{$total_score_details->verbal_scaled}}</span>
+                        <br>
+                        <span class="font-weight-bold">Verbal SAI:</span> <span class="ml-3">{{$total_score_details->verbal_sai}}</span>
+                        <br>
+                        <span class="font-weight-bold">Verbal Percentile Rank:</span> <span class="ml-3">{{$total_score_details->verbal_percentile}}</span>
+                        <br>
+                        <span class="font-weight-bold">Verbal Stanine:</span> <span class="ml-3">{{$total_score_details->verbal_stanine}}</span>
+                        <br>
+                        <br>
+                        <span class="font-weight-bold">Non-Verbal Raw Score:</span> <span class="ml-3">{{$total_score_details->nonverbal_raw}}</span>
+                        <br>
+                        <span class="font-weight-bold">Non-Verbal Scaled Score:</span> <span class="ml-3">{{$total_score_details->nonverbal_scaled}}</span>
+                        <br>
+                        <span class="font-weight-bold">Non-Verbal SAI:</span> <span class="ml-3">{{$total_score_details->nonverbal_sai}}</span>
+                        <br>
+                        <span class="font-weight-bold">Non-Verbal Percentile Rank:</span> <span class="ml-3">{{$total_score_details->nonverbal_percentile}}</span>
+                        <br>
+                        <span class="font-weight-bold">Non-Verbal Stanine:</span> <span class="ml-3">{{$total_score_details->nonverbal_stanine}}</span>
+
                     </div>
                     <hr class="my-4" />
                     <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
@@ -178,7 +237,7 @@
                 </div>
 
 
-            </div> 
+            </div>
         </div>
         <form id="viewPDF" action="{{ route('viewPDF') }}" method="post">
         @csrf
@@ -213,9 +272,9 @@
             <div class="text-25 text-dark">Above Average</div>
             <div class="text-26 text-dark">Average</div>
         </div>
-        
+
         </form>
-        
+
     </div>
 </div>
 

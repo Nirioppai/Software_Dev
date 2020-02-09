@@ -72,13 +72,15 @@ Route::get('/students/view', 'LiveSearchController@students')->name('students');
 // Route::get('/students/info', 'LiveSearchController@studentInfo')->name('studentInfo');
 Route::resource('/students/view/studentinfo', 'LiveSearchController');
 
-Route::patch('/view/studentinfo/{$student_details->id}', 'LiveSearchController@update');
+// Route::patch('/view/studentinfo/{$student_details->id}', 'LiveSearchController@update');
 
 // Route::get('/monitoring/total', 'HomeController@monitoring')->name('monitoringTotal');
 Route::get('/students/monitoring', 'BatchController@index')->name('batch_list');
 Route::get('/students/monitoring/{batch}', 'BatchController@monitor')->name('monitoring');
 // Route::get('monitoring/fetch_data', 'MonitoringTotalController@fetch_data');
 Route::get('/students/monitoring/info', 'MonitoringTotalController@totalInfo')->name('totalInfo');
+
+Route::patch('/students/monitoring/info/{total_score_details->id}', 'MonitoringTotalController@udpate');
 
 Route::resource('/students/monitoring/totalinfo', 'MonitoringTotalController');
 

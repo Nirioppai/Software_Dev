@@ -62,7 +62,7 @@
   {{ csrf_field() }}
 
 <div class="input-group">
-     <input type="text" name="search" id="search" placeholder="Search in Total" value="{{$input_search}}" aria-describedby="button-addon8" class="form-control text-dark">
+     <input type="text" name="search" id="search" placeholder="Search in Results" value="{{$input_search}}" aria-describedby="button-addon8" class="form-control text-dark">
      <div class="input-group-append">
        <button id="button-addon8" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
      </div>

@@ -4,7 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\StudentData;
+use App\FinalStudentData;
+use App\RawScoreToScaledScore;
+use App\ScaledScoreToSai;
+use App\SaiToPercentileRankAndStanine;
+use App\FinalStudentResult;
+use App\StudentRemark;
 use App\student_result_total;
+use App\student_result_verbal;
+use App\student_result_nonverbal;
+
 use DB;
 
 class MonitoringTotalController extends Controller
@@ -132,7 +142,7 @@ class MonitoringTotalController extends Controller
      */
     public function show($id)
     {
-      $total_score_details = DB::table('student_result_total')->find($id);
+      $total_score_details = DB::table('final_student_results')->find($id);
       return view('total_score_info', compact('total_score_details'));
     }
 
@@ -144,7 +154,8 @@ class MonitoringTotalController extends Controller
      */
     public function edit($id)
     {
-        //
+      $total_score_details = DB::table('final_student_results')->find($id);
+      return view('total_score_info', compact('total_score_details'));
     }
 
     /**
@@ -156,7 +167,52 @@ class MonitoringTotalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $edit_score_details = FinalStudentData::find($id);
+      $edit_score_details->verbal_number_correct = $request->input('verbal_number_correct');
+      $edit_score_details->non_verbal_number_correct = $request->input('non_verbal_number_correct');
+      $edit_score_details->overall_total_score = $request->input('verbal_number_correct') + $request->input('non_verbal_number_correct');
+
+      $edit_score_details->save();
+
+      $total_raw = DB::table('final_student_datas')->where('id',  $id)->pluck('overall_total_score')->first();
+      $total_scaled = DB::table('student_result_total')->where('id',  $id)->pluck('total_scaled_score')->first();
+      $total_sai = DB::table('student_result_total')->where('id',  $id)->pluck('total_sai')->first();
+      $total_percentile = DB::table('student_result_total')->where('id',  $id)->pluck('total_percentile_rank')->first();
+      $total_stanine = DB::table('student_result_total')->where('id',  $id)->pluck('total_stanine')->first();
+
+      $verbal_raw = DB::table('final_student_datas')->where('id',  $id)->pluck('verbal_number_correct')->first();
+      $verbal_scaled = DB::table('student_result_verbal')->where('id',  $id)->pluck('verbal_scaled_score')->first();
+      $verbal_sai = DB::table('student_result_verbal')->where('id',  $id)->pluck('verbal_sai')->first();
+      $verbal_percentile = DB::table('student_result_verbal')->where('id',  $id)->pluck('verbal_percentile_rank')->first();
+      $verbal_stanine = DB::table('student_result_verbal')->where('id',  $id)->pluck('verbal_stanine')->first();
+
+      $nonverbal_raw = DB::table('final_student_datas')->where('id',  $id)->pluck('non_verbal_number_correct')->first();
+      $nonverbal_scaled = DB::table('student_result_nonverbal')->where('id',  $id)->pluck('nonverbal_scaled_score')->first();
+      $nonverbal_sai = DB::table('student_result_nonverbal')->where('id',  $id)->pluck('nonverbal_sai')->first();
+      $nonverbal_percentile = DB::table('student_result_nonverbal')->where('id',  $id)->pluck('nonverbal_percentile_rank')->first();
+      $nonverbal_stanine = DB::table('student_result_nonverbal')->where('id',  $id)->pluck('nonverbal_stanine')->first();
+
+      $update = FinalStudentResult::where('id', $id)->update(['total_raw' => $total_raw]);
+      $update = FinalStudentResult::where('id', $id)->update(['total_scaled' => $total_scaled]);
+      $update = FinalStudentResult::where('id', $id)->update(['total_sai' => $total_sai]);
+      $update = FinalStudentResult::where('id', $id)->update(['total_percentile' => $total_percentile]);
+      $update = FinalStudentResult::where('id', $id)->update(['total_stanine' => $total_stanine]);
+
+      $update = FinalStudentResult::where('id', $id)->update(['verbal_raw' => $verbal_raw]);
+      $update = FinalStudentResult::where('id', $id)->update(['verbal_scaled' => $verbal_scaled]);
+      $update = FinalStudentResult::where('id', $id)->update(['verbal_percentile' => $verbal_percentile]);
+      $update = FinalStudentResult::where('id', $id)->update(['verbal_sai' => $verbal_sai]);
+      $update = FinalStudentResult::where('id', $id)->update(['verbal_stanine' => $verbal_stanine]);
+
+      $update = FinalStudentResult::where('id', $id)->update(['nonverbal_raw' => $nonverbal_raw]);
+      $update = FinalStudentResult::where('id', $id)->update(['nonverbal_scaled' => $nonverbal_scaled]);
+      $update = FinalStudentResult::where('id', $id)->update(['nonverbal_percentile' => $nonverbal_percentile]);
+      $update = FinalStudentResult::where('id', $id)->update(['nonverbal_sai' => $nonverbal_sai]);
+      $update = FinalStudentResult::where('id', $id)->update(['nonverbal_stanine' => $nonverbal_stanine]);
+
+      $total_score_details = FinalStudentResult::find($id);
+
+      return view('total_score_info', compact('total_score_details'));
     }
 
     /**
