@@ -39,7 +39,10 @@ class BatchController extends Controller
       if($req->search == "")
       {
           $input_search = "";
-          $batch_students = DB::table('final_student_results')->where('batch',  $batch)->where('name', 'like', ''.$req->search.'%')->orderBy($orderby, $ordertype)->paginate($paginateby);
+          $batch_students = DB::table('final_student_results')
+            ->where('batch',  $batch)
+            ->orderBy($orderby, $ordertype)
+            ->paginate($paginateby);
           // $batch_students->appends($req->only('search'));
           $batch_students->appends(['search' => $req->search, 'filterby' => $req->filterby, 'orderby' => $req->orderby, 'ordertype' => $req->ordertype]);
 
@@ -48,7 +51,13 @@ class BatchController extends Controller
 
       else {
           $input_search = $req->search;
-          $batch_students = DB::table('final_student_results')->where('batch',  $batch)->where('name', 'like', ''.$req->search.'%')->orderBy($orderby, $ordertype)->paginate($paginateby);
+          $batch_students = DB::table('final_student_results')
+            ->where('batch',  $batch)
+            ->where('name', 'like', ''.$req->search.'%')
+            ->orWhere('date_of_birth', 'like', ''.$req->search.'%')
+            ->orWhere('student_id', 'like', ''.$req->search.'%')
+            ->orderBy($orderby, $ordertype)
+            ->paginate($paginateby);
           // $batch_students->appends($req->only('search'));
           $batch_students->appends(['search' => $req->search, 'filterby' => $req->filterby, 'orderby' => $req->orderby, 'ordertype' => $req->ordertype]);
 
