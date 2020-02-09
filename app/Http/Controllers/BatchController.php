@@ -15,11 +15,48 @@ class BatchController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function monitor($batch)
+    public function monitor($batch, Request $req)
     {
 
-        $batch_students = DB::table('student_result_total')->where('batch',  $batch)->get();
-        return view('monitoring_batch_students')->with('batch_students', $batch_students);
+      if(isset($req->filterby)) {
+        $paginateby = $req->filterby;
+      } else {
+        $paginateby = 5;
+      }
+
+      if(isset($req->orderby)) {
+        $orderby = $req->orderby;
+      } else {
+        $orderby = "name";
+      }
+
+      if(isset($req->ordertype)) {
+        $ordertype = $req->ordertype;
+      } else {
+        $ordertype = "asc";
+      }
+
+      if($req->search == "")
+      {
+          $input_search = "";
+          $batch_students = DB::table('final_student_results')->where('batch',  $batch)->where('name', 'like', ''.$req->search.'%')->orderBy($orderby, $ordertype)->paginate($paginateby);
+          // $batch_students->appends($req->only('search'));
+          $batch_students->appends(['search' => $req->search, 'filterby' => $req->filterby, 'orderby' => $req->orderby, 'ordertype' => $req->ordertype]);
+
+          return view('monitoring_batch_students', compact('batch_students'))->with('input_search', $input_search)->with('paginateby', $paginateby)->with('orderby', $orderby)->with('ordertype', $ordertype);
+      }
+
+      else {
+          $input_search = $req->search;
+          $batch_students = DB::table('final_student_results')->where('batch',  $batch)->where('name', 'like', ''.$req->search.'%')->orderBy($orderby, $ordertype)->paginate($paginateby);
+          // $batch_students->appends($req->only('search'));
+          $batch_students->appends(['search' => $req->search, 'filterby' => $req->filterby, 'orderby' => $req->orderby, 'ordertype' => $req->ordertype]);
+
+          return view('monitoring_batch_students', compact('batch_students'))->with('input_search', $input_search)->with('paginateby', $paginateby)->with('orderby', $orderby)->with('ordertype', $ordertype);
+      }
+
+        // $batch_students = DB::table('final_student_results')->where('batch',  $batch)->get();
+        // return view('monitoring_batch_students')->with('batch_students', $batch_students)->with('req', $req);
     }
 
     public function index()

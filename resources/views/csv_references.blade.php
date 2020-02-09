@@ -490,12 +490,11 @@
                             </button>
                         </div>
                         <div class="col-sm">
-                            <form method="POST" action="{{ route('finalizeUpload') }}">
-                                {{ csrf_field() }}
+                          <a href="/csv">
                                 <button type="submit" class="btn btn-primary">
                                 Continue
                                 </button>
-                            </form>
+                          </a>
                         </div>
                     </div>
                 </div>

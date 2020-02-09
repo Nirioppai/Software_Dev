@@ -563,6 +563,7 @@ class ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72
         'App\\SaiToPercentileRankAndStanine' => __DIR__ . '/../..' . '/app/SaiToPercentileRankAndStanine.php',
         'App\\ScaledScoreToSai' => __DIR__ . '/../..' . '/app/ScaledScoreToSai.php',
         'App\\StudentData' => __DIR__ . '/../..' . '/app/StudentData.php',
+        'App\\StudentRemark' => __DIR__ . '/../..' . '/app/StudentRemark.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\raw_to_scaled_nonverbal' => __DIR__ . '/../..' . '/app/raw_to_scaled_nonverbal.php',
         'App\\raw_to_scaled_total' => __DIR__ . '/../..' . '/app/raw_to_scaled_total.php',
