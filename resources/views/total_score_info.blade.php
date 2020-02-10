@@ -141,52 +141,17 @@
                         </h2>
                         <span class="font-weight-bold">Student No:</span> <span class="ml-1">{{$total_score_details->student_id}}</span>
                         <br>
-                        <span class="font-weight-bold">Grade Level:</span> <span class="ml-3">{{$total_score_details->grade_level}}</span>
+                        <span class="font-weight-bold">Grade Level:</span> <span class="ml-1">{{$total_score_details->grade_level}}</span>
                         <br>
                         <br>
-                        <span class="font-weight-bold">Birthdate:</span> <span class="ml-3">{{$total_score_details->date_of_birth}}</span>
+                        <span class="font-weight-bold">Birthdate:</span> <span class="ml-1">{{$total_score_details->date_of_birth}}</span>
                         <br>
-                        <span class="font-weight-bold">Age in Years:</span> <span class="ml-3">{{$total_score_details->rounded_current_age_in_years}}</span>
+                        <span class="font-weight-bold">Age in Years:</span> <span class="ml-1">{{$total_score_details->rounded_current_age_in_years}}</span>
                         <br>
-                        <span class="font-weight-bold">Age in Months:</span> <span class="ml-3">{{$total_score_details->rounded_current_age_in_months}}</span>
-                        <br>
-                        <br>
-                        <span class="font-weight-bold">Total Raw Score:</span> <span class="ml-3">{{$total_score_details->total_raw}}</span>
-                        <br>
-                        <span class="font-weight-bold">Total Scaled Score:</span> <span class="ml-3">{{$total_score_details->total_scaled}}</span>
-                        <br>
-                        <span class="font-weight-bold">Total SAI:</span> <span class="ml-3">{{$total_score_details->total_sai}}</span>
-                        <br>
-                        <span class="font-weight-bold">Total Percentile Rank:</span> <span class="ml-3">{{$total_score_details->total_percentile}}</span>
-                        <br>
-                        <span class="font-weight-bold">Total Stanine:</span> <span class="ml-3">{{$total_score_details->total_stanine}}</span>
-                        <br>
-                        <br>
-                        <span class="font-weight-bold">Verbal Raw Score:</span> <span class="ml-3">{{$total_score_details->verbal_raw}}</span>
-                        <br>
-                        <span class="font-weight-bold">Verbal Scaled Score:</span> <span class="ml-3">{{$total_score_details->verbal_scaled}}</span>
-                        <br>
-                        <span class="font-weight-bold">Verbal SAI:</span> <span class="ml-3">{{$total_score_details->verbal_sai}}</span>
-                        <br>
-                        <span class="font-weight-bold">Verbal Percentile Rank:</span> <span class="ml-3">{{$total_score_details->verbal_percentile}}</span>
-                        <br>
-                        <span class="font-weight-bold">Verbal Stanine:</span> <span class="ml-3">{{$total_score_details->verbal_stanine}}</span>
-                        <br>
-                        <br>
-                        <span class="font-weight-bold">Non-Verbal Raw Score:</span> <span class="ml-3">{{$total_score_details->nonverbal_raw}}</span>
-                        <br>
-                        <span class="font-weight-bold">Non-Verbal Scaled Score:</span> <span class="ml-3">{{$total_score_details->nonverbal_scaled}}</span>
-                        <br>
-                        <span class="font-weight-bold">Non-Verbal SAI:</span> <span class="ml-3">{{$total_score_details->nonverbal_sai}}</span>
-                        <br>
-                        <span class="font-weight-bold">Non-Verbal Percentile Rank:</span> <span class="ml-3">{{$total_score_details->nonverbal_percentile}}</span>
-                        <br>
-                        <span class="font-weight-bold">Non-Verbal Stanine:</span> <span class="ml-3">{{$total_score_details->nonverbal_stanine}}</span>
-
+                        <span class="font-weight-bold">Age in Months:</span> <span class="ml-1">{{$total_score_details->rounded_current_age_in_months}}</span>
+                        
                     </div>
                     <hr class="my-4" />
-                    <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
-                    <a href="#">Show more</a>
                 </div>
             </div>
         </div>
@@ -230,7 +195,6 @@
                         Student Result Report
                         <input type="hidden" name="student_no" value="{{$total_score_details->student_id}}"></input>
                         <a data-toggle="tooltip" data-placement="top" data-html="true" title="<b>Save</b> a PDF copy." href="javascript:$('#savePDF').submit()"  class=" float-right"><i class="fas fa-file-pdf text-red"></i> PDF</a>
-                        <a href="#"  class=" float-right mr-4"><i class="fas fa-file-excel text-green"></i> CSV</a>
                         </form>
                     </h2>
                     Below is a preview for the Student Result Report. You can export it using the icons on the upper right. For a preview, click on the document below to expand.
@@ -247,30 +211,30 @@
             <img  style="width: 100%; height: 100%;" src="{{asset('./img/pdf/PDF.png')}}">
             </a>
             <div class="text-2 text-dark">Nico Del Rosario</div>
-            <div class="text-3 text-dark">Pasig</div>
-            <div class="text-4 text-dark">Philippine University of the Philippines</div>
-            <div class="text-5 text-dark">2002 - 2010</div>
+            <div class="text-3 text-dark">{{$total_score_details->grade_level}}</div>
+            <div class="text-4 text-dark">Xavier School San Juan</div>
+            <div class="text-5 text-dark"></div>
             <div class="text-6 text-dark">January 10, 2020</div>
-            <div class="text-7 text-dark">August 6, 1999</div>
-            <div class="text-8 text-dark">20.2 Years old</div>
-            <div class="text-9 text-dark">99</div>
-            <div class="text-10 text-dark">99</div>
-            <div class="text-11 text-dark">99</div>
-            <div class="text-12 text-dark">99</div>
-            <div class="text-13 text-dark">99</div>
-            <div class="text-14 text-dark">99</div>
-            <div class="text-15 text-dark">99</div>
-            <div class="text-16 text-dark">99</div>
-            <div class="text-17 text-dark">99</div>
-            <div class="text-18 text-dark">99</div>
-            <div class="text-19 text-dark">99</div>
-            <div class="text-20 text-dark">99</div>
-            <div class="text-21 text-dark">99</div>
-            <div class="text-22 text-dark">99</div>
-            <div class="text-23 text-dark">99</div>
-            <div class="text-24 text-dark">Average</div>
-            <div class="text-25 text-dark">Above Average</div>
-            <div class="text-26 text-dark">Average</div>
+            <div class="text-7 text-dark">{{$total_score_details->date_of_birth}}</div>
+            <div class="text-8 text-dark">{{$total_score_details->rounded_current_age_in_years}}.{{$total_score_details->rounded_current_age_in_months}} Years old</div>
+            <div class="text-9 text-dark">{{$total_score_details->verbal_raw}}</div>
+            <div class="text-10 text-dark">{{$total_score_details->nonverbal_raw}}</div>
+            <div class="text-11 text-dark">{{$total_score_details->total_raw}}</div>
+            <div class="text-12 text-dark">{{$total_score_details->verbal_scaled}}</div>
+            <div class="text-13 text-dark">{{$total_score_details->nonverbal_scaled}}</div>
+            <div class="text-14 text-dark">{{$total_score_details->total_scaled}}</div>
+            <div class="text-15 text-dark">{{$total_score_details->verbal_sai}}</div>
+            <div class="text-16 text-dark">{{$total_score_details->nonverbal_sai}}</div>
+            <div class="text-17 text-dark">{{$total_score_details->total_sai}}</div>
+            <div class="text-18 text-dark">{{$total_score_details->verbal_percentile}}</div>
+            <div class="text-19 text-dark">{{$total_score_details->nonverbal_percentile}}</div>
+            <div class="text-20 text-dark">{{$total_score_details->total_percentile}}</div>
+            <div class="text-21 text-dark">{{$total_score_details->verbal_stanine}}</div>
+            <div class="text-22 text-dark">{{$total_score_details->nonverbal_stanine}}</div>
+            <div class="text-23 text-dark">{{$total_score_details->total_stanine}}</div>
+            <div class="text-24 text-dark"></div>
+            <div class="text-25 text-dark"></div>
+            <div class="text-26 text-dark"></div>
         </div>
 
         </form>

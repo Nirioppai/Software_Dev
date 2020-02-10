@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\BatchList;
+use App\FinalStudentData;
+use App\FinalStudentResult;
 use DB;
 
 class BatchController extends Controller
@@ -138,5 +140,16 @@ class BatchController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function deleteBatch($batch)
+    {
+
+        $deleteBatch = FinalStudentData::where('batch', $batch)->delete();
+        $deleteBatch = FinalStudentResult::where('batch', $batch)->delete();
+
+        return redirect('/students/monitoring');
+
     }
 }

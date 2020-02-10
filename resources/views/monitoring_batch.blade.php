@@ -84,8 +84,8 @@
                           </div>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i> Delete Batch</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-file-excel"></i> Export batch as CSV</a>
+                            <a class="dropdown-item" href="monitoring/delete/{{$batch->batch}}"><i class="fas fa-trash-alt"></i> Delete Batch</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i> Export batch as PDF</a>
                           </div>
                         
 

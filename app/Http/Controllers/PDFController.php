@@ -46,4 +46,11 @@ class PDFController extends Controller
         $pdf = PDF::loadView('student_result_export', array('student_details' => $student_details), array('verbal' => $verbal), array('total' => $total), array('nonverbal' => $nonverbal));
         return $pdf->download('Student Result '.$student_number. '.pdf');
     }
+
+    public function deleteBatch($batch)
+    {
+
+        echo $batch;
+
+    }
 }

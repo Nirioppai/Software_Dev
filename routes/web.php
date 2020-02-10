@@ -98,3 +98,5 @@ Route::resource('/students/monitoring/nonverbalinfo', 'MonitoringNonVerbalContro
 
 Route::post('/export-pdf', 'PDFController@viewPDF')->name('viewPDF');
 Route::post('/save-pdf', 'PDFController@savePDF')->name('savePDF');
+
+Route::get('/students/monitoring/delete/{id}', 'BatchController@deleteBatch')->name('deleteBatch');
