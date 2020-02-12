@@ -18,25 +18,25 @@
             <div class="text-5"></div>
             <div class="text-6">{{$student_details->exam_date}}</div>
             <div class="text-7">{{$student_details->date_of_birth}}</div>
-            <div class="text-8">{{$student_details->rounded_current_age_in_years}}.{{$student_details->rounded_current_age_in_months}} Years old</div>
-            <div class="text-9">{{$verbal_details->verbal_raw_score}}</div>
-            <div class="text-10">{{$total_details->total_raw_score}}</div>
-            <div class="text-11">99</div>
-            <div class="text-12">99</div>
-            <div class="text-13">99</div>
-            <div class="text-14">99</div>
-            <div class="text-15">99</div>
-            <div class="text-16">99</div>
-            <div class="text-17">99</div>
-            <div class="text-18">99</div>
-            <div class="text-19">99</div>
-            <div class="text-20">99</div>
-            <div class="text-21">99</div>
-            <div class="text-22">99</div>
-            <div class="text-23">99</div>
-            <div class="text-24">Above Average</div>
-            <div class="text-25">Average</div>
-            <div class="text-26">Average</div>
+            <div class="text-8">{{$student_details->age_year}}.{{$student_details->age_month}} Years old</div>
+            <div class="text-9">{{$student_details->verbal_raw}}</div>
+            <div class="text-10">{{$student_details->nonverbal_raw}}</div>
+            <div class="text-11">{{$student_details->total_raw}}</div>
+            <div class="text-12">{{$student_details->verbal_scaled}}</div>
+            <div class="text-13">{{$student_details->nonverbal_scaled}}</div>
+            <div class="text-14">{{$student_details->total_scaled}}</div>
+            <div class="text-15">{{$student_details->verbal_sai}}</div>
+            <div class="text-16">{{$student_details->nonverbal_sai}}</div>
+            <div class="text-17">{{$student_details->total_sai}}</div>
+            <div class="text-18">{{$student_details->verbal_percentile}}</div>
+            <div class="text-19">{{$student_details->nonverbal_percentile}}</div>
+            <div class="text-20">{{$student_details->total_percentile}}</div>
+            <div class="text-21">{{$student_details->verbal_stanine}}</div>
+            <div class="text-22">{{$student_details->nonverbal_stanine}}</div>
+            <div class="text-23">{{$student_details->total_stanine}}</div>
+            <div class="text-24"></div>
+            <div class="text-25"></div>
+            <div class="text-26"></div>
         </div>
 
 </body>
