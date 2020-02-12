@@ -230,7 +230,8 @@
                     </div>
 
                       <div class="ml-6">
-                            <button type="submit" class="btn btn-secondary">
+
+                            <button type="submit" class="btn btn-secondary mt-2">
                                 Cancel
                             </button>
 

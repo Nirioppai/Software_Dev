@@ -103,7 +103,7 @@
 
 <br>
 
-<table class="table align-items-center table-bordered table-striped table-flush">
+<table class="table align-items-center table-bordered table-striped table-flush table-responsive  ">
   <thead class="thead-light">
     <tr>
       <th class="text-center text-dark">Student ID</th>
