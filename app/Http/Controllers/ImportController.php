@@ -25,55 +25,6 @@ class ImportController extends Controller
         $this->middleware('auth');
     }
 
-  // public function getImport()
-  // {
-  //     return view('csv');
-  // }
-  // public function parseImport(CsvImportRequest $request)
-  // {
-  //     $path = $request->file('csv_file')->getRealPath();
-  //     if ($request->has('header')) {
-  //         $data = Excel::load($path, function($reader) {})->get()->toArray();
-  //     } else {
-  //         $data = array_map('str_getcsv', file($path));
-  //     }
-  //     if (count($data) > 0) {
-  //         if ($request->has('header')) {
-  //             $csv_header_fields = [];
-  //             foreach ($data[0] as $key => $value) {
-  //                 $csv_header_fields[] = $key;
-  //             }
-  //         }
-  //         $csv_data = array_slice($data, 0, 2);
-  //         $csv_data_file = CsvData::create([
-  //             'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
-  //             'csv_header' => $request->has('header'),
-  //             'csv_data' => json_encode($data)
-  //         ]);
-  //     } else {
-  //         return redirect()->back();
-  //     }
-  //     return view('import_fields', compact( 'csv_header_fields', 'csv_data', 'csv_data_file'));
-  // }
-  // public function processImport(Request $request)
-  // {
-  //     $data = CsvData::find($request->csv_data_file_id);
-  //     $csv_data = json_decode($data->csv_data, true);
-  //     foreach ($csv_data as $row) {
-  //         $studentdata = new StudentData();
-  //         foreach (config('app.db_fields') as $index => $field) {
-  //             if ($data->csv_header) {
-  //                 $studentdata->$field = $row[$request->fields[$field]];
-  //             } else {
-  //                 $studentdata->$field = $row[$request->fields[$index]];
-  //             }
-  //         }
-  //         $studentdata->save();
-  //     }
-  //     return view('import_success');
-  // }
-
-
 
   public function uploadStudent1 () {
 
@@ -102,7 +53,7 @@ class ImportController extends Controller
                 $csv_header_fields[] = $key;
             }
         }
-        $csv_data = array_slice($data, 0, 5);
+        $csv_data = array_slice($data, 0, 10);
         $csv_data_file = CsvData::create([
             'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
             'csv_header' => $request->has('header'),
@@ -166,39 +117,15 @@ class ImportController extends Controller
 
         }
 
-      // $add_batch = DB::table('final_student_datas');
-      //
-      // if(($add_batch->count()) > 0 ) {
-      //   $batch = 2;
-      // }
-      // else {
-      //   $batch = 1;
-      // }
-      //
-      // $initial_student = DB::table('student_datas');
-      //
-      // foreach($initial_student as $row){
-      //
-      //   $insert_batch = new StudentData;
-      //   $insert_batch->batch = $batch;
-      //   $insert_batch->save();
-      //
-      // }
+
 
       $step = 3;
       $uploader = 'student_3';
       $success = ('success');
 
-      return view('csv_student_upload')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+      return view('csv_student_upload')->with('step', $step)->with('uploader', $uploader)->with('success', $success)->with('batch', $batch);
     }
   }
-
-
-  // public function uploadStudent3Submit () {
-  //
-  //   return redirect ('/csv');
-  //
-  // }
 
   public function uploadScaledScore1 () {
 
@@ -212,7 +139,7 @@ class ImportController extends Controller
           $uploader = 'scaled_scores';
           return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
         }
-    
+
 
   }
 
@@ -232,7 +159,7 @@ class ImportController extends Controller
                 $csv_header_fields[] = $key;
             }
         }
-        $csv_data = array_slice($data, 0, 5);
+        $csv_data = array_slice($data, 0, 10);
         $csv_data_file = CsvData::create([
             'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
             'csv_header' => $request->has('header'),
@@ -252,9 +179,6 @@ class ImportController extends Controller
 
 
   public function uploadScaledScore3 (Request $request) {
-
-    // DB::statement("TRUNCATE TABLE raw_score_to_scaled_scores;
-    // ");
 
     $data = CsvData::find($request->csv_data_file_id);
     $csv_data = json_decode($data->csv_data, true);
@@ -305,7 +229,7 @@ class ImportController extends Controller
                 $csv_header_fields[] = $key;
             }
         }
-        $csv_data = array_slice($data, 0, 5);
+        $csv_data = array_slice($data, 0, 10);
         $csv_data_file = CsvData::create([
             'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
             'csv_header' => $request->has('header'),
@@ -324,9 +248,6 @@ class ImportController extends Controller
 
 
   public function uploadSAI3 (Request $request) {
-
-    // DB::statement("TRUNCATE TABLE scaled_score_to_sais;
-    // ");
 
     $data = CsvData::find($request->csv_data_file_id);
     $csv_data = json_decode($data->csv_data, true);
@@ -350,12 +271,6 @@ class ImportController extends Controller
     return view('csv_references')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
   }
 
-
-  // public function uploadSAI3Submit () {
-  //
-  //   return redirect ('/csv/references');
-  //
-  // }
 
   public function uploadStanine1 () {
 
@@ -381,7 +296,7 @@ class ImportController extends Controller
                 $csv_header_fields[] = $key;
             }
         }
-        $csv_data = array_slice($data, 0, 5);
+        $csv_data = array_slice($data, 0, 10);
         $csv_data_file = CsvData::create([
             'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
             'csv_header' => $request->has('header'),
@@ -401,9 +316,6 @@ class ImportController extends Controller
 
   public function uploadStanine3 (Request $request) {
 
-    // DB::statement("TRUNCATE TABLE sai_to_percentile_rank_and_stanines;
-    // ");
-
     $data = CsvData::find($request->csv_data_file_id);
     $csv_data = json_decode($data->csv_data, true);
 
@@ -419,6 +331,70 @@ class ImportController extends Controller
         $saitopercentile->save();
     }
 
+
+    $final_student = DB::table('final_student_datas');
+
+    if(($final_student->count()) > 0 ) {
+
+      $max_id = DB::table('final_student_datas')->max('id');
+
+      for($i = 1; $i <= $max_id; $i++ )
+          {
+            //taga kuha ng total raw sa current ID
+            // $total_raw = DB::table('student_result_total')->where('id',  $i)->pluck('total_raw_score')->first();
+            $total_scaled = DB::table('student_result_total')->where('id',  $i)->pluck('total_scaled_score')->first();
+            $total_sai = DB::table('student_result_total')->where('id',  $i)->pluck('total_sai')->first();
+            $total_percentile = DB::table('student_result_total')->where('id',  $i)->pluck('total_percentile_rank')->first();
+            $total_stanine = DB::table('student_result_total')->where('id',  $i)->pluck('total_stanine')->first();
+
+            $verbal_scaled = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_scaled_score')->first();
+            $verbal_sai = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_sai')->first();
+            $verbal_percentile = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_percentile_rank')->first();
+            $verbal_stanine = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_stanine')->first();
+
+            $nonverbal_scaled = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_scaled_score')->first();
+            $nonverbal_sai = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_sai')->first();
+            $nonverbal_percentile = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_percentile_rank')->first();
+            $nonverbal_stanine = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_stanine')->first();
+
+            // optimal magpasok dito ng function to check if $total_raw is null
+            // if null, plus 1 then check ulet, if not, proceed sa baba
+
+
+            $totalID = DB::table('student_result_total')->where('id',  $i)->exists();
+            $verbalID = DB::table('student_result_verbal')->where('id',  $i)->exists();
+            $nonverbalID = DB::table('student_result_nonverbal')->where('id',  $i)->exists();
+
+            if ($totalID == true && $verbalID == true && $nonverbalID == true)
+            {
+
+              // $update = FinalStudentResult::where('id', $i)->update(['total_raw' => $total_raw]);
+              $update = FinalStudentResult::where('id', $i)->update(['total_scaled' => $total_scaled]);
+              $update = FinalStudentResult::where('id', $i)->update(['total_sai' => $total_sai]);
+              $update = FinalStudentResult::where('id', $i)->update(['total_percentile' => $total_percentile]);
+              $update = FinalStudentResult::where('id', $i)->update(['total_stanine' => $total_stanine]);
+
+              $update = FinalStudentResult::where('id', $i)->update(['verbal_scaled' => $verbal_scaled]);
+              $update = FinalStudentResult::where('id', $i)->update(['verbal_percentile' => $verbal_percentile]);
+              $update = FinalStudentResult::where('id', $i)->update(['verbal_sai' => $verbal_sai]);
+              $update = FinalStudentResult::where('id', $i)->update(['verbal_stanine' => $verbal_stanine]);
+
+              $update = FinalStudentResult::where('id', $i)->update(['nonverbal_scaled' => $nonverbal_scaled]);
+              $update = FinalStudentResult::where('id', $i)->update(['nonverbal_percentile' => $nonverbal_percentile]);
+              $update = FinalStudentResult::where('id', $i)->update(['nonverbal_sai' => $nonverbal_sai]);
+              $update = FinalStudentResult::where('id', $i)->update(['nonverbal_stanine' => $nonverbal_stanine]);
+
+
+            }
+            else
+            {
+                continue;
+            }
+
+          }
+
+    }
+
     $success = ('idle');
     $step = 3.3;
     $uploader = 'stanine_3';
@@ -427,8 +403,7 @@ class ImportController extends Controller
   }
 
 
-  public function finalizeUpload()
-  {
+  public function finalizeUpload() {
     // DITO ILILIPAT LAMAN NG VIEW SA final_STUDENT_DATAS
 
     DB::statement("INSERT INTO final_student_datas (student_id, name, overall_total_score, verbal_number_correct, non_verbal_number_correct, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, current_age_in_days, grade_level, exam_date, batch, created_at, updated_at)
@@ -449,13 +424,12 @@ class ImportController extends Controller
     ");
 
     $count_new_batch = DB::table('final_student_datas')->where('batch',  $max_batch)->count();
-
+    //
     // for($j = 1; $j <= $count_new_batch; $j++ ){
     //    $studentremarks = new StudentRemark();
     //    $studentremarks->remarks = '';
     //    $studentremarks->save();
     // }
-
 
     //  * WORKS FINE ABOVE THIS LINE
 
@@ -528,54 +502,409 @@ class ImportController extends Controller
   }
 
 
-  public function selective_sai_add()
-  {
+  public function selectiveScaledAdd() {
     $step = 1;
-    $uploader = 'student_1';
+    $uploader = 'scaled_1';
     $success = ('idle');
-    return view('csv_sai')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
-  }
 
-  public function selective_scaled_add()
-  {
-    $step = 1;
-    $uploader = 'student_1';
-    $success = ('idle');
     return view('csv_scaled')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
   }
 
-  public function selective_stanine_add()
-  {
-    $step = 1;
-    $uploader = 'student_1';
+
+  public function selectiveScaledAdd2(CsvImportRequest $request) {
+
+    $path = $request->file('csv_file')->getRealPath();
+    if ($request->has('header')) {
+        $data = Excel::load($path, function($reader) {})->get()->toArray();
+    } else {
+        $data = array_map('str_getcsv', file($path));
+    }
+    if (count($data) > 0) {
+        if ($request->has('header')) {
+            $csv_header_fields = [];
+            foreach ($data[0] as $key => $value) {
+                $csv_header_fields[] = $key;
+            }
+        }
+        $csv_data = array_slice($data, 0, 10);
+        $csv_data_file = CsvData::create([
+            'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
+            'csv_header' => $request->has('header'),
+            'csv_data' => json_encode($data)
+        ]);
+    } else {
+        return redirect()->back();
+    }
+
+    $step = 2;
+    $uploader = 'scaled_2';
     $success = ('idle');
+
+    return view('csv_scaled', compact('csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+  }
+
+
+  public function selectiveScaledAdd3(Request $request) {
+
+    $data = CsvData::find($request->csv_data_file_id);
+    $csv_data = json_decode($data->csv_data, true);
+
+    foreach ($csv_data as $row) {
+        $rawtoscaledscore = new RawScoreToScaledScore();
+        foreach (config('app.db_raw_to_scaleds') as $index => $field) {
+            if ($data->csv_header) {
+                $rawtoscaledscore->$field = $row[$request->fields[$field]];
+            } else {
+                $rawtoscaledscore->$field = $row[$request->fields[$index]];
+            }
+        }
+        $rawtoscaledscore->save();
+    }
+
+    $max_id = DB::table('final_student_datas')->max('id');
+
+    for($i = 1; $i <= $max_id; $i++ )
+        {
+          //taga kuha ng total raw sa current ID
+          // $total_raw = DB::table('student_result_total')->where('id',  $i)->pluck('total_raw_score')->first();
+          $total_scaled = DB::table('student_result_total')->where('id',  $i)->pluck('total_scaled_score')->first();
+          $total_sai = DB::table('student_result_total')->where('id',  $i)->pluck('total_sai')->first();
+          $total_percentile = DB::table('student_result_total')->where('id',  $i)->pluck('total_percentile_rank')->first();
+          $total_stanine = DB::table('student_result_total')->where('id',  $i)->pluck('total_stanine')->first();
+
+          $verbal_scaled = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_scaled_score')->first();
+          $verbal_sai = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_sai')->first();
+          $verbal_percentile = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_percentile_rank')->first();
+          $verbal_stanine = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_stanine')->first();
+
+          $nonverbal_scaled = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_scaled_score')->first();
+          $nonverbal_sai = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_sai')->first();
+          $nonverbal_percentile = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_percentile_rank')->first();
+          $nonverbal_stanine = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_stanine')->first();
+
+          // optimal magpasok dito ng function to check if $total_raw is null
+          // if null, plus 1 then check ulet, if not, proceed sa baba
+
+
+          $totalID = DB::table('student_result_total')->where('id',  $i)->exists();
+          $verbalID = DB::table('student_result_verbal')->where('id',  $i)->exists();
+          $nonverbalID = DB::table('student_result_nonverbal')->where('id',  $i)->exists();
+
+          if ($totalID == true && $verbalID == true && $nonverbalID == true)
+          {
+
+            // $update = FinalStudentResult::where('id', $i)->update(['total_raw' => $total_raw]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_scaled' => $total_scaled]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_sai' => $total_sai]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_percentile' => $total_percentile]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_stanine' => $total_stanine]);
+
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_scaled' => $verbal_scaled]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_percentile' => $verbal_percentile]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_sai' => $verbal_sai]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_stanine' => $verbal_stanine]);
+
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_scaled' => $nonverbal_scaled]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_percentile' => $nonverbal_percentile]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_sai' => $nonverbal_sai]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_stanine' => $nonverbal_stanine]);
+
+
+          }
+          else
+          {
+              continue;
+          }
+
+        }
+
+    $step = 3;
+    $uploader = 'scaled_3';
+    $success = ('idle');
+
+    return view('csv_scaled')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+  }
+
+
+  public function selectiveSAIAdd() {
+    $step = 1;
+    $uploader = 'sai_1';
+    $success = ('idle');
+
+    return view('csv_sai')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+  }
+
+
+  public function selectiveSAIAdd2(CsvImportRequest $request) {
+
+    $path = $request->file('csv_file')->getRealPath();
+    if ($request->has('header')) {
+        $data = Excel::load($path, function($reader) {})->get()->toArray();
+    } else {
+        $data = array_map('str_getcsv', file($path));
+    }
+    if (count($data) > 0) {
+        if ($request->has('header')) {
+            $csv_header_fields = [];
+            foreach ($data[0] as $key => $value) {
+                $csv_header_fields[] = $key;
+            }
+        }
+        $csv_data = array_slice($data, 0, 10);
+        $csv_data_file = CsvData::create([
+            'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
+            'csv_header' => $request->has('header'),
+            'csv_data' => json_encode($data)
+        ]);
+    } else {
+        return redirect()->back();
+    }
+
+    $step = 2;
+    $uploader = 'sai_2';
+    $success = ('idle');
+
+    return view('csv_sai', compact('csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+  }
+
+
+  public function selectiveSAIAdd3(Request $request) {
+
+    $data = CsvData::find($request->csv_data_file_id);
+    $csv_data = json_decode($data->csv_data, true);
+
+    foreach ($csv_data as $row) {
+        $scaledtosai = new ScaledScoreToSai();
+        foreach (config('app.db_scaled_to_sais') as $index => $field) {
+            if ($data->csv_header) {
+                $scaledtosai->$field = $row[$request->fields[$field]];
+            } else {
+                $scaledtosai->$field = $row[$request->fields[$index]];
+            }
+        }
+        $scaledtosai->save();
+    }
+
+
+    $max_id = DB::table('final_student_datas')->max('id');
+
+    for($i = 1; $i <= $max_id; $i++ )
+        {
+          //taga kuha ng total raw sa current ID
+          // $total_raw = DB::table('student_result_total')->where('id',  $i)->pluck('total_raw_score')->first();
+          $total_scaled = DB::table('student_result_total')->where('id',  $i)->pluck('total_scaled_score')->first();
+          $total_sai = DB::table('student_result_total')->where('id',  $i)->pluck('total_sai')->first();
+          $total_percentile = DB::table('student_result_total')->where('id',  $i)->pluck('total_percentile_rank')->first();
+          $total_stanine = DB::table('student_result_total')->where('id',  $i)->pluck('total_stanine')->first();
+
+          $verbal_scaled = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_scaled_score')->first();
+          $verbal_sai = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_sai')->first();
+          $verbal_percentile = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_percentile_rank')->first();
+          $verbal_stanine = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_stanine')->first();
+
+          $nonverbal_scaled = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_scaled_score')->first();
+          $nonverbal_sai = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_sai')->first();
+          $nonverbal_percentile = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_percentile_rank')->first();
+          $nonverbal_stanine = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_stanine')->first();
+
+          // optimal magpasok dito ng function to check if $total_raw is null
+          // if null, plus 1 then check ulet, if not, proceed sa baba
+
+
+          $totalID = DB::table('student_result_total')->where('id',  $i)->exists();
+          $verbalID = DB::table('student_result_verbal')->where('id',  $i)->exists();
+          $nonverbalID = DB::table('student_result_nonverbal')->where('id',  $i)->exists();
+
+          if ($totalID == true && $verbalID == true && $nonverbalID == true)
+          {
+
+            // $update = FinalStudentResult::where('id', $i)->update(['total_raw' => $total_raw]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_scaled' => $total_scaled]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_sai' => $total_sai]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_percentile' => $total_percentile]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_stanine' => $total_stanine]);
+
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_scaled' => $verbal_scaled]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_percentile' => $verbal_percentile]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_sai' => $verbal_sai]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_stanine' => $verbal_stanine]);
+
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_scaled' => $nonverbal_scaled]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_percentile' => $nonverbal_percentile]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_sai' => $nonverbal_sai]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_stanine' => $nonverbal_stanine]);
+
+
+          }
+          else
+          {
+              continue;
+          }
+
+        }
+
+    $step = 3;
+    $uploader = 'sai_3';
+    $success = ('idle');
+
+    return view('csv_sai')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+  }
+
+
+  public function selectiveStanineAdd() {
+    $step = 1;
+    $uploader = 'stanine_1';
+    $success = ('idle');
+
     return view('csv_stanine')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
   }
 
-    public function selective_sai_restart()
-  {
-    $step = 1;
-    $uploader = 'student_1';
+
+  public function selectiveStanineAdd2(CsvImportRequest $request) {
+
+    $path = $request->file('csv_file')->getRealPath();
+    if ($request->has('header')) {
+        $data = Excel::load($path, function($reader) {})->get()->toArray();
+    } else {
+        $data = array_map('str_getcsv', file($path));
+    }
+    if (count($data) > 0) {
+        if ($request->has('header')) {
+            $csv_header_fields = [];
+            foreach ($data[0] as $key => $value) {
+                $csv_header_fields[] = $key;
+            }
+        }
+        $csv_data = array_slice($data, 0, 10);
+        $csv_data_file = CsvData::create([
+            'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
+            'csv_header' => $request->has('header'),
+            'csv_data' => json_encode($data)
+        ]);
+    } else {
+        return redirect()->back();
+    }
+
+    $step = 2;
+    $uploader = 'stanine_2';
     $success = ('idle');
-    DB::statement("TRUNCATE TABLE scaled_score_to_sais;");
-    return view('csv_sai')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+
+    return view('csv_stanine', compact('csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader)->with('success', $success);
   }
 
-  public function selective_scaled_restart()
-  {
+
+  public function selectiveStanineAdd3(Request $request) {
+
+    $data = CsvData::find($request->csv_data_file_id);
+    $csv_data = json_decode($data->csv_data, true);
+
+    foreach ($csv_data as $row) {
+        $saitopercentile = new SaiToPercentileRankAndStanine();
+        foreach (config('app.db_sai_to_percentile_ranks') as $index => $field) {
+            if ($data->csv_header) {
+                $saitopercentile->$field = $row[$request->fields[$field]];
+            } else {
+                $saitopercentile->$field = $row[$request->fields[$index]];
+            }
+        }
+        $saitopercentile->save();
+    }
+
+
+    $max_id = DB::table('final_student_datas')->max('id');
+
+    for($i = 1; $i <= $max_id; $i++ )
+        {
+          //taga kuha ng total raw sa current ID
+          // $total_raw = DB::table('student_result_total')->where('id',  $i)->pluck('total_raw_score')->first();
+          $total_scaled = DB::table('student_result_total')->where('id',  $i)->pluck('total_scaled_score')->first();
+          $total_sai = DB::table('student_result_total')->where('id',  $i)->pluck('total_sai')->first();
+          $total_percentile = DB::table('student_result_total')->where('id',  $i)->pluck('total_percentile_rank')->first();
+          $total_stanine = DB::table('student_result_total')->where('id',  $i)->pluck('total_stanine')->first();
+
+          $verbal_scaled = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_scaled_score')->first();
+          $verbal_sai = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_sai')->first();
+          $verbal_percentile = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_percentile_rank')->first();
+          $verbal_stanine = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_stanine')->first();
+
+          $nonverbal_scaled = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_scaled_score')->first();
+          $nonverbal_sai = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_sai')->first();
+          $nonverbal_percentile = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_percentile_rank')->first();
+          $nonverbal_stanine = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_stanine')->first();
+
+          // optimal magpasok dito ng function to check if $total_raw is null
+          // if null, plus 1 then check ulet, if not, proceed sa baba
+
+
+          $totalID = DB::table('student_result_total')->where('id',  $i)->exists();
+          $verbalID = DB::table('student_result_verbal')->where('id',  $i)->exists();
+          $nonverbalID = DB::table('student_result_nonverbal')->where('id',  $i)->exists();
+
+          if ($totalID == true && $verbalID == true && $nonverbalID == true)
+          {
+
+            // $update = FinalStudentResult::where('id', $i)->update(['total_raw' => $total_raw]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_scaled' => $total_scaled]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_sai' => $total_sai]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_percentile' => $total_percentile]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_stanine' => $total_stanine]);
+
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_scaled' => $verbal_scaled]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_percentile' => $verbal_percentile]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_sai' => $verbal_sai]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_stanine' => $verbal_stanine]);
+
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_scaled' => $nonverbal_scaled]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_percentile' => $nonverbal_percentile]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_sai' => $nonverbal_sai]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_stanine' => $nonverbal_stanine]);
+
+
+          }
+          else
+          {
+              continue;
+          }
+
+        }
+
+    $step = 3;
+    $uploader = 'stanine_3';
+    $success = ('idle');
+
+    return view('csv_stanine')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+  }
+
+
+  public function selectiveScaledRestart() {
+
     $step = 1;
-    $uploader = 'student_1';
+    $uploader = 'scaled_1';
     $success = ('idle');
     DB::statement("TRUNCATE TABLE raw_score_to_scaled_scores;");
+
     return view('csv_scaled')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
   }
 
-  public function selective_stanine_restart()
-  {
+
+  public function selectiveSAIRestart() {
+
     $step = 1;
-    $uploader = 'student_1';
+    $uploader = 'sai_1';
+    $success = ('idle');
+    DB::statement("TRUNCATE TABLE scaled_score_to_sais;");
+
+    return view('csv_sai')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+  }
+
+
+  public function selectiveStanineRestart() {
+
+    $step = 1;
+    $uploader = 'stanine_1';
     $success = ('idle');
     DB::statement("TRUNCATE TABLE sai_to_percentile_rank_and_stanines;");
+
     return view('csv_stanine')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
   }
 

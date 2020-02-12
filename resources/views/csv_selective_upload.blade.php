@@ -60,7 +60,7 @@
 
 <div class="container">
   <div class="row justify-content-center align-items-center">
-    
+
     @if($scaled_display == 0)
 <div class="col-sm-4 ">
       <!-- Card -->
@@ -245,7 +245,7 @@
         "newestOnTop": false,
         "progressBar": true,
         "positionClass": "toast-top-right",
-        "preventDuplicates": false, 
+        "preventDuplicates": false,
         "onclick": null,
         "showDuration": "300",
         "hideDuration": "1000",
