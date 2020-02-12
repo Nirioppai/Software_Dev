@@ -27,7 +27,7 @@ Route::post('/register/submit', 'CustomRegisterController@submit');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/students', 'HomeController@studentslist')->name('studentslist');
 
-Route::get('/csv', 'HomeController@csv')->name('csv');
+Route::get('/csv', 'HomeController@uploadReferences')->name('csv');
 Route::get('/csv/students', 'HomeController@uploadStudent')->name('uploadStudent');
 
 Route::get('/students/upload/1', 'ImportController@uploadStudent1')->name('uploadStudent1');
@@ -100,3 +100,13 @@ Route::post('/export-pdf', 'PDFController@viewPDF')->name('viewPDF');
 Route::post('/save-pdf', 'PDFController@savePDF')->name('savePDF');
 
 Route::get('/students/monitoring/delete/{id}', 'BatchController@deleteBatch')->name('deleteBatch');
+Route::get('/students/monitoring/export-batch/{id}', 'PDFController@exportBatch')->name('exportBatch');
+
+
+Route::get('/csv/selective-scaled/reset', 'ImportController@selective_scaled_restart')->name('selective_scaled_restart');
+Route::get('/csv/selective-sai/reset', 'ImportController@selective_sai_restart')->name('selective_sai_restart');
+Route::get('/csv/selective-stanine/reset', 'ImportController@selective_stanine_restart')->name('selective_stanine_restart');
+
+Route::get('/csv/selective-scaled/add', 'ImportController@selective_scaled_add')->name('selective_scaled_add');
+Route::get('/csv/selective-sai/add', 'ImportController@selective_sai_add')->name('selective_scaled_add');
+Route::get('/csv/selective-stanine/add', 'ImportController@selective_stanine_add')->name('selective_scaled_add');

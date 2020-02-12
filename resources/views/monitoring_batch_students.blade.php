@@ -19,7 +19,7 @@
   </li>
   <li class="nav-item">
     <a class="nav-link " href="/csv">
-      <i class="fas fa-file-excel text-primary"></i> Upload CSV
+      <i class="fas fa-file-excel text-primary"></i> OLSAT References
     </a>
   </li>
   <li class="nav-item ">

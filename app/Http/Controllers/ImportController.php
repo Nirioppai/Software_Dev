@@ -202,9 +202,17 @@ class ImportController extends Controller
 
   public function uploadScaledScore1 () {
 
-    $step = 1;
-    $uploader = 'scaled_scores';
-    return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
+        //dito ako tumigil
+        $scaledCount = RawScoreToScaledScore::all();
+        $stanineCount = RawScoreToScaledScore::all();
+        $saiCount = ScaledScoreToSai::all();
+        if(!count($scaledCount) && !count($stanineCount) && !count($saiCount))
+        {
+          $step = 1;
+          $uploader = 'scaled_scores';
+          return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
+        }
+    
 
   }
 
@@ -518,5 +526,58 @@ class ImportController extends Controller
     $success = ('success');
     return redirect('/students')->with('success', $success);
   }
+
+
+  public function selective_sai_add()
+  {
+    $step = 1;
+    $uploader = 'student_1';
+    $success = ('idle');
+    return view('csv_sai')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+  }
+
+  public function selective_scaled_add()
+  {
+    $step = 1;
+    $uploader = 'student_1';
+    $success = ('idle');
+    return view('csv_scaled')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+  }
+
+  public function selective_stanine_add()
+  {
+    $step = 1;
+    $uploader = 'student_1';
+    $success = ('idle');
+    return view('csv_stanine')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+  }
+
+    public function selective_sai_restart()
+  {
+    $step = 1;
+    $uploader = 'student_1';
+    $success = ('idle');
+    DB::statement("TRUNCATE TABLE scaled_score_to_sais;");
+    return view('csv_sai')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+  }
+
+  public function selective_scaled_restart()
+  {
+    $step = 1;
+    $uploader = 'student_1';
+    $success = ('idle');
+    DB::statement("TRUNCATE TABLE raw_score_to_scaled_scores;");
+    return view('csv_scaled')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+  }
+
+  public function selective_stanine_restart()
+  {
+    $step = 1;
+    $uploader = 'student_1';
+    $success = ('idle');
+    DB::statement("TRUNCATE TABLE sai_to_percentile_rank_and_stanines;");
+    return view('csv_stanine')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+  }
+
 
 }

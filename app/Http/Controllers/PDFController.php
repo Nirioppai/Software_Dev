@@ -47,10 +47,15 @@ class PDFController extends Controller
         return $pdf->download('Student Result '.$student_number. '.pdf');
     }
 
-    public function deleteBatch($batch)
+    public function exportBatch($batch)
     {
 
-        echo $batch;
+        $exportResult = DB::table('final_student_results')->where('batch',  $batch)->get();
+        
+
+        
 
     }
+
+
 }

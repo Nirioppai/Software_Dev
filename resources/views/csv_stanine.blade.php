@@ -1,7 +1,7 @@
 @extends('components.bars')
 
 @section('title')
-<title>OLSAT | Upload CSV - Student</title>
+<title>OLSAT | Upload Reference - Percentile Rank and Stanine</title>
 @endsection
 
 @section('nav')
@@ -12,13 +12,13 @@
       <i class="ni ni-tv-2 text-primary"></i> Dashboard
     </a>
   </li>
-  <li class="nav-item active">
-    <a class="nav-link active" href="/students">
+  <li class="nav-item ">
+    <a class="nav-link " href="/students">
       <i class="ni ni-planet text-primary"></i> Students
     </a>
   </li>
-  <li class="nav-item ">
-    <a class="nav-link " href="/csv">
+  <li class="nav-item active">
+    <a class="nav-link active" href="/csv">
       <i class="fas fa-file-excel text-primary"></i> OLSAT References
     </a>
   </li>
@@ -45,14 +45,14 @@
 @section('breadcrumb')
 <!-- Breadcrumb -->
 <div>
-  <!--
-  <a class="custom-breadcrumb text-dark" href="/home">Dashboard</a>
-  <a>/</a>
-     -->
-  <a class="custom-breadcrumb text-dark" href="/students">Students</a>
-  <a>/</a>
+    <!--
+        <a class="custom-breadcrumb text-dark" href="/home">Dashboard</a>
+        <a>/</a>
+      -->
+        <a class="custom-breadcrumb text-dark" href="/home">> OLSAT References</a>
+        <a>/</a>
 
-  <a class="current-breadcrumb text-dark"><b>Upload Student Data</b></a>
+    <a class="current-breadcrumb text-dark"><b>Percentile Rank and Stanine</b></a>
 </div>
 @endsection
 
