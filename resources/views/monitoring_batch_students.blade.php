@@ -87,6 +87,10 @@
   <select name="orderby" id="orderby" onchange="this.form.submit()">
     <option value="name" {{$orderby == "name"? 'selected':''}}> Name </option>
     <option value="student_id" {{$orderby == "student_id"? 'selected':''}}> Student Number </option>
+    <option value="date_of_birth" {{$orderby == "date_of_birth"? 'selected':''}}> Birthday </option>
+    <option value="total_raw" {{$orderby == "total_raw"? 'selected':''}}> Total Score </option>
+    <option value="verbal_raw" {{$orderby == "verbal_raw"? 'selected':''}}> Verbal Score </option>
+    <option value="nonverbal_raw" {{$orderby == "nonverbal_raw"? 'selected':''}}> Non-Verbal Score </option>
   </select>
 
   Type:

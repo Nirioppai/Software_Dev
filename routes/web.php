@@ -41,26 +41,17 @@ Route::post('/students/upload/3', 'ImportController@uploadStudent3')->name('uplo
 Route::get('/csv/references', 'HomeController@uploadReferences')->name('uploadReferences');
 
 Route::get('/csv/references/scaledscores/1', 'ImportController@uploadScaledScore1')->name('uploadScaledScore1');
-
 Route::post('/csv/references/scaledscores/2', 'ImportController@uploadScaledScore2')->name('uploadScaledScore2');
-
 Route::post('/csv/references/scaledscores/3', 'ImportController@uploadScaledScore3')->name('uploadScaledScore3');
-// Route::post('/csv/references/scaledscores/3/submit', 'ImportController@uploadScaledScore3Submit')->name('uploadScaledScore3Submit');
 
 Route::get('/csv/references/sai/1', 'ImportController@uploadSAI1')->name('uploadSAI1');
-
 Route::post('/csv/references/sai/2', 'ImportController@uploadSAI2')->name('uploadSAI2');
-
 Route::post('/csv/references/sai/3', 'ImportController@uploadSAI3')->name('uploadSAI3');
-// Route::post('/csv/references/sai/3/submit', 'ImportController@uploadSAI3Submit')->name('uploadSAI3Submit');
 
 Route::get('/csv/references/percentile_stanine/1', 'ImportController@uploadStanine1')->name('uploadStanine1');
-// Route::post('/csv/references/percentile_stanine/1', 'ImportController@skipSAI')->name('skipSAI');
-
 Route::post('/csv/references/percentile_stanine/2', 'ImportController@uploadStanine2')->name('uploadStanine2');
-
 Route::post('/csv/references/percentile_stanine/3', 'ImportController@uploadStanine3')->name('uploadStanine3');
-// Route::post('/csv/references/percentile_stanine/3/submit', 'ImportController@uploadStanine3Submit')->name('uploadStanine3Submit');
+
 Route::post('/csv', 'ImportController@finalizeUpload')->name('finalizeUpload');
 
 Route::post('/csv/import_parse', 'ImportController@parseImport')->name('import_parse');
@@ -68,7 +59,6 @@ Route::post('/csv/import_process', 'ImportController@processImport')->name('impo
 
 //Route::get('/students', 'HomeController@students')->name('students');
 Route::get('/students/view', 'LiveSearchController@students')->name('students');
-// Route::get('/students/fetch_data', 'LiveSearchController@fetch_data');
 // Route::get('/students/info', 'LiveSearchController@studentInfo')->name('studentInfo');
 Route::resource('/students/view/studentinfo', 'LiveSearchController');
 
@@ -77,7 +67,6 @@ Route::resource('/students/view/studentinfo', 'LiveSearchController');
 // Route::get('/monitoring/total', 'HomeController@monitoring')->name('monitoringTotal');
 Route::get('/students/monitoring', 'BatchController@index')->name('batch_list');
 Route::get('/students/monitoring/{batch}', 'BatchController@monitor')->name('monitoring');
-// Route::get('monitoring/fetch_data', 'MonitoringTotalController@fetch_data');
 Route::get('/students/monitoring/info', 'MonitoringTotalController@totalInfo')->name('totalInfo');
 
 Route::patch('/students/monitoring/info/{total_score_details->id}', 'MonitoringTotalController@udpate');
@@ -85,13 +74,11 @@ Route::patch('/students/monitoring/info/{total_score_details->id}', 'MonitoringT
 Route::resource('/students/monitoring/totalinfo', 'MonitoringTotalController');
 
 Route::get('/students/monitoring/verbal', 'MonitoringVerbalController@monitoring_verbal')->name('monitoring_verbal');
-// Route::get('monitoring/verbal/fetch_data', 'MonitoringVerbalController@fetch_data');
 Route::get('/students/monitoring/verbalinfo', 'MonitoringVerbalController@verbalInfo')->name('verbalInfo');
 
 Route::resource('/students/monitoring/verbalinfo', 'MonitoringVerbalController');
 
 Route::get('/students/monitoring/nonverbal', 'MonitoringNonVerbalController@monitoring_nonverbal')->name('monitoring_nonverbal');
-// Route::get('monitoring/nonverbal/fetch_data', 'MonitoringNonVerbalController@fetch_data');
 Route::get('/students/monitoring/nonverbalinfo', 'MonitoringNonVerbalController@nonverbalInfo')->name('nonverbalInfo');
 
 Route::resource('/students/monitoring/nonverbalinfo', 'MonitoringNonVerbalController');
@@ -103,10 +90,18 @@ Route::get('/students/monitoring/delete/{id}', 'BatchController@deleteBatch')->n
 Route::get('/students/monitoring/export-batch/{id}', 'PDFController@exportBatch')->name('exportBatch');
 
 
-Route::get('/csv/selective-scaled/reset', 'ImportController@selective_scaled_restart')->name('selective_scaled_restart');
-Route::get('/csv/selective-sai/reset', 'ImportController@selective_sai_restart')->name('selective_sai_restart');
-Route::get('/csv/selective-stanine/reset', 'ImportController@selective_stanine_restart')->name('selective_stanine_restart');
+Route::get('/csv/selective-scaled/reset', 'ImportController@selectiveScaledRestart')->name('selectiveScaledRestart');
+Route::get('/csv/selective-sai/reset', 'ImportController@selectiveSAIRestart')->name('selectiveSAIRestart');
+Route::get('/csv/selective-stanine/reset', 'ImportController@selectiveStanineRestart')->name('selectiveStanineRestart');
 
-Route::get('/csv/selective-scaled/add', 'ImportController@selective_scaled_add')->name('selective_scaled_add');
-Route::get('/csv/selective-sai/add', 'ImportController@selective_sai_add')->name('selective_scaled_add');
-Route::get('/csv/selective-stanine/add', 'ImportController@selective_stanine_add')->name('selective_scaled_add');
+Route::get('/csv/selective-scaled/add', 'ImportController@selectiveScaledAdd')->name('selectiveScaledAdd');
+Route::post('/csv/selective-scaled/add/2', 'ImportController@selectiveScaledAdd2')->name('selectiveScaledAdd2');
+Route::post('/csv/selective-scaled/add/3', 'ImportController@selectiveScaledAdd3')->name('selectiveScaledAdd3');
+
+Route::get('/csv/selective-sai/add', 'ImportController@selectiveSAIAdd')->name('selectiveSAIAdd');
+Route::post('/csv/selective-sai/add/2', 'ImportController@selectiveSAIAdd2')->name('selectiveSAIAdd2');
+Route::post('/csv/selective-sai/add/3', 'ImportController@selectiveSAIAdd3')->name('selectiveSAIAdd3');
+
+Route::get('/csv/selective-stanine/add', 'ImportController@selectiveStanineAdd')->name('selectiveStanineAdd');
+Route::post('/csv/selective-stanine/add/2', 'ImportController@selectiveStanineAdd2')->name('selectiveStanineAdd2');
+Route::post('/csv/selective-stanine/add/3', 'ImportController@selectiveStanineAdd3')->name('selectiveStanineAdd3');

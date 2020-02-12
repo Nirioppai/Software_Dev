@@ -52,7 +52,7 @@
         <a class="custom-breadcrumb text-dark" href="/home">> OLSAT References</a>
         <a>/</a>
 
-    <a class="current-breadcrumb text-dark"><b>Student Ability Index</b></a>
+    <a class="current-breadcrumb text-dark"><b>School Ability Index</b></a>
 </div>
 @endsection
 
@@ -66,17 +66,17 @@
             <!-- Stepers Wrapper -->
             <ul class="stepper stepper-vertical mt--5">
 
-              <!-- Student Data Step 1 -->
+              <!-- SAI Step 1 -->
                 <li @if($step == 1) class="active" @endif>
 
                     <a>
                         <span class="circle">1</span>
-                        <span class="label">Student Data - Upload</span>
+                        <span class="label">School Ability Index - Upload</span>
                     </a>
 
-@if($uploader == 'student_1')
+@if($uploader == 'sai_1')
                     <div class="step-content grey lighten-3">
-                        <p>First, choose a Student Data file and then upload it on the system by clicking on Submit.</p>
+                        <p>First, choose a School Ability Index file and then upload it on the system by clicking on Submit.</p>
                     </div>
 
                     <!-- Form open here -->
@@ -85,7 +85,7 @@
                       <div class="input-group down ml-5 col-sm-6 ">
 
                           <div class="custom-file down">
-                            <form method="POST" action="{{ route('uploadStudent2') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('selectiveSAIAdd2') }}" enctype="multipart/form-data">
                               {{ csrf_field() }}
 
                               <input type="file" class="custom-file-input down" id="inputGroupFile04" name="csv_file" required>
@@ -120,31 +120,25 @@
 @endif
                 </li>
 
-                <!-- Student Data Step 2 -->
+                <!-- SAI Step 2 -->
 
                 <li @if($step == 2) class="active" @endif>
 
                     <a>
                         <span class="circle">2</span>
-                        <span class="label">Student Data - Preview</span>
+                        <span class="label">School Ability Index - Preview</span>
                     </a>
 
-@if($uploader == 'student_2')
+@if($uploader == 'sai_2')
 
                     <div class="step-content grey lighten-3">
                         <p>Next, you can look at a preview of what is the data inside the uploaded CSV.</p>
                     </div>
 
-                    <form method="POST" action="{{ route('uploadStudent3') }}">
+                    <form method="POST" action="{{ route('selectiveSAIAdd3') }}">
                     {{ csrf_field() }}
 
                     <input type="hidden" name="csv_data_file_id" value="{{ $csv_data_file->id }}" />
-
-                    <div align="center" class="step-content grey lighten-3 mt--4">
-                        <h3>Choose Date of Examination:</h3>
-                        <input type="date" name="date_of_exam" id="date_of_exam" value="{{$date_today}}" required>
-                    </div>
-
 
                     <div class="ml-5">
 
@@ -183,9 +177,9 @@
                                   @foreach ($csv_data[0] as $key => $value)
                                                 <td align="center">
                                                     <select class="selectionToUpper" name="fields[{{ $key }}]">
-                                                        @foreach (config('app.db_fields') as $db_field)
-                                                            <option value="{{ (\Request::has('header')) ? $db_field : $loop->index }}"
-                                                                @if ($key === $db_field) selected @endif>{{ $db_field }}</option>
+                                                        @foreach (config('app.db_scaled_to_sais') as $db_scaled_to_sai)
+                                                            <option value="{{ (\Request::has('header')) ? $db_scaled_to_sai : $loop->index }}"
+                                                                @if ($key === $db_scaled_to_sai) selected @endif>{{ $db_scaled_to_sai }}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
@@ -223,16 +217,16 @@
                 </li>
 
 
-                <!-- Student Data Step 3 -->
+                <!-- SAI Step 3 -->
                 <li @if($step == 3) class="active" @endif>
                     <a>
                         <span class="circle">3</span>
-                        <span class="label">Student Data - Confirmation</span>
+                        <span class="label">School Ability Index - Confirmation</span>
                     </a>
 
-@if($uploader == 'student_3')
+@if($uploader == 'sai_3')
                     <div class="step-content grey lighten-3">
-                        <p>Finalize <b>Student Data</b> uploading?</p>
+                        <p>Finalize <b>School Ability Index</b> uploading?</p>
                     </div>
 
                       <div class="row ml-5">
@@ -242,7 +236,7 @@
                             </button>
                         </div>
                         <div class="col-sm">
-                          <form method="POST" action="{{ route('finalizeUpload') }}">
+                          <form method="GET" action="{{ route('csv') }}">
                           {{ csrf_field() }}
 
                             <button type="submit" class="btn btn-primary">

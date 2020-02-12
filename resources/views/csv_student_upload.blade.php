@@ -232,6 +232,7 @@
 
 @if($uploader == 'student_3')
                     <div class="step-content grey lighten-3">
+                        <p>You are uploading Student <b>Batch No. {{$batch}}</b></p>
                         <p>Finalize <b>Student Data</b> uploading?</p>
                     </div>
 

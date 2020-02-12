@@ -490,11 +490,11 @@
                             </button>
                         </div>
                         <div class="col-sm">
-                          <a href="/csv">
+                          <form method="GET" action="{{ route('csv') }}">
                                 <button type="submit" class="btn btn-primary">
                                 Continue
                                 </button>
-                          </a>
+                          </form>
                         </div>
                     </div>
                 </div>
