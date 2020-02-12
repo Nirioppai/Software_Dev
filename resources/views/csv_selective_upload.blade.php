@@ -51,7 +51,7 @@
         <a class="custom-breadcrumb text-dark" href="/home">Dashboard</a>
         <a>/</a>
          -->
-    <a class="current-breadcrumb text-dark">> OLSAT References</a>
+    <a class="current-breadcrumb text-dark">OLSAT References</a>
 </div>
 @endsection
 
