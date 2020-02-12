@@ -20,7 +20,7 @@ select
 student_id,
 name,
 DATE_FORMAT(date_of_birth, '%M' ' ' '%d' ', ' '%Y') as date_of_birth,
-grade_level,
+right(grade_level,2) as grade_level,
 rounded_current_age_in_years as age_year,
 rounded_current_age_in_months as age_month,
 total_raw,
