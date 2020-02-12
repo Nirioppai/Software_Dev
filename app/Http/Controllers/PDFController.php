@@ -44,10 +44,8 @@ class PDFController extends Controller
 
     function exportBatch($batch)
     {
-     $batch_results = DB::table('final_student_results')->where('batch',  $batch)->get();
-
-     $pdf = PDF::loadView('student_result_batch_export', array('batch_results' => $batch_results));
-     return $pdf->download('Batch.pdf');
+     $student_results = DB::table('student_batch')->where('batch',  $batch)->get();
+     return $student_results;
     }
 
     function pdf($batch)
@@ -74,7 +72,9 @@ class PDFController extends Controller
      {
       $output .= '
       <tr>
-       <td style="border: 1px solid; padding:5px;">'.$student->id.'</td>
+       <td style="border: 1px solid; padding:5px;">'.$student->student_id.'</td>
+       <td style="border: 1px solid; padding:5px;">'.$student->name.'</td>
+       <td style="border: 1px solid; padding:5px;">'.$student->name.'</td>
        <td style="border: 1px solid; padding:5px;">'.$student->name.'</td>
       </tr>
       ';
