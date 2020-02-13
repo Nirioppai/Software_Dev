@@ -73,6 +73,9 @@ class HomeController extends Controller
     }
 
     public function StudentRemark(Request $request) {
+        $this->validate($request, [
+          'student_remark' => ['required'],
+      ]);
 
 
         $student_number = $request->student_id;

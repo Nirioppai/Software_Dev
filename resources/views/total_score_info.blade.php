@@ -190,8 +190,15 @@
                     <h2>
                         Remarks
                     </h2>
-                    
+                    @if($student_remark)
                     {{$student_remark}}
+                    @endif
+
+
+                    @if(!$student_remark)
+                    No remarks available. Click on edit to add one now.
+                    @endif
+                    
 
                     <div class="col text-right">
 
