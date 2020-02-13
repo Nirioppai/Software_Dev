@@ -22,11 +22,6 @@
       <i class="fas fa-file-excel text-primary"></i> OLSAT References
     </a>
   </li>
-  <li class="nav-item active">
-    <a class="nav-link active" href="/monitoring">
-      <i class="ni ni-key-25 text-primary"></i> Monitoring
-    </a>
-  </li>
 </ul>
 <!-- Divider -->
 <hr class="my-3">

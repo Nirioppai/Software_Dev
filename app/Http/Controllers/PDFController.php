@@ -52,8 +52,8 @@ class PDFController extends Controller
     {
      $pdf = \App::make('dompdf.wrapper');
      $pdf->loadHTML($this->convert_student_results_to_html($batch));
-     return $pdf->stream();
-     //return $pdf->download('Student Results Batch '.$batch. '.pdf');
+     //return $pdf->stream();
+     return $pdf->download('Student Results Batch '.$batch. '.pdf');
     }
 
     function convert_student_results_to_html($batch)
