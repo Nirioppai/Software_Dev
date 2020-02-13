@@ -30,11 +30,11 @@
 <h6 class="navbar-heading text-dark">Administrator actions</h6>
 <!-- Navigation -->
 <ul class="navbar-nav mb-md-3">
-    <li class="nav-item">
-        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
-            <i class="fas fa-user-circle"></i> Accounts
-        </a>
-    </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+      <i class="fas fa-user-circle"></i> Accounts
+    </a>
+  </li>
 </ul>
 @endsection @section('breadcrumb')
 <!-- Breadcrumb -->
@@ -57,6 +57,38 @@
 @endsection @section('content')
 
 <!-- Modal -->
+<div class="modal fade" id="RemarksModal" tabindex="-1" role="dialog" aria-labelledby="RemarksModalLabel" aria-hidden="true">
+  <form action="/students/monitoring/totalinfo/remark-update" method="POST">
+    @csrf
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="editModalLabel">Edit Student Remark</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+              <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                  </div>
+                  <input class="form-control" name="student_remark" placeholder="Update student Remark" type="text" required>
+
+              </div>
+              <input type="hidden" name="student_id" value="{{$total_score_details->student_id}}">
+          </div>
+      </div>
+      <div class="modal-footer mt--5">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+
 <form action="/students/monitoring/totalinfo/{{$total_score_details->id}}" method="POST">
       {{ csrf_field() }}
       {{ method_field('PATCH') }}
@@ -163,21 +195,15 @@
                     <h2>
                         Remarks
                     </h2>
-                    <form>
-                        <textarea class="form-control form-control-alternative" id="exampleFormControlTextarea1" rows="3" placeholder="Write a remark about the student."></textarea>
-                    </form>
+                    
+                    {{$student_remark}}
 
-                    <div class="row">
+                    <div class="col text-right">
 
-                      <div class="col">  </div>
-                      <div class="col">  </div>
-                      <div class="col">  </div>
-                      <div class="col">  </div>
-                      <div class="col-sm mt-2"> </div>
-                      <div class="col-sm mt-2">
 
-                              <a href=""  class="btn btn-primary btn-rounded">Edit</a>
-                      </div>
+
+                    <a href=""  class="btn btn-primary btn-rounded "data-toggle="modal" data-target="#RemarksModal">Edit</a>
+
 
                     </div>
 

@@ -15,6 +15,7 @@ class CreateStudentRemarksTable extends Migration
     {
         Schema::create('student_remarks', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('key');
             $table->mediumText('remarks');
             $table->timestamps();
         });

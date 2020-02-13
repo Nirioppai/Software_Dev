@@ -30,11 +30,11 @@
 <h6 class="navbar-heading text-dark">Administrator actions</h6>
 <!-- Navigation -->
 <ul class="navbar-nav mb-md-3">
-    <li class="nav-item">
-        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
-        <i class="fas fa-user-circle"></i> Accounts
-        </a>
-    </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+      <i class="fas fa-user-circle"></i> Accounts
+    </a>
+  </li>
 </ul>
 @endsection @section('breadcrumb')
 <!-- Breadcrumb -->

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\RawScoreToScaledScore;
 use App\SaiToPercentileRankAndStanine;
 use App\ScaledScoreToSai;
+use App\StudentRemark;
+use DB;
 
 class HomeController extends Controller
 {
@@ -68,6 +70,37 @@ class HomeController extends Controller
         public function uploadStudent()
     {
         return view('csv_student_upload');
+    }
+
+    public function StudentRemark(Request $request) {
+
+
+        $student_number = $request->student_id;
+        $student_remark = $request->student_remark;
+
+        $student_id = DB::table('student_remarks')->where('key',  $student_number)->pluck('key')->first();
+        if($student_id != $student_number)
+        {
+            //insert
+            $Remark = new StudentRemark;
+            $Remark->key = $request->student_id;
+            $Remark->remarks = $request->student_remark;
+        
+            $Remark->save();
+        }
+
+        else{
+
+
+            $update = StudentRemark::where('key', $student_number)->update(['remarks' => $student_remark]);
+            return back();
+        }
+
+        //update
+
+
+        return back();
+
     }
 
     public function uploadReferences()
