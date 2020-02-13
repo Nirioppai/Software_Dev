@@ -158,7 +158,8 @@ class MonitoringTotalController extends Controller
     public function edit($id)
     {
       $total_score_details = DB::table('final_student_results')->find($id);
-      return view('total_score_info', compact('total_score_details'));
+      $student_remark = DB::table('student_remarks')->where('key',  $student_id)->pluck('remarks')->first();
+      return view('total_score_info', compact('total_score_details'))->with('student_remark', $student_remark);
     }
 
     /**
@@ -215,7 +216,9 @@ class MonitoringTotalController extends Controller
 
       $total_score_details = FinalStudentResult::find($id);
 
-      return view('total_score_info', compact('total_score_details'));
+      $student_id = DB::table('final_student_results')->where('id',  $id)->pluck('student_id')->first();
+      $student_remark = DB::table('student_remarks')->where('key',  $student_id)->pluck('remarks')->first();
+      return view('total_score_info', compact('total_score_details'))->with('student_remark', $student_remark);
     }
 
     /**

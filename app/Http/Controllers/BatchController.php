@@ -149,6 +149,8 @@ class BatchController extends Controller
         $deleteBatch = FinalStudentData::where('batch', $batch)->delete();
         $deleteBatch = FinalStudentResult::where('batch', $batch)->delete();
 
+        
+
         return redirect('/students/monitoring');
 
     }
