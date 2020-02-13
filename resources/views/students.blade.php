@@ -19,7 +19,7 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/csv">
-      <i class="fas fa-file-excel text-primary"></i> Upload CSV
+      <i class="fas fa-file-excel text-primary"></i> OLSAT References
     </a>
   </li>
   <li class="nav-item ">
@@ -56,36 +56,39 @@
 @endsection
 
 @section('content')
-<div class="row justify-content-center align-items-center">
-    <div class="col-sm-4 ">
-      <!-- Card -->
-      <div class="card hoverable">
+<div class="container">
 
-        <!-- Card image -->
-        <img class="card-img-top" src="http://localhost:8000/./img/brand/Slanted-Gradient1.png" alt="Card image cap">
+  <div class="row justify-content-center align-items-center">
+      <div class="col-sm-4 ">
+        <!-- Card -->
+        <div class="card hoverable">
+
+          <!-- Card image -->
+          <img class="card-img-top" src="http://localhost:8000/./img/brand/Slanted-Gradient1.png" alt="Card image cap">
 
 
 
 
-        <!-- Card content -->
-        <div class="card-body">
+          <!-- Card content -->
+          <div class="card-body">
 
-          <!-- Title -->
-          <h4 class="card-title"><a>Upload Student Data</a></h4>
-          <!-- Text -->
-          <p class="card-text">Upload Student Data to monitor their IQ statistics.</p>
-          <!-- Button -->
-          <a href="/students/upload/1" class="btn btn-primary">Next</a>
+            <!-- Title -->
+            <h4 class="card-title"><a>Upload Student Data</a></h4>
+            <!-- Text -->
+            <p class="card-text">Upload Student Data to monitor their IQ statistics.</p>
+            <!-- Button -->
+            <a href="/students/upload/1" class="btn btn-primary">Next</a>
+
+          </div>
 
         </div>
-
+        <!-- Card -->
       </div>
-      <!-- Card -->
-    </div>
 
-    <div class="col-sm-4 ">
-      <!-- Card -->
-      <div class="card hoverable">
+      <div class="col-sm-4 ">
+        <!-- Card -->
+        <div class="card hoverable">
+
 
         <!-- Card image -->
         <img class="card-img-top" src="http://localhost:8000/./img/brand/bg.jpg" alt="Card image cap">
@@ -93,69 +96,73 @@
 
 
 
-        <!-- Card content -->
-        <div class="card-body">
 
-          <!-- Title -->
-          <h4 class="card-title"><a>View Student List</a></h4>
-          <!-- Text -->
-          <p class="card-text">Take a look at the contents of your student CSV Uploads.</p>
-          <!-- Button -->
-          <a href="/students/view" class="btn btn-primary">Next</a>
+          <!-- Card content -->
+          <div class="card-body">
 
-        </div>
+            <!-- Title -->
+            <h4 class="card-title"><a>View Student List</a></h4>
+            <!-- Text -->
+            <p class="card-text">Take a look at the contents of your student CSV Uploads.</p>
+            <!-- Button -->
+            <a href="/students/view" class="btn btn-primary">Next</a>
 
-      </div>
-      <!-- Card -->
-    </div>
-
-    <div class="col-sm-4">
-      <!-- Card -->
-      <div class="card hoverable">
-
-        <!-- Card image -->
-        <img class="card-img-top" src="http://localhost:8000/./img/brand/olsat_tables.png" alt="Card image cap">
-
-        <!-- Card content -->
-        <div class="card-body">
-
-          <!-- Title -->
-          <h4 class="card-title"><a>Student Results</a></h4>
-          <!-- Text -->
-          <p class="card-text">Check the <b>computed</b> OLSAT Results of your students.</p>
-          <!-- Button -->
-          <a href="/students/monitoring" class="btn btn-primary">Next</a>
+          </div>
 
         </div>
-
+        <!-- Card -->
       </div>
-      <!-- Card -->
-    </div>
-  </div>
 
-  @if(session('success'))
-<script>
-    $(document).ready(function() {
-        toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": true,
-            "positionClass": "toast-top-right",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
-        toastr["success"]("CSV Import successful.", "Success ")
-    });
-</script>
-@endif
+      <div class="col-sm-4">
+        <!-- Card -->
+        <div class="card hoverable">
+
+          <!-- Card image -->
+          <img class="card-img-top" src="http://localhost:8000/./img/brand/olsat_tables.png" alt="Card image cap">
+
+          <!-- Card content -->
+          <div class="card-body">
+
+            <!-- Title -->
+            <h4 class="card-title"><a>Student Results</a></h4>
+            <!-- Text -->
+            <p class="card-text">Check the <b>computed</b> OLSAT Results of your students.</p>
+            <!-- Button -->
+            <a href="/students/monitoring" class="btn btn-primary">Next</a>
+
+          </div>
+
+        </div>
+        <!-- Card -->
+      </div>
+    </div>
+
+    @if(session('success'))
+  <script>
+      $(document).ready(function() {
+          toastr.options = {
+              "closeButton": true,
+              "debug": false,
+              "newestOnTop": false,
+              "progressBar": true,
+              "positionClass": "toast-top-right",
+              "preventDuplicates": false,
+              "onclick": null,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "5000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+          }
+          toastr["success"]("CSV Import successful.", "Success ")
+      });
+  </script>
+  @endif
+
+</div>
+
 
 @endsection

@@ -19,7 +19,7 @@
   </li>
   <li class="nav-item">
     <a class="nav-link " href="/csv">
-      <i class="fas fa-file-excel text-primary"></i> Upload CSV
+      <i class="fas fa-file-excel text-primary"></i> OLSAT References
     </a>
   </li>
   <li class="nav-item ">
@@ -85,7 +85,7 @@
                           </a>
                           <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="monitoring/delete/{{$batch->batch}}"><i class="fas fa-trash-alt"></i> Delete Batch</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i> Export batch as PDF</a>
+                            <a class="dropdown-item" href="monitoring/export-batch/{{$batch->batch}}"><i class="fas fa-file-pdf"></i> Export batch as PDF</a>
                           </div>
                         
 

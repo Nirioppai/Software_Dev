@@ -19,7 +19,7 @@
   </li>
   <li class="nav-item ">
     <a class="nav-link " href="/csv">
-      <i class="fas fa-file-excel text-primary"></i> Upload CSV
+      <i class="fas fa-file-excel text-primary"></i> OLSAT References
     </a>
   </li>
   <li class="nav-item ">
@@ -232,6 +232,7 @@
 
 @if($uploader == 'student_3')
                     <div class="step-content grey lighten-3">
+                        <p>You are uploading Student <b>Batch No. {{$batch}}</b></p>
                         <p>Finalize <b>Student Data</b> uploading?</p>
                     </div>
 

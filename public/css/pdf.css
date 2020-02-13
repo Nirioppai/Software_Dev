@@ -1,8 +1,39 @@
+
+
 .body {
   font-family: 'Roboto', sans-serif;
   font-weight: bolder;
   font-size: 8;
 }
+
+
+
+.main{
+  margin-bottom: 1cm;
+}
+
+.enlarged {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  font-size: 10;
+}
+
+header {
+    position: fixed;
+    top: 0cm;
+    left: 0cm;
+    right: 0cm;
+}
+
+footer {
+    position: fixed; 
+    bottom: 1cm; 
+    left: 0cm; 
+    right: 0cm;
+
+}
+
+
 
 .picture-anchor {
   position: relative;

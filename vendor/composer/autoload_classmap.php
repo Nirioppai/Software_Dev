@@ -45,6 +45,7 @@ return array(
     'App\\RawScoreToScaledScore' => $baseDir . '/app/RawScoreToScaledScore.php',
     'App\\SaiToPercentileRankAndStanine' => $baseDir . '/app/SaiToPercentileRankAndStanine.php',
     'App\\ScaledScoreToSai' => $baseDir . '/app/ScaledScoreToSai.php',
+    'App\\StudentBatch' => $baseDir . '/app/StudentBatch.php',
     'App\\StudentData' => $baseDir . '/app/StudentData.php',
     'App\\StudentRemark' => $baseDir . '/app/StudentRemark.php',
     'App\\User' => $baseDir . '/app/User.php',

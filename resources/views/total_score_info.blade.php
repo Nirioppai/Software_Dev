@@ -15,7 +15,7 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/csv">
-            <i class="fas fa-file-excel text-primary"></i> Upload CSV
+            <i class="fas fa-file-excel text-primary"></i> OLSAT References
         </a>
     </li>
     <li class="nav-item ">
@@ -210,7 +210,7 @@
         <div data-toggle="tooltip" data-placement="top" data-html="true" title="<b>Generate</b> a PDF preview." class="row-sm mt-4 picture-anchor" target="_blank">
             <img  style="width: 100%; height: 100%;" src="{{asset('./img/pdf/PDF.png')}}">
             </a>
-            <div class="text-2 text-dark">Nico Del Rosario</div>
+            <div class="text-2">{{$total_score_details->name}}</div>
             <div class="text-3 text-dark">{{$total_score_details->grade_level}}</div>
             <div class="text-4 text-dark">Xavier School San Juan</div>
             <div class="text-5 text-dark"></div>
