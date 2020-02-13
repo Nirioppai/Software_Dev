@@ -67,7 +67,7 @@
       <div class="card hoverable">
 
         <!-- Card image -->
-        <img class="card-img-top" src="{{asset('./img/brand/Slanted-Gradient1.png')}}" alt="Card image cap">
+        <img class="card-img-top" src="{{asset('./img/brand/idea.png')}}" alt="Card image cap">
 
         <!-- Card content -->
         <div class="card-body">
@@ -94,7 +94,7 @@
       <div class="card hoverable">
 
         <!-- Card image -->
-        <img class="card-img-top" src="{{asset('./img/brand/Slanted-Gradient1.png')}}" alt="Card image cap">
+        <img class="card-img-top" src="{{asset('./img/brand/idea.png')}}" alt="Card image cap">
 
 
 
@@ -128,7 +128,7 @@
       <div class="card hoverable">
 
         <!-- Card image -->
-        <img class="card-img-top" src="{{asset('./img/brand/olsat_tables.png')}}" alt="Card image cap">
+        <img class="card-img-top" src="{{asset('./img/brand/analytics.png')}}" alt="Card image cap">
 
         <!-- Card content -->
         <div class="card-body">
@@ -153,7 +153,7 @@
       <div class="card hoverable">
 
         <!-- Card image -->
-        <img class="card-img-top" src="{{asset('./img/brand/olsat_tables.png')}}" alt="Card image cap">
+        <img class="card-img-top" src="{{asset('./img/brand/analytics.png')}}" alt="Card image cap">
 
         <!-- Card content -->
         <div class="card-body">
@@ -182,7 +182,7 @@
       <div class="card hoverable">
 
         <!-- Card image -->
-        <img class="card-img-top" src="{{asset('./img/brand/olsat_tables.png')}}" alt="Card image cap">
+        <img class="card-img-top" src="{{asset('./img/brand/thought.png')}}" alt="Card image cap">
 
         <!-- Card content -->
         <div class="card-body">
@@ -207,7 +207,7 @@
       <div class="card hoverable">
 
         <!-- Card image -->
-        <img class="card-img-top" src="{{asset('./img/brand/olsat_tables.png')}}" alt="Card image cap">
+        <img class="card-img-top" src="{{asset('./img/brand/thought.png')}}" alt="Card image cap">
 
         <!-- Card content -->
         <div class="card-body">
