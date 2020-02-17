@@ -19,75 +19,95 @@ class CreateStudentDatasTable extends Migration
           SELECT
           	id,
           	student_id,
-          	name,
-          	overall_total_score,
-          	verbal_number_correct,
-          	non_verbal_number_correct,
-          	date_of_birth,
+          	student_name,
+          	grade,
+          	section,
+          	birthday,
           	IF(rounded_current_age_in_months = 12, current_age_in_years + 1, current_age_in_years + 0) as rounded_current_age_in_years,
-            IF(rounded_current_age_in_months = 12, rounded_current_age_in_months = 0, rounded_current_age_in_months + 0) as rounded_current_age_in_months,
+          	IF(rounded_current_age_in_months = 12, rounded_current_age_in_months = 0, rounded_current_age_in_months + 0) as rounded_current_age_in_months,
           	current_age_in_days,
           	exam_date,
+          	verbal_comprehension,
+          	verbal_reasoning,
+          	verbal_total_score,
+          	quantitative_reasoning,
+          	figural_reasoning,
+          	non_verbal_total_score,
+          	total_score,
           	batch,
-          	grade_level,
-            created_at,
-            updated_at
+          	created_at,
+          	updated_at
           FROM
-          	(
-          		SELECT
-          			id,
-          			student_id,
-          			name,
-          			overall_total_score,
-          			verbal_number_correct,
-          			non_verbal_number_correct,
-          			date_of_birth,
-          			current_age_in_years,
-          			IF(current_age_in_days > 15, current_age_in_months + 1, current_age_in_months + 0) as rounded_current_age_in_months,
-          			current_age_in_days,
-          			exam_date,
-          			batch,
-          			grade_level,
-                created_at,
-                updated_at
-          		FROM
-          			(
-          				SELECT
-          					id,
-          					student_id,
-          					name,
-          					overall_total_score,
-          					verbal_number_correct,
-          					non_verbal_number_correct,
-          					date_of_birth,
-          					FLOOR(DATEDIFF(exam_date,date_of_birth)/365.30) current_age_in_years,
-          					FLOOR((DATEDIFF(exam_date,date_of_birth)/365.30 - FLOOR(DATEDIFF(exam_date,date_of_birth)/365))* 12) current_age_in_months,
-          					CEILING((((DATEDIFF(exam_date,date_of_birth)/365.30 - FLOOR(DATEDIFF(exam_date,date_of_birth)/365))* 12) - FLOOR((DATEDIFF(exam_date,date_of_birth)/365.30 - FLOOR(DATEDIFF(exam_date,date_of_birth)/365))* 12))* 30) current_age_in_days,
-          					exam_date,
-          					batch,
-          					grade_level,
-                    created_at,
-                    updated_at
-          				FROM
-          					(
-          						SELECT
-          							id,
-          							student_id,
-          							name,
-          							overall_total_score,
-          							verbal_number_correct,
-          							non_verbal_number_correct,
-          							STR_TO_DATE(birthday, '%c/%e/%Y ') as date_of_birth,
-          							exam_date,
-          							batch,
-          							level as grade_level,
-                        created_at,
-                        updated_at
-          						FROM
-          							student_datas
-          					) AS current_age_exam_date
-          			) AS current_age_exam_date
-              ) AS current_age_exam_date
+          (
+          	SELECT
+          	id,
+          	student_id,
+          	student_name,
+          	grade,
+          	section,
+          	birthday,
+            current_age_in_years,
+          	IF(current_age_in_days > 15, current_age_in_months + 1, current_age_in_months + 0) as rounded_current_age_in_months,
+          	current_age_in_days,
+          	exam_date,
+          	verbal_comprehension,
+          	verbal_reasoning,
+          	verbal_total_score,
+          	quantitative_reasoning,
+          	figural_reasoning,
+          	non_verbal_total_score,
+          	total_score,
+          	batch,
+          	created_at,
+          	updated_at
+          FROM
+          (
+          	SELECT
+          	id,
+          	student_id,
+          	student_name,
+          	grade,
+          	section,
+          	birthday,
+            FLOOR(DATEDIFF(exam_date,birthday)/365.30) current_age_in_years,
+          	FLOOR((DATEDIFF(exam_date,birthday)/365.30 - FLOOR(DATEDIFF(exam_date,birthday)/365))* 12) current_age_in_months,
+          	CEILING((((DATEDIFF(exam_date,birthday)/365.30 - FLOOR(DATEDIFF(exam_date,birthday)/365))* 12) - FLOOR((DATEDIFF(exam_date,birthday)/365.30 - FLOOR(DATEDIFF(exam_date,birthday)/365))* 12))* 30) current_age_in_days,
+          	exam_date,
+          	verbal_comprehension,
+          	verbal_reasoning,
+          	verbal_total_score,
+          	quantitative_reasoning,
+          	figural_reasoning,
+          	non_verbal_total_score,
+          	total_score,
+          	batch,
+          	created_at,
+          	updated_at
+          FROM
+          (
+          	SELECT
+          	id,
+          	student_id,
+          	student_name,
+          	grade,
+          	section,
+          	STR_TO_DATE(birthday, '%c/%e/%Y ') as birthday,
+            STR_TO_DATE(exam_date, '%c/%e/%Y ') as exam_date,
+          	verbal_comprehension,
+          	verbal_reasoning,
+          	verbal_total_score,
+          	quantitative_reasoning,
+          	figural_reasoning,
+          	non_verbal_total_score,
+          	total_score,
+          	batch,
+          	created_at,
+          	updated_at
+          FROM
+          	student_datas
+          ) As current_age_exam_date
+          ) As current_age_exam_date
+          ) As current_age_exam_date
         )
         ");
     }

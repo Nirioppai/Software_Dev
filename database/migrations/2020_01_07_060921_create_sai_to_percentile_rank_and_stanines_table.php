@@ -14,12 +14,13 @@ class CreateSaiToPercentileRankAndStaninesTable extends Migration
     public function up()
     {
         Schema::create('sai_to_percentile_rank_and_stanines', function (Blueprint $table) {
-            $table->increments('id');
-            $table->mediumInteger('sai');
-            $table->mediumInteger('percentile_rank');
-            $table->mediumInteger('stanine');
-            $table->string('type', 20);
-            $table->timestamps();
+          $table->increments('id');
+          $table->mediumInteger('sai');
+          $table->mediumInteger('percentile_rank');
+          $table->mediumInteger('stanine');
+          $table->string('classification', 30);
+          $table->string('type', 20);
+          $table->timestamps();
         });
     }
 

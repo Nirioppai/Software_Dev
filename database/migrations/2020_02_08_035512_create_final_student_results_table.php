@@ -16,7 +16,13 @@ class CreateFinalStudentResultsTable extends Migration
         Schema::create('final_student_results', function (Blueprint $table) {
               $table->increments('id');
               $table->string('student_id', 10);
-              $table->string('name', 40);
+              $table->string('student_name', 40);
+              $table->string('grade', 10);
+              $table->string('section', 10);
+              $table->date('date_of_birth', 11);
+              $table->bigInteger('rounded_current_age_in_years')->default(0);
+              $table->bigInteger('rounded_current_age_in_months')->default(0);
+              $table->date('exam_date');
               $table->mediumInteger('total_raw')->default(0);
               $table->mediumInteger('total_scaled')->default(0);
               $table->mediumInteger('total_sai')->default(0);
@@ -32,13 +38,8 @@ class CreateFinalStudentResultsTable extends Migration
               $table->mediumInteger('nonverbal_sai')->default(0);
               $table->mediumInteger('nonverbal_percentile')->default(0);
               $table->mediumInteger('nonverbal_stanine')->default(0);
-              $table->date('date_of_birth', 11);
-              $table->bigInteger('rounded_current_age_in_years')->default(0);
-              $table->bigInteger('rounded_current_age_in_months')->default(0);
-              $table->string('grade_level', 10);
-              $table->date('exam_date');
               $table->integer('batch');
-            $table->timestamps();
+              $table->timestamps();
         });
     }
 
