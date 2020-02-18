@@ -41,13 +41,16 @@
   <a class="custom-breadcrumb text-dark" href="/students">Students</a>
   <a>/</a>
 
-  <a class="custom-breadcrumb text-dark" href="/students/monitoring">Result Monitoring</a>
+  <a class="custom-breadcrumb text-dark" href="/students/monitoring">Student Batch List</a>
   <a>/</a>
 
-  <a class="custom-breadcrumb text-dark" href="/students/monitoring/{{$total_score_details->batch}}">Batch Results</a>
+  <a class="custom-breadcrumb text-dark" href="/students/monitoring/{{$total_score_details->batch}}">Student Batch Results</a>
   <a>/</a>
 
   <a class="current-breadcrumb text-dark"><b>Individual Result</b></a>
+
+
+     
 </div>
 @endsection @section('content')
 
@@ -67,7 +70,7 @@
         <div class="form-group">
               <div class="input-group mb-4">
                   <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                      <span class="input-group-text"><i class="fas fa-comment"></i></span>
                   </div>
                   <input class="form-control" name="student_remark" placeholder="Update student Remark" type="text" required>
 

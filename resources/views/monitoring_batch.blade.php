@@ -47,7 +47,7 @@
   <a class="custom-breadcrumb text-dark" href="/students">Students</a>
   <a>/</a>
 
-  <a class="current-breadcrumb text-dark"><b>Result Monitoring</b></a>
+  <a class="current-breadcrumb text-dark"><b>Student Batch List</b></a>
 </div>
 @endsection
 
