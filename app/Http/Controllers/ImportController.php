@@ -405,7 +405,7 @@ class ImportController extends Controller
   public function finalizeUpload() {
     // DITO ILILIPAT LAMAN NG VIEW SA final_STUDENT_DATAS
 
-    DB::statement("INSERT INTO final_student_datas (student_id, student_name, grade, section, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, current_age_in_days, exam_date, verbal_comprehension, verbal_reasoning, verbal_total_score, quantitative_reasoning, figural_reasoning, non_verbal_total_score, total_score, batch, created_at, updated_at)
+    DB::statement("INSERT INTO final_student_datas (student_id, student_name, grade, section, birthday, rounded_current_age_in_years, rounded_current_age_in_months, current_age_in_days, exam_date, verbal_comprehension, verbal_reasoning, verbal_total_score, quantitative_reasoning, figural_reasoning, non_verbal_total_score, total_score, batch, created_at, updated_at)
 
        SELECT student_id, student_name, grade, section, birthday, rounded_current_age_in_years, rounded_current_age_in_months, current_age_in_days, exam_date, verbal_comprehension, verbal_reasoning, verbal_total_score, quantitative_reasoning, figural_reasoning, non_verbal_total_score, total_score, batch, created_at, updated_at FROM student_data;
     ");
@@ -417,9 +417,9 @@ class ImportController extends Controller
     //get current batch
     $max_batch = FinalStudentData::max('batch');
     //insert where batch = current batch, to prevent duplicate entries
-    DB::statement("INSERT INTO final_student_results (id, student_id, student_name, grade, section, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, exam_date, verbal_comprehension, verbal_reasoning, verbal_raw, quantitative_reasoning, figural_reasoning, nonverbal_raw, total_raw, batch, created_at, updated_at)
+    DB::statement("INSERT INTO final_student_results (id, student_id, student_name, grade, section, birthday, rounded_current_age_in_years, rounded_current_age_in_months, exam_date, verbal_comprehension, verbal_reasoning, verbal_raw, quantitative_reasoning, figural_reasoning, nonverbal_raw, total_raw, batch, created_at, updated_at)
 
-       SELECT id, student_id, student_name, grade, section, date_of_birth, rounded_current_age_in_years, rounded_current_age_in_months, exam_date, verbal_comprehension, verbal_reasoning, verbal_total_score, quantitative_reasoning, figural_reasoning, non_verbal_total_score, total_score, batch, created_at, updated_at  FROM final_student_datas WHERE batch = ".$max_batch.";
+       SELECT id, student_id, student_name, grade, section, birthday, rounded_current_age_in_years, rounded_current_age_in_months, exam_date, verbal_comprehension, verbal_reasoning, verbal_total_score, quantitative_reasoning, figural_reasoning, non_verbal_total_score, total_score, batch, created_at, updated_at  FROM final_student_datas WHERE batch = ".$max_batch.";
     ");
 
     // $count_new_batch = DB::table('final_student_datas')->where('batch',  $max_batch)->count();

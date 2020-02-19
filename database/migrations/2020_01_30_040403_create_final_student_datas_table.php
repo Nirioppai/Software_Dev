@@ -19,7 +19,7 @@ class CreateFinalStudentDatasTable extends Migration
           $table->string('student_name', 60);
           $table->string('grade', 10);
           $table->string('section', 10);
-          $table->date('date_of_birth', 11);
+          $table->date('birthday', 11);
           $table->bigInteger('rounded_current_age_in_years');
           $table->bigInteger('rounded_current_age_in_months');
           $table->bigInteger('current_age_in_days');

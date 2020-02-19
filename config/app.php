@@ -235,6 +235,7 @@ return [
       'sai',
       'percentile_rank',
       'stanine',
+      'classification',
       'type'
     ]
 
