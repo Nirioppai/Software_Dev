@@ -88,11 +88,11 @@
                       </div>
                       <div class="modal-body">
                         <h3>Overall Total Score:</h3>
-                        <input type="number" name="overall_total_score" value="{{$student_details->overall_total_score}}" required>
+                        <input type="number" name="overall_total_score" value="{{$student_details->total_score}}" required>
                         <h3>Verbal Raw Score:</h3>
-                        <input type="number" name="verbal_number_correct" value="{{$student_details->verbal_number_correct}}" required>
+                        <input type="number" name="verbal_number_correct" value="{{$student_details->verbal_total_score}}" required>
                         <h3>Non Verbal Raw Score:</h3>
-                        <input type="number" name="non_verbal_number_correct" value="{{$student_details->non_verbal_number_correct}}" required>
+                        <input type="number" name="non_verbal_number_correct" value="{{$student_details->non_verbal_total_score}}" required>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -106,7 +106,7 @@
             <div class="card-body pt-0 pt-md-4">
                 <div class="text-center mt-5">
                     <h1>
-                        {{$student_details->name}}
+                        {{$student_details->student_name}}
                     </h1>
                     <hr class="my-3">
                     <div class="text-left">
@@ -115,19 +115,19 @@
                         </h2>
                         <span class="font-weight-bold">Student No:</span> <span class="ml-1">{{$student_details->student_id}}</span>
                         <br>
-                        <span class="font-weight-bold">Birthdate:</span> <span class="ml-3">{{$student_details->date_of_birth}}</span>
+                        <span class="font-weight-bold">Birthdate:</span> <span class="ml-3">{{$student_details->birthday}}</span>
                         <br>
-                        <span class="font-weight-bold">Year Level:</span> <span class="ml-2">{{$student_details->grade_level}}</span>
+                        <span class="font-weight-bold">Year Level:</span> <span class="ml-2">{{$student_details->grade}}</span>
                     </div>
                     <hr class="my-4">
 
                     <div class="text-left">
 
-                        <span class="font-weight-bold">Overall Total Score:</span> <span class="ml-4">{{$student_details->overall_total_score}}</span>
+                        <span class="font-weight-bold">Overall Total Score:</span> <span class="ml-4">{{$student_details->total_score}}</span>
                         <br>
-                        <span class="font-weight-bold">Verbal Raw Score:</span> <span class="ml-5">{{$student_details->verbal_number_correct}}</span>
+                        <span class="font-weight-bold">Verbal Raw Score:</span> <span class="ml-5">{{$student_details->verbal_total_score}}</span>
                         <br>
-                        <span class="font-weight-bold">Non-Verbal Raw Score:</span> <span class="ml-2">{{$student_details->non_verbal_number_correct}}</span>
+                        <span class="font-weight-bold">Non-Verbal Raw Score:</span> <span class="ml-2">{{$student_details->non_verbal_total_score}}</span>
                     </div>
 
 

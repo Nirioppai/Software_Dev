@@ -159,7 +159,7 @@
             <div class="card-body pt-0 pt-md-4">
                 <div class="text-center mt-5">
                     <h1>
-                        {{$total_score_details->name}}
+                        {{$total_score_details->student_name}}
                     </h1>
                     <hr class="my-3">
                     <div class="text-left">
@@ -168,15 +168,15 @@
                         </h2>
                         <span class="font-weight-bold">Student No:</span> <span class="ml-1">{{$total_score_details->student_id}}</span>
                         <br>
-                        <span class="font-weight-bold">Grade Level:</span> <span class="ml-1">{{$total_score_details->grade_level}}</span>
+                        <span class="font-weight-bold">Grade Level:</span> <span class="ml-1">{{$total_score_details->grade}}</span>
                         <br>
                         <br>
-                        <span class="font-weight-bold">Birthdate:</span> <span class="ml-1">{{$total_score_details->date_of_birth}}</span>
+                        <span class="font-weight-bold">Birthdate:</span> <span class="ml-1">{{$total_score_details->birthday}}</span>
                         <br>
                         <span class="font-weight-bold">Age in Years:</span> <span class="ml-1">{{$total_score_details->rounded_current_age_in_years}}</span>
                         <br>
                         <span class="font-weight-bold">Age in Months:</span> <span class="ml-1">{{$total_score_details->rounded_current_age_in_months}}</span>
-                        
+
                     </div>
                     <hr class="my-4" />
                 </div>
@@ -198,7 +198,7 @@
                     @if(!$student_remark)
                     No remarks available. Click on edit to add one now.
                     @endif
-                    
+
 
                     <div class="col text-right">
 
@@ -238,12 +238,12 @@
         <div data-toggle="tooltip" data-placement="top" data-html="true" title="<b>Generate</b> a PDF preview." class="row-sm mt-4 picture-anchor" target="_blank">
             <img  style="width: 100%; height: 100%;" src="{{asset('./img/pdf/PDF.png')}}">
             </a>
-            <div class="text-2">{{$total_score_details->name}}</div>
-            <div class="text-3 text-dark">{{$total_score_details->grade_level}}</div>
+            <div class="text-2">{{$total_score_details->student_name}}</div>
+            <div class="text-3 text-dark">{{$total_score_details->grade}}</div>
             <div class="text-4 text-dark">Xavier School San Juan</div>
             <div class="text-5 text-dark"></div>
             <div class="text-6 text-dark">January 10, 2020</div>
-            <div class="text-7 text-dark">{{$total_score_details->date_of_birth}}</div>
+            <div class="text-7 text-dark">{{$total_score_details->birthday}}</div>
             <div class="text-8 text-dark">{{$total_score_details->rounded_current_age_in_years}}.{{$total_score_details->rounded_current_age_in_months}} Years old</div>
             <div class="text-9 text-dark">{{$total_score_details->verbal_raw}}</div>
             <div class="text-10 text-dark">{{$total_score_details->nonverbal_raw}}</div>

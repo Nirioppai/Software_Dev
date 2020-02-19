@@ -45,7 +45,7 @@ class MonitoringTotalController extends Controller
     if(isset($req->orderby)) {
       $orderby = $req->orderby;
     } else {
-      $orderby = "name";
+      $orderby = "student_name";
     }
 
     if(isset($req->ordertype)) {
@@ -69,12 +69,12 @@ class MonitoringTotalController extends Controller
         $paginateby = $req->filterby;
         $input_search = $req->search;
         $data = DB::table('student_result_total')->where('student_id', 'like', ''.$req->search.'%')
-              ->orWhere('name', 'like', ''.$req->search.'%')
+              ->orWhere('student_name', 'like', ''.$req->search.'%')
               ->orderBy($orderby, $ordertype)
               ->paginate($paginateby);
 
         $search_result_count = DB::table('student_result_total')->where('student_id', 'like', ''.$req->search.'%')
-              ->orWhere('name', 'like', ''.$req->search.'%');
+              ->orWhere('student_name', 'like', ''.$req->search.'%');
 
         $count_rows = $search_result_count->count();
         $data->appends(['search' => $req->search, 'filterby' => $req->filterby, 'orderby' => $req->orderby, 'ordertype' => $req->ordertype]);

@@ -90,10 +90,10 @@
 
          Order by:
          <select name="orderby" id="orderby" onchange="this.form.submit()">
-           <option value="name" {{$orderby == "name"? 'selected':''}}> Name </option>
+           <option value="student_name" {{$orderby == "student_name"? 'selected':''}}> Name </option>
            <option value="student_id" {{$orderby == "student_id"? 'selected':''}}> Student Number </option>
-           <option value="date_of_birth" {{$orderby == "date_of_birth"? 'selected':''}}> Birthdate </option>
-           <option value="grade_level" {{$orderby == "grade_level"? 'selected':''}}> Year Level </option>
+           <option value="birthday" {{$orderby == "birthday"? 'selected':''}}> Birthdate </option>
+           <option value="grade" {{$orderby == "grade"? 'selected':''}}> Year Level </option>
          </select>
 
          Type:

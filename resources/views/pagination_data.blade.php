@@ -3,9 +3,9 @@
   @foreach($data as $row)
       <tr>
        <td align="center">{{ $row->student_id }}</td>
-       <td>{{ $row->name }}</td>
-       <td align="center">{{ $row->date_of_birth }}</td>
-       <td align="center">{{ $row->grade_level }}</td>
+       <td>{{ $row->student_name }}</td>
+       <td align="center">{{ $row->birthday }}</td>
+       <td align="center">{{ $row->grade }}</td>
 
        <td align="center"><a href="view/studentinfo/{{$row->id}}"><button type="button" class="btn btn-primary">View</button></a></td>
      </tr>
