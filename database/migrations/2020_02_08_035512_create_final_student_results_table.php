@@ -28,7 +28,7 @@ class CreateFinalStudentResultsTable extends Migration
               $table->mediumInteger('total_sai')->default(0);
               $table->mediumInteger('total_percentile')->default(0);
               $table->mediumInteger('total_stanine')->default(0);
-              $table->string('total_classification', 10) -> default('NA');
+              $table->string('total_classification', 20) -> default('NA');
               $table->mediumInteger('verbal_raw')->default(0);
               $table->mediumInteger('verbal_comprehension')->default(0);
               $table->mediumInteger('verbal_reasoning')->default(0);
@@ -36,7 +36,7 @@ class CreateFinalStudentResultsTable extends Migration
               $table->mediumInteger('verbal_sai')->default(0);
               $table->mediumInteger('verbal_percentile')->default(0);
               $table->mediumInteger('verbal_stanine')->default(0);
-              $table->string('verbal_classification', 10) -> default('NA');
+              $table->string('verbal_classification', 20) -> default('NA');
               $table->mediumInteger('nonverbal_raw')->default(0);
               $table->mediumInteger('quantitative_reasoning')->default(0);
               $table->mediumInteger('figural_reasoning')->default(0);
@@ -44,7 +44,7 @@ class CreateFinalStudentResultsTable extends Migration
               $table->mediumInteger('nonverbal_sai')->default(0);
               $table->mediumInteger('nonverbal_percentile')->default(0);
               $table->mediumInteger('nonverbal_stanine')->default(0);
-              $table->string('nonverbal_classification', 10) -> default('NA');
+              $table->string('nonverbal_classification', 20) -> default('NA');
               $table->integer('batch');
               $table->timestamps();
         });

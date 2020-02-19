@@ -29,7 +29,7 @@ class LiveSearchController extends Controller
     if(isset($req->orderby)) {
       $orderby = $req->orderby;
     } else {
-      $orderby = "name";
+      $orderby = "student_name";
     }
 
     if(isset($req->ordertype)) {
@@ -53,13 +53,13 @@ class LiveSearchController extends Controller
         $paginateby = $req->filterby;
         $input_search = $req->search;
         $data = DB::table('final_student_datas')->where('student_id', 'like', ''.$req->search.'%')
-              ->orWhere('name', 'like', ''.$req->search.'%')
+              ->orWhere('student_name', 'like', ''.$req->search.'%')
               ->orWhere('date_of_birth', 'like', ''.$req->search.'%')
               ->orderBy($orderby, $ordertype)
               ->paginate($paginateby);
 
         $search_result_count = DB::table('final_student_datas')->where('student_id', 'like', ''.$req->search.'%')
-              ->orWhere('name', 'like', ''.$req->search.'%')
+              ->orWhere('student_name', 'like', ''.$req->search.'%')
               ->orWhere('date_of_birth', 'like', ''.$req->search.'%');
 
         $count_rows = $search_result_count->count();

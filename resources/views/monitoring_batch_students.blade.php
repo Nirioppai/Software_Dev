@@ -80,9 +80,9 @@
 
   Order by:
   <select name="orderby" id="orderby" onchange="this.form.submit()">
-    <option value="name" {{$orderby == "name"? 'selected':''}}> Name </option>
+    <option value="student_name" {{$orderby == "student_name"? 'selected':''}}> Name </option>
     <option value="student_id" {{$orderby == "student_id"? 'selected':''}}> Student Number </option>
-    <option value="date_of_birth" {{$orderby == "date_of_birth"? 'selected':''}}> Birthday </option>
+    <option value="birthday" {{$orderby == "birthday"? 'selected':''}}> Birthday </option>
     <option value="total_raw" {{$orderby == "total_raw"? 'selected':''}}> Total Score </option>
     <option value="verbal_raw" {{$orderby == "verbal_raw"? 'selected':''}}> Verbal Score </option>
     <option value="nonverbal_raw" {{$orderby == "nonverbal_raw"? 'selected':''}}> Non-Verbal Score </option>
@@ -117,8 +117,8 @@
 
   <tr>
     <td class="text-center">{{$students->student_id}}</td>
-    <td class="text-left">{{$students->name}}</td>
-    <td class="text-center">{{$students->date_of_birth}}</td>
+    <td class="text-left">{{$students->student_name}}</td>
+    <td class="text-center">{{$students->birthday}}</td>
     <td class="text-center">{{$students->rounded_current_age_in_years}}</td>
     <td class="text-center">{{$students->rounded_current_age_in_months}}</td>
     <td class="text-center">{{$students->total_raw}}</td>

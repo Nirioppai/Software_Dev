@@ -422,78 +422,87 @@ class ImportController extends Controller
        SELECT id, student_id, student_name, grade, section, birthday, rounded_current_age_in_years, rounded_current_age_in_months, exam_date, verbal_comprehension, verbal_reasoning, verbal_total_score, quantitative_reasoning, figural_reasoning, non_verbal_total_score, total_score, batch, created_at, updated_at  FROM final_student_datas WHERE batch = ".$max_batch.";
     ");
 
-    // $count_new_batch = DB::table('final_student_datas')->where('batch',  $max_batch)->count();
-    // //
-    // // for($j = 1; $j <= $count_new_batch; $j++ ){
-    // //    $studentremarks = new StudentRemark();
-    // //    $studentremarks->remarks = '';
-    // //    $studentremarks->save();
-    // // }
-    //
-    // //  * WORKS FINE ABOVE THIS LINE
-    //
-    // // * WELCOME TO FUCK UP LAND, kinomment ko lang pu yung for loop to give u a fresh start
-    //
-    //
-    // //medyo hindi pa stable, havent tested it that efficiently
-    // $max_id = FinalStudentData::where('batch', $max_batch)->max('id');
-    //
-    // //for loop to loop through every ID in student result total, and write it to final student result table
-    //
-    // for($i = 1; $i <= $max_id; $i++ )
-    //     {
-    //       //taga kuha ng total raw sa current ID
-    //       // $total_raw = DB::table('student_result_total')->where('id',  $i)->pluck('total_raw_score')->first();
-    //       $total_scaled = DB::table('student_result_total')->where('id',  $i)->pluck('total_scaled_score')->first();
-    //       $total_sai = DB::table('student_result_total')->where('id',  $i)->pluck('total_sai')->first();
-    //       $total_percentile = DB::table('student_result_total')->where('id',  $i)->pluck('total_percentile_rank')->first();
-    //       $total_stanine = DB::table('student_result_total')->where('id',  $i)->pluck('total_stanine')->first();
-    //
-    //       $verbal_scaled = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_scaled_score')->first();
-    //       $verbal_sai = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_sai')->first();
-    //       $verbal_percentile = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_percentile_rank')->first();
-    //       $verbal_stanine = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_stanine')->first();
-    //
-    //       $nonverbal_scaled = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_scaled_score')->first();
-    //       $nonverbal_sai = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_sai')->first();
-    //       $nonverbal_percentile = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_percentile_rank')->first();
-    //       $nonverbal_stanine = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_stanine')->first();
-    //
-    //       // optimal magpasok dito ng function to check if $total_raw is null
-    //       // if null, plus 1 then check ulet, if not, proceed sa baba
-    //
-    //
-    //       $totalID = DB::table('student_result_total')->where('id',  $i)->exists();
-    //       $verbalID = DB::table('student_result_verbal')->where('id',  $i)->exists();
-    //       $nonverbalID = DB::table('student_result_nonverbal')->where('id',  $i)->exists();
-    //
-    //       if ($totalID == true && $verbalID == true && $nonverbalID == true)
-    //       {
-    //
-    //         // $update = FinalStudentResult::where('id', $i)->update(['total_raw' => $total_raw]);
-    //         $update = FinalStudentResult::where('id', $i)->update(['total_scaled' => $total_scaled]);
-    //         $update = FinalStudentResult::where('id', $i)->update(['total_sai' => $total_sai]);
-    //         $update = FinalStudentResult::where('id', $i)->update(['total_percentile' => $total_percentile]);
-    //         $update = FinalStudentResult::where('id', $i)->update(['total_stanine' => $total_stanine]);
-    //
-    //         $update = FinalStudentResult::where('id', $i)->update(['verbal_scaled' => $verbal_scaled]);
-    //         $update = FinalStudentResult::where('id', $i)->update(['verbal_percentile' => $verbal_percentile]);
-    //         $update = FinalStudentResult::where('id', $i)->update(['verbal_sai' => $verbal_sai]);
-    //         $update = FinalStudentResult::where('id', $i)->update(['verbal_stanine' => $verbal_stanine]);
-    //
-    //         $update = FinalStudentResult::where('id', $i)->update(['nonverbal_scaled' => $nonverbal_scaled]);
-    //         $update = FinalStudentResult::where('id', $i)->update(['nonverbal_percentile' => $nonverbal_percentile]);
-    //         $update = FinalStudentResult::where('id', $i)->update(['nonverbal_sai' => $nonverbal_sai]);
-    //         $update = FinalStudentResult::where('id', $i)->update(['nonverbal_stanine' => $nonverbal_stanine]);
-    //
-    //
-    //       }
-    //       else
-    //       {
-    //           continue;
-    //       }
-    //
-    //     }
+    //  * WORKS FINE ABOVE THIS LINE
+
+    // * WELCOME TO FUCK UP LAND, kinomment ko lang pu yung for loop to give u a fresh start
+
+
+    //medyo hindi pa stable, havent tested it that efficiently
+    $max_id = FinalStudentData::where('batch', $max_batch)->max('id');
+
+    //for loop to loop through every ID in student result total, and write it to final student result table
+
+    for($i = 1; $i <= $max_id; $i++ )
+        {
+          //taga kuha ng total raw sa current ID
+          // $total_raw = DB::table('student_result_total')->where('id',  $i)->pluck('total_raw_score')->first();
+          $total_scaled = DB::table('student_result_total')->where('id',  $i)->pluck('total_scaled_score')->first();
+          $total_sai = DB::table('student_result_total')->where('id',  $i)->pluck('total_sai')->first();
+          $total_percentile = DB::table('student_result_total')->where('id',  $i)->pluck('total_percentile_rank')->first();
+          $total_stanine = DB::table('student_result_total')->where('id',  $i)->pluck('total_stanine')->first();
+          $total_classification = DB::table('student_result_total')->where('id',  $i)->pluck('total_classification')->first();
+
+          $verbal_scaled = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_scaled_score')->first();
+          $verbal_sai = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_sai')->first();
+          $verbal_percentile = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_percentile_rank')->first();
+          $verbal_stanine = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_stanine')->first();
+          $verbal_classification = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_classification')->first();
+
+          $verbal_comprehension = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_comprehension')->first();
+          $verbal_reasoning = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_reasoning')->first();
+
+          $nonverbal_scaled = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_scaled_score')->first();
+          $nonverbal_sai = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_sai')->first();
+          $nonverbal_percentile = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_percentile_rank')->first();
+          $nonverbal_stanine = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_stanine')->first();
+          $nonverbal_classification = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_classification')->first();
+
+          $quantitative_reasoning = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('quantitative_reasoning')->first();
+          $figural_reasoning = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('figural_reasoning')->first();
+
+          // optimal magpasok dito ng function to check if $total_raw is null
+          // if null, plus 1 then check ulet, if not, proceed sa baba
+
+
+          $totalID = DB::table('student_result_total')->where('id',  $i)->exists();
+          $verbalID = DB::table('student_result_verbal')->where('id',  $i)->exists();
+          $nonverbalID = DB::table('student_result_nonverbal')->where('id',  $i)->exists();
+
+          if ($totalID == true && $verbalID == true && $nonverbalID == true)
+          {
+
+            // $update = FinalStudentResult::where('id', $i)->update(['total_raw' => $total_raw]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_scaled' => $total_scaled]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_sai' => $total_sai]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_percentile' => $total_percentile]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_stanine' => $total_stanine]);
+            $update = FinalStudentResult::where('id', $i)->update(['total_classification' => $total_classification]);
+
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_scaled' => $verbal_scaled]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_percentile' => $verbal_percentile]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_sai' => $verbal_sai]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_stanine' => $verbal_stanine]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_classification' => $verbal_classification]);
+
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_comprehension' => $verbal_comprehension]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_reasoning' => $verbal_reasoning]);
+
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_scaled' => $nonverbal_scaled]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_percentile' => $nonverbal_percentile]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_sai' => $nonverbal_sai]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_stanine' => $nonverbal_stanine]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_classification' => $nonverbal_classification]);
+
+            $update = FinalStudentResult::where('id', $i)->update(['quantitative_reasoning' => $quantitative_reasoning]);
+            $update = FinalStudentResult::where('id', $i)->update(['figural_reasoning' => $figural_reasoning]);
+
+          }
+          else
+          {
+              continue;
+          }
+
+        }
 
 
     $success = ('success');
