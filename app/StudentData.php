@@ -4,7 +4,18 @@ use Illuminate\Database\Eloquent\Model;
 class StudentData extends Model
 {
     public $fillable = [
-      'student_id', 'name', 'overall_total_score', 'verbal_number_correct',
-      'non_verbal_number_correct', 'birthday', 'level'
+      'student_id',
+      'student_name',
+      'grade',
+      'section',
+      'birthday',
+      'exam_date',
+      'verbal_comprehension',
+      'verbal_reasoning',
+      'verbal_total_score',
+      'quantitative_reasoning',
+      'figural_reasoning',
+      'non_verbal_total_score',
+      'total_score'
     ];
 }

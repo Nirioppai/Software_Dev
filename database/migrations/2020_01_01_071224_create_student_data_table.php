@@ -15,7 +15,7 @@ class CreateStudentDataTable extends Migration
 
           $table->bigIncrements('id', 20);
           $table->string('student_id', 10);
-          $table->string('student_name', 40);
+          $table->string('student_name', 60);
           $table->string('grade', 10);
           $table->string('section', 10);
           $table->string('birthday', 11);
