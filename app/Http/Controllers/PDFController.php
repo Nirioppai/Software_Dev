@@ -74,15 +74,13 @@ class PDFController extends Controller
 <footer>
     Legend:
     <br>
-    1 : Total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    2 : Verbal &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    3 : Nonverbal 
+    RS : Raw Score &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    SAI : Scholastic Ability Index &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;
+    S : Stanine 
     <br>
-    R : Raw Score &nbsp;&nbsp;&nbsp;&nbsp;
-    S : Scaled Score &nbsp;&nbsp;&nbsp;&nbsp;
-    SA : SAI &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    P : Percentile &nbsp;&nbsp;&nbsp;&nbsp;
-    ST : Stanine &nbsp;&nbsp;&nbsp;&nbsp;
+    SS : Scaled Score &nbsp;&nbsp;&nbsp;&nbsp;
+    PR : Percentile Rank &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    CL : Classification &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </footer>
      
 <main class ="main">
@@ -98,16 +96,16 @@ class PDFController extends Controller
 <br>
      <h3 align="center">BATCH SUMMARY REPORT</h3>
      <br>
-<table width="96%" style="border-collapse: collapse; border: 0px;">
+<table width="90%" style="border-collapse: collapse; border: 0px;">
 <thead>
      <tr>
     <th class="border" width="0.1%" rowspan="4">No.</th>
     <th class="border" width="0.3%" rowspan="4">Name</th>
-    <th class="border" width="0.3%" rowspan="4">DOB</th>
+    <th class="border" width="0.3%" rowspan="4">Birthday</th>
     <th class="border" width="0.3%" rowspan="4">Age</th>
-    <th class="border" width="0.3%" colspan="14"> Verbal</th>
-    <th class="border" width="0.3%" colspan="14"> Non Verbal</th>
-    <th class="border" width="0.3%" colspan="10">Total Score</th>
+    <th class="border" width="0.3%" colspan="14" bgcolor="#e6e5e5"> Verbal</th>
+    <th class="border" width="0.3%" colspan="14" bgcolor="#e6e5e5"> Non Verbal</th>
+    <th class="border" width="0.3%" colspan="10" bgcolor="#e6e5e5">Total Score</th>
     <td class="border" width="0.3%" colspan="2" rowspan="3">Normal Curve Equivalent</td>
 
     
@@ -159,73 +157,75 @@ class PDFController extends Controller
     <td class="border" width="0.3%">CL</td>
     <td class="border" width="0.3%">PR</td>
     <td class="border" width="0.3%">S</td>
-    <td class="border" width="0.3%">Classification</td>
+    <td class="border" width="0.3%">CL</td>
     <td class="border" width="0.3%">SAI</td>
     <td class="border" width="0.3%">PR</td>
     <td class="border" width="0.3%">S</td>
-    <td class="border" width="0.3%">Classification</td>
+    <td class="border" width="0.3%">CL</td>
     <td class="border" width="0.3%">PR</td>
     <td class="border" width="0.3%">S</td>
-    <td class="border" width="0.3%">Classification</td>
+    <td class="border" width="0.3%">CL</td>
     <td class="border" width="0.3%">SAI</td>
     <td class="border" width="0.3%">PR</td>
     <td class="border" width="0.3%">S</td>
-    <td class="border" width="0.3%">Classification</td>
+    <td class="border" width="0.3%">CL</td>
     <td class="border" width="0.3%">Age</td>
     <td class="border" width="0.3%">Grade</td>
   </tr>
    </thead>
-     ';  
+     ';
+     $id = 1;  
      foreach($student_results as $student)
      {
       $output .= '
         <tr>
-          <td class="border">1</td>
-          <td class="border">2</td>
-          <td class="border">3</td>
-          <td class="border">4</td>
-          <td class="border">5</td>
-          <td class="border">6</td>
-          <td class="border">7</td>
-          <td class="border">8</td>
-          <td class="border">9</td>
-          <td class="border">10</td>
-          <td class="border">11</td>
-          <td class="border">12</td>
-          <td class="border">13</td>
-          <td class="border">14</td>
-          <td class="border">15</td>
-          <td class="border">16</td>
-          <td class="border">17</td>
-          <td class="border">18</td>
-          <td class="border">19</td>
-          <td class="border">20</td>
-          <td class="border">21</td>
-          <td class="border">22</td>
-          <td class="border">23</td>
-          <td class="border">24</td>
-          <td class="border">25</td>
-          <td class="border">26</td>
-          <td class="border">27</td>
-          <td class="border">28</td>
-          <td class="border">29</td>
-          <td class="border">30</td>
-          <td class="border">31</td>
-          <td class="border">32</td>
-          <td class="border">33</td>
-          <td class="border">34</td>
-          <td class="border">35</td>
-          <td class="border">36</td>
-          <td class="border">37</td>
-          <td class="border">38</td>
-          <td class="border">39</td>
-          <td class="border">40</td>
-          <td class="border">41</td>
-          <td class="border">42</td>
-          <td class="border">43</td>
-          <td class="border">44</td>
+          <td class="border">'.$id.'</td>
+          <td class="border" width="2%">'.$student->student_name.'</td>
+          <td class="border" width="1.2%">'.$student->birthday.'</td>
+          <td class="border">'.$student->age_year.".".$student->age_month.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
+          <td class="border">'.$id.'</td>
         </tr>
       ';
+      $id++;
      }
      $output .= '</table>
 
