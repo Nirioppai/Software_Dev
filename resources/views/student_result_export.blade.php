@@ -12,12 +12,12 @@
 
             <div class="row-sm mt-4 picture-anchor">
             <img style="width: 100%; height: 100%;" src="./img/pdf/PDF_Export.png">
-            <div class="text-2">{{$student_details->name}}</div>
-            <div class="text-3">{{$student_details->grade_level}}</div>
+            <div class="text-2">{{$student_details->student_name}}</div>
+            <div class="text-3">{{$student_details->grade}}</div>
             <div class="text-4">Xavier School San Juan</div>
             <div class="text-5"></div>
             <div class="text-6">{{$student_details->exam_date}}</div>
-            <div class="text-7">{{$student_details->date_of_birth}}</div>
+            <div class="text-7">{{$student_details->birthday}}</div>
             <div class="text-8">{{$student_details->age_year}}.{{$student_details->age_month}} Years old</div>
             <div class="text-9">{{$student_details->verbal_raw}}</div>
             <div class="text-10">{{$student_details->nonverbal_raw}}</div>
@@ -34,9 +34,9 @@
             <div class="text-21">{{$student_details->verbal_stanine}}</div>
             <div class="text-22">{{$student_details->nonverbal_stanine}}</div>
             <div class="text-23">{{$student_details->total_stanine}}</div>
-            <div class="text-24"></div>
-            <div class="text-25"></div>
-            <div class="text-26"></div>
+            <div class="text-24">{{$student_details->verbal_classification}}</div>
+            <div class="text-25">{{$student_details->nonverbal_classification}}</div>
+            <div class="text-26">{{$student_details->total_classification}}</div>
         </div>
 
 </body>
