@@ -69,18 +69,16 @@ class PDFController extends Controller
         </head>
         <body class="body">
             <img style="width: 100%; height: 100%;" src="./img/pdf/PDF_header.png">      
-            <footer style ="padding-left: 3%;">
+            <footer>
                 Legend:
                 <br>
-                1 : Total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                2 : Verbal &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                3 : Nonverbal 
+                RS : Raw Score &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                SAI : Scholastic Ability Index &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;
+                S : Stanine 
                 <br>
-                R : Raw Score &nbsp;&nbsp;&nbsp;&nbsp;
-                S : Scaled Score &nbsp;&nbsp;&nbsp;&nbsp;
-                SA : SAI &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                P : Percentile &nbsp;&nbsp;&nbsp;&nbsp;
-                ST : Stanine &nbsp;&nbsp;&nbsp;&nbsp;
+                SS : Scaled Score &nbsp;&nbsp;&nbsp;&nbsp;
+                PR : Percentile Rank &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                CL : Classification &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </footer>
             
         <main class ="main">
@@ -88,7 +86,7 @@ class PDFController extends Controller
                 
                 <h1 align="center">OTIS-LENNON SCHOOL ABILITY TEST 8th Ed. Level F</h1>
                 <h2 align="center">Masterlist Report</h2>
-                <p class="enlarged" style ="padding-left: 3%;">
+                <p class="enlarged">
                 School: Xavier School San Juan
             
                 <br>
@@ -165,41 +163,43 @@ class PDFController extends Controller
                 </tr>
 
             </thead>
-            ';  
+            ';
+            $i = 1;  
             foreach($student_results as $student)
             {
             $output .= '
             <tr>
-                <td class="normal-border">1</td>
-                <td class="normal-border">2</td>
-                <td class="normal-border">3</td>
-                <td class="normal-border">4</td>
-                <td class="normal-border">5</td>
-                <td class="normal-border">6</td>
-                <td class="normal-border">7</td>
-                <td class="normal-border">8</td>
-                <td class="normal-border">9</td>
-                <td class="normal-border">10</td>
-                <td class="normal-border">11</td>
-                <td class="normal-border">12</td>
-                <td class="normal-border">13</td>
-                <td class="normal-border">14</td>
-                <td class="normal-border">15</td>
-                <td class="normal-border">16</td>
-                <td class="normal-border">17</td>
-                <td class="normal-border">18</td>
-                <td class="normal-border">19</td>
-                <td class="normal-border">20</td>
-                <td class="normal-border">21</td>
-                <td class="normal-border">22</td>
-                <td class="normal-border">23</td>
-                <td class="normal-border">24</td>
-                <td class="normal-border">25</td>
-                <td class="normal-border">26</td>
-                <td class="normal-border">27</td>
-                <td class="normal-border">28</td>
+                <td class="normal-border">'.$i.'</td>
+                <td class="normal-border" width="0.7%">'.$student->student_name.'</td>
+                <td class="normal-border" width="0.6%">'.$student->birthday.'</td>
+                <td class="normal-border">'.$student->age_year.".".$student->age_month.'</td>
+                <td class="normal-border">'.$student->verbal_comprehension.'</td>
+                <td class="normal-border">'.$student->verbal_reasoning.'</td>
+                <td class="normal-border">'.$student->verbal_raw.'</td>
+                <td class="normal-border">'.$student->verbal_scaled.'</td>
+                <td class="normal-border">'.$student->verbal_sai.'</td>
+                <td class="normal-border">'.$student->verbal_percentile.'</td>
+                <td class="normal-border">'.$student->verbal_stanine.'</td>
+                <td class="normal-border">'.$student->verbal_classification.'</td>
+                <td class="normal-border">'.$student->figural_reasoning.'</td>
+                <td class="normal-border">'.$student->quantitative_reasoning.'</td>
+                <td class="normal-border">'.$student->nonverbal_raw.'</td>
+                <td class="normal-border">'.$student->nonverbal_scaled.'</td>
+                <td class="normal-border">'.$student->nonverbal_sai.'</td>
+                <td class="normal-border">'.$student->nonverbal_percentile.'</td>
+                <td class="normal-border">'.$student->nonverbal_stanine.'</td>
+                <td class="normal-border">'.$student->nonverbal_classification.'</td>
+                <td class="normal-border">'.$student->total_raw.'</td>
+                <td class="normal-border">'.$student->total_scaled.'</td>
+                <td class="normal-border">'.$student->total_sai.'</td>
+                <td class="normal-border" width="15px">'.$student->total_percentile.'</td>
+                <td class="normal-border" width="15px">'.$student->total_stanine.'</td>
+                <td class="normal-border">'.$student->total_classification.'</td>
+                <td class="normal-border">'.$student->age_year.'</td>
+                <td class="normal-border">'.$student->age_year.'</td>
             </tr>
             ';
+            $i++;
             }
             $output .= '
         </table>
