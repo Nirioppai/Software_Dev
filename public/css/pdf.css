@@ -6,6 +6,11 @@
   font-size: 8;
 }
 
+.border {
+  border: 1px solid; 
+  padding:1px; 
+  text-align:center;
+}
 
 
 .main{

@@ -51,9 +51,9 @@ class PDFController extends Controller
     function pdf($batch)
     {
      $pdf = \App::make('dompdf.wrapper');
-     $pdf->loadHTML($this->convert_student_results_to_html($batch));
-     //return $pdf->stream();
-     return $pdf->download('Student Results Batch '.$batch. '.pdf');
+     $pdf->loadHTML($this->convert_student_results_to_html($batch))->setPaper('legal', 'landscape');
+     return $pdf->stream();
+     //return $pdf->download('Student Results Batch '.$batch. '.pdf');
     }
 
     function convert_student_results_to_html($batch)
@@ -98,57 +98,133 @@ class PDFController extends Controller
 <br>
      <h3 align="center">BATCH SUMMARY REPORT</h3>
      <br>
-<table width="100%" style="border-collapse: collapse; border: 0px;">
+<table width="96%" style="border-collapse: collapse; border: 0px;">
 <thead>
-    <tr>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.2%">Student No.</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.3%">Name</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.23%">DOB</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">Grade</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">Age</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">1R</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">1S</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">1SA</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">1P</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">1ST</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">2R</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">2S</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">2SA</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">2P</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">2ST</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">3R</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">3S</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">3SA</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">3P</th>
-    <th bgcolor="#e6e5e5" style="border: 1px solid; padding:1px; text-align:center;" width="0.1%">3ST</th>
-   </tr>
+     <tr>
+    <th class="border" width="0.1%" rowspan="4">No.</th>
+    <th class="border" width="0.3%" rowspan="4">Name</th>
+    <th class="border" width="0.3%" rowspan="4">DOB</th>
+    <th class="border" width="0.3%" rowspan="4">Age</th>
+    <th class="border" width="0.3%" colspan="14"> Verbal</th>
+    <th class="border" width="0.3%" colspan="14"> Non Verbal</th>
+    <th class="border" width="0.3%" colspan="10">Total Score</th>
+    <td class="border" width="0.3%" colspan="2" rowspan="3">Normal Curve Equivalent</td>
+
+    
+  </tr>
+  <tr>
+    <td class="border" width="0.3%" colspan="2" rowspan="2">Verbal Comprehension</td>
+    <td class="border" width="0.3%" colspan="2" rowspan="2">Verbal Reasoning</td>
+    <td class="border" width="0.3%" colspan="10">Total Verbal </td>
+    <td class="border" width="0.3%" colspan="2">Figural Reasoning</td>
+    <td class="border" width="0.3%" colspan="2">Quantitative Reasoning</td>
+    <td class="border" width="0.3%" colspan="10">Total Nonverbal</td>
+    <td class="border" width="0.3%" rowspan="3">No. of Items</td>
+    <td class="border" width="0.3%" rowspan="3">RS</td>
+    <td class="border" width="0.3%" rowspan="3">SS</td>
+    <td class="border" width="0.3%" rowspan="2" colspan="3">Grade Norms</td>
+    <td class="border" width="0.3%" rowspan="2" colspan="4">Age Norms</td>
+
+    
+  </tr>
+  <tr>
+    <td class="border" width="0.3%" rowspan="2">No. of Items</td>
+    <td class="border" width="0.3%" rowspan="2">RS</td>
+    <td class="border" width="0.3%" rowspan="2">SS</td>
+    <td class="border" width="0.3%" colspan="3">Grade Norms</td>
+    <td class="border" width="0.3%" colspan="4">Age Norms</td>
+    <td class="border" width="0.3%" rowspan="2">No. of Items</td>
+    <td class="border" width="0.3%" rowspan="2">RS</td>
+    <td class="border" width="0.3%" rowspan="2">No. of Items</td>
+    <td class="border" width="0.3%" rowspan="2">RS</td>
+    <td class="border" width="0.3%" rowspan="2">No. of Items</td>
+    <td class="border" width="0.3%" rowspan="2">RS</td>
+    <td class="border" width="0.3%" rowspan="2">SS</td>
+    <td class="border" width="0.3%" colspan="3">Grade Norms</td>
+    <td class="border" width="0.3%" colspan="4">Age Norms</td>
+
+
+  </tr>
+  <tr>
+    <td class="border" width="0.3%">No. of Items</td>
+    <td class="border" width="0.3%">RS</td>
+    <td class="border" width="0.3%">No. of Items</td>
+    <td class="border" width="0.3%">RS</td>
+    <td class="border" width="0.3%">PR</td>
+    <td class="border" width="0.3%">S</td>
+    <td class="border" width="0.3%">CL</td>
+    <td class="border" width="0.3%">SAI</td>
+    <td class="border" width="0.3%">PR</td>
+    <td class="border" width="0.3%">S</td>
+    <td class="border" width="0.3%">CL</td>
+    <td class="border" width="0.3%">PR</td>
+    <td class="border" width="0.3%">S</td>
+    <td class="border" width="0.3%">Classification</td>
+    <td class="border" width="0.3%">SAI</td>
+    <td class="border" width="0.3%">PR</td>
+    <td class="border" width="0.3%">S</td>
+    <td class="border" width="0.3%">Classification</td>
+    <td class="border" width="0.3%">PR</td>
+    <td class="border" width="0.3%">S</td>
+    <td class="border" width="0.3%">Classification</td>
+    <td class="border" width="0.3%">SAI</td>
+    <td class="border" width="0.3%">PR</td>
+    <td class="border" width="0.3%">S</td>
+    <td class="border" width="0.3%">Classification</td>
+    <td class="border" width="0.3%">Age</td>
+    <td class="border" width="0.3%">Grade</td>
+  </tr>
    </thead>
      ';  
      foreach($student_results as $student)
      {
       $output .= '
-      <tr>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->student_id.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->name.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->date_of_birth_short.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->grade_level.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->age_year.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->total_raw.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->total_scaled.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->total_sai.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->total_percentile.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->total_stanine.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->verbal_raw.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->verbal_scaled.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->verbal_sai.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->verbal_percentile.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->verbal_stanine.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->nonverbal_raw.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->nonverbal_scaled.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->nonverbal_sai.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->nonverbal_percentile.'</td>
-       <td style="border: 1px solid; padding:2px; text-align:center;">'.$student->nonverbal_stanine.'</td>
-      </tr>
+        <tr>
+          <td class="border">1</td>
+          <td class="border">2</td>
+          <td class="border">3</td>
+          <td class="border">4</td>
+          <td class="border">5</td>
+          <td class="border">6</td>
+          <td class="border">7</td>
+          <td class="border">8</td>
+          <td class="border">9</td>
+          <td class="border">10</td>
+          <td class="border">11</td>
+          <td class="border">12</td>
+          <td class="border">13</td>
+          <td class="border">14</td>
+          <td class="border">15</td>
+          <td class="border">16</td>
+          <td class="border">17</td>
+          <td class="border">18</td>
+          <td class="border">19</td>
+          <td class="border">20</td>
+          <td class="border">21</td>
+          <td class="border">22</td>
+          <td class="border">23</td>
+          <td class="border">24</td>
+          <td class="border">25</td>
+          <td class="border">26</td>
+          <td class="border">27</td>
+          <td class="border">28</td>
+          <td class="border">29</td>
+          <td class="border">30</td>
+          <td class="border">31</td>
+          <td class="border">32</td>
+          <td class="border">33</td>
+          <td class="border">34</td>
+          <td class="border">35</td>
+          <td class="border">36</td>
+          <td class="border">37</td>
+          <td class="border">38</td>
+          <td class="border">39</td>
+          <td class="border">40</td>
+          <td class="border">41</td>
+          <td class="border">42</td>
+          <td class="border">43</td>
+          <td class="border">44</td>
+        </tr>
       ';
      }
      $output .= '</table>
