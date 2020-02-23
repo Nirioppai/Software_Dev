@@ -56,7 +56,7 @@ class BatchController extends Controller
           $batch_students = DB::table('final_student_results')
             ->where('batch',  $batch)
             ->where('student_name', 'like', ''.$req->search.'%')
-            ->orWhere('date_of_birth', 'like', ''.$req->search.'%')
+            ->orWhere('birthday', 'like', ''.$req->search.'%')
             ->orWhere('student_id', 'like', ''.$req->search.'%')
             ->orderBy($orderby, $ordertype)
             ->paginate($paginateby);

@@ -38,8 +38,6 @@ class ImportController extends Controller
 
   public function uploadStudent2 (CsvImportRequest $request) {
 
-    $date_today = date("Y-m-d");
-
     $path = $request->file('csv_file')->getRealPath();
     if ($request->has('header')) {
         $data = Excel::load($path, function($reader) {})->get()->toArray();
@@ -67,7 +65,7 @@ class ImportController extends Controller
     $uploader = 'student_2';
     $success = ('idle');
 
-    return view('csv_student_upload', compact( 'csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader)->with('success', $success)->with('date_today', $date_today);
+    return view('csv_student_upload', compact( 'csv_header_fields', 'csv_data', 'csv_data_file'))->with('step', $step)->with('uploader', $uploader)->with('success', $success);
 
   }
 
@@ -76,8 +74,6 @@ class ImportController extends Controller
 
     DB::statement("TRUNCATE TABLE student_datas;
     ");
-
-    $date_of_exam = $request->date_of_exam;
 
     $final_student = DB::table('final_student_datas');
 
@@ -89,16 +85,6 @@ class ImportController extends Controller
       $batch = 1;
     }
 
-    function checkExamDate($date)
-    {
-      $tempDate = explode('-', $date);
-      return checkdate($tempDate[1], $tempDate[2], $tempDate[0]);
-    }
-
-    $validate_exam_date = checkExamDate($date_of_exam);
-
-      if(($validate_exam_date == TRUE))
-      {
         $data = CsvData::find($request->csv_data_file_id);
         $csv_data = json_decode($data->csv_data, true);
 
@@ -113,17 +99,14 @@ class ImportController extends Controller
             }
             $studentdata->batch = $batch;
             $studentdata->save();
-
         }
-
-
 
       $step = 3;
       $uploader = 'student_3';
       $success = ('success');
 
       return view('csv_student_upload')->with('step', $step)->with('uploader', $uploader)->with('success', $success)->with('batch', $batch);
-    }
+
   }
 
   public function uploadScaledScore1 () {
@@ -346,15 +329,25 @@ class ImportController extends Controller
             $total_percentile = DB::table('student_result_total')->where('id',  $i)->pluck('total_percentile_rank')->first();
             $total_stanine = DB::table('student_result_total')->where('id',  $i)->pluck('total_stanine')->first();
 
+            $total_classification = DB::table('student_result_total')->where('id',  $i)->pluck('total_classification')->first();
+
             $verbal_scaled = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_scaled_score')->first();
             $verbal_sai = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_sai')->first();
             $verbal_percentile = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_percentile_rank')->first();
             $verbal_stanine = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_stanine')->first();
 
+            $verbal_comprehension = DB::table('final_student_datas')->where('id',  $i)->pluck('verbal_comprehension')->first();
+            $verbal_reasoning = DB::table('final_student_datas')->where('id',  $i)->pluck('verbal_reasoning')->first();
+            $verbal_classification = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_classification')->first();
+
             $nonverbal_scaled = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_scaled_score')->first();
             $nonverbal_sai = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_sai')->first();
             $nonverbal_percentile = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_percentile_rank')->first();
             $nonverbal_stanine = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_stanine')->first();
+
+            $quantitative_reasoning = DB::table('final_student_datas')->where('id',  $i)->pluck('quantitative_reasoning')->first();
+            $figural_reasoning = DB::table('final_student_datas')->where('id',  $i)->pluck('figural_reasoning')->first();
+            $nonverbal_classification = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_classification')->first();
 
             // optimal magpasok dito ng function to check if $total_raw is null
             // if null, plus 1 then check ulet, if not, proceed sa baba
@@ -373,15 +366,25 @@ class ImportController extends Controller
               $update = FinalStudentResult::where('id', $i)->update(['total_percentile' => $total_percentile]);
               $update = FinalStudentResult::where('id', $i)->update(['total_stanine' => $total_stanine]);
 
+              $update = FinalStudentResult::where('id', $i)->update(['total_classification' => $total_classification]);
+
               $update = FinalStudentResult::where('id', $i)->update(['verbal_scaled' => $verbal_scaled]);
               $update = FinalStudentResult::where('id', $i)->update(['verbal_percentile' => $verbal_percentile]);
               $update = FinalStudentResult::where('id', $i)->update(['verbal_sai' => $verbal_sai]);
               $update = FinalStudentResult::where('id', $i)->update(['verbal_stanine' => $verbal_stanine]);
 
+              $update = FinalStudentResult::where('id', $i)->update(['verbal_comprehension' => $verbal_comprehension]);
+              $update = FinalStudentResult::where('id', $i)->update(['verbal_reasoning' => $verbal_reasoning]);
+              $update = FinalStudentResult::where('id', $i)->update(['verbal_classification' => $verbal_classification]);
+
               $update = FinalStudentResult::where('id', $i)->update(['nonverbal_scaled' => $nonverbal_scaled]);
               $update = FinalStudentResult::where('id', $i)->update(['nonverbal_percentile' => $nonverbal_percentile]);
               $update = FinalStudentResult::where('id', $i)->update(['nonverbal_sai' => $nonverbal_sai]);
               $update = FinalStudentResult::where('id', $i)->update(['nonverbal_stanine' => $nonverbal_stanine]);
+
+              $update = FinalStudentResult::where('id', $i)->update(['quantitative_reasoning' => $quantitative_reasoning]);
+              $update = FinalStudentResult::where('id', $i)->update(['figural_reasoning' => $figural_reasoning]);
+              $update = FinalStudentResult::where('id', $i)->update(['nonverbal_classification' => $nonverbal_classification]);
 
 
             }
@@ -440,25 +443,26 @@ class ImportController extends Controller
           $total_sai = DB::table('student_result_total')->where('id',  $i)->pluck('total_sai')->first();
           $total_percentile = DB::table('student_result_total')->where('id',  $i)->pluck('total_percentile_rank')->first();
           $total_stanine = DB::table('student_result_total')->where('id',  $i)->pluck('total_stanine')->first();
+
           $total_classification = DB::table('student_result_total')->where('id',  $i)->pluck('total_classification')->first();
 
           $verbal_scaled = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_scaled_score')->first();
           $verbal_sai = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_sai')->first();
           $verbal_percentile = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_percentile_rank')->first();
           $verbal_stanine = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_stanine')->first();
-          $verbal_classification = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_classification')->first();
 
           $verbal_comprehension = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_comprehension')->first();
           $verbal_reasoning = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_reasoning')->first();
+          $verbal_classification = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_classification')->first();
 
           $nonverbal_scaled = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_scaled_score')->first();
           $nonverbal_sai = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_sai')->first();
           $nonverbal_percentile = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_percentile_rank')->first();
           $nonverbal_stanine = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_stanine')->first();
-          $nonverbal_classification = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_classification')->first();
 
           $quantitative_reasoning = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('quantitative_reasoning')->first();
           $figural_reasoning = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('figural_reasoning')->first();
+          $nonverbal_classification = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_classification')->first();
 
           // optimal magpasok dito ng function to check if $total_raw is null
           // if null, plus 1 then check ulet, if not, proceed sa baba
@@ -476,25 +480,26 @@ class ImportController extends Controller
             $update = FinalStudentResult::where('id', $i)->update(['total_sai' => $total_sai]);
             $update = FinalStudentResult::where('id', $i)->update(['total_percentile' => $total_percentile]);
             $update = FinalStudentResult::where('id', $i)->update(['total_stanine' => $total_stanine]);
+
             $update = FinalStudentResult::where('id', $i)->update(['total_classification' => $total_classification]);
 
             $update = FinalStudentResult::where('id', $i)->update(['verbal_scaled' => $verbal_scaled]);
             $update = FinalStudentResult::where('id', $i)->update(['verbal_percentile' => $verbal_percentile]);
             $update = FinalStudentResult::where('id', $i)->update(['verbal_sai' => $verbal_sai]);
             $update = FinalStudentResult::where('id', $i)->update(['verbal_stanine' => $verbal_stanine]);
-            $update = FinalStudentResult::where('id', $i)->update(['verbal_classification' => $verbal_classification]);
 
             $update = FinalStudentResult::where('id', $i)->update(['verbal_comprehension' => $verbal_comprehension]);
             $update = FinalStudentResult::where('id', $i)->update(['verbal_reasoning' => $verbal_reasoning]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_classification' => $verbal_classification]);
 
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_scaled' => $nonverbal_scaled]);
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_percentile' => $nonverbal_percentile]);
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_sai' => $nonverbal_sai]);
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_stanine' => $nonverbal_stanine]);
-            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_classification' => $nonverbal_classification]);
 
             $update = FinalStudentResult::where('id', $i)->update(['quantitative_reasoning' => $quantitative_reasoning]);
             $update = FinalStudentResult::where('id', $i)->update(['figural_reasoning' => $figural_reasoning]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_classification' => $nonverbal_classification]);
 
           }
           else
@@ -580,15 +585,25 @@ class ImportController extends Controller
           $total_percentile = DB::table('student_result_total')->where('id',  $i)->pluck('total_percentile_rank')->first();
           $total_stanine = DB::table('student_result_total')->where('id',  $i)->pluck('total_stanine')->first();
 
+          $total_classification = DB::table('student_result_total')->where('id',  $i)->pluck('total_classification')->first();
+
           $verbal_scaled = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_scaled_score')->first();
           $verbal_sai = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_sai')->first();
           $verbal_percentile = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_percentile_rank')->first();
           $verbal_stanine = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_stanine')->first();
 
+          $verbal_comprehension = DB::table('final_student_datas')->where('id',  $i)->pluck('verbal_comprehension')->first();
+          $verbal_reasoning = DB::table('final_student_datas')->where('id',  $i)->pluck('verbal_reasoning')->first();
+          $verbal_classification = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_classification')->first();
+
           $nonverbal_scaled = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_scaled_score')->first();
           $nonverbal_sai = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_sai')->first();
           $nonverbal_percentile = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_percentile_rank')->first();
           $nonverbal_stanine = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_stanine')->first();
+
+          $quantitative_reasoning = DB::table('final_student_datas')->where('id',  $i)->pluck('quantitative_reasoning')->first();
+          $figural_reasoning = DB::table('final_student_datas')->where('id',  $i)->pluck('figural_reasoning')->first();
+          $nonverbal_classification = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_classification')->first();
 
           // optimal magpasok dito ng function to check if $total_raw is null
           // if null, plus 1 then check ulet, if not, proceed sa baba
@@ -607,16 +622,25 @@ class ImportController extends Controller
             $update = FinalStudentResult::where('id', $i)->update(['total_percentile' => $total_percentile]);
             $update = FinalStudentResult::where('id', $i)->update(['total_stanine' => $total_stanine]);
 
+            $update = FinalStudentResult::where('id', $i)->update(['total_classification' => $total_classification]);
+
             $update = FinalStudentResult::where('id', $i)->update(['verbal_scaled' => $verbal_scaled]);
             $update = FinalStudentResult::where('id', $i)->update(['verbal_percentile' => $verbal_percentile]);
             $update = FinalStudentResult::where('id', $i)->update(['verbal_sai' => $verbal_sai]);
             $update = FinalStudentResult::where('id', $i)->update(['verbal_stanine' => $verbal_stanine]);
+
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_comprehension' => $verbal_comprehension]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_reasoning' => $verbal_reasoning]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_classification' => $verbal_classification]);
 
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_scaled' => $nonverbal_scaled]);
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_percentile' => $nonverbal_percentile]);
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_sai' => $nonverbal_sai]);
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_stanine' => $nonverbal_stanine]);
 
+            $update = FinalStudentResult::where('id', $i)->update(['quantitative_reasoning' => $quantitative_reasoning]);
+            $update = FinalStudentResult::where('id', $i)->update(['figural_reasoning' => $figural_reasoning]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_classification' => $nonverbal_classification]);
 
           }
           else
@@ -705,15 +729,25 @@ class ImportController extends Controller
           $total_percentile = DB::table('student_result_total')->where('id',  $i)->pluck('total_percentile_rank')->first();
           $total_stanine = DB::table('student_result_total')->where('id',  $i)->pluck('total_stanine')->first();
 
+          $total_classification = DB::table('student_result_total')->where('id',  $i)->pluck('total_classification')->first();
+
           $verbal_scaled = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_scaled_score')->first();
           $verbal_sai = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_sai')->first();
           $verbal_percentile = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_percentile_rank')->first();
           $verbal_stanine = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_stanine')->first();
 
+          $verbal_comprehension = DB::table('final_student_datas')->where('id',  $i)->pluck('verbal_comprehension')->first();
+          $verbal_reasoning = DB::table('final_student_datas')->where('id',  $i)->pluck('verbal_reasoning')->first();
+          $verbal_classification = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_classification')->first();
+
           $nonverbal_scaled = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_scaled_score')->first();
           $nonverbal_sai = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_sai')->first();
           $nonverbal_percentile = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_percentile_rank')->first();
           $nonverbal_stanine = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_stanine')->first();
+
+          $quantitative_reasoning = DB::table('final_student_datas')->where('id',  $i)->pluck('quantitative_reasoning')->first();
+          $figural_reasoning = DB::table('final_student_datas')->where('id',  $i)->pluck('figural_reasoning')->first();
+          $nonverbal_classification = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_classification')->first();
 
           // optimal magpasok dito ng function to check if $total_raw is null
           // if null, plus 1 then check ulet, if not, proceed sa baba
@@ -732,15 +766,25 @@ class ImportController extends Controller
             $update = FinalStudentResult::where('id', $i)->update(['total_percentile' => $total_percentile]);
             $update = FinalStudentResult::where('id', $i)->update(['total_stanine' => $total_stanine]);
 
+            $update = FinalStudentResult::where('id', $i)->update(['total_classification' => $total_classification]);
+
             $update = FinalStudentResult::where('id', $i)->update(['verbal_scaled' => $verbal_scaled]);
             $update = FinalStudentResult::where('id', $i)->update(['verbal_percentile' => $verbal_percentile]);
             $update = FinalStudentResult::where('id', $i)->update(['verbal_sai' => $verbal_sai]);
             $update = FinalStudentResult::where('id', $i)->update(['verbal_stanine' => $verbal_stanine]);
 
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_comprehension' => $verbal_comprehension]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_reasoning' => $verbal_reasoning]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_classification' => $verbal_classification]);
+
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_scaled' => $nonverbal_scaled]);
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_percentile' => $nonverbal_percentile]);
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_sai' => $nonverbal_sai]);
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_stanine' => $nonverbal_stanine]);
+
+            $update = FinalStudentResult::where('id', $i)->update(['quantitative_reasoning' => $quantitative_reasoning]);
+            $update = FinalStudentResult::where('id', $i)->update(['figural_reasoning' => $figural_reasoning]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_classification' => $nonverbal_classification]);
 
 
           }
@@ -830,15 +874,25 @@ class ImportController extends Controller
           $total_percentile = DB::table('student_result_total')->where('id',  $i)->pluck('total_percentile_rank')->first();
           $total_stanine = DB::table('student_result_total')->where('id',  $i)->pluck('total_stanine')->first();
 
+          $total_classification = DB::table('student_result_total')->where('id',  $i)->pluck('total_classification')->first();
+
           $verbal_scaled = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_scaled_score')->first();
           $verbal_sai = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_sai')->first();
           $verbal_percentile = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_percentile_rank')->first();
           $verbal_stanine = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_stanine')->first();
 
+          $verbal_comprehension = DB::table('final_student_datas')->where('id',  $i)->pluck('verbal_comprehension')->first();
+          $verbal_reasoning = DB::table('final_student_datas')->where('id',  $i)->pluck('verbal_reasoning')->first();
+          $verbal_classification = DB::table('student_result_verbal')->where('id',  $i)->pluck('verbal_classification')->first();
+
           $nonverbal_scaled = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_scaled_score')->first();
           $nonverbal_sai = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_sai')->first();
           $nonverbal_percentile = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_percentile_rank')->first();
           $nonverbal_stanine = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_stanine')->first();
+
+          $quantitative_reasoning = DB::table('final_student_datas')->where('id',  $i)->pluck('quantitative_reasoning')->first();
+          $figural_reasoning = DB::table('final_student_datas')->where('id',  $i)->pluck('figural_reasoning')->first();
+          $nonverbal_classification = DB::table('student_result_nonverbal')->where('id',  $i)->pluck('nonverbal_classification')->first();
 
           // optimal magpasok dito ng function to check if $total_raw is null
           // if null, plus 1 then check ulet, if not, proceed sa baba
@@ -857,15 +911,25 @@ class ImportController extends Controller
             $update = FinalStudentResult::where('id', $i)->update(['total_percentile' => $total_percentile]);
             $update = FinalStudentResult::where('id', $i)->update(['total_stanine' => $total_stanine]);
 
+            $update = FinalStudentResult::where('id', $i)->update(['total_classification' => $total_classification]);
+
             $update = FinalStudentResult::where('id', $i)->update(['verbal_scaled' => $verbal_scaled]);
             $update = FinalStudentResult::where('id', $i)->update(['verbal_percentile' => $verbal_percentile]);
             $update = FinalStudentResult::where('id', $i)->update(['verbal_sai' => $verbal_sai]);
             $update = FinalStudentResult::where('id', $i)->update(['verbal_stanine' => $verbal_stanine]);
 
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_comprehension' => $verbal_comprehension]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_reasoning' => $verbal_reasoning]);
+            $update = FinalStudentResult::where('id', $i)->update(['verbal_classification' => $verbal_classification]);
+
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_scaled' => $nonverbal_scaled]);
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_percentile' => $nonverbal_percentile]);
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_sai' => $nonverbal_sai]);
             $update = FinalStudentResult::where('id', $i)->update(['nonverbal_stanine' => $nonverbal_stanine]);
+
+            $update = FinalStudentResult::where('id', $i)->update(['quantitative_reasoning' => $quantitative_reasoning]);
+            $update = FinalStudentResult::where('id', $i)->update(['figural_reasoning' => $figural_reasoning]);
+            $update = FinalStudentResult::where('id', $i)->update(['nonverbal_classification' => $nonverbal_classification]);
 
 
           }

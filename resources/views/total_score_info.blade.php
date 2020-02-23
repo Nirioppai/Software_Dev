@@ -109,22 +109,48 @@
               </div>
           </div> -->
           <div class="form-group">
-            Verbal
+            <h1>Total Score: {{$total_score_details->total_raw}}</h1>
+            <br>
+            <h2>Verbal Total Score: {{$total_score_details->verbal_raw}}</h2>
+          </div>
+          <div class="form-group">
+            Verbal Comprehension
               <div class="input-group mb-4">
                   <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
                   </div>
-                  <input class="form-control" name="verbal_number_correct" value="{{$total_score_details->verbal_raw}}" type="number" required>
+                  <input class="form-control" name="verbal_comprehension" value="{{$total_score_details->verbal_comprehension}}" type="number" required>
+              </div>
+          </div>
+          <div class="form-group">
+            Verbal Reasoning
+              <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                  </div>
+                  <input class="form-control" name="verbal_reasoning" value="{{$total_score_details->verbal_reasoning}}" type="number" required>
               </div>
           </div>
 
           <div class="form-group">
-            Non-Verbal
+            <h2>Non-verbal Total Score: {{$total_score_details->nonverbal_raw}}</h2>
+          </div>
+          <div class="form-group">
+            Quantitative Reasoning
               <div class="input-group mb-4">
                   <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
                   </div>
-                  <input class="form-control" name="non_verbal_number_correct" value="{{$total_score_details->nonverbal_raw}}" type="number" required>
+                  <input class="form-control" name="quantitative_reasoning" value="{{$total_score_details->quantitative_reasoning}}" type="number" required>
+              </div>
+          </div>
+          <div class="form-group">
+            Figural Reasoning
+              <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                  </div>
+                  <input class="form-control" name="figural_reasoning" value="{{$total_score_details->figural_reasoning}}" type="number" required>
               </div>
           </div>
 
@@ -153,7 +179,7 @@
             </div>
             <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                 <div class="d-flex justify-content-between">
-                    <a href="/students/monitoring/totalinfo/{{$total_score_details->id}}/edit" class="btn btn-sm btn-default float-right ml--3" data-toggle="modal" data-target="#editModal">Edit Profile</a>
+                    <a href="/students/monitoring/totalinfo/{{$total_score_details->id}}/edit" class="btn btn-sm btn-default float-right ml--3" data-toggle="modal" data-target="#editModal">Edit Scores</a>
                 </div>
             </div>
             <div class="card-body pt-0 pt-md-4">
