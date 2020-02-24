@@ -1,9 +1,13 @@
-
-
 .body {
   font-family: 'Roboto', sans-serif;
   font-weight: bolder;
   font-size: 8;
+}
+
+.normal-border {
+  border: 1px solid; 
+  padding:1px; 
+  text-align:center;
 }
 
 
