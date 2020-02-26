@@ -29,7 +29,7 @@ class BatchController extends Controller
       if(isset($req->orderby)) {
         $orderby = $req->orderby;
       } else {
-        $orderby = "name";
+        $orderby = "student_name";
       }
 
       if(isset($req->ordertype)) {
@@ -55,8 +55,8 @@ class BatchController extends Controller
           $input_search = $req->search;
           $batch_students = DB::table('final_student_results')
             ->where('batch',  $batch)
-            ->where('name', 'like', ''.$req->search.'%')
-            ->orWhere('date_of_birth', 'like', ''.$req->search.'%')
+            ->where('student_name', 'like', ''.$req->search.'%')
+            ->orWhere('birthday', 'like', ''.$req->search.'%')
             ->orWhere('student_id', 'like', ''.$req->search.'%')
             ->orderBy($orderby, $ordertype)
             ->paginate($paginateby);
@@ -149,7 +149,7 @@ class BatchController extends Controller
         $deleteBatch = FinalStudentData::where('batch', $batch)->delete();
         $deleteBatch = FinalStudentResult::where('batch', $batch)->delete();
 
-        
+
 
         return redirect('/students/monitoring');
 

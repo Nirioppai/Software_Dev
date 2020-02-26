@@ -56,7 +56,6 @@
                       <thead class="thead-light">
                         <tr>
                           <th class="text-left text-dark">Batch</th>
-                          <th class="text-left text-dark">Date of Examination</th>
                           <th class="text-left text-dark">Batch Upload Date</th>
                           <th class="text-left text-dark">Action</th>
                         </tr>
@@ -66,7 +65,6 @@
 
                       <tr>
                         <td class="text-left"><a href='monitoring/{{$batch->batch}}'><b>Student Result Batch {{$batch->batch}}</b></a></td>
-                        <td class="text-left">{{$batch->exam_date}}</td>
                         <td class="text-left">{{$batch->created_at}}</td>
                         <td class="text-left">
 

@@ -14,35 +14,45 @@ class CreateStudentBatchesTable extends Migration
     public function up()
     {
         DB::statement("
-        create view student_batch as
-
-select 
-student_id,
-name,
-DATE_FORMAT(date_of_birth, '%M' ' ' '%d' ', ' '%Y') as date_of_birth,
-date_of_birth as date_of_birth_short,
-right(grade_level,2) as grade_level,
-grade_level as grade_level_short,
-rounded_current_age_in_years as age_year,
-rounded_current_age_in_months as age_month,
-total_raw,
-total_scaled,
-total_sai,
-total_percentile,
-total_stanine,
-verbal_raw,
-verbal_scaled,
-verbal_sai,
-verbal_percentile,
-verbal_stanine,
-nonverbal_raw,
-nonverbal_scaled,
-nonverbal_sai,
-nonverbal_percentile,
-nonverbal_stanine,
-batch,
-DATE_FORMAT(exam_date, '%M' ' ' '%d' ', ' '%Y') as exam_date
-from final_student_results
+        Create View student_batch As
+        (
+          Select
+          	student_id,
+          	student_name,
+            right(grade,2) as grade,
+          	grade as grade_short,
+            section,
+          	DATE_FORMAT(birthday, '%M' ' ' '%d' ', ' '%Y') as birthday,
+          	birthday as birthday_short,
+          	rounded_current_age_in_years as age_year,
+          	rounded_current_age_in_months as age_month,
+            DATE_FORMAT(exam_date, '%M' ' ' '%d' ', ' '%Y') as exam_date,
+          	total_raw,
+          	total_scaled,
+          	total_sai,
+          	total_percentile,
+          	total_stanine,
+          	total_classification,
+            verbal_comprehension,
+          	verbal_reasoning,
+          	verbal_raw,
+          	verbal_scaled,
+          	verbal_sai,
+          	verbal_percentile,
+          	verbal_stanine,
+          	verbal_classification,
+            quantitative_reasoning,
+          	figural_reasoning,
+          	nonverbal_raw,
+          	nonverbal_scaled,
+          	nonverbal_sai,
+          	nonverbal_percentile,
+          	nonverbal_stanine,
+          	nonverbal_classification,
+          	batch
+          From
+          	final_student_results
+        )
       ");
     }
 

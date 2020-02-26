@@ -185,11 +185,6 @@
                 </div>
                 <div class="container ml-5">
                     <div class="row">
-                        <div class="col-sm-2">
-                            <button type="submit" class="btn btn-secondary">
-                            Cancel
-                            </button>
-                        </div>
                         <div class="col-sm">
                             <form method="GET" action="{{ route('uploadSAI1') }}">
                                 <!-- {{ csrf_field() }} -->
@@ -337,11 +332,6 @@
                 </div>
                 <div class="container ml-5">
                     <div class="row">
-                        <div class="col-sm-2">
-                            <button type="submit" class="btn btn-secondary">
-                            Cancel
-                            </button>
-                        </div>
                         <div class="col-sm">
                             <form method="GET" action="{{ route('uploadStanine1') }}">
                                 <!-- {{ csrf_field() }} -->
@@ -479,11 +469,6 @@
                 </div>
                 <div class="container ml-5">
                     <div class="row">
-                        <div class="col-sm-2">
-                            <button type="submit" class="btn btn-secondary">
-                            Cancel
-                            </button>
-                        </div>
                         <div class="col-sm">
                           <form method="GET" action="{{ route('csv') }}">
                                 <button type="submit" class="btn btn-primary">

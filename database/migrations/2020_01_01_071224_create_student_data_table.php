@@ -13,17 +13,22 @@ class CreateStudentDataTable extends Migration
     {
         Schema::create('student_datas', function (Blueprint $table) {
 
-            $table->bigIncrements('id', 20);
-            $table->string('student_id', 10);
-            $table->string('name', 40);
-            $table->tinyInteger('overall_total_score');
-            $table->tinyInteger('verbal_number_correct');
-            $table->tinyInteger('non_verbal_number_correct');
-            $table->string('birthday', 11);
-            $table->string('level', 10);
-            $table->date('exam_date');
-            $table->integer('batch');
-            $table->timestamps();
+          $table->bigIncrements('id', 20);
+          $table->string('student_id', 10);
+          $table->string('student_name', 60);
+          $table->string('grade', 10);
+          $table->string('section', 10);
+          $table->string('birthday', 11);
+          $table->string('exam_date');
+          $table->tinyInteger('verbal_comprehension');
+          $table->tinyInteger('verbal_reasoning');
+          $table->tinyInteger('verbal_total_score');
+          $table->tinyInteger('quantitative_reasoning');
+          $table->tinyInteger('figural_reasoning');
+          $table->tinyInteger('non_verbal_total_score');
+          $table->tinyInteger('total_score');
+          $table->integer('batch');
+          $table->timestamps();
 
         });
     }

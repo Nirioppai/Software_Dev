@@ -226,11 +226,6 @@
 
                       <div class="row ml-5">
                         <div class="col-sm">
-                          <button type="submit" class="btn btn-secondary">
-                                Cancel
-                            </button>
-                        </div>
-                        <div class="col-sm">
                           <form method="GET" action="{{ route('csv') }}">
                           {{ csrf_field() }}
 

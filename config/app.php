@@ -203,12 +203,18 @@ return [
 
     'db_fields' => [
       'student_id',
-      'name',
-      'overall_total_score',
-      'verbal_number_correct',
-      'non_verbal_number_correct',
+      'student_name',
+      'grade',
+      'section',
       'birthday',
-      'level'
+      'exam_date',
+      'verbal_comprehension',
+      'verbal_reasoning',
+      'verbal_total_score',
+      'quantitative_reasoning',
+      'figural_reasoning',
+      'non_verbal_total_score',
+      'total_score'
     ],
 
     'db_raw_to_scaleds' => [
@@ -229,6 +235,7 @@ return [
       'sai',
       'percentile_rank',
       'stanine',
+      'classification',
       'type'
     ]
 

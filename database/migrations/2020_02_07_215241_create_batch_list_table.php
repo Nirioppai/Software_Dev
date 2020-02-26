@@ -16,7 +16,7 @@ class CreateBatchListTable extends Migration
         DB::statement("
         create view `batch_list` as
                 (
-                  select distinct batch, exam_date, left (created_at, 10) as created_at from final_student_datas
+                  select distinct batch, left (created_at, 10) as created_at from final_student_datas
                 )
         ");
     }
