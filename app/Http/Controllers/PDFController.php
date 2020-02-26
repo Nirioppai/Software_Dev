@@ -97,70 +97,62 @@ class PDFController extends Controller
         <table width="90%" style="border-collapse: collapse; border: 0px;">
             <thead>
                 <tr>
-                    <th class="normal-border" width="0.3%" rowspan="4">No.</th>
-                    <th class="normal-border" width="0.3%" rowspan="4">Name</th>
-                    <th class="normal-border" width="0.3%" rowspan="4">Birthday</th>
-                    <th class="normal-border" width="0.3%" rowspan="4">Age</th>
-                    <th class="normal-border" width="0.3%" colspan="8">Verbal</th>
-                    <th class="normal-border" width="0.3%" colspan="8">Non Verbal</th>
-                    <th class="normal-border" width="0.3%" colspan="6">Total Score</th>
-                    <th class="normal-border" width="0.3%" colspan="2" rowspan="3">Normal Curve Equivalent</th>
-                </tr>
+  	<th class="normal-border" width="0.3%" rowspan="4">No.</th>
+  	<th class="normal-border" width="0.3%" rowspan="4">Name</th>
+  	<th class="normal-border" width="0.3%" rowspan="4">Birthday</th>
+  	<th class="normal-border" width="0.3%" rowspan="4">Age</th>
+    <th class="normal-border" width="0.3%" colspan="8">Verbal</th>
+    <th class="normal-border" width="0.3%" colspan="8">Non Verbal</th>
+    <th class="normal-border" width="0.3%" colspan="6">Total Score</th>
+    <th class="normal-border" width="0.3%" colspan="2" rowspan="2">Normal Curve Equivalent</th>
+    
 
-                <tr>
-                    <th class="normal-border" width="0.3%" rowspan="1">Verbal Comprehension</th>
-                    <th class="normal-border" width="0.3%" rowspan="1">Verbal Reasoning</th>
-                    <th class="normal-border" width="0.3%" colspan="6">Total Verbal</th>
-                    <!--Verbal-->
-                    <th class="normal-border" width="0.3%">Figural Reasoning</th>
-                    <th class="normal-border" width="0.3%">Quantitative Reasoning</th>
-                    <th class="normal-border" width="0.3%" colspan="6">Total Non Verbal</th>
-                    <!--Non Verbal-->
+    
+  </tr>
+  <tr>
+    <td class="normal-border" width="0.3%">Verbal Comprehension</td>
+    <td class="normal-border" width="0.3%" >Verbal Reasoning</td>
+    <td class="normal-border" width="0.3%" colspan="6">Total Verbal</td>
+    <td class="normal-border" width="0.3%">Figural Reasoning</td>
+    <td class="normal-border" width="0.3%">Quantitative Reasoning</td>
+    <td class="normal-border" width="0.3%" colspan="6">Total Non Verbal</td>
+    <td class="normal-border" width="0.3%" rowspan="3">RS</td>
+    <td class="normal-border" width="0.3%" rowspan="3">SS</td>
+    <td class="normal-border" width="0.3%" rowspan="2" colspan="4">Age Norms</td>
 
-                    <th class="normal-border" width="0.3%" rowspan="3">RS</th>
-                    <th class="normal-border" width="0.3%" rowspan="3">SS</th>
-                    <th class="normal-border" width="0.3%" colspan="4" rowspan="2">Age Norms</th>
-                    
-                </tr>
+    
+  </tr>
+  <tr>
+    <td class="normal-border" width="0.3%" rowspan="2">RS</td>
+    <td class="normal-border" width="0.3%" rowspan="2">RS</td>
+    <td class="normal-border" width="0.3%" rowspan="2">RS</td>
+    <td class="normal-border" width="0.3%" rowspan="2">SS</td>
+    <td class="normal-border" width="0.3%" colspan="4">Age Norms</td>
+    <td class="normal-border" width="0.3%" rowspan="2">RS</td>
+    <td class="normal-border" width="0.3%" rowspan="2">RS</td>
+    <td class="normal-border" width="0.3%" rowspan="2">RS</td>
+    <td class="normal-border" width="0.3%" rowspan="2">SS</td>
+    <td class="normal-border" width="0.3%" colspan="4">Age Norms</td>
+    <td class="normal-border" width="0.3%" rowspan="2">Age</td>
+    <td class="normal-border" width="0.3%" rowspan="2">Grade</td>
 
-                <tr>
-                    <th class="normal-border" width="0.3%" rowspan="2">RS</th>
-                    <th class="normal-border" width="0.3%" rowspan="2">RS</th>
 
-                    <th class="normal-border" width="0.3%" rowspan="2">RS</th>
-                    <th class="normal-border" width="0.3%" rowspan="2">SS</th>
-                    <th class="normal-border" width="0.3%" colspan="4">Age Norms</th>
-                    <!--Verbal-->
-                    <th class="normal-border" width="0.3%" rowspan="2">RS</th>
-                    <th class="normal-border" width="0.3%" rowspan="2">RS</th>
-
-                    <th class="normal-border" width="0.3%" rowspan="2">RS</th>
-                    <th class="normal-border" width="0.3%" rowspan="2">SS</th>
-                    <th class="normal-border" width="0.3%" colspan="4">Age Norms</th>
-                    <!--Non Verbal-->
-
-                    
-                    
-                </tr>
-
-                <tr>
-                    <th class="normal-border" width="0.3%">SAI</th>
-                    <th class="normal-border" width="0.3%">PR</th>
-                    <th class="normal-border" width="0.3%">S</th>
-                    <th class="normal-border" width="0.3%">CL</th>
-                    <!--Verbal-->
-                    <th class="normal-border" width="0.3%">SAI</th>
-                    <th class="normal-border" width="0.3%">PR</th>
-                    <th class="normal-border" width="0.3%">S</th>
-                    <th class="normal-border" width="0.3%">CL</th>
-                    <!--Non Verbal-->
-                    <th class="normal-border" width="0.3%">SAI</th>
-                    <th class="normal-border" width="0.3%">PR</th>
-                    <th class="normal-border" width="0.3%">S</th>
-                    <th class="normal-border" width="0.3%">CL</th>
-                    <th class="normal-border" width="0.3%">Age</th>
-                    <th class="normal-border" width="0.3%">Grade</th>
-                </tr>
+  </tr>
+  <tr>
+  	<td class="normal-border" width="0.3%">SAI</td>
+  	<td class="normal-border" width="0.3%">PR</td>
+    <td class="normal-border" width="0.3%">S</td>
+    <td class="normal-border" width="0.3%">CL</td>
+    <td class="normal-border" width="0.3%">SAI</td>
+    <td class="normal-border" width="0.3%">PR</td>
+    <td class="normal-border" width="0.3%">S</td>
+    <td class="normal-border" width="0.3%">CL</td>
+    <td class="normal-border" width="0.3%">SAI</td>
+    <td class="normal-border" width="0.3%">PR</td>
+    <td class="normal-border" width="0.3%">S</td>
+    <td class="normal-border" width="0.3%">CL</td>
+    
+  </tr>
 
             </thead>
             ';
