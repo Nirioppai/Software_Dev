@@ -107,3 +107,6 @@ Route::post('/csv/selective-stanine/add/2', 'ImportController@selectiveStanineAd
 Route::post('/csv/selective-stanine/add/3', 'ImportController@selectiveStanineAdd3')->name('selectiveStanineAdd3');
 Route::post('/students/monitoring/totalinfo/remark-update', 'HomeController@StudentRemark')->name('StudentRemark');
 
+Route::get('/home/register', 'HomeController@register')->name('register');
+Route::post('home/register/submit', 'HomeController@registerSubmit')->name('registerSubmit');
+

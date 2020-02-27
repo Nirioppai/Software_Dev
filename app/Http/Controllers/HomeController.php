@@ -7,7 +7,11 @@ use App\RawScoreToScaledScore;
 use App\SaiToPercentileRankAndStanine;
 use App\ScaledScoreToSai;
 use App\StudentRemark;
+use App\User;
 use DB;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -40,6 +44,31 @@ class HomeController extends Controller
     // {
     //     return view('students');
     // }
+
+    public function register()
+    {
+        $Users = User::all();
+        return view('account_register')->with('Users',$Users);
+    }
+
+    public function registerSubmit(Request $request)
+    {
+        $this->validate($request, [
+          'name' => ['required', 'string', 'max:50'],
+          'username' => ['required', 'string', 'max:25', 'unique:users'],
+          'password' => ['required', 'confirmed', 'string', 'max:25', 'min:8'],
+      ]);
+
+      //Registers the User
+      $UserDB = new User;
+      $UserDB->name = $request->input('name');
+      $UserDB->username = $request->input('username');
+      $UserDB->password =  Hash::make($request->input('password'));
+      $UserDB->save();
+
+      return redirect('/home/register');
+    }
+
     public function csv()
     {
         $success = ('idle');
