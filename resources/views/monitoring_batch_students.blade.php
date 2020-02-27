@@ -52,7 +52,7 @@
 
   <a class="current-breadcrumb text-dark"><b>Student Batch Results</b></a>
 
-  
+
 </div>
 @endsection
 
@@ -114,22 +114,20 @@
       <th class="text-center text-dark">Total Raw Score</th>
       <th class="text-center text-dark">Verbal Raw Score</th>
       <th class="text-center text-dark">Non-Verbal Raw Score</th>
-      <th class="text-center text-dark">Action</th>
     </tr>
   </thead>
 
 @foreach($batch_students as $students)
 
   <tr>
-    <td class="text-center">{{$students->student_id}}</td>
-    <td class="text-left">{{$students->student_name}}</td>
-    <td class="text-center">{{$students->birthday}}</td>
-    <td class="text-center">{{$students->rounded_current_age_in_years}}</td>
-    <td class="text-center">{{$students->rounded_current_age_in_months}}</td>
-    <td class="text-center">{{$students->total_raw}}</td>
-    <td class="text-center">{{$students->verbal_raw}}</td>
-    <td class="text-center">{{$students->nonverbal_raw}}</td>
-    <td align="text-center"><a href="totalinfo/{{$students->id}}"><button type="button" class="btn btn-primary">View</button></a></td>
+    <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->student_id}}</a></td>
+    <td class="text-left"> <a href='totalinfo/{{$students->id}}'>{{$students->student_name}}</a></td>
+    <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->birthday}}</a></td>
+    <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->rounded_current_age_in_years}}</a></td>
+    <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->rounded_current_age_in_months}}</a></td>
+    <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->total_raw}}</a></td>
+    <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->verbal_raw}}</a></td>
+    <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->nonverbal_raw}}</a></td>
   </tr>
 @endforeach
 <tr>
