@@ -268,30 +268,35 @@
             <img  style="width: 100%; height: 100%;" src="{{asset('./img/pdf/PDF.png')}}">
             </a>
             <div class="text-2">{{$total_score_details->student_name}}</div>
-            <div class="text-3 text-dark">{{$total_score_details->grade}}</div>
-            <div class="text-4 text-dark">Xavier School San Juan</div>
-            <div class="text-5 text-dark"></div>
-            <div class="text-6 text-dark">January 10, 2020</div>
-            <div class="text-7 text-dark">{{$total_score_details->birthday}}</div>
-            <div class="text-8 text-dark">{{$total_score_details->rounded_current_age_in_years}}.{{$total_score_details->rounded_current_age_in_months}} Years old</div>
-            <div class="text-9 text-dark">{{$total_score_details->verbal_raw}}</div>
-            <div class="text-10 text-dark">{{$total_score_details->nonverbal_raw}}</div>
-            <div class="text-11 text-dark">{{$total_score_details->total_raw}}</div>
-            <div class="text-12 text-dark">{{$total_score_details->verbal_scaled}}</div>
-            <div class="text-13 text-dark">{{$total_score_details->nonverbal_scaled}}</div>
-            <div class="text-14 text-dark">{{$total_score_details->total_scaled}}</div>
-            <div class="text-15 text-dark">{{$total_score_details->verbal_sai}}</div>
-            <div class="text-16 text-dark">{{$total_score_details->nonverbal_sai}}</div>
-            <div class="text-17 text-dark">{{$total_score_details->total_sai}}</div>
-            <div class="text-18 text-dark">{{$total_score_details->verbal_percentile}}</div>
-            <div class="text-19 text-dark">{{$total_score_details->nonverbal_percentile}}</div>
-            <div class="text-20 text-dark">{{$total_score_details->total_percentile}}</div>
-            <div class="text-21 text-dark">{{$total_score_details->verbal_stanine}}</div>
-            <div class="text-22 text-dark">{{$total_score_details->nonverbal_stanine}}</div>
-            <div class="text-23 text-dark">{{$total_score_details->total_stanine}}</div>
-            <div class="text-24 text-dark"></div>
-            <div class="text-25 text-dark"></div>
-            <div class="text-26 text-dark"></div>
+            <div class="text-3">{{$total_score_details->grade}}-{{$total_score_details->section}}</div>
+            <div class="text-4">Xavier School San Juan</div>
+            <div class="text-5"></div>
+            <div class="text-6">{{$total_score_details->exam_date}}</div>
+            <div class="text-7">{{$total_score_details->birthday}}</div>
+            <div class="text-8">{{$total_score_details->rounded_current_age_in_years}}.{{$total_score_details->rounded_current_age_in_months}}</div>
+            <div class="text-9">{{$total_score_details->verbal_raw}}</div>
+            <div class="text-10">{{$total_score_details->nonverbal_raw}}</div>
+            <div class="text-11">{{$total_score_details->total_raw}}</div>
+            <div class="text-12">{{$total_score_details->verbal_scaled}}</div>
+            <div class="text-13">{{$total_score_details->nonverbal_scaled}}</div>
+            <div class="text-14">{{$total_score_details->total_scaled}}</div>
+            <div class="text-15">{{$total_score_details->verbal_sai}}</div>
+            <div class="text-16">{{$total_score_details->nonverbal_sai}}</div>
+            <div class="text-17">{{$total_score_details->total_sai}}</div>
+            <div class="text-18">{{$total_score_details->verbal_percentile}}</div>
+            <div class="text-19">{{$total_score_details->nonverbal_percentile}}</div>
+            <div class="text-20">{{$total_score_details->total_percentile}}</div>
+            <div class="text-21">{{$total_score_details->verbal_stanine}}</div>
+            <div class="text-22">{{$total_score_details->nonverbal_stanine}}</div>
+            <div class="text-23">{{$total_score_details->total_stanine}}</div>
+            <div class="text-24">{{$total_score_details->verbal_classification}}</div>
+            <div class="text-25">{{$total_score_details->nonverbal_classification}}</div>
+            <div class="text-26">{{$total_score_details->total_classification}}</div>
+            
+            <div class="text-27">{{$total_score_details->verbal_comprehension}}</div>
+            <div class="text-28">{{$total_score_details->verbal_reasoning}}</div>
+            <div class="text-29">{{$total_score_details->figural_reasoning}}</div>
+            <div class="text-30">{{$total_score_details->quantitative_reasoning}}</div>
         </div>
 
         </form>

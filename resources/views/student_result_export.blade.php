@@ -13,7 +13,7 @@
             <div class="row-sm mt-4 picture-anchor">
             <img style="width: 100%; height: 100%;" src="./img/pdf/PDF_Export.png">
             <div class="text-2">{{$student_details->student_name}}</div>
-            <div class="text-3">{{$student_details->grade}}</div>
+            <div class="text-3">{{$student_details->grade}}-{{$student_details->section}}</div>
             <div class="text-4">Xavier School San Juan</div>
             <div class="text-5"></div>
             <div class="text-6">{{$student_details->exam_date}}</div>
@@ -37,6 +37,13 @@
             <div class="text-24">{{$student_details->verbal_classification}}</div>
             <div class="text-25">{{$student_details->nonverbal_classification}}</div>
             <div class="text-26">{{$student_details->total_classification}}</div>
+            
+            <div class="text-27">{{$student_details->verbal_comprehension}}</div>
+            <div class="text-28">{{$student_details->verbal_reasoning}}</div>
+            <div class="text-29">{{$student_details->figural_reasoning}}</div>
+            <div class="text-30">{{$student_details->quantitative_reasoning}}</div>
+
+            
         </div>
 
 </body>

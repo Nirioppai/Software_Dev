@@ -236,7 +236,7 @@
                           <form method="POST" action="{{ route('finalizeUpload') }}">
                           {{ csrf_field() }}
 
-                            <button type="submit" class="btn btn-primary">
+                            <button onclick="this.disabled=true; this.form.submit();" type="submit" class="btn btn-primary">
                                 Continue
                             </button>
                         </form>
