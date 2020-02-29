@@ -103,31 +103,33 @@
 
 <br>
 
-<table class="table align-items-center table-bordered table-striped table-flush table-responsive  ">
+<table class="table align-items-center table-bordered table-striped table-flush  ">
   <thead class="thead-light">
     <tr>
-      <th class="text-center text-dark">Student ID</th>
-      <th class="text-center text-dark">Name</th>
+      <th class="text-left text-dark">Student ID</th>
+      <th class="text-left text-dark">Name</th>
       <th class="text-center text-dark">Birthdate</th>
       <th class="text-center text-dark">Age in Years</th>
       <th class="text-center text-dark">Age in Months</th>
-      <th class="text-center text-dark">Total Raw Score</th>
-      <th class="text-center text-dark">Verbal Raw Score</th>
-      <th class="text-center text-dark">Non-Verbal Raw Score</th>
     </tr>
   </thead>
 
 @foreach($batch_students as $students)
 
   <tr>
-    <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->student_id}}</a></td>
-    <td class="text-left"> <a href='totalinfo/{{$students->id}}'>{{$students->student_name}}</a></td>
+    <td class="text-left"> <a href='totalinfo/{{$students->id}}'><b>
+    
+    {{$students->student_id}}</b></a>
+
+    @if(!\DB::table('student_batch')->where('batch', '=', $students->batch)->where('student_id', '=', $students->student_id)->pluck('nonverbal_stanine')->first())
+    &nbsp;&nbsp;&nbsp;<i class="fas fa-exclamation-triangle text-orange"></i>
+    @endif
+  
+  </td>
+    <td class="text-left"> <a href='totalinfo/{{$students->id}}'><b>{{$students->student_name}}</b></a></td>
     <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->birthday}}</a></td>
     <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->rounded_current_age_in_years}}</a></td>
     <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->rounded_current_age_in_months}}</a></td>
-    <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->total_raw}}</a></td>
-    <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->verbal_raw}}</a></td>
-    <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->nonverbal_raw}}</a></td>
   </tr>
 @endforeach
 <tr>

@@ -57,6 +57,7 @@
                         <tr>
                           <th class="text-left text-dark">Batch</th>
                           <th class="text-left text-dark">Batch Upload Date</th>
+                          <th class="text-left text-dark">Status</th>
                           <th class="text-left text-dark">Action</th>
                         </tr>
                       </thead>
@@ -66,6 +67,15 @@
                       <tr>
                         <td class="text-left"><a href='monitoring/{{$batch->batch}}'><b>Student Result Batch {{$batch->batch}}</b></a></td>
                         <td class="text-left">{{$batch->created_at}}</td>
+                      <td class="text-left">
+                        @if(DB::table('student_batch')->where('batch', '=', $batch->batch)->where('nonverbal_stanine', '=', 0)->count() == 0)
+                          <i class="fas fa-check-circle text-green"></i>&nbsp;&nbsp;&nbsp;<b>Normal Results</b>
+                        @endif
+                        
+                        @if(DB::table('student_batch')->where('batch', '=', $batch->batch)->where('nonverbal_stanine', '=', 0)->count() != 0)
+                          <i class="fas fa-exclamation-triangle text-orange"></i>&nbsp;&nbsp;&nbsp;<b>{{\DB::table('student_batch')->where('batch', '=', $batch->batch)->where('nonverbal_stanine', '=', 0)->count()}} Students out of scope</b>
+                        @endif
+                      </td>
                         <td class="text-left">
 
 
