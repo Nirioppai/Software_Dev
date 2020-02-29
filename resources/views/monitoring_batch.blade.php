@@ -68,8 +68,8 @@
                         <td class="text-left">{{$batch->created_at}}</td>
                         <td class="text-left">
 
-                          
-                         
+
+
                           <a  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="icon icon-shape bg-primary
                                      text-white rounded-circle shadow">
@@ -80,7 +80,7 @@
                             <a class="dropdown-item" href="monitoring/delete/{{$batch->batch}}"><i class="fas fa-trash-alt"></i> Delete Batch</a>
                             <a class="dropdown-item" href="monitoring/export-batch/{{$batch->batch}}"><i class="fas fa-file-pdf"></i> Export batch as PDF</a>
                           </div>
-                        
+
 
                         </td>
 
