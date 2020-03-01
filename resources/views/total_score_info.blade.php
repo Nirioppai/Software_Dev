@@ -50,7 +50,7 @@
   <a class="current-breadcrumb text-dark"><b>Individual Result</b></a>
 
 
-     
+
 </div>
 @endsection @section('content')
 
@@ -199,15 +199,29 @@
                         <br>
                         <span class="font-weight-bold">Grade Level:</span> <span class="ml-1">{{$total_score_details->grade}}</span>
                         <br>
+                        <span class="font-weight-bold">Grade Level:</span> <span class="ml-1">{{$total_score_details->section}}</span>
+                        <br>
                         <br>
                         <span class="font-weight-bold">Birthdate:</span> <span class="ml-1">{{$total_score_details->birthday}}</span>
                         <br>
                         <span class="font-weight-bold">Age in Years:</span> <span class="ml-1">{{$total_score_details->rounded_current_age_in_years}}</span>
                         <br>
                         <span class="font-weight-bold">Age in Months:</span> <span class="ml-1">{{$total_score_details->rounded_current_age_in_months}}</span>
+                        <br>
+                        <span class="font-weight-bold">Exam Date:</span> <span class="ml-1">{{$total_score_details->exam_date}}</span>
 
                     </div>
-                    <hr class="my-4" />
+                    <hr class="my-4">
+
+                    <div class="text-left">
+
+                        <span class="font-weight-bold">Overall Total Score:</span> <span class="ml-4">{{$total_score_details->total_raw}}</span>
+                        <br>
+                        <span class="font-weight-bold">Verbal Raw Score:</span> <span class="ml-5">{{$total_score_details->verbal_raw}}</span>
+                        <br>
+                        <span class="font-weight-bold">Non-Verbal Raw Score:</span> <span class="ml-2">{{$total_score_details->nonverbal_raw}}</span>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -292,7 +306,7 @@
             <div class="text-24">{{$total_score_details->verbal_classification}}</div>
             <div class="text-25">{{$total_score_details->nonverbal_classification}}</div>
             <div class="text-26">{{$total_score_details->total_classification}}</div>
-            
+
             <div class="text-27">{{$total_score_details->verbal_comprehension}}</div>
             <div class="text-28">{{$total_score_details->verbal_reasoning}}</div>
             <div class="text-29">{{$total_score_details->figural_reasoning}}</div>
