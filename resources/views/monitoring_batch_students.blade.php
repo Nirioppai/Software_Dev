@@ -116,7 +116,12 @@
 
 @foreach($batch_students as $students)
 
-  <tr>
+  <tr
+  @if(!\DB::table('student_batch')->where('batch', '=', $students->batch)->where('student_id', '=', $students->student_id)->pluck('nonverbal_stanine')->first())
+    data-toggle="tooltip" data-html="true" title="This student is <br><b>out of scope</b>." data-placement="left"
+    @endif
+  
+  >
     <td class="text-left"> <a href='totalinfo/{{$students->id}}'><b>
     
     {{$students->student_id}}</b></a>
@@ -125,7 +130,7 @@
     &nbsp;&nbsp;&nbsp;<i class="fas fa-exclamation-triangle text-orange"></i>
     @endif
   
-  </td>
+  </td >
     <td class="text-left"> <a href='totalinfo/{{$students->id}}'><b>{{$students->student_name}}</b></a></td>
     <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->birthday}}</a></td>
     <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->rounded_current_age_in_years}}</a></td>
