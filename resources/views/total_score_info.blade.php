@@ -26,7 +26,7 @@
 <!-- Navigation -->
 <ul class="navbar-nav mb-md-3">
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="/home/register">
       <i class="fas fa-user-circle"></i> Accounts
     </a>
   </li>
@@ -50,7 +50,7 @@
   <a class="current-breadcrumb text-dark"><b>Individual Result</b></a>
 
 
-     
+
 </div>
 @endsection @section('content')
 
@@ -292,7 +292,7 @@
             <div class="text-24">{{$total_score_details->verbal_classification}}</div>
             <div class="text-25">{{$total_score_details->nonverbal_classification}}</div>
             <div class="text-26">{{$total_score_details->total_classification}}</div>
-            
+
             <div class="text-27">{{$total_score_details->verbal_comprehension}}</div>
             <div class="text-28">{{$total_score_details->verbal_reasoning}}</div>
             <div class="text-29">{{$total_score_details->figural_reasoning}}</div>
