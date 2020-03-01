@@ -30,7 +30,7 @@
 <!-- Navigation -->
 <ul class="navbar-nav mb-md-3">
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="/home/register">
       <i class="fas fa-user-circle"></i> Accounts
     </a>
   </li>
@@ -66,7 +66,7 @@
         "newestOnTop": false,
         "progressBar": true,
         "positionClass": "toast-top-right",
-        "preventDuplicates": false, 
+        "preventDuplicates": false,
         "onclick": null,
         "showDuration": "300",
         "hideDuration": "1000",
