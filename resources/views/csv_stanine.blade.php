@@ -202,7 +202,7 @@
                     </div>
 
                     <div class="ml-6">
-                        <button type="submit" class="btn btn-primary">
+                        <button onclick="this.disabled=true; this.form.submit();" type="submit" class="btn btn-primary">
                             Continue
                         </button>
                     </div>

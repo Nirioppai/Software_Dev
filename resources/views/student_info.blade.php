@@ -47,7 +47,11 @@
   <a>/</a>
    -->
   <a class="current-breadcrumb text-dark">> Students</a>
+  <a>/</a>
+
+  <a class="current-breadcrumb text-dark"><b>Student Info</b></a>
 </div>
+
 @endsection
 
 @section('content')
@@ -68,40 +72,9 @@
             <!-- Trigger Modal -->
             <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                 <div class="d-flex justify-content-between">
-                    <a href="/studentinfo/{{$student_details->id}}/edit" class="btn btn-sm btn-default float-right ml--3" data-toggle="modal" data-target="#editProfile">Edit Profile</a>
+                    <a href="/students/view/studentinfo/{{$student_details->id}}/edit" class="btn btn-sm btn-default float-right ml--3">Edit Profile</a>
                 </div>
             </div>
-
-            <!-- Modal   -->
-              <form action="/studentinfo/{{$student_details->id}}" method="POST">
-                {{ csrf_field() }}
-                {{ method_field('PATCH') }}
-
-                <div class="modal fade" id="editProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title" id="exampleModalLabel">Edit Raw Scores</h1>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <h3>Overall Total Score:</h3>
-                        <input type="number" name="overall_total_score" value="{{$student_details->total_score}}" required>
-                        <h3>Verbal Raw Score:</h3>
-                        <input type="number" name="verbal_number_correct" value="{{$student_details->verbal_total_score}}" required>
-                        <h3>Non Verbal Raw Score:</h3>
-                        <input type="number" name="non_verbal_number_correct" value="{{$student_details->non_verbal_total_score}}" required>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
 
             <div class="card-body pt-0 pt-md-4">
                 <div class="text-center mt-5">
@@ -115,9 +88,14 @@
                         </h2>
                         <span class="font-weight-bold">Student No:</span> <span class="ml-1">{{$student_details->student_id}}</span>
                         <br>
-                        <span class="font-weight-bold">Birthdate:</span> <span class="ml-3">{{$student_details->birthday}}</span>
+                        <span class="font-weight-bold">Grade:</span> <span class="ml-1">{{$student_details->grade}}</span>
                         <br>
-                        <span class="font-weight-bold">Year Level:</span> <span class="ml-2">{{$student_details->grade}}</span>
+                        <span class="font-weight-bold">Section:</span> <span class="ml-1">{{$student_details->section}}</span>
+                        <br>
+                        <span class="font-weight-bold">Birthday:</span> <span class="ml-3">{{$student_details->birthday}}</span>
+                        <br>
+                        <span class="font-weight-bold">Exam Date:</span> <span class="ml-3">{{$student_details->exam_date}}</span>
+
                     </div>
                     <hr class="my-4">
 

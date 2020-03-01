@@ -24,14 +24,6 @@ class MonitoringTotalController extends Controller
         $this->middleware('auth');
     }
 
-  // function monitor()
-  // {
-  //    $data = DB::table('student_result_total')->orderBy('name', 'asc')->paginate(7);
-  //    $pager = 'monitorTotal';
-  //
-  //    return view('monitoring', compact('data'))->with('pager', $pager);
-  // }
-
   function monitor(Request $req)
   {
     $pager = 'monitorTotal';
@@ -84,23 +76,6 @@ class MonitoringTotalController extends Controller
         return view ('monitoring', compact('data'))->with('pager' , $pager)->with('input_search', $input_search)->with('paginateby', $paginateby)->with('orderby', $orderby)->with('ordertype', $ordertype)->with('count_rows', $count_rows)->with('current_page', $current_page);
       }
     }
-
-  // function fetch_data(Request $request)
-  // {
-  //      if($request->ajax())
-  //      {
-  //       $query = $request->get('query');
-  //       $query = str_replace(" ", "%", $query);
-  //       $data = DB::table('student_result_total')
-  //                     ->where('student_id', 'like', '%'.$query.'%')
-  //                     ->orWhere('name', 'like', '%'.$query.'%')
-  //                     ->orderBy('name', 'asc')
-  //                     ->paginate(7);
-  //       $pager = 'monitorTotal';
-  //
-  //       return view('pagination_data', compact('data'))->with('pager', $pager)->render();
-  //       }
-  // }
 
 
     /**
