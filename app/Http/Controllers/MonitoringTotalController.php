@@ -192,6 +192,7 @@ class MonitoringTotalController extends Controller
       $update = FinalStudentResult::where('id', $id)->update(['total_scaled' => $total_scaled]);
       $update = FinalStudentResult::where('id', $id)->update(['total_sai' => $total_sai]);
       $update = FinalStudentResult::where('id', $id)->update(['total_percentile' => $total_percentile]);
+      $update = FinalStudentResult::where('id', $id)->update(['total_stanine' => $total_stanine]);
 
       $update = FinalStudentResult::where('id', $id)->update(['total_classification' => $total_classification]);
 
