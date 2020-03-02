@@ -88,7 +88,8 @@
                           </a>
                           <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="monitoring/delete/{{$batch->batch}}"><i class="fas fa-trash-alt"></i> Delete Batch</a>
-                            <a class="dropdown-item" href="monitoring/export-batch/{{$batch->batch}}"><i class="fas fa-file-pdf"></i> Export batch as PDF</a>
+                            <a class="dropdown-item" data-toggle="tooltip" data-html="true" title="Generates a <b>Tabular</b> report of the batch." data-placement="left" href="monitoring/export-batch/{{$batch->batch}}"><i class="fas fa-file-pdf"></i> Export batch as PDF</a>
+                            <a class="dropdown-item" data-toggle="tooltip" data-html="true" title="Generates the individual result of <b>all students</b> of the batch." data-placement="left" href="monitoring/export-batch-individual/{{$batch->batch}}"><i class="fas fa-file-pdf"></i> Export Individual Batch Results</a>
                           </div>
 
 

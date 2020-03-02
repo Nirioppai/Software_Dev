@@ -87,7 +87,8 @@ Route::post('/export-pdf', 'PDFController@viewPDF')->name('viewPDF');
 Route::post('/save-pdf', 'PDFController@savePDF')->name('savePDF');
 
 Route::get('/students/monitoring/delete/{id}', 'BatchController@deleteBatch')->name('deleteBatch');
-Route::get('/students/monitoring/export-batch/{id}', 'PDFController@pdf')->name('exportBatch');
+Route::get('/students/monitoring/export-batch/{id}', 'PDFController@pdf_batch_tabular')->name('pdf_batch_tabular');
+Route::get('/students/monitoring/export-batch-individual/{id}', 'PDFController@pdf_batch_individual')->name('pdf_batch_individual');
 
 
 Route::get('/csv/selective-scaled/reset', 'ImportController@selectiveScaledRestart')->name('selectiveScaledRestart');

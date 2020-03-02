@@ -10,10 +10,47 @@
   text-align:center;
 }
 
-
+p.solid{
+  border-style: solid;
+  text-align: center;
+  border-color: #e7e6e6;
+  background-color: #e7e6e6;
+}
 
 .main{
   margin-bottom: 1cm;
+}
+
+.main-individual{
+  margin-top: 100px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.header-individual{
+  margin-top: 25px;
+}
+
+.date-of-testing{
+  position: absolute;
+  top: 100px;
+  right: 280px;
+}
+
+.date-of-birth{
+  position: absolute;
+  top: 115px;
+  right: 293px;
+}
+
+.age{
+  position: absolute;
+  top: 130px;
+  right: 338px;
+}
+
+.student-name {
+  position: absolute;
 }
 
 .enlarged {
@@ -230,4 +267,36 @@ footer {
   position: absolute;
   top: 41.4%;
   left: 36.2%;
+}
+
+.normal-cell{
+  border: 1px solid; 
+  padding:1px; 
+  padding-left: 10;
+}
+
+.center-cell{
+  border: 1px solid; 
+  padding:1px; 
+  text-align: center;
+}
+
+.left-cell{
+  border: 1px solid; 
+  padding:1px; 
+  
+}
+
+.center{
+  
+  left: 40.2%;
+}
+
+.normal {
+  font-weight: normal;
+  font-size: 7.5;
+}
+
+.minify {
+  font-size: 7.6;
 }
