@@ -142,7 +142,7 @@ class PDFController extends Controller
 
                 <tr>
                         <td class="left-cell">Verbal</td>
-                        <td class="center-cell"></td>
+                        <td class="center-cell">36</td>
                         <td class="center-cell">'.$student->verbal_raw.'</td>
                         <td class="center-cell">'.$student->verbal_scaled.'</td>
                         <td class="center-cell">'.$student->verbal_sai.'</td>
@@ -153,44 +153,44 @@ class PDFController extends Controller
 
                     <tr>
                         <td class="normal-cell">Verbal Comprehension</td>
-                        <td class="center-cell"></td>
-                        <td class="center-cell">8</td>
+                        <td class="center-cell">12</td>
+                        <td class="center-cell">'.$student->verbal_comprehension.'</td>
                         <td class="center-cell" colspan="5" rowspan="2"></td>
                     </tr>
 
                     <tr>
                         <td class="normal-cell">Verbal Reasoning</td>
-                        <td class="center-cell"></td>
-                        <td class="center-cell">12</td>
+                        <td class="center-cell">24</td>
+                        <td class="center-cell">'.$student->verbal_reasoning.'</td>
                     </tr>
 
                     <tr>
                         <td class="left-cell">Non-Verbal</td>
-                        <td class="center-cell"></td>
-                        <td class="center-cell">20</td>
-                        <td class="center-cell">586</td>
-                        <td class="center-cell">112</td>
-                        <td class="center-cell">77</td>
-                        <td class="center-cell">7</td>
-                        <td class="center-cell">Above Average</td>
+                        <td class="center-cell">36</td>
+                        <td class="center-cell">'.$student->nonverbal_raw.'</td>
+                        <td class="center-cell">'.$student->nonverbal_scaled.'</td>
+                        <td class="center-cell">'.$student->nonverbal_sai.'</td>
+                        <td class="center-cell">'.$student->nonverbal_percentile.'</td>
+                        <td class="center-cell">'.$student->nonverbal_stanine.'</td>
+                        <td class="center-cell">'.$student->nonverbal_classification.'</td>
                     </tr>
 
                     <tr>
                         <td class="normal-cell">Figural Reasoning</td>
-                        <td class="center-cell"></td>
-                        <td class="center-cell">8</td>
+                        <td class="center-cell">18</td>
+                        <td class="center-cell">'.$student->figural_reasoning.'</td>
                         <td class="center-cell" colspan="5" rowspan="2"></td>
                     </tr>
                     
                     <tr>
                         <td class="normal-cell">Quantitative Reasoning</td>
-                        <td class="center-cell"></td>
-                        <td class="center-cell">12</td>
+                        <td class="center-cell">18</td>
+                        <td class="center-cell">'.$student->quantitative_reasoning.'</td>
                     </tr>
 
                     <tr>
                         <td class="left-cell">Total Score</td>
-                        <td class="center-cell"></td>
+                        <td class="center-cell">72</td>
                         <td class="center-cell">'.$student->total_raw.'</td>
                         <td class="center-cell">'.$student->total_scaled.'</td>
                         <td class="center-cell">'.$student->total_sai.'</td>
