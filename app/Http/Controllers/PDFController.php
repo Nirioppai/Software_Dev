@@ -60,7 +60,7 @@ class PDFController extends Controller
      $pdf = \App::make('dompdf.wrapper');
      $pdf->loadHTML($this->convert_student_results_to_html_tabular($batch))->setPaper('legal', 'landscape');
      //return $pdf->stream();
-     return $pdf->download('Student Results Batch '.$batch. '.pdf');
+     return $pdf->download('Student Tabular Results Batch '.$batch. '.pdf');
     }
 
 
@@ -68,8 +68,8 @@ class PDFController extends Controller
     {
      $pdf = \App::make('dompdf.wrapper');
      $pdf->loadHTML($this->convert_student_results_to_html_individual($batch));
-     return $pdf->stream();
-     //return $pdf->download('Student Results Batch '.$batch. '.pdf');
+     //return $pdf->stream();
+     return $pdf->download('Student Individual Results Batch '.$batch. '.pdf');
     }
 
     function convert_student_results_to_html_individual($batch)
@@ -305,7 +305,7 @@ and comperehension of the cluster(s) assessed. Students in this rating will need
                 <br>
                 Student Result Batch: '.$batch.' 
                 <br>
-        <table width="90%" style="border-collapse: collapse; border: 0px;">
+        <table width="97%" style="border-collapse: collapse; border: 0px;">
             <thead>
                 <tr>
   	<th class="normal-border" width="0.3%" rowspan="4">No.</th>
@@ -315,7 +315,6 @@ and comperehension of the cluster(s) assessed. Students in this rating will need
     <th class="normal-border" width="0.3%" colspan="8">Verbal</th>
     <th class="normal-border" width="0.3%" colspan="8">Non Verbal</th>
     <th class="normal-border" width="0.3%" colspan="6">Total Score</th>
-    <th class="normal-border" width="0.3%" colspan="2" rowspan="2">Normal Curve Equivalent</th>
     
 
     
@@ -344,9 +343,6 @@ and comperehension of the cluster(s) assessed. Students in this rating will need
     <td class="normal-border" width="0.3%" rowspan="2">RS</td>
     <td class="normal-border" width="0.3%" rowspan="2">SS</td>
     <td class="normal-border" width="0.3%" colspan="4">Age Norms</td>
-    <td class="normal-border" width="0.3%" rowspan="2">Age</td>
-    <td class="normal-border" width="0.3%" rowspan="2">Grade</td>
-
 
   </tr>
   <tr>
@@ -398,8 +394,7 @@ and comperehension of the cluster(s) assessed. Students in this rating will need
                 <td class="normal-border" width="15px">'.$student->total_percentile.'</td>
                 <td class="normal-border" width="15px">'.$student->total_stanine.'</td>
                 <td class="normal-border">'.$student->total_classification.'</td>
-                <td class="normal-border">'.$student->age_year.'</td>
-                <td class="normal-border">'.$student->age_year.'</td>
+
             </tr>
             ';
             $i++;
