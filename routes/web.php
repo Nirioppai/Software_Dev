@@ -14,9 +14,31 @@ use App\User;
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 Auth::routes();
 
-Route::get('/', function () {
-        return redirect('/home');
-});
+Route::get('/',function(){
+  $users = User::all();
+  //if there are users
+  if(count ($users) > 0) {
+    Auth::logout();
+        return view('auth.login');
+    }
+  //if there are no users
+    if(count ($users) == 0) {
+      Auth::logout();
+        return redirect('/register');
+      }
+    Auth::logout();
+    return '/';
+}) -> name('/');
+
+Route::get('/register',function(){
+  $users = User::all();
+  //if there are users
+  if(count ($users) > 0) {
+    Auth::logout();
+        return redirect('/login');
+    }
+    return view('auth.register');
+}) -> name('/register');
 
 Route::get('landing', 'HomeController@landing')->name('landing');
 
