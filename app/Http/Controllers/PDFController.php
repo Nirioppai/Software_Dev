@@ -110,7 +110,7 @@ class PDFController extends Controller
 
         <p class="date-of-birth">Date of Birth: '.$student->birthday.'</p>
 
-        <p class="age">Age: '.$student->age_year. '.'.''.$student->age_month.'</p>
+        <p class="age">Age: '.$student->age_year. '.'.''.$student->age_month.' Years Old</p>
 
 
             <center>
@@ -141,7 +141,7 @@ class PDFController extends Controller
                 </tr>
 
                 <tr>
-                        <td class="left-cell"><b>Verbal</b></td>
+                        <td class="left-cell" width="0.2%" height="0.2%"><b>Verbal</b></td>
                         <td class="center-cell">36</td>
                         <td class="center-cell">'.$student->verbal_raw.'</td>
                         <td class="center-cell">'.$student->verbal_scaled.'</td>
@@ -281,7 +281,7 @@ and comperehension of the cluster(s) assessed. Students in this rating will need
             <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
         </head>
         <body class="body">
-            <img style="width: 50%; height: 50%;" src="./img/pdf/PDF_header.png">
+            <div class="image-edit"><img style="width: 50%; height: 50%;" src="./img/pdf/PDF_header.png"></div>
             <footer>
                 Legend:
                 <br>
@@ -312,15 +312,13 @@ and comperehension of the cluster(s) assessed. Students in this rating will need
                 <tr>
   	<th class="normal-border" width="0.3%" rowspan="4">No.</th>
   	<th class="normal-border" width="0.3%" rowspan="4">Name</th>
+    <th class="normal-border" width="0.3%" rowspan="4">Section</th>
   	<th class="normal-border" width="0.3%" rowspan="4">Birthday</th>
   	<th class="normal-border" width="0.3%" rowspan="4">Age</th>
     <th class="normal-border" width="0.3%" colspan="8">Verbal</th>
     <th class="normal-border" width="0.3%" colspan="8">Non Verbal</th>
     <th class="normal-border" width="0.3%" colspan="6">Total Score</th>
-
-
-
-  </tr>
+              </tr>
   <tr>
     <td class="normal-border" width="0.3%">Verbal Comprehension</td>
     <td class="normal-border" width="0.3%" >Verbal Reasoning</td>
@@ -371,7 +369,8 @@ and comperehension of the cluster(s) assessed. Students in this rating will need
             $output .= '
             <tr>
                 <td class="normal-border">'.$i.'</td>
-                <td class="normal-border" width="0.7%">'.$student->student_name.'</td>
+                <td class="normal-name-border" width="0.7%">'.$student->student_name.'</td>
+                <td class="normal-border" width="0.4%">'.$student->grade.'-'.$student->section.'</td>
                 <td class="normal-border" width="0.6%">'.$student->birthday.'</td>
                 <td class="normal-border">'.$student->age_year.".".$student->age_month.'</td>
                 <td class="normal-border">'.$student->verbal_comprehension.'</td>

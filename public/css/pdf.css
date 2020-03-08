@@ -10,13 +10,18 @@
   text-align:center;
 }
 
+.normal-name-border {
+  border: 1px solid;
+  padding:1px;
+  text-align:left;
+}
+
 p.solid{
   border-style: solid;
   text-align: center;
   border-color: #e7e6e6;
   background-color: #e7e6e6;
 }
-
 
 .main{
   margin-bottom: 1cm;
@@ -47,7 +52,7 @@ p.solid{
 .age{
   position: absolute;
   top: 130px;
-  right: 395px;
+  right: 343px;
 }
 
 .student-name {
@@ -307,4 +312,9 @@ footer {
 
 .minify {
   font-size: 7.6;
+}
+
+.image-edit {
+  position: relative;
+  text-align: center;
 }
