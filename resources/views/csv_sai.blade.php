@@ -1,7 +1,7 @@
 @extends('components.bars')
 
 @section('title')
-<title>OLSAT | Upload Reference - SAI</title>
+<title>OLSAT | Upload Reference - Scaled Score to School Ability Index (SAI)</title>
 @endsection
 
 @section('nav')
@@ -47,7 +47,7 @@
         <a class="custom-breadcrumb text-dark" href="/home">> OLSAT References</a>
         <a>/</a>
 
-    <a class="current-breadcrumb text-dark"><b>School Ability Index</b></a>
+    <a class="current-breadcrumb text-dark"><b>Scaled Score to School Ability Index (SAI)</b></a>
 </div>
 @endsection
 
@@ -66,12 +66,12 @@
 
                     <a>
                         <span class="circle">1</span>
-                        <span class="label">School Ability Index - Upload</span>
+                        <span class="label">Scaled Score to School Ability Index (SAI) - Upload</span>
                     </a>
 
 @if($uploader == 'sai_1')
                     <div class="step-content grey lighten-3">
-                        <p>First, choose a School Ability Index file and then upload it on the system by clicking on Submit.</p>
+                        <p>First, choose a Scaled Score to School Ability Index (SAI) file and then upload it on the system by clicking on Submit.</p>
                     </div>
 
                     <!-- Form open here -->
@@ -121,7 +121,7 @@
 
                     <a>
                         <span class="circle">2</span>
-                        <span class="label">School Ability Index - Preview</span>
+                        <span class="label">Scaled Score to School Ability Index (SAI) - Preview</span>
                     </a>
 
 @if($uploader == 'sai_2')
@@ -216,12 +216,12 @@
                 <li @if($step == 3) class="active" @endif>
                     <a>
                         <span class="circle">3</span>
-                        <span class="label">School Ability Index - Confirmation</span>
+                        <span class="label">Scaled Score to School Ability Index (SAI) - Confirmation</span>
                     </a>
 
 @if($uploader == 'sai_3')
                     <div class="step-content grey lighten-3">
-                        <p>Finalize <b>School Ability Index</b> uploading?</p>
+                        <p>Finalize <b>Scaled Score to School Ability Index (SAI)</b> uploading?</p>
                     </div>
 
                       <div class="row ml-5">

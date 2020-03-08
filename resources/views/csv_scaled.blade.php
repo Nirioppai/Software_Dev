@@ -1,7 +1,7 @@
 @extends('components.bars')
 
 @section('title')
-<title>OLSAT | Upload Reference - Scaled Score</title>
+<title>OLSAT | Upload Reference - Raw Score to Scaled Score</title>
 @endsection
 
 @section('nav')
@@ -47,7 +47,7 @@
         <a class="custom-breadcrumb text-dark" href="/home">> OLSAT References</a>
         <a>/</a>
 
-    <a class="current-breadcrumb text-dark"><b>Scaled Score</b></a>
+    <a class="current-breadcrumb text-dark"><b>Raw Score to Scaled Score</b></a>
 </div>
 @endsection
 
@@ -66,12 +66,12 @@
 
                     <a>
                         <span class="circle">1</span>
-                        <span class="label">Scaled Scores - Upload</span>
+                        <span class="label">Raw Score to Scaled Scores - Upload</span>
                     </a>
 
 @if($uploader == 'scaled_1')
                     <div class="step-content grey lighten-3">
-                        <p>First, choose a Scaled Score file and then upload it on the system by clicking on Submit.</p>
+                        <p>First, choose a Raw Score to Scaled Score file and then upload it on the system by clicking on Submit.</p>
                     </div>
 
                     <!-- Form open here -->
@@ -121,7 +121,7 @@
 
                     <a>
                         <span class="circle">2</span>
-                        <span class="label">Scaled Scores - Preview</span>
+                        <span class="label">Raw Score to Scaled Scores - Preview</span>
                     </a>
 
 @if($uploader == 'scaled_2')
@@ -216,12 +216,12 @@
                 <li @if($step == 3) class="active" @endif>
                     <a>
                         <span class="circle">3</span>
-                        <span class="label">Scaled Scores - Confirmation</span>
+                        <span class="label">Raw Score to Scaled Scores - Confirmation</span>
                     </a>
 
 @if($uploader == 'scaled_3')
                     <div class="step-content grey lighten-3">
-                        <p>Finalize <b>Scaled Scores</b> uploading?</p>
+                        <p>Finalize <b>Raw Score to Scaled Scores</b> uploading?</p>
                     </div>
 
                       <div class="row ml-5">

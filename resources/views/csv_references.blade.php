@@ -54,11 +54,11 @@
                 <li @if($step == 1.1) class="active" @endif>
                 <a>
                 <span class="circle">1.1</span>
-                <span class="label">Scaled Scores - Upload</span>
+                <span class="label">Raw Score to Scaled Score - Upload</span>
                 </a>
                 @if($uploader == 'scaled_scores_1')
                 <div class="step-content grey lighten-3">
-                    <p>First, choose a Scaled Score file and then upload it on the system by clicking on Submit.</p>
+                    <p>First, choose a Raw Score to Scaled Score file and then upload it on the system by clicking on Submit.</p>
                 </div>
                 <div class="container">
                     <div class="row">
@@ -104,7 +104,7 @@
                 <li @if($step == 1.2) class="active" @endif>
                 <a>
                 <span class="circle">1.2</span>
-                <span class="label">Scaled Scores - Preview</span>
+                <span class="label">Raw Score to Scaled Score - Preview</span>
                 </a>
                 @if($uploader == 'scaled_scores_2')
                 <div class="step-content grey lighten-3">
@@ -177,11 +177,11 @@
                 <li @if($step == 1.3) class="active" @endif>
                 <a>
                 <span class="circle">1.3</span>
-                <span class="label">Scaled Scores - Confirmation</span>
+                <span class="label">Raw Score to Scaled Score - Confirmation</span>
                 </a>
                 @if($uploader == 'scaled_scores_3')
                 <div class="step-content grey lighten-3">
-                    <p>Proceed to <b>School Ability Index</b> uploading?</p>
+                    <p>Proceed to <b>Scaled Score to School Ability Index (SAI)</b> uploading?</p>
                 </div>
                 <div class="container ml-5">
                     <div class="row">
@@ -201,11 +201,11 @@
                 <li @if($step == 2.1) class="active" @endif>
                 <a>
                 <span class="circle">2.1</span>
-                <span class="label">School Ability Index - Upload</span>
+                <span class="label">Scaled Score to School Ability Index (SAI) - Upload</span>
                 </a>
                 @if($uploader == 'sai_1')
                 <div class="step-content grey lighten-3">
-                    <p>First, choose a School Ability Index file and then upload it on the system by clicking on Submit.</p>
+                    <p>First, choose a Scaled Score to School Ability Index (SAI) file and then upload it on the system by clicking on Submit.</p>
                 </div>
                 <div class="container">
                     <div class="row">
@@ -251,7 +251,7 @@
                 <li @if($step == 2.2) class="active" @endif>
                 <a>
                 <span class="circle">2.2</span>
-                <span class="label">School Ability Index - Preview</span>
+                <span class="label">Scaled Score to School Ability Index (SAI) - Preview</span>
                 </a>
                 @if($uploader == 'sai_2')
                 <div class="step-content grey lighten-3">
@@ -324,11 +324,11 @@
                 <li @if($step == 2.3) class="active" @endif>
                 <a>
                 <span class="circle">2.3</span>
-                <span class="label">School Ability Index - Confirmation</span>
+                <span class="label">Scaled Score to School Ability Index (SAI) - Confirmation</span>
                 </a>
                 @if($uploader == 'sai_3')
                 <div class="step-content grey lighten-3">
-                    <p>Proceed to <b>Percentile Rank & Stanine</b> uploading?</p>
+                    <p>Proceed to <b>School Ability Index (SAI) to Percentile Rank & Stanine</b> uploading?</p>
                 </div>
                 <div class="container ml-5">
                     <div class="row">
@@ -348,11 +348,11 @@
                 <li @if($step == 3.1) class="active" @endif>
                 <a>
                 <span class="circle">3.1</span>
-                <span class="label">Percentile Rank & Stanine - Upload</span>
+                <span class="label">School Ability Index (SAI) to Percentile Rank & Stanine - Upload</span>
                 </a>
                 @if($uploader == 'stanine_1')
                 <div class="step-content grey lighten-3">
-                    <p>First, choose a Percentile Rank & Stanine file and then upload it on the system by clicking on Submit.</p>
+                    <p>First, choose a School Ability Index (SAI) to Percentile Rank & Stanine file and then upload it on the system by clicking on Submit.</p>
                 </div>
                 <!-- Form open here -->
                 <div class="input-group down ml-5 col-sm-7">
@@ -388,7 +388,7 @@
                 <li @if($step == 3.2) class="active" @endif>
                 <a>
                 <span class="circle">3.2</span>
-                <span class="label">Percentile Rank & Stanine - Preview</span>
+                <span class="label">School Ability Index (SAI) to Percentile Rank & Stanine - Preview</span>
                 </a>
                 @if($uploader == 'stanine_2')
                 <div class="step-content grey lighten-3">
@@ -461,7 +461,7 @@
                 <li @if($step == 3.3) class="active" @endif>
                 <a>
                 <span class="circle">3.3</span>
-                <span class="label">Percentile Rank & Stanine - Confirmation</span>
+                <span class="label">School Ability Index (SAI) to Percentile Rank & Stanine - Confirmation</span>
                 </a>
                 @if($uploader == 'stanine_3')
                 <div class="step-content grey lighten-3">
