@@ -70,8 +70,12 @@
 
 <br>
 
-  Show rows by:
-  <select name="filterby" id="filterby" onchange="this.form.submit()">
+<div class="form-row">
+      <div class="form-group col-md-1">
+        <h5 class="text-left"><b>SHOW ROWS BY</b></h5>
+      </div>
+      <div class="form-group col-md-3">
+         <select class="form-control form-control-sm" name="filterby" id="filterby" onchange="this.form.submit()">
     <option value="5" {{$paginateby == 5? 'selected':''}}> 5 </option>
     <option value="10" {{$paginateby == 10? 'selected':''}}> 10 </option>
     <option value="25" {{$paginateby == 25? 'selected':''}}> 25 </option>
@@ -82,9 +86,13 @@
     <option value="500" {{$paginateby == 500? 'selected':''}}> 500 </option>
     <option value="1000" {{$paginateby == 1000? 'selected':''}}> 1,000 </option>
   </select>
+</div>
 
-  Order by:
-  <select name="orderby" id="orderby" onchange="this.form.submit()">
+<div class="form-group col-md-1">
+      <h5 class="text-center" ><b>ORDER BY</b></h5>
+    </div>
+    <div class="form-group col-md-3">
+       <select class="form-control form-control-sm" name="orderby" id="orderby" onchange="this.form.submit()">
     <option value="student_name" {{$orderby == "student_name"? 'selected':''}}> Name </option>
     <option value="student_id" {{$orderby == "student_id"? 'selected':''}}> Student Number </option>
     <option value="birthday" {{$orderby == "birthday"? 'selected':''}}> Birthday </option>
@@ -92,12 +100,17 @@
     <option value="verbal_raw" {{$orderby == "verbal_raw"? 'selected':''}}> Verbal Score </option>
     <option value="nonverbal_raw" {{$orderby == "nonverbal_raw"? 'selected':''}}> Non-Verbal Score </option>
   </select>
+</div>
 
-  Type:
-  <select name="ordertype" id="ordertype" onchange="this.form.submit()">
+<div class="form-group col-md-1">
+      <h5 class="text-center" ><b>TYPE</b></h5>
+    </div>
+    <div class="form-group col-md-3">
+       <select class="form-control form-control-sm" name="ordertype" id="ordertype" onchange="this.form.submit()">
     <option value="asc" {{$ordertype == "asc"? 'selected':''}}> Ascending </option>
     <option value="desc" {{$ordertype == "desc"? 'selected':''}}> Descending </option>
   </select>
+</div>
 
 </form>
 
@@ -120,16 +133,16 @@
   @if(!\DB::table('student_batch')->where('batch', '=', $students->batch)->where('student_id', '=', $students->student_id)->pluck('nonverbal_stanine')->first())
     data-toggle="tooltip" data-html="true" title="This student is <br><b>out of scope</b>." data-placement="left"
     @endif
-  
+
   >
     <td class="text-left"> <a href='totalinfo/{{$students->id}}'><b>
-    
+
     {{$students->student_id}}</b></a>
 
     @if(!\DB::table('student_batch')->where('batch', '=', $students->batch)->where('student_id', '=', $students->student_id)->pluck('nonverbal_stanine')->first())
     &nbsp;&nbsp;&nbsp;<i class="fas fa-exclamation-triangle text-orange"></i>
     @endif
-  
+
   </td >
     <td class="text-left"> <a href='totalinfo/{{$students->id}}'><b>{{$students->student_name}}</b></a></td>
     <td class="text-center"> <a href='totalinfo/{{$students->id}}'>{{$students->birthday}}</a></td>

@@ -1,13 +1,19 @@
 .body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Arial', sans-serif;
   font-weight: bolder;
   font-size: 8;
 }
 
 .normal-border {
-  border: 1px solid; 
-  padding:1px; 
+  border: 1px solid;
+  padding:1px;
   text-align:center;
+}
+
+.normal-name-border {
+  border: 1px solid;
+  padding:1px;
+  text-align:left;
 }
 
 p.solid{
@@ -40,13 +46,13 @@ p.solid{
 .date-of-birth{
   position: absolute;
   top: 115px;
-  right: 293px;
+  right: 302px;
 }
 
 .age{
   position: absolute;
   top: 130px;
-  right: 338px;
+  right: 343px;
 }
 
 .student-name {
@@ -54,7 +60,7 @@ p.solid{
 }
 
 .enlarged {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Arial', sans-serif;
   font-weight: bolder;
   font-size: 10;
 }
@@ -67,9 +73,9 @@ header {
 }
 
 footer {
-    position: fixed; 
-    bottom: 1cm; 
-    left: 0cm; 
+    position: fixed;
+    bottom: 1cm;
+    left: 0cm;
     right: 0cm;
 
 }
@@ -270,25 +276,32 @@ footer {
 }
 
 .normal-cell{
-  border: 1px solid; 
-  padding:1px; 
+  border: 1px solid;
+  padding:1px;
   padding-left: 10;
 }
 
 .center-cell{
-  border: 1px solid; 
-  padding:1px; 
+  border: 1px solid;
+  padding:1px;
   text-align: center;
 }
 
+.header-cell {
+  border: 1px solid;
+  padding:1px;
+  text-align: center;
+  background: #BBBAB8;
+}
+
 .left-cell{
-  border: 1px solid; 
-  padding:1px; 
-  
+  border: 1px solid;
+  padding:1px;
+
 }
 
 .center{
-  
+
   left: 40.2%;
 }
 
@@ -299,4 +312,9 @@ footer {
 
 .minify {
   font-size: 7.6;
+}
+
+.image-edit {
+  position: relative;
+  text-align: center;
 }
