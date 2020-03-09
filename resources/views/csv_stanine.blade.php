@@ -1,7 +1,7 @@
 @extends('components.bars')
 
 @section('title')
-<title>OLSAT | Upload Reference - Percentile Rank and Stanine</title>
+<title>OLSAT | Upload Reference - School Ability Index (SAI) to Percentile Rank & Stanine</title>
 @endsection
 
 @section('nav')
@@ -47,7 +47,7 @@
         <a class="custom-breadcrumb text-dark" href="/home">> OLSAT References</a>
         <a>/</a>
 
-    <a class="current-breadcrumb text-dark"><b>Percentile Rank and Stanine</b></a>
+    <a class="current-breadcrumb text-dark"><b>School Ability Index (SAI) to Percentile Rank & Stanine</b></a>
 </div>
 @endsection
 
@@ -66,12 +66,12 @@
 
                     <a>
                         <span class="circle">1</span>
-                        <span class="label">Percentile Rank & Stanine - Upload</span>
+                        <span class="label">School Ability Index (SAI) to Percentile Rank & Stanine - Upload</span>
                     </a>
 
 @if($uploader == 'stanine_1')
                     <div class="step-content grey lighten-3">
-                        <p>First, choose a Percentile Rank & Stanine file and then upload it on the system by clicking on Submit.</p>
+                        <p>First, choose a School Ability Index (SAI) to Percentile Rank & Stanine file and then upload it on the system by clicking on Submit.</p>
                     </div>
 
                     <!-- Form open here -->
@@ -121,7 +121,7 @@
 
                     <a>
                         <span class="circle">2</span>
-                        <span class="label">Percentile Rank & Stanine - Preview</span>
+                        <span class="label">School Ability Index (SAI) to Percentile Rank & Stanine - Preview</span>
                     </a>
 
 @if($uploader == 'stanine_2')
@@ -216,12 +216,12 @@
                 <li @if($step == 3) class="active" @endif>
                     <a>
                         <span class="circle">3</span>
-                        <span class="label">Percentile Rank & Stanine - Confirmation</span>
+                        <span class="label">School Ability Index (SAI) to Percentile Rank & Stanine - Confirmation</span>
                     </a>
 
 @if($uploader == 'stanine_3')
                     <div class="step-content grey lighten-3">
-                        <p>Finalize <b>Percentile Rank & Stanine</b> uploading?</p>
+                        <p>Finalize <b>School Ability Index (SAI) to Percentile Rank & Stanine</b> uploading?</p>
                     </div>
 
                       <div class="row ml-5">

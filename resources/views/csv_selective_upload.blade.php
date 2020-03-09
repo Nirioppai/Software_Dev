@@ -68,9 +68,9 @@
         <div class="card-body">
 
           <!-- Title -->
-          <h4 class="card-title"><a>Scaled Score</a></h4>
+          <h4 class="card-title"><a>Raw Score to Scaled Score</a></h4>
           <!-- Text -->
-          <p class="card-text"><b>Upload</b> a Scaled Score Reference.</p>
+          <p class="card-text"><b>Upload</b> a Raw Score to Scaled Score Reference.</p>
           <br>
           &nbsp;
           <!-- Button -->
@@ -98,9 +98,9 @@
         <div class="card-body">
 
           <!-- Title -->
-          <h4 class="card-title"><a>Scaled Score</a></h4>
+          <h4 class="card-title"><a>Raw Score to Scaled Score</a></h4>
           <!-- Text -->
-          <p class="card-text"><b>Edit</b> a Scaled Score Reference.</p>
+          <p class="card-text"><b>Edit</b> a Raw Score to Scaled Score Reference.</p>
           <br>
           &nbsp;
           <!-- Button -->
@@ -154,9 +154,9 @@
         <div class="card-body">
 
           <!-- Title -->
-          <h4 class="card-title"><a>Stanine and Percentile Rank</a></h4>
+          <h4 class="card-title"><a>Shool Ability Index (SAI) to Percentile Rank & Stanine</a></h4>
           <!-- Text -->
-          <p class="card-text"><b>Edit</b> a Stanine and Percentile Rank Reference.</p>
+          <p class="card-text"><b>Edit</b> a School Ability Index (SAI) to Percentile Rank & Stanine Reference.</p>
 
           <a href="#" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edit</a>
           <div class="dropdown-menu dropdown-menu">
@@ -183,9 +183,9 @@
         <div class="card-body">
 
           <!-- Title -->
-          <h4 class="card-title"><a>School Ability Index (SAI)</a></h4>
+          <h4 class="card-title"><a>Scaled Score to School Ability Index (SAI)</a></h4>
           <!-- Text -->
-          <p class="card-text"><b>Upload</b> a School Ability Index Reference.</p>
+          <p class="card-text"><b>Upload</b> a Scaled Score to School Ability Index (SAI) Reference.</p>
           <!-- Button -->
           <a href="/csv/selective-sai/add" class="btn btn-primary">Upload</a>
 
@@ -208,9 +208,9 @@
         <div class="card-body">
 
           <!-- Title -->
-          <h4 class="card-title"><a>School Ability Index (SAI)</a></h4>
+          <h4 class="card-title"><a>Scaled Score to School Ability Index (SAI)</a></h4>
           <!-- Text -->
-          <p class="card-text"><b>Edit</b> a School Ability Index Reference.</p>
+          <p class="card-text"><b>Edit</b> a Scaled Score to School Ability Index Reference.</p>
           <!-- Button -->
 
 
