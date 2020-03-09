@@ -125,9 +125,9 @@ class PDFController extends Controller
 
         <table class="minify" width="100%" style="border-collapse: collapse; border: 0px;">
                <tr>
-                    <th class="header-cell" width="0.3%" >Cluster/Item Type</th>
-                    <th class="header-cell" width="0.3%" >Number of Items</th>
-                    <th class="header-cell" width="0.3%" >Raw Score</th>
+                    <th class="header-cell" width="0.5%" >Cluster/Item Type</th>
+                    <th class="header-cell" width="0.2%" >Number of Items</th>
+                    <th class="header-cell" width="0.20%">Raw Score</th>
                     <th class="header-cell" width="0.3%" >Scaled
                     Score</th>
                     <th class="header-cell" width="0.3%" >School
@@ -137,7 +137,7 @@ class PDFController extends Controller
                     Percentile
                     Rank</th>
                     <th class="header-cell" width="0.3%" >Stanine</th>
-                    <th class="header-cell" width="0.3%" >Classification</th>
+                    <th class="header-cell" width="0.4%" >Classification</th>
                 </tr>
 
                 <tr>
@@ -152,14 +152,14 @@ class PDFController extends Controller
                     </tr>
 
                     <tr>
-                        <td class="normal-cell">Verbal Comprehension</td>
+                        <td class="normal-cell normal-text">Verbal Comprehension</td>
                         <td class="center-cell">12</td>
                         <td class="center-cell">'.$student->verbal_comprehension.'</td>
                         <td class="center-cell" colspan="5" rowspan="2"></td>
                     </tr>
 
                     <tr>
-                        <td class="normal-cell">Verbal Reasoning</td>
+                        <td class="normal-cell normal-text">Verbal Reasoning</td>
                         <td class="center-cell">24</td>
                         <td class="center-cell">'.$student->verbal_reasoning.'</td>
                     </tr>
@@ -176,14 +176,14 @@ class PDFController extends Controller
                     </tr>
 
                     <tr>
-                        <td class="normal-cell">Figural Reasoning</td>
+                        <td class="normal-cell normal-text">Figural Reasoning</td>
                         <td class="center-cell">18</td>
                         <td class="center-cell">'.$student->figural_reasoning.'</td>
                         <td class="center-cell" colspan="5" rowspan="2"></td>
                     </tr>
 
                     <tr>
-                        <td class="normal-cell">Quantitative Reasoning</td>
+                        <td class="normal-cell normal-text">Quantitative Reasoning</td>
                         <td class="center-cell">18</td>
                         <td class="center-cell">'.$student->quantitative_reasoning.'</td>
                     </tr>
@@ -206,14 +206,14 @@ class PDFController extends Controller
 
                     <p class="solid">INTERPRETATIVE GUIDELINES</p>
 
-                    <p class="normal">
+                    <p align="justify" class="normal">
                 This school ability test aims to measure a student’s innate capacity to learn and his/her level of ability to scope with schoolwork. This test is divided
                 into two clusters – <b>Verbal</b> and <b>Non Verbal</b>.
 
 
                     </p>
 
-                    <p class="normal">
+                    <p align="justify" class="normal">
                     The <b>VERBAL</b> cluster consists of Verbal Comprehension and Verbal Reasoning. The <b>Verbal Comprehension</b> includes questions that assess the
 ability to observe and understand relationships between words, to understand different meanings of words based on context, and to be able to put
 words and sentences together in a meaningful way. The <b>Verbal Reasoning</b> includes questions that assess the ability to ascertain relationships
@@ -221,7 +221,7 @@ between words, apply inferences to different scenarios, and observe differences 
 
                     </p>
 
-                    <p class="normal">
+                    <p align="justify" class="normal">
                     The <b>NON-VERBAL</b> cluster consists of Figural and Quantitative Reasoning. The <b>Figural Reasoning</b> includes questions that assess the ability to use
 geometric shapes and figures to infer relationships, understand and continue progressions, and compare and contrast different figures. The
 <b>Quantitative Reasoning</b> includes questions that assesses the ability to infer relationships with numbers, and deduce and use computational rules
@@ -230,7 +230,7 @@ in context.
                     </p>
 
 
-                    <p class="normal">
+                    <p align="justify" class="normal">
                     The test yields raw scores which are converted to scaled scores, school ability indeces, percentile ranks and stanines. The <b>Raw Score</b> is the sum
 total of correctly answered questions. The <b>School Ability Index</b> score is determined by comparing raw scores amongst children within the same
 age group. <b>Percentile Rank</b> is the relative standing of a student in comparison with other students in the same age group who took the test at the
@@ -239,7 +239,7 @@ same time of the year. <b>Stanines</b> are normalized standard scores with a ran
                     </p>
 
 
-                    <p class="normal">
+                    <p align="justify" class="normal">
                     <b>Above Average</b>. Students with stanine between 7 - 9 are classified as Above Average. Above average rating is indicative of strong potential to
 succeed in completing academic tasks. Students with above average rating show high level of mastery and comprehension of the cluster(s)
 assessed. Students in this rating require little to no support in completing academic requirements.

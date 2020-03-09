@@ -307,7 +307,11 @@ footer {
 
 .normal {
   font-weight: normal;
-  font-size: 7.5;
+  font-size: 7.6;
+}
+
+.normal-text{
+  font-weight: normal;
 }
 
 .minify {
