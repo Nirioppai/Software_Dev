@@ -49,3 +49,21 @@
   <a class="current-breadcrumb text-dark">> Dashboard</a>
 </div>
 @endsection
+
+@section('content')
+<div class="card">
+  <div class="card-header">
+    Current OLSAT Batch Report
+  </div>
+  <div class="card-body">
+     {!! $usersChart->container() !!}
+  </div>
+</div>
+@endsection
+
+@section('chart_scripts')
+{{-- ChartScript --}}
+    @if($usersChart)
+    {!! $usersChart->script() !!}
+    @endif
+@endsection

@@ -158,7 +158,7 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
 <script type="text/javascript" src="{{asset('./js/toastr.min.js')}}"></script>
-
+@yield('chart_scripts')
 <script type="text/javascript">
   $(function () {
   $('[data-toggle="tooltip"]').tooltip()

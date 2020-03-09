@@ -12,6 +12,7 @@ use DB;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Charts\UserChart;
 
 class HomeController extends Controller
 {
@@ -38,7 +39,83 @@ class HomeController extends Controller
     
     public function index()
     {
-        return view('home2');
+        $BelowAverageBorderColors = [
+            "rgba(79, 129, 189, 1.0)",
+            "rgba(79, 129, 189, 1.0)",
+            "rgba(79, 129, 189, 1.0)",
+        ];
+        $BelowAverageFillColors = [
+            "rgba(79, 129, 189, 0.2)",
+            "rgba(79, 129, 189, 0.2)",
+            "rgba(79, 129, 189, 0.2)",
+        ];
+
+        $AverageBorderColors = [
+            "rgba(192, 80, 77, 1.0)",
+            "rgba(192, 80, 77, 1.0)",
+            "rgba(192, 80, 77, 1.0)",
+        ];
+        $AverageFillColors = [
+            "rgba(192, 80, 77, 0.2)",
+            "rgba(192, 80, 77, 0.2)",
+            "rgba(192, 80, 77, 0.2)",
+        ];
+
+        $AboveAverageBorderColors = [
+            "rgba(155, 187, 89, 1.0)",
+            "rgba(155, 187, 89, 1.0)",
+            "rgba(155, 187, 89, 1.0)",
+        ];
+        $AboveAverageFillColors = [
+            "rgba(155, 187, 89, 0.2)",
+            "rgba(155, 187, 89, 0.2)",
+            "rgba(155, 187, 89, 0.2)",
+        ];
+        $below_average_verbal_count = DB::table('student_batch')->where('batch',  1)->where('verbal_classification',  'Below Average')->pluck('verbal_classification');
+        $average_verbal_count = DB::table('student_batch')->where('batch',  1)->where('verbal_classification',  'Average')->pluck('verbal_classification');
+        $above_average_verbal_count = DB::table('student_batch')->where('batch',  1)->where('verbal_classification',  'Above Average')->pluck('verbal_classification');
+        
+        $below_average_nonverbal_count = DB::table('student_batch')->where('batch',  1)->where('nonverbal_classification',  'Below Average')->pluck('nonverbal_classification');
+        $average_nonverbal_count = DB::table('student_batch')->where('batch',  1)->where('nonverbal_classification',  'Average')->pluck('nonverbal_classification');
+        $above_average_nonverbal_count = DB::table('student_batch')->where('batch',  1)->where('nonverbal_classification',  'Above Average')->pluck('nonverbal_classification');
+        
+        $below_average_total_count = DB::table('student_batch')->where('batch',  1)->where('total_classification',  'Below Average')->pluck('total_classification');
+        $average_total_count = DB::table('student_batch')->where('batch',  1)->where('total_classification',  'Average')->pluck('total_classification');
+        $above_average_total_count = DB::table('student_batch')->where('batch',  1)->where('total_classification',  'Above Average')->pluck('total_classification');
+        
+        $below_average_verbal_count = count($below_average_verbal_count);
+        $average_verbal_count = count($average_verbal_count);
+        $above_average_verbal_count = count($above_average_verbal_count);
+
+        $below_average_nonverbal_count = count($below_average_nonverbal_count);
+        $average_nonverbal_count = count($average_nonverbal_count);
+        $above_average_nonverbal_count = count($above_average_nonverbal_count);
+
+        $below_average_total_count = count($below_average_total_count);
+        $average_total_count = count($average_total_count);
+        $above_average_total_count = count($above_average_total_count);
+
+        $usersChart = new UserChart;
+        $usersChart->minimalist(false);
+        $usersChart->labels(['Verbal', 'Nonverbal', 'Total Score']);
+        $usersChart->title("Batch 1");
+        $usersChart->dataset('Below Average', 'bar', [$below_average_verbal_count, $below_average_nonverbal_count, $below_average_total_count],)
+            ->color($BelowAverageBorderColors)
+            ->backgroundcolor($BelowAverageFillColors);
+            /*
+            ->color(collect(['#4f81bd','#c0504d', '#9bbb59']))
+            ->backgroundcolor(collect(['#4f81bd','#c0504d', '#9bbb59']));
+            */
+            $usersChart->dataset('Average', 'bar', [$average_verbal_count, $average_nonverbal_count, $average_total_count],)
+            ->color($AverageBorderColors)
+            ->backgroundcolor($AverageFillColors);
+
+            $usersChart->dataset('Above Average', 'bar', [$above_average_verbal_count, $above_average_nonverbal_count, $above_average_total_count],)
+            ->color($AboveAverageBorderColors)
+            ->backgroundcolor($AboveAverageFillColors);
+
+            
+        return view('home2')->with('usersChart', $usersChart);
     }
     // public function students()
     // {
