@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72
+class ComposerStaticInita20834675931e4703d3669e38c6059fe
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -523,28 +523,14 @@ class ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72
     );
 
     public static $classMap = array (
-        'App\\BatchList' => __DIR__ . '/../..' . '/app/BatchList.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
-        'App\\CsvData' => __DIR__ . '/../..' . '/app/CsvData.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\FinalStudentData' => __DIR__ . '/../..' . '/app/FinalStudentData.php',
-        'App\\FinalStudentResult' => __DIR__ . '/../..' . '/app/FinalStudentResult.php',
-        'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
-        'App\\Http\\Controllers\\BatchController' => __DIR__ . '/../..' . '/app/Http/Controllers/BatchController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\CustomRegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/CustomRegisterController.php',
-        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
-        'App\\Http\\Controllers\\ImportController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImportController.php',
-        'App\\Http\\Controllers\\LiveSearchController' => __DIR__ . '/../..' . '/app/Http/Controllers/LiveSearchController.php',
-        'App\\Http\\Controllers\\MonitoringNonVerbalController' => __DIR__ . '/../..' . '/app/Http/Controllers/MonitoringNonVerbalController.php',
-        'App\\Http\\Controllers\\MonitoringTotalController' => __DIR__ . '/../..' . '/app/Http/Controllers/MonitoringTotalController.php',
-        'App\\Http\\Controllers\\MonitoringVerbalController' => __DIR__ . '/../..' . '/app/Http/Controllers/MonitoringVerbalController.php',
-        'App\\Http\\Controllers\\PDFController' => __DIR__ . '/../..' . '/app/Http/Controllers/PDFController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -553,30 +539,12 @@ class ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-        'App\\Http\\Requests\\CsvImportRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CsvImportRequest.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
-        'App\\RawScoreToScaledScore' => __DIR__ . '/../..' . '/app/RawScoreToScaledScore.php',
-        'App\\SaiToPercentileRankAndStanine' => __DIR__ . '/../..' . '/app/SaiToPercentileRankAndStanine.php',
-        'App\\ScaledScoreToSai' => __DIR__ . '/../..' . '/app/ScaledScoreToSai.php',
-        'App\\StudentAge' => __DIR__ . '/../..' . '/app/StudentAge.php',
-        'App\\StudentBatch' => __DIR__ . '/../..' . '/app/StudentBatch.php',
-        'App\\StudentData' => __DIR__ . '/../..' . '/app/StudentData.php',
-        'App\\StudentRemark' => __DIR__ . '/../..' . '/app/StudentRemark.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
-        'App\\raw_to_scaled_nonverbal' => __DIR__ . '/../..' . '/app/raw_to_scaled_nonverbal.php',
-        'App\\raw_to_scaled_total' => __DIR__ . '/../..' . '/app/raw_to_scaled_total.php',
-        'App\\raw_to_scaled_verbal' => __DIR__ . '/../..' . '/app/raw_to_scaled_verbal.php',
-        'App\\scaled_to_sai_nonverbal' => __DIR__ . '/../..' . '/app/scaled_to_sai_nonverbal.php',
-        'App\\scaled_to_sai_total' => __DIR__ . '/../..' . '/app/scaled_to_sai_total.php',
-        'App\\scaled_to_sai_verbal' => __DIR__ . '/../..' . '/app/scaled_to_sai_verbal.php',
-        'App\\student_data' => __DIR__ . '/../..' . '/app/student_data.php',
-        'App\\student_result_nonverbal' => __DIR__ . '/../..' . '/app/student_result_nonverbal.php',
-        'App\\student_result_total' => __DIR__ . '/../..' . '/app/student_result_total.php',
-        'App\\student_result_verbal' => __DIR__ . '/../..' . '/app/student_result_verbal.php',
         'Barryvdh\\DomPDF\\Facade' => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src/Facade.php',
         'Barryvdh\\DomPDF\\PDF' => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src/PDF.php',
         'Barryvdh\\DomPDF\\ServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src/ServiceProvider.php',
@@ -627,6 +595,7 @@ class ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72
         'DeepCopy\\TypeFilter\\Date\\DateIntervalFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/Date/DateIntervalFilter.php',
         'DeepCopy\\TypeFilter\\ReplaceFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/ReplaceFilter.php',
         'DeepCopy\\TypeFilter\\ShallowCopyFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/ShallowCopyFilter.php',
+        'DeepCopy\\TypeFilter\\Spl\\ArrayObjectFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/ArrayObjectFilter.php',
         'DeepCopy\\TypeFilter\\Spl\\SplDoublyLinkedList' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/SplDoublyLinkedList.php',
         'DeepCopy\\TypeFilter\\Spl\\SplDoublyLinkedListFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/SplDoublyLinkedListFilter.php',
         'DeepCopy\\TypeFilter\\TypeFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/TypeFilter.php',
@@ -4885,11 +4854,11 @@ class ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Deprecated' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Deprecated.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Example' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Example.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Factory\\StaticMethod' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Factory/StaticMethod.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Factory\\Strategy' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Factory/Strategy.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Formatter' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Formatter.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Formatter\\AlignFormatter' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Formatter/AlignFormatter.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Formatter\\PassthroughFormatter' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Formatter/PassthroughFormatter.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Generic' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Generic.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tags\\InvalidTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/InvalidTag.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Link' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Link.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Method' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Method.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Param' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Param.php',
@@ -4921,6 +4890,7 @@ class ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72
         'phpDocumentor\\Reflection\\Types\\Array_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Array_.php',
         'phpDocumentor\\Reflection\\Types\\Boolean' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Boolean.php',
         'phpDocumentor\\Reflection\\Types\\Callable_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Callable_.php',
+        'phpDocumentor\\Reflection\\Types\\ClassString' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/ClassString.php',
         'phpDocumentor\\Reflection\\Types\\Collection' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Collection.php',
         'phpDocumentor\\Reflection\\Types\\Compound' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Compound.php',
         'phpDocumentor\\Reflection\\Types\\Context' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Context.php',
@@ -4945,11 +4915,11 @@ class ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72::$fallbackDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit94eb330dcee5af1ff3d89d2283ab0b72::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita20834675931e4703d3669e38c6059fe::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita20834675931e4703d3669e38c6059fe::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInita20834675931e4703d3669e38c6059fe::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInita20834675931e4703d3669e38c6059fe::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInita20834675931e4703d3669e38c6059fe::$classMap;
 
         }, null, ClassLoader::class);
     }

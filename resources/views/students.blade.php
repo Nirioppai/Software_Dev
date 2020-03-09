@@ -59,7 +59,7 @@
         <div class="card hoverable">
 
           <!-- Card image -->
-          <img class="card-img-top" src="http://localhost:8000/./img/brand/Slanted-Gradient1.png" alt="Card image cap">
+          <img class="card-img-top" src="./img/brand/Slanted-Gradient1.png" alt="Card image cap">
 
 
 
@@ -86,7 +86,7 @@
 
 
         <!-- Card image -->
-        <img class="card-img-top" src="http://localhost:8000/./img/brand/bg.jpg" alt="Card image cap">
+        <img class="card-img-top" src="./img/brand/bg.jpg" alt="Card image cap">
 
 
 
@@ -113,7 +113,7 @@
         <div class="card hoverable">
 
           <!-- Card image -->
-          <img class="card-img-top" src="http://localhost:8000/./img/brand/olsat_tables.png" alt="Card image cap">
+          <img class="card-img-top" src="./img/brand/olsat_tables.png" alt="Card image cap">
 
           <!-- Card content -->
           <div class="card-body">

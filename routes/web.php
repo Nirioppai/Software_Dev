@@ -1,6 +1,5 @@
 <?php
 use App\User;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,37 +13,38 @@ use App\User;
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 Auth::routes();
 
-Route::get('/',function(){
-  $users = User::all();
-  //if there are users
-  if(count ($users) > 0) {
-    Auth::logout();
-        return view('auth.login');
-    }
-  //if there are no users
-    if(count ($users) == 0) {
-      Auth::logout();
-        return redirect('/register');
-      }
-    Auth::logout();
-    return '/';
-}) -> name('/');
+Route::get('/', function () {
 
-Route::get('/register',function(){
-  $users = User::all();
-  //if there are users
-  if(count ($users) > 0) {
-    Auth::logout();
-        return redirect('/login');
-    }
-    return view('auth.register');
-}) -> name('/register');
+	$userCount = User::all();
 
-Route::get('landing', 'HomeController@landing')->name('landing');
+	if(count ($userCount) > 0) {
+		Auth::logout();
+		return view('auth.login');
+	}
 
-Route::get('/login', 'CustomRegisterController@login')->name('login' );
+	if(count ($userCount) == 0) {
+		Auth::logout();
+		return view('auth.register');
+	}
+});
+
+
+Route::get('/register', function () {
+
+	$userCount = User::all();
+
+	if(count ($userCount) > 0) {
+		Auth::logout();
+		return redirect('/login');
+	}
+
+	if(count ($userCount) == 0) {
+		Auth::logout();
+		return view('auth.register');
+	}
+});
+
 Route::post('/register/submit', 'CustomRegisterController@submit');
-
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/students', 'HomeController@studentslist')->name('studentslist');
@@ -132,4 +132,3 @@ Route::post('/students/monitoring/totalinfo/remark-update', 'HomeController@Stud
 
 Route::get('/home/register', 'HomeController@register')->name('register');
 Route::post('home/register/submit', 'HomeController@registerSubmit')->name('registerSubmit');
-
