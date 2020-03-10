@@ -42,7 +42,7 @@ class LiveSearchController extends Controller
     if($req->search == "")
     {
         $input_search = "";
-        $data = DB::table('final_student_datas')->orderBy($orderby, $ordertype)->paginate($paginateby);
+        $data = DB::table('final_student_results')->orderBy($orderby, $ordertype)->paginate($paginateby);
         $count_rows = DB::table('final_student_datas')->count();
         $data->appends(['search' => $req->search, 'filterby' => $req->filterby, 'orderby' => $req->orderby, 'ordertype' => $req->ordertype]);
         $current_page = $data->currentPage();
@@ -53,7 +53,7 @@ class LiveSearchController extends Controller
     {
         $paginateby = $req->filterby;
         $input_search = $req->search;
-        $data = DB::table('final_student_datas')->where('student_id', 'like', ''.$req->search.'%')
+        $data = DB::table('final_student_results')->where('student_id', 'like', ''.$req->search.'%')
               ->orWhere('student_name', 'like', ''.$req->search.'%')
               ->orWhere('birthday', 'like', ''.$req->search.'%')
               ->orderBy($orderby, $ordertype)

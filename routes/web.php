@@ -112,6 +112,7 @@ Route::get('/students/monitoring/delete/{id}', 'BatchController@deleteBatch')->n
 Route::get('/students/monitoring/export-batch/{id}', 'PDFController@pdf_batch_tabular')->name('pdf_batch_tabular');
 Route::get('/students/monitoring/export-batch-individual/{id}', 'PDFController@pdf_batch_individual')->name('pdf_batch_individual');
 
+Route::get('/students/monitoring/export-batch-excel/{id}', 'ExcelController@exportExcel')->name('exportExcel');
 
 Route::get('/csv/selective-scaled/reset', 'ImportController@selectiveScaledRestart')->name('selectiveScaledRestart');
 Route::get('/csv/selective-sai/reset', 'ImportController@selectiveSAIRestart')->name('selectiveSAIRestart');
