@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\BatchList' => $baseDir . '/app/BatchList.php',
+    'App\\Charts\\UserChart' => $baseDir . '/app/Charts/UserChart.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\CsvData' => $baseDir . '/app/CsvData.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',

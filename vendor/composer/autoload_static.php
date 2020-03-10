@@ -534,6 +534,7 @@ class ComposerStaticInita20834675931e4703d3669e38c6059fe
 
     public static $classMap = array (
         'App\\BatchList' => __DIR__ . '/../..' . '/app/BatchList.php',
+        'App\\Charts\\UserChart' => __DIR__ . '/../..' . '/app/Charts/UserChart.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\CsvData' => __DIR__ . '/../..' . '/app/CsvData.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
