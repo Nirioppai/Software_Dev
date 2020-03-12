@@ -34,25 +34,26 @@ p.solid{
 }
 
 .header-individual{
-  margin-top: 25px;
+  margin-top: 1px;
+  text-align: center;
 }
 
 .date-of-testing{
   position: absolute;
   top: 100px;
-  right: 280px;
+  right: 220px;
 }
 
 .date-of-birth{
   position: absolute;
   top: 115px;
-  right: 302px;
+  right: 242px;
 }
 
 .age{
   position: absolute;
   top: 130px;
-  right: 343px;
+  right: 283px;
 }
 
 .student-name {
@@ -285,12 +286,15 @@ footer {
   border: 1px solid;
   padding:1px;
   text-align: center;
+
 }
+
 
 .header-cell {
   border: 1px solid;
-  padding:1px;
+  padding:0px;
   text-align: center;
+  font-size: 8.5;
   background: #BBBAB8;
 }
 
