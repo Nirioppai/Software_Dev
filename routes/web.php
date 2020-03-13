@@ -49,6 +49,9 @@ Route::post('/register/submit', 'CustomRegisterController@submit');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/students', 'HomeController@studentslist')->name('studentslist');
 
+Route::get('/home/sort/{batch}', 'HomeController@homeSort')->name('homeSort');
+Route::get('/home/sort/trend/{filter}', 'HomeController@homeSort')->name('homeSort');
+
 Route::get('/csv', 'HomeController@uploadReferences')->name('csv');
 Route::get('/csv/students', 'HomeController@uploadStudent')->name('uploadStudent');
 
