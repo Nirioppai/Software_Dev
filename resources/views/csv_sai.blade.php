@@ -74,6 +74,12 @@
                         <p>First, choose a Scaled Score to School Ability Index (SAI) file and then upload it on the system by clicking on Submit.</p>
                     </div>
 
+                    @if($warning == true)
+                      <div class="step-content grey lighten-3">
+                          <strong><p>THERE WAS AN ERROR AT GRADE SCORE {{$get_gradescore}}</p></strong>
+                      </div>
+                    @endif
+
                     <!-- Form open here -->
 
 

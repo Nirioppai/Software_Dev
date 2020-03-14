@@ -36,7 +36,7 @@ class HomeController extends Controller
     {
       return view('landing');
     }
-    
+
     public function index()
     {
         $BelowAverageBorderColors = [
@@ -74,15 +74,15 @@ class HomeController extends Controller
         $below_average_verbal_count = DB::table('student_batch')->where('batch',  1)->where('verbal_classification',  'Below Average')->pluck('verbal_classification');
         $average_verbal_count = DB::table('student_batch')->where('batch',  1)->where('verbal_classification',  'Average')->pluck('verbal_classification');
         $above_average_verbal_count = DB::table('student_batch')->where('batch',  1)->where('verbal_classification',  'Above Average')->pluck('verbal_classification');
-        
+
         $below_average_nonverbal_count = DB::table('student_batch')->where('batch',  1)->where('nonverbal_classification',  'Below Average')->pluck('nonverbal_classification');
         $average_nonverbal_count = DB::table('student_batch')->where('batch',  1)->where('nonverbal_classification',  'Average')->pluck('nonverbal_classification');
         $above_average_nonverbal_count = DB::table('student_batch')->where('batch',  1)->where('nonverbal_classification',  'Above Average')->pluck('nonverbal_classification');
-        
+
         $below_average_total_count = DB::table('student_batch')->where('batch',  1)->where('total_classification',  'Below Average')->pluck('total_classification');
         $average_total_count = DB::table('student_batch')->where('batch',  1)->where('total_classification',  'Average')->pluck('total_classification');
         $above_average_total_count = DB::table('student_batch')->where('batch',  1)->where('total_classification',  'Above Average')->pluck('total_classification');
-        
+
         $below_average_verbal_count = count($below_average_verbal_count);
         $average_verbal_count = count($average_verbal_count);
         $above_average_verbal_count = count($above_average_verbal_count);
@@ -114,7 +114,7 @@ class HomeController extends Controller
             ->color($AboveAverageBorderColors)
             ->backgroundcolor($AboveAverageFillColors);
 
-            
+
         return view('home2')->with('usersChart', $usersChart);
     }
     // public function students()
@@ -194,7 +194,7 @@ class HomeController extends Controller
             $Remark = new StudentRemark;
             $Remark->key = $request->student_id;
             $Remark->remarks = $request->student_remark;
-        
+
             $Remark->save();
         }
 
@@ -224,10 +224,12 @@ class HomeController extends Controller
 
         if(!count($scaledCount) && !count($stanineCount) && !count($saiCount))
         {
+            $warning = false;
             $step = 1.1;
             $uploader = 'scaled_scores_1';
             $success = ('idle');
-            return view('csv_references')->with('success', $success)->with('uploader', $uploader)->with('step', $step);
+
+            return view('csv_references')->with('success', $success)->with('uploader', $uploader)->with('step', $step)->with('warning', $warning);
         }
 
 
@@ -256,7 +258,7 @@ class HomeController extends Controller
         }
 
 
-        
+
     }
 
 

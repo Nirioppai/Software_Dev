@@ -15,6 +15,7 @@ class ExcelController extends Controller
       $student_batch = DB::table('student_batch')->where('batch',  $batch)->orderBy('student_name', 'asc')->get()->toArray();
       $count_students = count($student_batch);
       $student_batch_array[] = array(
+          'Section',
           'No.',
           'Name',
           'Birthday',
@@ -65,6 +66,7 @@ class ExcelController extends Controller
       foreach($student_batch as $student){
 
         $student_batch_array[] = array(
+          'Section' => $student->section,
           'No.' => $number,
           'Name' => $student->student_name,
           'Birthday' => $student->birthday_short,
@@ -116,7 +118,7 @@ class ExcelController extends Controller
       Excel::create("Student Result Batch ".$batch."", function($excel) use ($student_batch_array){
         $excel->setTitle('Student Results');
         $excel->sheet('Student Results', function($sheet) use ($student_batch_array){
-          $sheet->fromArray($student_batch_array, null, 'B17', false, false);
+          $sheet->fromArray($student_batch_array, null, 'A17', false, false);
 
           $sheet->setCellValue('A6', 'OTIS-LENNON SCHOOL ABILITY TEST 8th Ed. Level D');
           $sheet->setCellValue('A7', 'Masterlist Report (Batch)');

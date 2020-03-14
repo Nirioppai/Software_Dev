@@ -28,15 +28,21 @@ class ImportController extends Controller
 
   public function uploadStudent1 () {
 
+    $warning = false;
     $step = 1;
     $uploader = 'student_1';
     $success = ('idle');
-    return view ('csv_student_upload')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+    return view ('csv_student_upload')->with('step', $step)->with('uploader', $uploader)->with('success', $success)->with('warning', $warning);
 
   }
 
 
   public function uploadStudent2 (CsvImportRequest $request) {
+
+    function checkDateFormat($date){
+       $tempDate = explode('/', $date);
+       return checkdate($tempDate[0], $tempDate[1], $tempDate[2]);
+    }
 
     $path = $request->file('csv_file')->getRealPath();
     if ($request->has('header')) {
@@ -51,14 +57,72 @@ class ImportController extends Controller
                 $csv_header_fields[] = $key;
             }
         }
-        $csv_data = array_slice($data, 0, 10);
-        $csv_data_file = CsvData::create([
-            'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
-            'csv_header' => $request->has('header'),
-            'csv_data' => json_encode($data)
-        ]);
-    } else {
-        return redirect()->back();
+
+        // Date Format
+        $date_checker = true;
+
+        // String Length
+        $length_checker = true;
+
+        // Data Type
+        $data_type_checker = true;
+
+        foreach($data as $student){
+
+          $validate_birthday = checkDateFormat($student['birthday']);
+          $validate_exam = checkDateFormat($student['exam_date']);
+
+          $validate_bday = strlen($student['birthday']);
+          $validate_examdate = strlen($student['exam_date']);
+          $validate_id = strlen($student['student_id']);
+
+          // Data type
+
+          $validate_grade = is_numeric($student['grade']);
+          $validate_VC = is_numeric($student['verbal_comprehension']);
+          $validate_VR = is_numeric($student['verbal_reasoning']);
+          $validate_VT = is_numeric($student['verbal_total_score']);
+          $validate_QR = is_numeric($student['quantitative_reasoning']);
+          $validate_FR = is_numeric($student['figural_reasoning']);
+          $validate_NVT = is_numeric($student['non_verbal_total_score']);
+          $validate_T = is_numeric($student['total_score']);
+
+          if($validate_birthday == false || $validate_exam == false){
+            $date_checker = false;
+            $get_id = $student['student_id'];
+          }
+
+          if(($validate_bday != 10) || ($validate_examdate != 10) || ($validate_id != 9)){
+            $length_checker = false;
+            $get_id = $student['student_id'];
+          }
+
+          if(($validate_grade == false) || ($validate_VC == false) || ($validate_VR == false) || ($validate_VT == false) || ($validate_QR == false) || ($validate_FR == false) || ($validate_NVT == false) || ($validate_T == false)){
+            $data_type_checker = false;
+            $get_id = $student['student_id'];
+          }
+
+
+        }
+
+          if(($date_checker == true) && ($length_checker == true) && ($data_type_checker == true)){
+            $csv_data = array_slice($data, 0, 10);
+            $csv_data_file = CsvData::create([
+                'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
+                'csv_header' => $request->has('header'),
+                'csv_data' => json_encode($data)
+            ]);
+          } else{
+            $warning = true;
+            $step = 1;
+            $uploader = 'student_1';
+            $success = ('idle');
+            return view('csv_student_upload')->with('step', $step)->with('uploader', $uploader)->with('success', $success)->with('warning', $warning)->with('get_id', $get_id);
+          }
+        }
+
+        else {
+          return redirect()->back();
     }
 
     $step = 2;
@@ -111,7 +175,6 @@ class ImportController extends Controller
 
   public function uploadScaledScore1 () {
 
-        //dito ako tumigil
         $scaledCount = RawScoreToScaledScore::all();
         $stanineCount = RawScoreToScaledScore::all();
         $saiCount = ScaledScoreToSai::all();
@@ -121,7 +184,6 @@ class ImportController extends Controller
           $uploader = 'scaled_scores';
           return view ('csv_references_upload')->with('step', $step)->with('uploader', $uploader);
         }
-
 
   }
 
@@ -141,12 +203,35 @@ class ImportController extends Controller
                 $csv_header_fields[] = $key;
             }
         }
-        $csv_data = array_slice($data, 0, 10);
-        $csv_data_file = CsvData::create([
-            'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
-            'csv_header' => $request->has('header'),
-            'csv_data' => json_encode($data)
-        ]);
+
+        $data_type_checker = true;
+
+        foreach($data as $conversion){
+
+          $validate_raw = is_numeric($conversion['rawscore']);
+          $validate_scaled = is_numeric($conversion['scaledscore']);
+
+          if (($validate_raw == false) || ($validate_scaled == false)){
+            $data_type_checker = false;
+            $get_raw = $conversion['rawscore'];
+          }
+        }
+
+
+        if ($data_type_checker == true){
+          $csv_data = array_slice($data, 0, 10);
+          $csv_data_file = CsvData::create([
+              'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
+              'csv_header' => $request->has('header'),
+              'csv_data' => json_encode($data)
+          ]);
+        } else{
+          $warning = true;
+          $step = 1.1;
+          $uploader = 'scaled_scores_1';
+          return view ('csv_references')->with('step', $step)->with('uploader', $uploader)->with('warning', $warning)->with('get_raw', $get_raw);
+        }
+
     } else {
         return redirect()->back();
     }
@@ -187,11 +272,11 @@ class ImportController extends Controller
   }
 
   public function uploadSAI1 () {
-
+    $warning = false;
     $step = 2.1;
     $uploader = 'sai_1';
     $success = ('idle');
-    return view('csv_references')->with('step', $step)->with('success', $success)->with('uploader', $uploader);
+    return view('csv_references')->with('step', $step)->with('success', $success)->with('uploader', $uploader)->with('warning', $warning);
 
   }
 
@@ -211,12 +296,37 @@ class ImportController extends Controller
                 $csv_header_fields[] = $key;
             }
         }
-        $csv_data = array_slice($data, 0, 10);
-        $csv_data_file = CsvData::create([
-            'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
-            'csv_header' => $request->has('header'),
-            'csv_data' => json_encode($data)
-        ]);
+
+        $data_type_checker = true;
+
+        foreach($data as $conversion){
+
+          $validate_gradescore = is_numeric($conversion['gradescore']);
+          $validate_sai = is_numeric($conversion['sai']);
+          $validate_age = is_numeric($conversion['age']);
+          $validate_month = is_numeric($conversion['month']);
+
+          if (($validate_gradescore == false) || ($validate_sai == false) || ($validate_age == false) || ($validate_month == false)){
+            $data_type_checker = false;
+            $get_gradescore = $conversion['gradescore'];
+          }
+        }
+
+        if ($data_type_checker == true){
+
+          $csv_data = array_slice($data, 0, 10);
+          $csv_data_file = CsvData::create([
+              'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
+              'csv_header' => $request->has('header'),
+              'csv_data' => json_encode($data)
+          ]);
+        } else {
+          $warning = true;
+          $step = 2.1;
+          $uploader = 'sai_1';
+          $success = ('idle');
+          return view('csv_references')->with('step', $step)->with('success', $success)->with('uploader', $uploader)->with('warning', $warning)->with('get_gradescore', $get_gradescore);
+        }
     } else {
         return redirect()->back();
     }
@@ -255,11 +365,11 @@ class ImportController extends Controller
 
 
   public function uploadStanine1 () {
-
+    $warning = false;
     $step = 3.1;
     $uploader = 'stanine_1';
     $success = ('idle');
-    return view('csv_references')->with('step', $step)->with('success', $success)->with('uploader', $uploader);
+    return view('csv_references')->with('step', $step)->with('success', $success)->with('uploader', $uploader)->with('warning', $warning);
   }
 
 
@@ -278,12 +388,37 @@ class ImportController extends Controller
                 $csv_header_fields[] = $key;
             }
         }
-        $csv_data = array_slice($data, 0, 10);
-        $csv_data_file = CsvData::create([
-            'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
-            'csv_header' => $request->has('header'),
-            'csv_data' => json_encode($data)
-        ]);
+
+        $data_type_checker = true;
+
+        foreach($data as $conversion){
+
+          $validate_sai = is_numeric($conversion['sai']);
+          $validate_percentile_rank = is_numeric($conversion['percentile_rank']);
+          $validate_stanine = is_numeric($conversion['stanine']);
+
+          if (($validate_sai == false) || ($validate_percentile_rank == false) || ($validate_stanine == false)){
+            $data_type_checker = false;
+            $get_sai = $conversion['sai'];
+          }
+        }
+
+        if ($data_type_checker == true){
+
+          $csv_data = array_slice($data, 0, 10);
+          $csv_data_file = CsvData::create([
+              'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
+              'csv_header' => $request->has('header'),
+              'csv_data' => json_encode($data)
+          ]);
+        } else {
+          $warning = true;
+          $step = 3.1;
+          $uploader = 'stanine_1';
+          $success = ('idle');
+          return view('csv_references')->with('step', $step)->with('success', $success)->with('uploader', $uploader)->with('warning', $warning)->with('get_sai', $get_sai);
+        }
+
     } else {
         return redirect()->back();
     }
@@ -516,11 +651,12 @@ class ImportController extends Controller
 
 
   public function selectiveScaledAdd() {
+    $warning = false;
     $step = 1;
     $uploader = 'scaled_1';
     $success = ('idle');
 
-    return view('csv_scaled')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+    return view('csv_scaled')->with('step', $step)->with('uploader', $uploader)->with('success', $success)->with('warning', $warning);
   }
 
 
@@ -539,12 +675,38 @@ class ImportController extends Controller
                 $csv_header_fields[] = $key;
             }
         }
-        $csv_data = array_slice($data, 0, 10);
-        $csv_data_file = CsvData::create([
-            'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
-            'csv_header' => $request->has('header'),
-            'csv_data' => json_encode($data)
-        ]);
+
+        $data_type_checker = true;
+
+        foreach($data as $conversion){
+
+          $validate_raw = is_numeric($conversion['rawscore']);
+          $validate_scaled = is_numeric($conversion['scaledscore']);
+
+          if (($validate_raw == false) || ($validate_scaled == false)){
+            $data_type_checker = false;
+            $get_raw = $conversion['rawscore'];
+          }
+        }
+
+
+        if ($data_type_checker == true){
+
+          $csv_data = array_slice($data, 0, 10);
+          $csv_data_file = CsvData::create([
+              'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
+              'csv_header' => $request->has('header'),
+              'csv_data' => json_encode($data)
+          ]);
+        } else {
+          $warning = true;
+          $step = 1;
+          $uploader = 'scaled_1';
+          $success = ('idle');
+          return view('csv_scaled')->with('step', $step)->with('uploader', $uploader)->with('success', $success)->with('warning', $warning)->with('get_raw', $get_raw);
+        }
+
+
     } else {
         return redirect()->back();
     }
@@ -659,11 +821,12 @@ class ImportController extends Controller
 
 
   public function selectiveSAIAdd() {
+    $warning = false;
     $step = 1;
     $uploader = 'sai_1';
     $success = ('idle');
 
-    return view('csv_sai')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+    return view('csv_sai')->with('step', $step)->with('uploader', $uploader)->with('success', $success)->with('warning', $warning);
   }
 
 
@@ -682,12 +845,38 @@ class ImportController extends Controller
                 $csv_header_fields[] = $key;
             }
         }
-        $csv_data = array_slice($data, 0, 10);
-        $csv_data_file = CsvData::create([
-            'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
-            'csv_header' => $request->has('header'),
-            'csv_data' => json_encode($data)
-        ]);
+
+        $data_type_checker = true;
+
+        foreach($data as $conversion){
+
+          $validate_gradescore = is_numeric($conversion['gradescore']);
+          $validate_sai = is_numeric($conversion['sai']);
+          $validate_age = is_numeric($conversion['age']);
+          $validate_month = is_numeric($conversion['month']);
+
+          if (($validate_gradescore == false) || ($validate_sai == false) || ($validate_age == false) || ($validate_month == false)){
+            $data_type_checker = false;
+            $get_gradescore = $conversion['gradescore'];
+          }
+        }
+
+        if ($data_type_checker == true){
+          $csv_data = array_slice($data, 0, 10);
+          $csv_data_file = CsvData::create([
+              'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
+              'csv_header' => $request->has('header'),
+              'csv_data' => json_encode($data)
+          ]);
+        } else{
+          $warning = true;
+          $step = 1;
+          $uploader = 'sai_1';
+          $success = ('idle');
+          return view('csv_sai')->with('step', $step)->with('uploader', $uploader)->with('success', $success)->with('warning', $warning)->with('get_gradescore', $get_gradescore);
+        }
+
+
     } else {
         return redirect()->back();
     }
@@ -804,11 +993,12 @@ class ImportController extends Controller
 
 
   public function selectiveStanineAdd() {
+    $warning = false;
     $step = 1;
     $uploader = 'stanine_1';
     $success = ('idle');
 
-    return view('csv_stanine')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+    return view('csv_stanine')->with('step', $step)->with('uploader', $uploader)->with('success', $success)->with('warning', $warning);
   }
 
 
@@ -827,12 +1017,36 @@ class ImportController extends Controller
                 $csv_header_fields[] = $key;
             }
         }
-        $csv_data = array_slice($data, 0, 10);
-        $csv_data_file = CsvData::create([
-            'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
-            'csv_header' => $request->has('header'),
-            'csv_data' => json_encode($data)
-        ]);
+
+        $data_type_checker = true;
+
+        foreach($data as $conversion){
+
+          $validate_sai = is_numeric($conversion['sai']);
+          $validate_percentile_rank = is_numeric($conversion['percentile_rank']);
+          $validate_stanine = is_numeric($conversion['stanine']);
+
+          if (($validate_sai == false) || ($validate_percentile_rank == false) || ($validate_stanine == false)){
+            $data_type_checker = false;
+            $get_sai = $conversion['sai'];
+          }
+        }
+
+        if ($data_type_checker == true){
+          $csv_data = array_slice($data, 0, 10);
+          $csv_data_file = CsvData::create([
+              'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
+              'csv_header' => $request->has('header'),
+              'csv_data' => json_encode($data)
+          ]);
+        } else{
+          $warning = true;
+          $step = 1;
+          $uploader = 'stanine_1';
+          $success = ('idle');
+          return view('csv_stanine')->with('step', $step)->with('uploader', $uploader)->with('success', $success)->with('warning', $warning)->with('get_sai', $get_sai);
+        }
+
     } else {
         return redirect()->back();
     }
@@ -949,35 +1163,35 @@ class ImportController extends Controller
 
 
   public function selectiveScaledRestart() {
-
+    $warning = false;
     $step = 1;
     $uploader = 'scaled_1';
     $success = ('idle');
     DB::statement("TRUNCATE TABLE raw_score_to_scaled_scores;");
 
-    return view('csv_scaled')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+    return view('csv_scaled')->with('step', $step)->with('uploader', $uploader)->with('success', $success)->with('warning', $warning);
   }
 
 
   public function selectiveSAIRestart() {
-
+    $warning = false;
     $step = 1;
     $uploader = 'sai_1';
     $success = ('idle');
     DB::statement("TRUNCATE TABLE scaled_score_to_sais;");
 
-    return view('csv_sai')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+    return view('csv_sai')->with('step', $step)->with('uploader', $uploader)->with('success', $success)->with('warning', $warning);
   }
 
 
   public function selectiveStanineRestart() {
-
+    $warning = false;
     $step = 1;
     $uploader = 'stanine_1';
     $success = ('idle');
     DB::statement("TRUNCATE TABLE sai_to_percentile_rank_and_stanines;");
 
-    return view('csv_stanine')->with('step', $step)->with('uploader', $uploader)->with('success', $success);
+    return view('csv_stanine')->with('step', $step)->with('uploader', $uploader)->with('success', $success)->with('warning', $warning);
   }
 
 

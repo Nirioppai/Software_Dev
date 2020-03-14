@@ -60,6 +60,11 @@
                 <div class="step-content grey lighten-3">
                     <p>First, choose a Raw Score to Scaled Score file and then upload it on the system by clicking on Submit.</p>
                 </div>
+                @if($warning == true)
+                  <div class="step-content grey lighten-3">
+                      <strong><p>THERE WAS AN ERROR AT RAW SCORE {{$get_raw}}</p></strong>
+                  </div>
+                @endif
                 <div class="container">
                     <div class="row">
                         <!-- Form open here -->
@@ -207,6 +212,11 @@
                 <div class="step-content grey lighten-3">
                     <p>First, choose a Scaled Score to School Ability Index (SAI) file and then upload it on the system by clicking on Submit.</p>
                 </div>
+                @if($warning == true)
+                  <div class="step-content grey lighten-3">
+                      <strong><p>THERE WAS AN ERROR AT GRADE SCORE {{$get_gradescore}}</p></strong>
+                  </div>
+                @endif
                 <div class="container">
                     <div class="row">
                         <!-- Form open here -->
@@ -354,6 +364,12 @@
                 <div class="step-content grey lighten-3">
                     <p>First, choose a School Ability Index (SAI) to Percentile Rank & Stanine file and then upload it on the system by clicking on Submit.</p>
                 </div>
+
+                @if($warning == true)
+                  <div class="step-content grey lighten-3">
+                      <strong><p>THERE WAS AN ERROR AT SAI {{$get_sai}}</p></strong>
+                  </div>
+                @endif
                 <!-- Form open here -->
                 <div class="input-group down ml-5 col-sm-7">
                     <div class="custom-file down">
