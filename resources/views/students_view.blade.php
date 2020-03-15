@@ -1,7 +1,7 @@
 @extends('components.bars')
 
 @section('title')
-<title>OLSAT | Upload CSV</title>
+<title>OLSAT | Student List</title>
 @endsection
 
 @section('nav')
@@ -75,8 +75,12 @@
          </div>
 
         <br>
-         Show rows by:
-         <select name="filterby" id="filterby" onchange="this.form.submit()">
+        <div class="form-row">
+              <div class="form-group col-md-1">
+                <h5 class="text-left"><b>SHOW ROWS BY</b></h5>
+              </div>
+              <div class="form-group col-md-3">
+                 <select class="form-control form-control-sm" name="filterby" id="filterby" onchange="this.form.submit()">
            <option value="5" {{$paginateby == 5? 'selected':''}}> 5 </option>
            <option value="10" {{$paginateby == 10? 'selected':''}}> 10 </option>
            <option value="25" {{$paginateby == 25? 'selected':''}}> 25 </option>
@@ -87,20 +91,29 @@
            <option value="500" {{$paginateby == 500? 'selected':''}}> 500 </option>
            <option value="1000" {{$paginateby == 1000? 'selected':''}}> 1,000 </option>
          </select>
+       </div>
 
-         Order by:
-         <select name="orderby" id="orderby" onchange="this.form.submit()">
+       <div class="form-group col-md-1">
+             <h5 class="text-center" ><b>ORDER BY</b></h5>
+           </div>
+           <div class="form-group col-md-3">
+              <select class="form-control form-control-sm" name="orderby" id="orderby" onchange="this.form.submit()">
            <option value="student_name" {{$orderby == "student_name"? 'selected':''}}> Name </option>
            <option value="student_id" {{$orderby == "student_id"? 'selected':''}}> Student Number </option>
            <option value="birthday" {{$orderby == "birthday"? 'selected':''}}> Birthdate </option>
            <option value="grade" {{$orderby == "grade"? 'selected':''}}> Year Level </option>
          </select>
+       </div>
 
-         Type:
-         <select name="ordertype" id="ordertype" onchange="this.form.submit()">
+       <div class="form-group col-md-1">
+             <h5 class="text-center" ><b>TYPE</b></h5>
+           </div>
+           <div class="form-group col-md-3">
+              <select class="form-control form-control-sm" name="ordertype" id="ordertype" onchange="this.form.submit()">
            <option value="asc" {{$ordertype == "asc"? 'selected':''}}> Ascending </option>
            <option value="desc" {{$ordertype == "desc"? 'selected':''}}> Descending </option>
          </select>
+       </div>
 
       </form>
 
@@ -110,13 +123,13 @@
     <div class="row-md-5">
 
 
-      <div class="container py-3">
+      <div class="container py-0">
 
 <div class="row py-0">
   <div class="col-lg-12 mx-auto">
     <div class="card rounded shadow border-8">
       <div class="card-body p-4 bg-white rounded">
-        <div class="table-responsive">
+
 
           <table id="example" style="width:100%" class="table table-striped table-bordered">
             <thead>
@@ -126,7 +139,7 @@
                 <!-- <th class="th-lg"><a href="">Overall Total Score<i class="fas fa-sort ml-1"></a></i></th> -->
                 <th class="th-lg"><a href="">Birthdate<i class="fas fa-sort ml-1"></a></i></th>
                 <th class="th-lg"><a href="">Year Level<i class="fas fa-sort ml-1"></a></i></th>
-                <th class="th-lg"><a href="">Action</a></th>
+
 
               </tr>
             </thead>
@@ -138,11 +151,6 @@
 
           </table>
 
-
-
-
-
-        </div>
 
         <div class="row">
 
