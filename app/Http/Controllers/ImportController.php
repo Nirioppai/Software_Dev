@@ -67,6 +67,9 @@ class ImportController extends Controller
         // Data Type
         $data_type_checker = true;
 
+        // Date Advancement
+        $date_adv_checker = true;
+
         foreach($data as $student){
 
           $validate_birthday = checkDateFormat($student['birthday']);
@@ -102,10 +105,21 @@ class ImportController extends Controller
             $get_id = $student['student_id'];
           }
 
+          // 0 - month, 1 - day, 2 - year
+          $defragBirthday = explode('/', $student['birthday']);
+          $defragExamDate = explode('/', $student['exam_date']);
+
+          $createBirthday = "$defragBirthday[2]-$defragBirthday[0]-$defragBirthday[1]";
+          $createExamDate = "$defragExamDate[2]-$defragExamDate[0]-$defragExamDate[1]";
+
+          if(!(strtotime($createExamDate) > strtotime($createBirthday))){
+            $date_adv_checker = false;
+            $get_id = $student['student_id'];
+          }
 
         }
 
-          if(($date_checker == true) && ($length_checker == true) && ($data_type_checker == true)){
+          if(($date_checker == true) && ($length_checker == true) && ($data_type_checker == true) && ($date_adv_checker == true)){
             $csv_data = array_slice($data, 0, 10);
             $csv_data_file = CsvData::create([
                 'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
