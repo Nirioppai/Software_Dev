@@ -46,7 +46,7 @@
   <a class="custom-breadcrumb text-dark" href="/home">Dashboard</a>
   <a>/</a>
    -->
-  <a class="current-breadcrumb text-dark">> Dashboard</a>
+  <a class="current-breadcrumb text-dark">Dashboard</a>
 </div>
 @endsection
 
@@ -127,5 +127,5 @@
     {!! $OLSATBar->script() !!}
     {!! $OLSATLine->script() !!}
     @endif
-    
 @endsection
+

@@ -46,7 +46,7 @@
   <a class="custom-breadcrumb text-dark" href="/home">Dashboard</a>
   <a>/</a>
    -->
-  <a class="current-breadcrumb text-dark">> Upload CSV</a>
+  <a class="current-breadcrumb text-dark">Register an Administrator Account</a>
 </div>
 @endsection
 
@@ -66,7 +66,7 @@
         "newestOnTop": false,
         "progressBar": true,
         "positionClass": "toast-top-right",
-        "preventDuplicates": false, 
+        "preventDuplicates": false,
         "onclick": null,
         "showDuration": "300",
         "hideDuration": "1000",
@@ -133,11 +133,11 @@
         <h5 class="card-header">Account List</h5>
         <div class="card-body">
 
-            
+
                     <table class="table align-items-center table-bordered table-striped table-flush  ">
                     <thead class="thead-light">
                         <tr>
-                        <th class="text-center text-dark">No.</th>  
+                        <th class="text-center text-dark">No.</th>
                         <th class="text-center text-dark">Name</th>
                         <th class="text-center text-dark">Username</th>
                         </tr>
@@ -156,8 +156,8 @@
             </div>
         </div>
 
-        
-        
+
+
     </div>
 </div>
 

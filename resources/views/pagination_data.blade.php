@@ -2,12 +2,10 @@
 
   @foreach($data as $row)
       <tr>
-       <td align="center">{{ $row->student_id }}</td>
-       <td>{{ $row->student_name }}</td>
-       <td align="center">{{ $row->birthday }}</td>
-       <td align="center">{{ $row->grade }}</td>
-
-       <td align="center"><a href="view/studentinfo/{{$row->id}}"><button type="button" class="btn btn-primary">View</button></a></td>
+       <td align="center"><a href="view/studentinfo/{{$row->id}}">{{ $row->student_id }}</a></td>
+       <td><a href="view/studentinfo/{{$row->id}}">{{ $row->student_name }}</a></td>
+       <td align="center"><a href="view/studentinfo/{{$row->id}}">{{ $row->birthday }}</a></td>
+       <td align="center"><a href="view/studentinfo/{{$row->id}}">{{ $row->grade }}</a></td>
      </tr>
 
   @endforeach
