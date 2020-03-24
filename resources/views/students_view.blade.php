@@ -57,6 +57,13 @@
 
 <!-- Search form -->
 
+<div class="col">
+
+    <div class="row-md-8">
+
+
+      </div>
+
       <form action="{{ route('students') }}" method="get">
         {{ csrf_field() }}
 
@@ -67,81 +74,115 @@
            </div>
          </div>
 
-         <br>
+        <br>
+        <div class="form-row">
+              <div class="form-group col-md-1">
+                <h5 class="text-left"><b>SHOW ROWS BY</b></h5>
+              </div>
+              <div class="form-group col-md-3">
+                 <select class="form-control form-control-sm" name="filterby" id="filterby" onchange="this.form.submit()">
+           <option value="5" {{$paginateby == 5? 'selected':''}}> 5 </option>
+           <option value="10" {{$paginateby == 10? 'selected':''}}> 10 </option>
+           <option value="25" {{$paginateby == 25? 'selected':''}}> 25 </option>
+           <option value="50" {{$paginateby == 50? 'selected':''}}> 50 </option>
+           <option value="75" {{$paginateby == 75? 'selected':''}}> 75 </option>
+           <option value="100" {{$paginateby == 100? 'selected':''}}> 100 </option>
+           <option value="250" {{$paginateby == 250? 'selected':''}}> 250 </option>
+           <option value="500" {{$paginateby == 500? 'selected':''}}> 500 </option>
+           <option value="1000" {{$paginateby == 1000? 'selected':''}}> 1,000 </option>
+         </select>
+       </div>
 
-         <div class="form-row">
-           <div class="form-group col-md-1">
-                 <h5 class="text-left"><b>SHOW ROWS BY</b></h5>
-               </div>
-               <div class="form-group col-md-3">
-                  <select class="form-control form-control-sm" name="filterby" id="filterby" onchange="this.form.submit()">
-             <option value="5" {{$paginateby == 5? 'selected':''}}> 5 </option>
-             <option value="10" {{$paginateby == 10? 'selected':''}}> 10 </option>
-             <option value="25" {{$paginateby == 25? 'selected':''}}> 25 </option>
-             <option value="50" {{$paginateby == 50? 'selected':''}}> 50 </option>
-             <option value="75" {{$paginateby == 75? 'selected':''}}> 75 </option>
-             <option value="100" {{$paginateby == 100? 'selected':''}}> 100 </option>
-             <option value="250" {{$paginateby == 250? 'selected':''}}> 250 </option>
-             <option value="500" {{$paginateby == 500? 'selected':''}}> 500 </option>
-             <option value="1000" {{$paginateby == 1000? 'selected':''}}> 1,000 </option>
-           </select>
+       <div class="form-group col-md-1">
+             <h5 class="text-center" ><b>ORDER BY</b></h5>
            </div>
+           <div class="form-group col-md-3">
+              <select class="form-control form-control-sm" name="orderby" id="orderby" onchange="this.form.submit()">
+           <option value="student_name" {{$orderby == "student_name"? 'selected':''}}> Name </option>
+           <option value="student_id" {{$orderby == "student_id"? 'selected':''}}> Student Number </option>
+           <option value="birthday" {{$orderby == "birthday"? 'selected':''}}> Birthdate </option>
+           <option value="grade" {{$orderby == "grade"? 'selected':''}}> Year Level </option>
+         </select>
+       </div>
 
-           <div class="form-group col-md-1">
-                 <h5 class="text-center" ><b>ORDER BY</b></h5>
-               </div>
-               <div class="form-group col-md-3">
-                  <select class="form-control form-control-sm" name="orderby" id="orderby" onchange="this.form.submit()">
-               <option value="student_name" {{$orderby == "student_name"? 'selected':''}}> Name </option>
-               <option value="student_id" {{$orderby == "student_id"? 'selected':''}}> Student Number </option>
-               <option value="birthday" {{$orderby == "birthday"? 'selected':''}}> Birthday </option>
-               <option value="grade" {{$orderby == "grade"? 'selected':''}}> Grade </option>
-               <option value="section" {{$orderby == "section"? 'selected':''}}> Section </option>
-             </select>
+       <div class="form-group col-md-1">
+             <h5 class="text-center" ><b>TYPE</b></h5>
            </div>
-
-           <div class="form-group col-md-1">
-                 <h5 class="text-center" ><b>TYPE</b></h5>
-               </div>
-               <div class="form-group col-md-3">
-                  <select class="form-control form-control-sm" name="ordertype" id="ordertype" onchange="this.form.submit()">
-               <option value="asc" {{$ordertype == "asc"? 'selected':''}}> Ascending </option>
-               <option value="desc" {{$ordertype == "desc"? 'selected':''}}> Descending </option>
-             </select>
-           </div>
-           </div>
+           <div class="form-group col-md-3">
+              <select class="form-control form-control-sm" name="ordertype" id="ordertype" onchange="this.form.submit()">
+           <option value="asc" {{$ordertype == "asc"? 'selected':''}}> Ascending </option>
+           <option value="desc" {{$ordertype == "desc"? 'selected':''}}> Descending </option>
+         </select>
+       </div>
 
       </form>
 
 
 </div>
 
-<table class="table align-items-center table-bordered table-striped table-flush  ">
-  <thead class="thead-light">
-    <tr>
-      <th class="text-left text-dark">Student ID</th>
-      <th class="text-left text-dark">Name</th>
-      <th class="text-center text-dark">Birthdate</th>
-      <th class="text-center text-dark">Grade</th>
-      <th class="text-center text-dark">Section</th>
-    </tr>
-  </thead>
+    <div class="row-md-5">
 
-@foreach($data as $row)
-  <tr>
-    <td class="text-left"> <a href='view/studentinfo/{{$row->id}}'><b>{{$row->student_id}}</b></a></td>
-    <td class="text-left"> <a href='view/studentinfo/{{$row->id}}'><b>{{$row->student_name}}</b></a></td>
-    <td class="text-center"> <a href='view/studentinfo/{{$row->id}}'>{{$row->birthday}}</a></td>
-    <td class="text-center"> <a href='view/studentinfo/{{$row->id}}'>{{$row->grade}}</a></td>
-    <td class="text-center"> <a href='view/studentinfo/{{$row->id}}'>{{$row->section}}</a></td>
-  </tr>
-@endforeach
-<tr>
- <td colspan="9" align="center">
-   {!! $data  ->links() !!}
- </td>
-</tr>
 
-</table>
+      <div class="container py-0">
+
+<div class="row py-0">
+  <div class="col-lg-12 mx-auto">
+    <div class="card rounded shadow border-8">
+      <div class="card-body p-4 bg-white rounded">
+
+
+          <table id="example" style="width:100%" class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th class="th-lg"><a href="">Student Number<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Name<i class="fas fa-sort ml-1"></a></i></th>
+                <!-- <th class="th-lg"><a href="">Overall Total Score<i class="fas fa-sort ml-1"></a></i></th> -->
+                <th class="th-lg"><a href="">Birthdate<i class="fas fa-sort ml-1"></a></i></th>
+                <th class="th-lg"><a href="">Year Level<i class="fas fa-sort ml-1"></a></i></th>
+
+
+              </tr>
+            </thead>
+            <tbody class="search_row">
+
+              @include('pagination_data')
+
+            </tbody>
+
+          </table>
+
+
+        <div class="row">
+
+          <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
+
+          <div class="col-md-4 ml--3">
+              <p align="right"></p>
+          </div>
+
+          <div class="col-md-4">
+             <p align="center"> <strong>Total Students:</strong> {{$count_rows}}</p>
+          </div>
+
+          <div class="col-md-4">
+
+              <p align="left"></p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+      </div>
+
+
+
+</div>
+
 
 @endsection
