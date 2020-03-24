@@ -493,10 +493,12 @@ class HomeController extends Controller
 
         if(!count($scaledCount) && !count($stanineCount) && !count($saiCount))
         {
+            $warning = false;
             $step = 1.1;
             $uploader = 'scaled_scores_1';
             $success = ('idle');
-            return view('csv_references')->with('success', $success)->with('uploader', $uploader)->with('step', $step);
+
+            return view('csv_references')->with('success', $success)->with('uploader', $uploader)->with('step', $step)->with('warning', $warning);
         }
 
 
