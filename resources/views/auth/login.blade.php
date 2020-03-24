@@ -27,7 +27,7 @@
            <form method="POST" class="bg-white text-center border border-light p-5" action="{{ route('login') }}">
             @csrf
             <img src="{{asset('./img/brand/brand.png')}}" class=" text-left mt--4" alt="...">
-            <p class="h2 mt-2 text-left">Enter credentials</p>
+            <p class="h2 mt-2 text-left">Sign in</p>
 
             <div class="md-form mt--1">
 
@@ -66,22 +66,16 @@
         <div class="row align-items-center justify-content-xl-between">
           <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
-              © 2020 <a href="#" class="font-weight-bold ml-1 text-white" target="_blank">OLSAT MS</a>
+              © 2020 <a href="#" class="font-weight-bold ml-1 text-white" target="_blank">Radisoft Inc.</a>
             </div>
           </div>
           <div class="col-xl-6">
             <ul class="nav nav-footer justify-content-center justify-content-xl-end">
               <li class="nav-item">
-                <a href="#" class="nav-link text-muted" target="_blank">OLSAT MS</a>
+                <a href="#" class="nav-link text-muted" target="_blank">Radisoft Inc.</a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link text-muted" target="_blank">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link text-muted" target="_blank">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link text-muted" target="_blank">MIT License</a>
               </li>
             </ul>
           </div>
