@@ -21,6 +21,7 @@ return array(
     'App\\Http\\Controllers\\BatchController' => $baseDir . '/app/Http/Controllers/BatchController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\CustomRegisterController' => $baseDir . '/app/Http/Controllers/CustomRegisterController.php',
+    'App\\Http\\Controllers\\ExcelController' => $baseDir . '/app/Http/Controllers/ExcelController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\ImportController' => $baseDir . '/app/Http/Controllers/ImportController.php',
     'App\\Http\\Controllers\\LiveSearchController' => $baseDir . '/app/Http/Controllers/LiveSearchController.php',

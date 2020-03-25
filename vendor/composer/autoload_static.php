@@ -548,6 +548,7 @@ class ComposerStaticInita20834675931e4703d3669e38c6059fe
         'App\\Http\\Controllers\\BatchController' => __DIR__ . '/../..' . '/app/Http/Controllers/BatchController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CustomRegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/CustomRegisterController.php',
+        'App\\Http\\Controllers\\ExcelController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExcelController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\ImportController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImportController.php',
         'App\\Http\\Controllers\\LiveSearchController' => __DIR__ . '/../..' . '/app/Http/Controllers/LiveSearchController.php',

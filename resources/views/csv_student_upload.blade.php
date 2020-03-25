@@ -73,6 +73,12 @@
                     <div class="step-content grey lighten-3">
                         <p>First, choose a Student Data file and then upload it on the system by clicking on Submit.</p>
                     </div>
+                    
+                    @if($warning == true)
+                      <div class="step-content grey lighten-3">
+                          <strong><p>THERE WAS AN ERROR AT STUDENT {{$get_id}}</p></strong>
+                      </div>
+                    @endif
 
                     <!-- Form open here -->
 

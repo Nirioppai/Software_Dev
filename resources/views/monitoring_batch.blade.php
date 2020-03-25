@@ -71,7 +71,7 @@
                         @if(DB::table('student_batch')->where('batch', '=', $batch->batch)->where('nonverbal_stanine', '=', 0)->count() == 0)
                           <i class="fas fa-check-circle text-green"></i>&nbsp;&nbsp;&nbsp;<b>Normal Results</b>
                         @endif
-                        
+
                         @if(DB::table('student_batch')->where('batch', '=', $batch->batch)->where('nonverbal_stanine', '=', 0)->count() != 0)
                           <i class="fas fa-exclamation-triangle text-orange"></i>&nbsp;&nbsp;&nbsp;<b>{{\DB::table('student_batch')->where('batch', '=', $batch->batch)->where('nonverbal_stanine', '=', 0)->count()}} Students out of scope</b>
                         @endif
@@ -90,6 +90,7 @@
                             <a class="dropdown-item" href="monitoring/delete/{{$batch->batch}}"><i class="fas fa-trash-alt"></i> Delete Batch</a>
                             <a class="dropdown-item" data-toggle="tooltip" data-html="true" title="Generates a <b>Tabular</b> report of the batch." data-placement="left" href="monitoring/export-batch/{{$batch->batch}}"><i class="fas fa-file-pdf"></i> Export batch as PDF</a>
                             <a class="dropdown-item" data-toggle="tooltip" data-html="true" title="Generates the individual result of <b>all students</b> of the batch." data-placement="left" href="monitoring/export-batch-individual/{{$batch->batch}}"><i class="fas fa-file-pdf"></i> Export Individual Batch Results</a>
+                            <a class="dropdown-item" data-toggle="tooltip" data-html="true" title="Generates a <b>Tabular</b> report of the batch." data-placement="left" href="monitoring/export-batch-excel/{{$batch->batch}}"><i class="fas fa-file-pdf"></i> Export batch as Excel</a>
                           </div>
 
 

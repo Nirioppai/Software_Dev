@@ -71,7 +71,7 @@
 <br>
 
 <div class="form-row">
-      <div class="form-group col-md-1">
+  <div class="form-group col-md-1">
         <h5 class="text-left"><b>SHOW ROWS BY</b></h5>
       </div>
       <div class="form-group col-md-3">
@@ -86,35 +86,35 @@
     <option value="500" {{$paginateby == 500? 'selected':''}}> 500 </option>
     <option value="1000" {{$paginateby == 1000? 'selected':''}}> 1,000 </option>
   </select>
-</div>
+  </div>
 
-<div class="form-group col-md-1">
-      <h5 class="text-center" ><b>ORDER BY</b></h5>
-    </div>
-    <div class="form-group col-md-3">
-       <select class="form-control form-control-sm" name="orderby" id="orderby" onchange="this.form.submit()">
-    <option value="student_name" {{$orderby == "student_name"? 'selected':''}}> Name </option>
-    <option value="student_id" {{$orderby == "student_id"? 'selected':''}}> Student Number </option>
-    <option value="birthday" {{$orderby == "birthday"? 'selected':''}}> Birthday </option>
-    <option value="total_raw" {{$orderby == "total_raw"? 'selected':''}}> Total Score </option>
-    <option value="verbal_raw" {{$orderby == "verbal_raw"? 'selected':''}}> Verbal Score </option>
-    <option value="nonverbal_raw" {{$orderby == "nonverbal_raw"? 'selected':''}}> Non-Verbal Score </option>
-  </select>
-</div>
+  <div class="form-group col-md-1">
+        <h5 class="text-center" ><b>ORDER BY</b></h5>
+      </div>
+      <div class="form-group col-md-3">
+         <select class="form-control form-control-sm" name="orderby" id="orderby" onchange="this.form.submit()">
+      <option value="nonverbal_stanine" {{$orderby == "nonverbal_stanine"? 'selected':''}}> Out of Scope </option>
+      <option value="student_name" {{$orderby == "student_name"? 'selected':''}}> Name </option>
+      <option value="student_id" {{$orderby == "student_id"? 'selected':''}}> Student Number </option>
+      <option value="birthday" {{$orderby == "birthday"? 'selected':''}}> Birthday </option>
+      <option value="total_raw" {{$orderby == "total_raw"? 'selected':''}}> Total Score </option>
+      <option value="verbal_raw" {{$orderby == "verbal_raw"? 'selected':''}}> Verbal Score </option>
+      <option value="nonverbal_raw" {{$orderby == "nonverbal_raw"? 'selected':''}}> Non-Verbal Score </option>
+    </select>
+  </div>
 
-<div class="form-group col-md-1">
-      <h5 class="text-center" ><b>TYPE</b></h5>
-    </div>
-    <div class="form-group col-md-3">
-       <select class="form-control form-control-sm" name="ordertype" id="ordertype" onchange="this.form.submit()">
-    <option value="asc" {{$ordertype == "asc"? 'selected':''}}> Ascending </option>
-    <option value="desc" {{$ordertype == "desc"? 'selected':''}}> Descending </option>
-  </select>
-</div>
+  <div class="form-group col-md-1">
+        <h5 class="text-center" ><b>TYPE</b></h5>
+      </div>
+      <div class="form-group col-md-3">
+         <select class="form-control form-control-sm" name="ordertype" id="ordertype" onchange="this.form.submit()">
+      <option value="asc" {{$ordertype == "asc"? 'selected':''}}> Ascending </option>
+      <option value="desc" {{$ordertype == "desc"? 'selected':''}}> Descending </option>
+    </select>
+  </div>
+  </div>
 
 </form>
-
-<br>
 
 <table class="table align-items-center table-bordered table-striped table-flush  ">
   <thead class="thead-light">
