@@ -46,24 +46,86 @@
   <a class="custom-breadcrumb text-dark" href="/home">Dashboard</a>
   <a>/</a>
    -->
-  <a class="current-breadcrumb text-dark">> Dashboard</a>
+  <a class="current-breadcrumb text-dark">Dashboard</a>
 </div>
 @endsection
 
 @section('content')
-<div class="card">
-  <div class="card-header">
-    Current OLSAT Batch Report
+<div class="row mt--3">
+  <div class="col">
+      <div class="card">
+        <div class="card-header">
+          {!! Form::open(['url' => 'home/sort/{batch}', 'method' => 'GET']) !!}
+          @csrf
+            <div class="row">
+              <div class="col-sm">
+                OLSAT Batch Report
+              </div>
+            <div class="col-sm ">
+              <div class="form-inline float-right">
+                <label>Batch Number:</label>
+                <select class="form-control-sm ml-3" onchange="this.form.submit()" name="batchFilter">
+                  <option hidden value="{{$batchSelected}}" selected>{{$batchSelected}}</option>
+                    <?php
+                      for ($i=1; $i <= $maxBatch; $i++) { 
+
+                        
+                        echo '<option value='.$i.'>'.$i.'</option>';
+                        if (\App\MeanResults::where('batch', '=', $i)->exists()) {
+                            $i++;
+                        }
+                      }
+                    ?>
+                </select>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+      <div class="card-body">
+        {!! $OLSATBar->container() !!}
+      </div>
+    </div>
   </div>
-  <div class="card-body">
-     {!! $usersChart->container() !!}
+
+
+  <div class="col">
+      <div class="card">
+        <div class="card-header">
+
+            <div class="row">
+              <div class="col-sm">
+                Batch Results trend line
+              </div>
+            <div class="col-sm ">
+              <div class="form-inline float-right">
+                <label>Filter:</label>
+                <select class="form-control-sm ml-3" onchange="this.form.submit()" name="fieldFilter">
+                  <option hidden value="{{$filterSelected}}" selected>{{$filterSelected}}</option>
+                  <option value='Raw'>Raw</option>
+                  <option value='Scaled'>Scaled</option>
+                  <option value='SAI'>SAI</option>
+                  <option value='Percentile'>Percentile</option>
+                  <option value='Stanine'>Stanine</option>
+                </select>
+              </div>
+            </div>
+            </form>
+        </div>
+      </div>
+      <div class="card-body">
+        {!! $OLSATLine->container() !!}
+      </div>
+    </div>
   </div>
 </div>
 @endsection
 
 @section('chart_scripts')
 {{-- ChartScript --}}
-    @if($usersChart)
-    {!! $usersChart->script() !!}
+    @if($OLSATBar)
+    {!! $OLSATBar->script() !!}
+    {!! $OLSATLine->script() !!}
     @endif
 @endsection
+

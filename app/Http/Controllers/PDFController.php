@@ -92,7 +92,7 @@ class PDFController extends Controller
 
         <body class="body">
             <header class="header-individual">
-            <img style="width: 100%; height: 100%;" src="./img/pdf/PDF_header.png">
+            <img style="width: 95%; height: 95%;" src="./img/pdf/PDF_header.jpg">
             </header>
 
         <main class ="main-individual">
@@ -112,7 +112,10 @@ class PDFController extends Controller
 
         <p class="age">Age: '.$student->age_year. '.'.''.$student->age_month.' Years Old</p>
 
-
+        <br>
+        <br>
+        <br>
+        <br>
             <center>
             <h3>
                 <b>INDIVIDUAL SUMMARY REPORT</b>
@@ -123,20 +126,20 @@ class PDFController extends Controller
 
 
 
-        <table class="minify" width="100%" style="border-collapse: collapse; border: 0px;">
+        <table class="minify" width="100%" style="border-collapse: collapse; border: 2px solid">
                <tr>
                     <th class="header-cell" width="0.5%" >Cluster/Item Type</th>
-                    <th class="header-cell" width="0.2%" >Number of Items</th>
+                    <th class="header-cell" width="0.3%" >Number of Items</th>
                     <th class="header-cell" width="0.20%">Raw Score</th>
-                    <th class="header-cell" width="0.3%" >Scaled
+                    <th class="header-cell" width="0.2%" >Scaled
                     Score</th>
-                    <th class="header-cell" width="0.3%" >School
+                    <th class="header-cell" width="0.2%" >School
                     Ability
                     Index</th>
                     <th class="header-cell" width="0.3%" >Age
                     Percentile
                     Rank</th>
-                    <th class="header-cell" width="0.3%" >Stanine</th>
+                    <th class="header-cell" width="0.2%" >Stanine</th>
                     <th class="header-cell" width="0.4%" >Classification</th>
                 </tr>
 
@@ -203,8 +206,11 @@ class PDFController extends Controller
 
                     </table>
 
-
+                    <br>
+                    <br>
                     <p class="solid">INTERPRETATIVE GUIDELINES</p>
+
+                    <br>
 
                     <p align="justify" class="normal">
                 This school ability test aims to measure a student’s innate capacity to learn and his/her level of ability to scope with schoolwork. This test is divided
@@ -281,7 +287,7 @@ and comperehension of the cluster(s) assessed. Students in this rating will need
             <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
         </head>
         <body class="body">
-            <div class="image-edit"><img style="width: 50%; height: 50%;" src="./img/pdf/PDF_header.png"></div>
+            <div class="image-edit"><img style="width: 50%; height: 50%;" src="./img/pdf/PDF_header.jpg"></div>
             <footer>
                 Legend:
                 <br>
