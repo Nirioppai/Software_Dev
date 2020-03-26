@@ -40,7 +40,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        $maxBatch = DB::table('student_batch')->max('batch');
+        $maxBatch = DB::table('mean_results')->max('batch');
+        $batchEntries = DB::table('mean_results')->get();
+        
         $batchSelected = $maxBatch;
         $BelowAverageBorderColors = [
             "rgba(79, 129, 189, 1.0)",
@@ -85,7 +87,7 @@ class HomeController extends Controller
         $below_average_total_count = DB::table('student_batch')->where('batch',  1)->where('total_classification',  'Below Average')->pluck('total_classification');
         $average_total_count = DB::table('student_batch')->where('batch',  1)->where('total_classification',  'Average')->pluck('total_classification');
         $above_average_total_count = DB::table('student_batch')->where('batch',  1)->where('total_classification',  'Above Average')->pluck('total_classification');
-
+ 
         $below_average_verbal_count = count($below_average_verbal_count);
         $average_verbal_count = count($average_verbal_count);
         $above_average_verbal_count = count($above_average_verbal_count);
@@ -122,31 +124,21 @@ class HomeController extends Controller
         $verbal = collect([]);
         $nonverbal = collect([]);
         $total = collect([]);
+        $selector = "Raw";
         
-        
-        $selector = 'Raw';
-        
+
+        $maxBatch = DB::table('mean_results')->max('batch');
         
         $meanResults = DB::table('mean_results')->get();
 
         //disables inclusion of deleted batch
         foreach ($meanResults as $meanRow) {
-                $data->push('Batch '.$meanRow->batch);
-        }
-
-        for ($i=1; $i <= $maxBatch ; $i++) {
-
-            
-            
-            
-            $verbalSelect = DB::table('mean_results')->where('batch',  $i)->pluck('AverageVerbal'.$selector);
-            $nonverbalSelect = DB::table('mean_results')->where('batch',  $i)->pluck('AverageNonVerbal'.$selector);
-            $totalSelect = DB::table('mean_results')->where('batch',  $i)->pluck('AverageTotal'.$selector);
-
-            if (MeanResults::where('batch', '=', $i)->exists()) {
-                $i++;
-            }
-            
+            $data->push('Batch '.$meanRow->batch);
+    
+            $verbalSelect = DB::table('mean_results')->where('batch',  $meanRow->batch)->pluck('AverageVerbal'.$selector);
+            $nonverbalSelect = DB::table('mean_results')->where('batch',  $meanRow->batch)->pluck('AverageNonVerbal'.$selector);
+            $totalSelect = DB::table('mean_results')->where('batch',  $meanRow->batch)->pluck('AverageTotal'.$selector);
+        
             $verbal->push($verbalSelect);
             $nonverbal->push($nonverbalSelect);
             $total->push($totalSelect);
@@ -191,7 +183,7 @@ class HomeController extends Controller
         $OLSATLine = new UserChart;
         $OLSATLine->minimalist(false);
         $OLSATLine->labels($data);
-        $OLSATLine->title($selector.' Score Trend');
+        $OLSATLine->title($selector.'Score trend');
 
         $OLSATLine->dataset('Verbal', 'line', $verbal->values())
             ->color($BelowAverageBorderColors)
@@ -206,9 +198,18 @@ class HomeController extends Controller
             ->backgroundcolor($AboveAverageFillColors);
 
         $filterSelected = $selector;
+        $batchChecker = "complete";
 
-        return view('home2')->with('OLSATBar', $OLSATBar)->with('OLSATLine', $OLSATLine)->with('filterSelected', $filterSelected)->with('batchSelected', $batchSelected)->with('maxBatch', $maxBatch);
+        for ($i=1; $i <= $maxBatch; $i++) { 
+            if (!MeanResults::where('batch', '=', $i)->exists()) {
 
+                $batchChecker = "incomplete";
+                $i++;
+            }
+          }
+
+        return view('home2')->with('OLSATBar', $OLSATBar)->with('OLSATLine', $OLSATLine)->with('filterSelected', $filterSelected)->with('batchSelected', $batchSelected)->with('maxBatch', $maxBatch)->with('batchChecker', $batchChecker);
+        
     }
 
      public function homeSort($batch, Request $request)
@@ -299,32 +300,28 @@ class HomeController extends Controller
         $total = collect([]);
         
 
-        $maxBatch = DB::table('student_batch')->max('batch');
+        $maxBatch = DB::table('mean_results')->max('batch');
         
         $meanResults = DB::table('mean_results')->get();
 
         //disables inclusion of deleted batch
         foreach ($meanResults as $meanRow) {
                 $data->push('Batch '.$meanRow->batch);
-        }
-
-        for ($i=1; $i <= $maxBatch ; $i++) {
-
+        
+                $verbalSelect = DB::table('mean_results')->where('batch',  $meanRow->batch)->pluck('AverageVerbal'.$selector);
+                $nonverbalSelect = DB::table('mean_results')->where('batch',  $meanRow->batch)->pluck('AverageNonVerbal'.$selector);
+                $totalSelect = DB::table('mean_results')->where('batch',  $meanRow->batch)->pluck('AverageTotal'.$selector);
             
-            
-            
-            $verbalSelect = DB::table('mean_results')->where('batch',  $i)->pluck('AverageVerbal'.$selector);
-            $nonverbalSelect = DB::table('mean_results')->where('batch',  $i)->pluck('AverageNonVerbal'.$selector);
-            $totalSelect = DB::table('mean_results')->where('batch',  $i)->pluck('AverageTotal'.$selector);
-
-            if (MeanResults::where('batch', '=', $i)->exists()) {
-                $i++;
+                $verbal->push($verbalSelect);
+                $nonverbal->push($nonverbalSelect);
+                $total->push($totalSelect);
             }
-            
-            $verbal->push($verbalSelect);
-            $nonverbal->push($nonverbalSelect);
-            $total->push($totalSelect);
-        }
+
+
+
+
+
+        
 
 
         $BelowAverageBorderColors = [
@@ -380,12 +377,21 @@ class HomeController extends Controller
             ->backgroundcolor($AboveAverageFillColors);
 
         $filterSelected = $selector;
+        $batchChecker = "complete";
+
+        for ($i=1; $i <= $maxBatch; $i++) { 
+            if (!MeanResults::where('batch', '=', $i)->exists()) {
+
+                $batchChecker = "incomplete";
+                $i++;
+            }
+          }
 
         
             
             
 
-        return view('home2')->with('OLSATBar', $OLSATBar)->with('OLSATLine', $OLSATLine)->with('filterSelected', $filterSelected)->with('batchSelected', $batchSelected)->with('maxBatch', $maxBatch);
+        return view('home2')->with('OLSATBar', $OLSATBar)->with('OLSATLine', $OLSATLine)->with('filterSelected', $filterSelected)->with('batchSelected', $batchSelected)->with('maxBatch', $maxBatch)->with('batchChecker', $batchChecker);
      }
 
     public function register()
