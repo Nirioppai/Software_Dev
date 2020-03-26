@@ -138,7 +138,7 @@
           <div class="col-xl-6">
             <ul class="nav nav-footer justify-content-center justify-content-xl-end ">
               <li class="nav-item">
-                <a href="#" class="nav-link">OLSAT MS</a>
+                <a href="#" class="nav-link">Radisoft Inc.</a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">About Us</a>

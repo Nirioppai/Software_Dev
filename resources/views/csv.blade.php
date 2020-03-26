@@ -28,10 +28,18 @@
 <!-- Heading -->
 <h6 class="navbar-heading text-dark">Administrator actions</h6>
 <!-- Navigation -->
-<ul class="navbar-nav mb-md-3">
+<ul class="navbar-nav">
   <li class="nav-item">
     <a class="nav-link" href="/home/register">
       <i class="fas fa-user-circle"></i> Accounts
+    </a>
+  </li>
+</ul>
+
+<ul class="navbar-nav">
+  <li class="nav-item">
+    <a class="nav-link" href="/home/history">
+      <i class="fas fa-history"></i> Action Log
     </a>
   </li>
 </ul>
