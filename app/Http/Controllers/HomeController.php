@@ -199,7 +199,23 @@ class HomeController extends Controller
 
         $filterSelected = $selector;
 
-        return view('home')->with('OLSATBar', $OLSATBar)->with('OLSATLine', $OLSATLine)->with('filterSelected', $filterSelected)->with('batchSelected', $batchSelected)->with('meanResults', $meanResults);
+        $MeanTable = MeanResults::all();
+        $isEmpty = 1;
+
+        
+        if(!count($MeanTable))
+        {
+            $isEmpty = 1;
+        }
+
+        else if(count($MeanTable))
+        {
+            $isEmpty = 0;
+        }
+
+
+
+        return view('home')->with('OLSATBar', $OLSATBar)->with('OLSATLine', $OLSATLine)->with('filterSelected', $filterSelected)->with('batchSelected', $batchSelected)->with('meanResults', $meanResults)->with('isEmpty', $isEmpty);
         
     }
 
