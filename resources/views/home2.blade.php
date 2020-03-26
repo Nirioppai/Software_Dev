@@ -66,29 +66,9 @@
                 <label>Batch Number:</label>
                 <select class="form-control-sm ml-3" onchange="this.form.submit()" name="batchFilter">
                   <option hidden value="{{$batchSelected}}" selected>{{$batchSelected}}</option>
-                  @if($batchChecker == "complete")
-                    <?php
-                      for ($i=1; $i <= $maxBatch; $i++) { 
-
-                        
-                        echo '<option value='.$i.'>'.$i.'</option>';
-                        
-                      }
-                    ?>
-                  @endif
-
-                  @if($batchChecker == "incomplete")
-                      <?php
-                      for ($i=1; $i <= $maxBatch; $i++) { 
-
-                        
-                        echo '<option value='.$i.'>'.$i.'</option>';
-                        if (\App\MeanResults::where('batch', '=', $i)->exists()) {
-                            $i++;
-                        }
-                      }
-                    ?>
-                  @endif
+                  @foreach($meanResults as $batchNumber)
+                    <option value={{$batchNumber->batch}}>{{$batchNumber->batch}}</option>
+                  @endforeach
                 </select>
               </div>
             </div>

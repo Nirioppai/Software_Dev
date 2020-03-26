@@ -198,17 +198,8 @@ class HomeController extends Controller
             ->backgroundcolor($AboveAverageFillColors);
 
         $filterSelected = $selector;
-        $batchChecker = "complete";
 
-        for ($i=1; $i <= $maxBatch; $i++) { 
-            if (!MeanResults::where('batch', '=', $i)->exists()) {
-
-                $batchChecker = "incomplete";
-                $i++;
-            }
-          }
-
-        return view('home2')->with('OLSATBar', $OLSATBar)->with('OLSATLine', $OLSATLine)->with('filterSelected', $filterSelected)->with('batchSelected', $batchSelected)->with('maxBatch', $maxBatch)->with('batchChecker', $batchChecker);
+        return view('home2')->with('OLSATBar', $OLSATBar)->with('OLSATLine', $OLSATLine)->with('filterSelected', $filterSelected)->with('batchSelected', $batchSelected)->with('meanResults', $meanResults);
         
     }
 
@@ -377,21 +368,13 @@ class HomeController extends Controller
             ->backgroundcolor($AboveAverageFillColors);
 
         $filterSelected = $selector;
-        $batchChecker = "complete";
-
-        for ($i=1; $i <= $maxBatch; $i++) { 
-            if (!MeanResults::where('batch', '=', $i)->exists()) {
-
-                $batchChecker = "incomplete";
-                $i++;
-            }
-          }
+        
 
         
             
             
 
-        return view('home2')->with('OLSATBar', $OLSATBar)->with('OLSATLine', $OLSATLine)->with('filterSelected', $filterSelected)->with('batchSelected', $batchSelected)->with('maxBatch', $maxBatch)->with('batchChecker', $batchChecker);
+        return view('home2')->with('OLSATBar', $OLSATBar)->with('OLSATLine', $OLSATLine)->with('filterSelected', $filterSelected)->with('batchSelected', $batchSelected)->with('meanResults', $meanResults);
      }
 
     public function register()
