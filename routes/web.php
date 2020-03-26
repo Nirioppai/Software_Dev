@@ -52,6 +52,8 @@ Route::get('/students', 'HomeController@studentslist')->name('studentslist');
 Route::get('/home/sort/{batch}', 'HomeController@homeSort')->name('homeSort');
 Route::get('/home/sort/trend/{filter}', 'HomeController@homeSort')->name('homeSort');
 
+Route::get('/home/history', 'HomeController@history')->name('history');
+
 Route::get('/csv', 'HomeController@uploadReferences')->name('csv');
 Route::get('/csv/students', 'HomeController@uploadStudent')->name('uploadStudent');
 

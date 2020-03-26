@@ -203,6 +203,12 @@ class HomeController extends Controller
         
     }
 
+    public function history()
+     {
+        return view('history');
+     }
+
+
      public function homeSort($batch, Request $request)
      {
 

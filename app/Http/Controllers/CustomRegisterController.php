@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\History;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -65,6 +66,13 @@ class CustomRegisterController extends Controller
       $UserDB->username = $request->input('username');
       $UserDB->password =  Hash::make($request->input('password'));
       $UserDB->save();
+
+      $History = new History;
+      $History->name = $request->input('name');
+      $History->action = "Created an Account";
+      $History->target = $request->input('name');
+      $History->other_details = "First Superadmin account";
+      $History->save();
 
       //Redirect to Login
       Auth::logout();

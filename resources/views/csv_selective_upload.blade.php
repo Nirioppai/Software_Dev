@@ -110,7 +110,6 @@
           <!-- Text -->
           <p class="card-text"><b>Edit</b> a Raw Score to Scaled Score Reference.</p>
           <br>
-          &nbsp;
           <!-- Button -->
           <a href="#" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edit</a>
           <div class="dropdown-menu dropdown-menu">
@@ -217,6 +216,7 @@
 
           <!-- Title -->
           <h4 class="card-title"><a>Scaled Score to School Ability Index (SAI)</a></h4>
+          <br>
           <!-- Text -->
           <p class="card-text"><b>Edit</b> a Scaled Score to School Ability Index Reference.</p>
           <!-- Button -->
