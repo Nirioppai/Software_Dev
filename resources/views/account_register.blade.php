@@ -158,8 +158,11 @@
                             <td class="text-center">{{$User->username}}</td>
                         </tr>
                     @endforeach
-
+                        <tr>
+                            {!! $Users  ->links() !!}
+                        </tr>
                 </table>
+
              </div>
             </div>
         </div>

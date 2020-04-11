@@ -42,7 +42,7 @@ class HomeController extends Controller
     {
         $maxBatch = DB::table('mean_results')->max('batch');
         $batchEntries = DB::table('mean_results')->get();
-        
+
         $batchSelected = $maxBatch;
         $BelowAverageBorderColors = [
             "rgba(79, 129, 189, 1.0)",
@@ -87,7 +87,7 @@ class HomeController extends Controller
         $below_average_total_count = DB::table('student_batch')->where('batch',  1)->where('total_classification',  'Below Average')->pluck('total_classification');
         $average_total_count = DB::table('student_batch')->where('batch',  1)->where('total_classification',  'Average')->pluck('total_classification');
         $above_average_total_count = DB::table('student_batch')->where('batch',  1)->where('total_classification',  'Above Average')->pluck('total_classification');
- 
+
         $below_average_verbal_count = count($below_average_verbal_count);
         $average_verbal_count = count($average_verbal_count);
         $above_average_verbal_count = count($above_average_verbal_count);
@@ -125,20 +125,20 @@ class HomeController extends Controller
         $nonverbal = collect([]);
         $total = collect([]);
         $selector = "Raw";
-        
+
 
         $maxBatch = DB::table('mean_results')->max('batch');
-        
+
         $meanResults = DB::table('mean_results')->get();
 
         //disables inclusion of deleted batch
         foreach ($meanResults as $meanRow) {
             $data->push('Batch '.$meanRow->batch);
-    
+
             $verbalSelect = DB::table('mean_results')->where('batch',  $meanRow->batch)->pluck('AverageVerbal'.$selector);
             $nonverbalSelect = DB::table('mean_results')->where('batch',  $meanRow->batch)->pluck('AverageNonVerbal'.$selector);
             $totalSelect = DB::table('mean_results')->where('batch',  $meanRow->batch)->pluck('AverageTotal'.$selector);
-        
+
             $verbal->push($verbalSelect);
             $nonverbal->push($nonverbalSelect);
             $total->push($totalSelect);
@@ -192,7 +192,7 @@ class HomeController extends Controller
         $OLSATLine->dataset('Nonverbal', 'line', $nonverbal->values())
             ->color($AverageBorderColors)
             ->backgroundcolor($AverageFillColors);
-        
+
         $OLSATLine->dataset('Total', 'line', $total->values())
             ->color($AboveAverageBorderColors)
             ->backgroundcolor($AboveAverageFillColors);
@@ -202,7 +202,7 @@ class HomeController extends Controller
         $MeanTable = MeanResults::all();
         $isEmpty = 1;
 
-        
+
         if(!count($MeanTable))
         {
             $isEmpty = 1;
@@ -216,7 +216,7 @@ class HomeController extends Controller
 
 
         return view('home')->with('OLSATBar', $OLSATBar)->with('OLSATLine', $OLSATLine)->with('filterSelected', $filterSelected)->with('batchSelected', $batchSelected)->with('meanResults', $meanResults)->with('isEmpty', $isEmpty);
-        
+
     }
 
     public function history()
@@ -251,7 +251,7 @@ class HomeController extends Controller
             "rgba(192, 80, 77, 0.2)",
             "rgba(192, 80, 77, 0.2)",
             "rgba(192, 80, 77, 0.2)",
-        ]; 
+        ];
 
         $AboveAverageBorderColors = [
             "rgba(155, 187, 89, 1.0)",
@@ -266,15 +266,15 @@ class HomeController extends Controller
         $below_average_verbal_count = DB::table('student_batch')->where('batch',  $batchSelected)->where('verbal_classification',  'Below Average')->pluck('verbal_classification');
         $average_verbal_count = DB::table('student_batch')->where('batch',  $batchSelected)->where('verbal_classification',  'Average')->pluck('verbal_classification');
         $above_average_verbal_count = DB::table('student_batch')->where('batch',  $batchSelected)->where('verbal_classification',  'Above Average')->pluck('verbal_classification');
-        
+
         $below_average_nonverbal_count = DB::table('student_batch')->where('batch', $batchSelected)->where('nonverbal_classification',  'Below Average')->pluck('nonverbal_classification');
         $average_nonverbal_count = DB::table('student_batch')->where('batch',  $batchSelected)->where('nonverbal_classification',  'Average')->pluck('nonverbal_classification');
         $above_average_nonverbal_count = DB::table('student_batch')->where('batch',  $batchSelected)->where('nonverbal_classification',  'Above Average')->pluck('nonverbal_classification');
-        
+
         $below_average_total_count = DB::table('student_batch')->where('batch',  $batchSelected)->where('total_classification',  'Below Average')->pluck('total_classification');
         $average_total_count = DB::table('student_batch')->where('batch',  $batchSelected)->where('total_classification',  'Average')->pluck('total_classification');
         $above_average_total_count = DB::table('student_batch')->where('batch',  $batchSelected)->where('total_classification',  'Above Average')->pluck('total_classification');
-        
+
         $below_average_verbal_count = count($below_average_verbal_count);
         $average_verbal_count = count($average_verbal_count);
         $above_average_verbal_count = count($above_average_verbal_count);
@@ -311,20 +311,20 @@ class HomeController extends Controller
         $verbal = collect([]);
         $nonverbal = collect([]);
         $total = collect([]);
-        
+
 
         $maxBatch = DB::table('mean_results')->max('batch');
-        
+
         $meanResults = DB::table('mean_results')->get();
 
         //disables inclusion of deleted batch
         foreach ($meanResults as $meanRow) {
                 $data->push('Batch '.$meanRow->batch);
-        
+
                 $verbalSelect = DB::table('mean_results')->where('batch',  $meanRow->batch)->pluck('AverageVerbal'.$selector);
                 $nonverbalSelect = DB::table('mean_results')->where('batch',  $meanRow->batch)->pluck('AverageNonVerbal'.$selector);
                 $totalSelect = DB::table('mean_results')->where('batch',  $meanRow->batch)->pluck('AverageTotal'.$selector);
-            
+
                 $verbal->push($verbalSelect);
                 $nonverbal->push($nonverbalSelect);
                 $total->push($totalSelect);
@@ -334,7 +334,7 @@ class HomeController extends Controller
 
 
 
-        
+
 
 
         $BelowAverageBorderColors = [
@@ -384,25 +384,26 @@ class HomeController extends Controller
         $OLSATLine->dataset('Nonverbal', 'line', $nonverbal->values())
             ->color($AverageBorderColors)
             ->backgroundcolor($AverageFillColors);
-        
+
         $OLSATLine->dataset('Total', 'line', $total->values())
             ->color($AboveAverageBorderColors)
             ->backgroundcolor($AboveAverageFillColors);
 
         $filterSelected = $selector;
-        
 
-        
-            
-            
+
+
+
+
 
         return view('home')->with('OLSATBar', $OLSATBar)->with('OLSATLine', $OLSATLine)->with('filterSelected', $filterSelected)->with('batchSelected', $batchSelected)->with('meanResults', $meanResults);
      }
 
     public function register()
     {
-        $Users = User::all();
-        return view('account_register')->with('Users',$Users);
+        $Users = DB::table('users')->paginate(10);
+
+        return view('account_register')->with('Users', $Users);
     }
 
     public function registerSubmit(Request $request)
