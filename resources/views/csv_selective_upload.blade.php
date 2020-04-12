@@ -113,11 +113,34 @@
           <!-- Button -->
           <a href="#" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edit</a>
           <div class="dropdown-menu dropdown-menu">
-            <a class="dropdown-item" href="/csv/selective-scaled/reset" data-toggle="tooltip" data-placement="right" data-html="true" title="This will <b>Delete</b> your current reference table."><i class="fas fa-redo-alt"></i> Reset Reference</a>
+            <!-- <a class="dropdown-item" href="/csv/selective-scaled/reset" data-toggle="tooltip" data-placement="right" data-html="true" title="This will <b>Delete</b> your current reference table."><i class="fas fa-redo-alt"></i> Reset Reference</a> -->
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ResetRawToScaled"  data-placement="right" data-html="true" title="This will <b>Delete</b> your current reference table."><i class="fas fa-redo-alt"></i> Reset Reference</a>
             <a class="dropdown-item" href="/csv/selective-scaled/add" data-toggle="tooltip" data-placement="right" data-html="true" title="<b>Add a new set of metrics</b> in your reference table."><i class="fas fa-plus-circle"></i> Add Reference Data</a>
           </div>
         </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="ResetRawToScaled" tabindex="-1" role="dialog" aria-labelledby="ResetRawToScaledLabel" aria-hidden="true">
+
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title" id="editModalLabel">Reset Reference</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Delete Raw Score to Scaled Score reference data? This cannot be undone.
+              </div>
+              <div class="modal-footer mt--5">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-danger"><a href="/csv/selective-scaled/reset">Reset Data</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /Modal -->
 
       </div>
       <!-- Card -->
@@ -167,11 +190,35 @@
 
           <a href="#" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edit</a>
           <div class="dropdown-menu dropdown-menu">
-            <a class="dropdown-item" href="/csv/selective-stanine/reset" data-toggle="tooltip" data-placement="right" data-html="true" title="This will <b>Delete</b> your current reference table."><i class="fas fa-redo-alt"></i> Reset Reference</a>
+            <!-- <a class="dropdown-item" href="/csv/selective-stanine/reset" data-toggle="tooltip" data-placement="right" data-html="true" title="This will <b>Delete</b> your current reference table."><i class="fas fa-redo-alt"></i> Reset Reference</a> -->
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ResetSAItoPRS"  data-placement="right" data-html="true" title="This will <b>Delete</b> your current reference table."><i class="fas fa-redo-alt"></i> Reset Reference</a>
             <a class="dropdown-item" href="/csv/selective-stanine/add" data-toggle="tooltip" data-placement="right" data-html="true" title="<b>Add a new set of metrics</b> in your reference table."><i class="fas fa-plus-circle"></i> Add Reference Data</a>
           </div>
 
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="ResetSAItoPRS" tabindex="-1" role="dialog" aria-labelledby="ResetSAItoPRS" aria-hidden="true">
+
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title" id="editModalLabel">Reset Reference</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Delete School Ability Index (SAI) to Percentile Rank & Stanine reference data? This cannot be undone.
+              </div>
+              <div class="modal-footer mt--5">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-danger"><a href="/csv/selective-stanine/reset">Reset Data</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /Modal -->
 
       </div>
       <!-- Card -->
@@ -225,11 +272,35 @@
 
           <a href="#" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edit</a>
           <div class="dropdown-menu dropdown-menu">
-            <a class="dropdown-item" href="/csv/selective-sai/reset" data-toggle="tooltip" data-placement="right" data-html="true" title="This will <b>Delete</b> your current reference table."><i class="fas fa-redo-alt"></i> Reset Reference</a>
+            <!-- <a class="dropdown-item" href="/csv/selective-sai/reset" data-toggle="tooltip" data-placement="right" data-html="true" title="This will <b>Delete</b> your current reference table."><i class="fas fa-redo-alt"></i> Reset Reference</a> -->
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ResetScaledToSAI"  data-placement="right" data-html="true" title="This will <b>Delete</b> your current reference table."><i class="fas fa-redo-alt"></i> Reset Reference</a>
             <a class="dropdown-item" href="/csv/selective-sai/add" data-toggle="tooltip" data-placement="right" data-html="true" title="<b>Add a new set of metrics</b> in your reference table."><i class="fas fa-plus-circle"></i> Add Reference Data</a>
           </div>
 
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="ResetScaledToSAI" tabindex="-1" role="dialog" aria-labelledby="ResetScaledToSAI" aria-hidden="true">
+
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title" id="editModalLabel">Reset Reference</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Delete Scaled Score to School Ability Index reference data? This cannot be undone.
+              </div>
+              <div class="modal-footer mt--5">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-danger"><a href="/csv/selective-sai/reset">Reset Data</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /Modal -->
 
       </div>
       <!-- Card -->
