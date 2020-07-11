@@ -56,6 +56,8 @@ class ChartController extends Controller
             "rgba(155, 187, 89, 0.2)",
             "rgba(155, 187, 89, 0.2)",
         ];
+
+
         $below_average_verbal_count = DB::table('student_batch')->where('batch',  1)->where('verbal_classification',  'Below Average')->pluck('verbal_classification');
         $average_verbal_count = DB::table('student_batch')->where('batch',  1)->where('verbal_classification',  'Average')->pluck('verbal_classification');
         $above_average_verbal_count = DB::table('student_batch')->where('batch',  1)->where('verbal_classification',  'Above Average')->pluck('verbal_classification');
@@ -123,6 +125,10 @@ class ChartController extends Controller
             $nonverbal->push($nonverbalSelect);
             $total->push($totalSelect);
         }
+
+
+
+        //Trend Line Chart
 
 
         $BelowAverageBorderColors = [
@@ -202,7 +208,8 @@ class ChartController extends Controller
 
     public function homeSort($batch, Request $request)
      {
-
+        
+        
         $batchSelected = $request->input('batchFilter');
         $selector = $request->input('fieldFilter');
 
@@ -269,10 +276,7 @@ class ChartController extends Controller
         $OLSATBar->dataset('Below Average', 'bar', [$below_average_verbal_count, $below_average_nonverbal_count, $below_average_total_count],)
             ->color($BelowAverageBorderColors)
             ->backgroundcolor($BelowAverageFillColors);
-            /*
-            ->color(collect(['#4f81bd','#c0504d', '#9bbb59']))
-            ->backgroundcolor(collect(['#4f81bd','#c0504d', '#9bbb59']));
-            */
+
         $OLSATBar->dataset('Average', 'bar', [$average_verbal_count, $average_nonverbal_count, $average_total_count],)
         ->color($AverageBorderColors)
         ->backgroundcolor($AverageFillColors);
@@ -384,5 +388,7 @@ class ChartController extends Controller
             
 
         return view('home')->with('OLSATBar', $OLSATBar)->with('OLSATLine', $OLSATLine)->with('filterSelected', $filterSelected)->with('batchSelected', $batchSelected)->with('meanResults', $meanResults)->with('isEmpty', $isEmpty);
-     }
+     
+       
+    }
 }
