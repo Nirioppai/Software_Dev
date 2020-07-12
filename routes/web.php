@@ -43,14 +43,14 @@ Route::get('/register', function () {
 		return view('auth.register');
 	}
 });
-
+ 
 Route::post('/register/submit', 'CustomRegisterController@submit');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'ChartController@index')->name('home');
 Route::get('/students', 'HomeController@studentslist')->name('studentslist');
 
-Route::get('/home/sort/{batch}', 'HomeController@homeSort')->name('homeSort');
-Route::get('/home/sort/trend/{filter}', 'HomeController@homeSort')->name('homeSort');
+Route::get('/home/sort/{batch}', 'ChartController@homeSort')->name('homeSort');
+Route::get('/home/sort/trend/{filter}', 'ChartController@homeSort')->name('homeSort');
 
 Route::get('/home/history', 'HomeController@history')->name('history');
 
