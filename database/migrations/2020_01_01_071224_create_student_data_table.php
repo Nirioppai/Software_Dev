@@ -14,7 +14,7 @@ class CreateStudentDataTable extends Migration
         Schema::create('student_datas', function (Blueprint $table) {
 
           $table->bigIncrements('id', 20);
-          $table->string('student_id', 10);
+          $table->string('student_id', 15);
           $table->string('student_name', 60);
           $table->string('grade', 10);
           $table->string('section', 10);

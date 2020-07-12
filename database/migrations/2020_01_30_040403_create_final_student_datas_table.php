@@ -15,7 +15,7 @@ class CreateFinalStudentDatasTable extends Migration
     {
         Schema::create('final_student_datas', function (Blueprint $table) {
           $table->bigIncrements('id', 20);
-          $table->string('student_id', 10);
+          $table->string('student_id', 15);
           $table->string('student_name', 60);
           $table->string('grade', 10);
           $table->string('section', 10);
