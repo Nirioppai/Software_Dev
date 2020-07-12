@@ -58,17 +58,17 @@ class ChartController extends Controller
         ];
 
 
-        $below_average_verbal_count = DB::table('student_batch')->where('batch',  1)->where('verbal_classification',  'Below Average')->pluck('verbal_classification');
-        $average_verbal_count = DB::table('student_batch')->where('batch',  1)->where('verbal_classification',  'Average')->pluck('verbal_classification');
-        $above_average_verbal_count = DB::table('student_batch')->where('batch',  1)->where('verbal_classification',  'Above Average')->pluck('verbal_classification');
+        $below_average_verbal_count = DB::table('student_batch')->where('batch',  $maxBatch)->where('verbal_classification',  'Below Average')->pluck('verbal_classification');
+        $average_verbal_count = DB::table('student_batch')->where('batch',  $maxBatch)->where('verbal_classification',  'Average')->pluck('verbal_classification');
+        $above_average_verbal_count = DB::table('student_batch')->where('batch',  $maxBatch)->where('verbal_classification',  'Above Average')->pluck('verbal_classification');
 
-        $below_average_nonverbal_count = DB::table('student_batch')->where('batch',  1)->where('nonverbal_classification',  'Below Average')->pluck('nonverbal_classification');
-        $average_nonverbal_count = DB::table('student_batch')->where('batch',  1)->where('nonverbal_classification',  'Average')->pluck('nonverbal_classification');
-        $above_average_nonverbal_count = DB::table('student_batch')->where('batch',  1)->where('nonverbal_classification',  'Above Average')->pluck('nonverbal_classification');
+        $below_average_nonverbal_count = DB::table('student_batch')->where('batch',  $maxBatch)->where('nonverbal_classification',  'Below Average')->pluck('nonverbal_classification');
+        $average_nonverbal_count = DB::table('student_batch')->where('batch',  $maxBatch)->where('nonverbal_classification',  'Average')->pluck('nonverbal_classification');
+        $above_average_nonverbal_count = DB::table('student_batch')->where('batch',  $maxBatch)->where('nonverbal_classification',  'Above Average')->pluck('nonverbal_classification');
 
-        $below_average_total_count = DB::table('student_batch')->where('batch',  1)->where('total_classification',  'Below Average')->pluck('total_classification');
-        $average_total_count = DB::table('student_batch')->where('batch',  1)->where('total_classification',  'Average')->pluck('total_classification');
-        $above_average_total_count = DB::table('student_batch')->where('batch',  1)->where('total_classification',  'Above Average')->pluck('total_classification');
+        $below_average_total_count = DB::table('student_batch')->where('batch',  $maxBatch)->where('total_classification',  'Below Average')->pluck('total_classification');
+        $average_total_count = DB::table('student_batch')->where('batch',  $maxBatch)->where('total_classification',  'Average')->pluck('total_classification');
+        $above_average_total_count = DB::table('student_batch')->where('batch',  $maxBatch)->where('total_classification',  'Above Average')->pluck('total_classification');
  
         $below_average_verbal_count = count($below_average_verbal_count);
         $average_verbal_count = count($average_verbal_count);
