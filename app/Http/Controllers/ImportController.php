@@ -95,11 +95,6 @@ class ImportController extends Controller
             $get_id = $student['student_id'];
           }
 
-          if(($validate_bday != 10) || ($validate_examdate != 10) || ($validate_id != 9)){
-            $length_checker = false;
-            $get_id = $student['student_id'];
-          }
-
           if(($validate_grade == false) || ($validate_VC == false) || ($validate_VR == false) || ($validate_VT == false) || ($validate_QR == false) || ($validate_FR == false) || ($validate_NVT == false) || ($validate_T == false)){
             $data_type_checker = false;
             $get_id = $student['student_id'];
