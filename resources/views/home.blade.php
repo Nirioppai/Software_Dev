@@ -112,7 +112,7 @@
 
             <div class="row">
               <div class="col-sm">
-                Batch Results trend line
+                Batch Results Trend Line
               </div>
             <div class="col-sm ">
               <div class="form-inline float-right">

@@ -28,9 +28,6 @@ class ExcelController extends Controller
           'Total Verbal TS',
           'Total Verbal RS',
           'Total Verbal SS',
-          'Verbal Grade Norms PR',
-          'Verbal Grade Norms S',
-          'Verbal Grade Norms CL',
           'Total Verbal SAI',
           'Total Verbal PR',
           'Total Verbal S',
@@ -43,9 +40,6 @@ class ExcelController extends Controller
           'Total Non Verbal TS',
           'Total Non Verbal RS',
           'Total Non Verbal SS',
-          'Non Verbal Grade Norms PR',
-          'Non Verbal Grade Norms S',
-          'Non Verbal Grade Norms CL',
           'Total Non Verbal SAI',
           'Total Non Verbal PR',
           'Total Non Verbal S',
@@ -54,9 +48,6 @@ class ExcelController extends Controller
           'Total Score TS',
           'Total Score RS',
           'Total Score SS',
-          'Total Grade Norms PR',
-          'Total Grade Norms S',
-          'Total Grade Norms CL',
           'Total Score SAI',
           'Total Score PR',
           'Total Score S',
@@ -79,9 +70,6 @@ class ExcelController extends Controller
           'Total Verbal TS' => 36,
           'Total Verbal RS' => $student->verbal_raw,
           'Total Verbal SS' => $student->verbal_scaled,
-          'Verbal Grade Norms PR' => "",
-          'Verbal Grade Norms S' => "",
-          'Verbal Grade Norms CL' => "",
           'Total Verbal SAI' => $student->verbal_sai,
           'Total Verbal PR' => $student->verbal_percentile,
           'Total Verbal S' => $student->verbal_stanine,
@@ -94,9 +82,6 @@ class ExcelController extends Controller
           'Total Non Verbal TS' => 36,
           'Total Non Verbal RS' => $student->nonverbal_raw,
           'Total Non Verbal SS' => $student->nonverbal_scaled,
-          'Non Verbal Grade Norms PR' => "",
-          'Non Verbal Grade Norms S' => "",
-          'Non Verbal Grade Norms CL' => "",
           'Total Non Verbal SAI' => $student->nonverbal_sai,
           'Total Non Verbal PR' => $student->nonverbal_percentile,
           'Total Non Verbal S' => $student->nonverbal_stanine,
@@ -105,9 +90,6 @@ class ExcelController extends Controller
           'Total Score TS' => 72,
           'Total Score RS' => $student->total_raw,
           'Total Score SS' => $student->total_scaled,
-          'Total Grade Norms PR' => "",
-          'Total Grade Norms S' => "",
-          'Total Grade Norms CL' => "",
           'Total Score SAI' => $student->total_sai,
           'Total Score PR' => $student->total_percentile,
           'Total Score S' => $student->total_stanine,
@@ -119,6 +101,8 @@ class ExcelController extends Controller
         $excel->setTitle('Student Results');
         $excel->sheet('Student Results', function($sheet) use ($student_batch_array){
           $sheet->fromArray($student_batch_array, null, 'A17', false, false);
+
+          // TEXTS TITLE - VERBAL
 
           $sheet->setCellValue('A6', 'OTIS-LENNON SCHOOL ABILITY TEST 8th Ed. Level D');
           $sheet->setCellValue('A7', 'Masterlist Report (Batch)');
@@ -150,23 +134,14 @@ class ExcelController extends Controller
           $sheet->setCellValue('K17', '');
           $sheet->setCellValue('L17', '');
 
-          $sheet->setCellValue('M16', 'GRADE NORMS');
-          $sheet->setCellValue('M17', 'PR');
-          $sheet->setCellValue('N17', 'S');
-          $sheet->setCellValue('O17', 'CL');
+          $sheet->setCellValue('M16', 'AGE NORMS');
+          $sheet->setCellValue('M17', 'SAI');
+          $sheet->setCellValue('N17', 'PR');
+          $sheet->setCellValue('O17', 'S');
+          $sheet->setCellValue('P17', 'CL');
 
-          $sheet->setCellValue('P16', 'AGE NORMS');
-          $sheet->setCellValue('P17', 'SAI');
-          $sheet->setCellValue('Q17', 'PR');
-          $sheet->setCellValue('R17', 'S');
-          $sheet->setCellValue('S17', 'CL');
+          // CELL BORDERS TITLE - VERBAL
 
-          $sheet->cells('F15:G16', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
-          });
-          $sheet->cells('H15:I16', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
-          });
           $sheet->cells('B14:B17', function($cells) {
             $cells->setBorder('thick', 'thick', 'thin', 'thick');
           });
@@ -179,7 +154,13 @@ class ExcelController extends Controller
           $sheet->cells('E14:E17', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thick');
           });
-          $sheet->cells('F14:S14', function($cells) {
+          $sheet->cells('F15:G16', function($cells) {
+            $cells->setBorder('thick', 'thick', 'thick', 'thick');
+          });
+          $sheet->cells('H15:I16', function($cells) {
+            $cells->setBorder('thick', 'thick', 'thick', 'thick');
+          });
+          $sheet->cells('F14:P14', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thick');
           });
           $sheet->cells('F17:G17', function($cells) {
@@ -194,16 +175,10 @@ class ExcelController extends Controller
           $sheet->cells('M16:O16', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thick');
           });
-          $sheet->cells('P16:S16', function($cells) {
+          $sheet->cells('M17:P17', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thick');
           });
-          $sheet->cells('M17:O17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
-          });
-          $sheet->cells('P17:S17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
-          });
-          $sheet->cells('J15:S15', function($cells) {
+          $sheet->cells('J15:P15', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thick');
           });
           $sheet->cells('F17', function($cells) {
@@ -235,22 +210,13 @@ class ExcelController extends Controller
             $cells->setBorder('thick', 'thin', 'thick', 'thin');
           });
           $sheet->cells('O17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thin');
+            $cells->setBorder('thick', 'thin', 'thick', 'thin');
           });
-
           $sheet->cells('P17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thick');
-          });
-          $sheet->cells('Q17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thin');
-          });
-          $sheet->cells('R17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thin');
-          });
-          $sheet->cells('S17', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thin');
           });
 
+          // CELL MERGE TITLE - VERBAL
 
           $sheet->mergeCells('B14:B17');
           $sheet->mergeCells('C14:C17');
@@ -264,21 +230,22 @@ class ExcelController extends Controller
           $sheet->mergeCells('I2:AH2');
           $sheet->mergeCells('I3:AH3');
           $sheet->mergeCells('I1:AH1');
-          $sheet->mergeCells('A4:AT4');
-          $sheet->mergeCells('A6:AT6');
-          $sheet->mergeCells('A7:AT7');
+          $sheet->mergeCells('A4:AH4');
+          $sheet->mergeCells('A6:AH6');
+          $sheet->mergeCells('A7:AH7');
 
           $sheet->mergeCells('D11:E11');
 
-          $sheet->mergeCells('F14:S14');
+          $sheet->mergeCells('F14:P14');
           $sheet->mergeCells('F15:G15');
           $sheet->mergeCells('H15:I15');
-          $sheet->mergeCells('J15:S15');
-          $sheet->mergeCells('M16:O16');
-          $sheet->mergeCells('P16:S16');
+          $sheet->mergeCells('J15:P15');
+          $sheet->mergeCells('M16:P16');
           $sheet->mergeCells('J16:J17');
           $sheet->mergeCells('K16:K17');
           $sheet->mergeCells('L16:L17');
+
+          // TEXT STYLING TITLE - VERBAL
 
           $sheet->cells('A6', function($cells){
             $cells->setAlignment('center');
@@ -417,133 +384,129 @@ class ExcelController extends Controller
             $cells->setVAlignment('center');
           });
 
-          $sheet->setCellValue('T14', 'NON VERBAL');
+          // TEXTS NON VERBAL
 
-          $sheet->setCellValue('T15', 'Figural Reasoning');
-          $sheet->setCellValue('V15', 'Quantitative Reasoning');
-          $sheet->setCellValue('T17', 'No. of Items');
-          $sheet->setCellValue('U17', 'RS');
-          $sheet->setCellValue('V17', 'No. of Items');
-          $sheet->setCellValue('W17', 'RS');
+          $sheet->setCellValue('Q14', 'NON VERBAL');
 
-          $sheet->setCellValue('X15', 'TOTAL NON VERBAL');
-          $sheet->setCellValue('X16', 'No. of Items');
-          $sheet->setCellValue('Y16', 'RS');
-          $sheet->setCellValue('Z16', 'SS');
-          $sheet->setCellValue('X17', '');
-          $sheet->setCellValue('Y17', '');
-          $sheet->setCellValue('Z17', '');
+          $sheet->setCellValue('Q15', 'Figural Reasoning');
+          $sheet->setCellValue('S15', 'Quantitative Reasoning');
+          $sheet->setCellValue('Q17', 'No. of Items');
+          $sheet->setCellValue('R17', 'RS');
+          $sheet->setCellValue('S17', 'No. of Items');
+          $sheet->setCellValue('T17', 'RS');
 
-          $sheet->setCellValue('AA16', 'GRADE NORMS');
-          $sheet->setCellValue('AA17', 'PR');
-          $sheet->setCellValue('AB17', 'S');
-          $sheet->setCellValue('AC17', 'CL');
+          $sheet->setCellValue('U15', 'TOTAL NON VERBAL');
+          $sheet->setCellValue('U16', 'No. of Items');
+          $sheet->setCellValue('V16', 'RS');
+          $sheet->setCellValue('W16', 'SS');
+          $sheet->setCellValue('U17', '');
+          $sheet->setCellValue('V17', '');
+          $sheet->setCellValue('W17', '');
 
-          $sheet->setCellValue('AD16', 'AGE NORMS');
-          $sheet->setCellValue('AD17', 'SAI');
-          $sheet->setCellValue('AE17', 'PR');
-          $sheet->setCellValue('AF17', 'S');
-          $sheet->setCellValue('AG17', 'CL');
+          $sheet->setCellValue('X16', 'AGE NORMS');
+          $sheet->setCellValue('X17', 'SAI');
+          $sheet->setCellValue('Y17', 'PR');
+          $sheet->setCellValue('Z17', 'S');
+          $sheet->setCellValue('AA17', 'CL');
 
-          $sheet->cells('T15:U16', function($cells) {
+          // BORDERS NON VERBAL
+
+          $sheet->cells('Q14:AA14', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thick');
           });
-          $sheet->cells('V15:W16', function($cells) {
+          $sheet->cells('Q15:R16', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thick');
           });
-          $sheet->cells('T14:AG14', function($cells) {
+          $sheet->cells('S15:T16', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thick');
           });
-          $sheet->cells('V17:W17', function($cells) {
+          $sheet->cells('U15:AA15', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thick');
           });
-          $sheet->cells('T17:U17', function($cells) {
+          $sheet->cells('X16:AA16', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thick');
           });
-          $sheet->cells('X15:AG15', function($cells) {
+          $sheet->cells('X17:AA17', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thick');
           });
-          $sheet->cells('AA16:AC16', function($cells) {
+          $sheet->cells('U16:W17', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thick');
           });
-          $sheet->cells('AD16:AG16', function($cells) {
+          $sheet->cells('Q17:R17', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thick');
           });
-          $sheet->cells('AA17:AC17', function($cells) {
+          $sheet->cells('S17:T17', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thick');
           });
-          $sheet->cells('AD17:AG17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
+          $sheet->cells('Q17', function($cells) {
+            $cells->setBorder('thick', 'thin', 'thick', 'thick');
           });
-          $sheet->cells('AA16:AC16', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
+          $sheet->cells('R17', function($cells) {
+            $cells->setBorder('thick', 'thin', 'thick', 'thin');
           });
-          $sheet->cells('X16:Z17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
+          $sheet->cells('S17', function($cells) {
+            $cells->setBorder('thick', 'thin', 'thick', 'thick');
           });
           $sheet->cells('T17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thick');
-          });
-          $sheet->cells('U17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thin');
-          });
-          $sheet->cells('V17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thick');
-          });
-          $sheet->cells('W17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thin');
-          });
-          $sheet->cells('X16:X17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thick');
-          });
-          $sheet->cells('Y16:Y17', function($cells) {
             $cells->setBorder('thick', 'thin', 'thick', 'thin');
           });
-          $sheet->cells('Z16:Z17', function($cells) {
+          $sheet->cells('U16:U17', function($cells) {
+            $cells->setBorder('thick', 'thin', 'thick', 'thick');
+          });
+          $sheet->cells('V16:V17', function($cells) {
+            $cells->setBorder('thick', 'thin', 'thick', 'thin');
+          });
+          $sheet->cells('W16:W17', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thin');
+          });
+          $sheet->cells('X17', function($cells) {
+            $cells->setBorder('thick', 'thin', 'thick', 'thick');
+          });
+          $sheet->cells('Y17', function($cells) {
+            $cells->setBorder('thick', 'thin', 'thick', 'thin');
+          });
+          $sheet->cells('Z17', function($cells) {
+            $cells->setBorder('thick', 'thin', 'thick', 'thin');
           });
           $sheet->cells('AA17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thick');
-          });
-          $sheet->cells('AB17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thin');
-          });
-          $sheet->cells('AC17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thin');
-          });
-          $sheet->cells('AD17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thick');
-          });
-          $sheet->cells('AE17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thin');
-          });
-          $sheet->cells('AF17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thin');
-          });
-          $sheet->cells('AG17', function($cells) {
             $cells->setBorder('thick', 'thick', 'thick', 'thin');
           });
 
-          $sheet->mergeCells('T14:AG14');
-          $sheet->mergeCells('T15:U16');
-          $sheet->mergeCells('V15:W16');
-          $sheet->mergeCells('X15:AG15');
-          $sheet->mergeCells('AA16:AC16');
-          $sheet->mergeCells('AD16:AG16');
-          $sheet->mergeCells('X16:X17');
-          $sheet->mergeCells('Y16:Y17');
-          $sheet->mergeCells('Z16:Z17');
+          // MERGE NON VERBAL
 
-          $sheet->cells('T14', function($cells){
+          $sheet->mergeCells('Q14:AA14');
+          $sheet->mergeCells('Q15:R16');
+          $sheet->mergeCells('S15:T16');
+          $sheet->mergeCells('U15:AA15');
+          $sheet->mergeCells('U16:U17');
+          $sheet->mergeCells('V16:V17');
+          $sheet->mergeCells('W16:W17');
+          $sheet->mergeCells('X16:AA16');
+
+          // TEXT STYLING NON VERBAL
+
+          $sheet->cells('Q14', function($cells){
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
             $cells->setFontWeight('bold');
           });
-          $sheet->cells('T15', function($cells){
+          $sheet->cells('Q15', function($cells){
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
           });
-          $sheet->cells('V15', function($cells){
+          $sheet->cells('S15', function($cells){
+            $cells->setAlignment('center');
+            $cells->setVAlignment('center');
+          });
+          $sheet->cells('Q17', function($cells){
+            $cells->setAlignment('center');
+            $cells->setVAlignment('center');
+          });
+          $sheet->cells('R17', function($cells){
+            $cells->setAlignment('center');
+            $cells->setVAlignment('center');
+          });
+          $sheet->cells('S17', function($cells){
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
           });
@@ -551,31 +514,19 @@ class ExcelController extends Controller
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
           });
-          $sheet->cells('U17', function($cells){
+          $sheet->cells('U15', function($cells){
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
           });
-          $sheet->cells('V17', function($cells){
+          $sheet->cells('U16', function($cells){
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
           });
-          $sheet->cells('W17', function($cells){
+          $sheet->cells('V16', function($cells){
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
           });
-          $sheet->cells('X15', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('X16', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('Y16', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('Z16', function($cells){
+          $sheet->cells('W16', function($cells){
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
           });
@@ -583,7 +534,19 @@ class ExcelController extends Controller
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
           });
-          $sheet->cells('AD16', function($cells){
+          $sheet->cells('X16', function($cells){
+            $cells->setAlignment('center');
+            $cells->setVAlignment('center');
+          });
+          $sheet->cells('X17', function($cells){
+            $cells->setAlignment('center');
+            $cells->setVAlignment('center');
+          });
+          $sheet->cells('Y17', function($cells){
+            $cells->setAlignment('center');
+            $cells->setVAlignment('center');
+          });
+          $sheet->cells('Z17', function($cells){
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
           });
@@ -591,18 +554,102 @@ class ExcelController extends Controller
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
           });
-          $sheet->cells('AB17', function($cells){
+
+          // TEXTS TOTAL
+
+          $sheet->setCellValue('AB14', 'TOTAL');
+
+          $sheet->setCellValue('AB15', 'No. of Items');
+          $sheet->setCellValue('AC15', 'RS');
+          $sheet->setCellValue('AD15', 'SS');
+
+          $sheet->setCellValue('AE15', 'AGE NORMS');
+          $sheet->setCellValue('AE17', 'SAI');
+          $sheet->setCellValue('AF17', 'PR');
+          $sheet->setCellValue('AG17', 'S');
+          $sheet->setCellValue('AH17', 'CL');
+
+          // BORDERS TOTAL
+
+          $sheet->cells('AB14:AH14', function($cells) {
+            $cells->setBorder('thick', 'thick', 'thick', 'thick');
+          });
+          $sheet->cells('AE15:AH16', function($cells) {
+            $cells->setBorder('thick', 'thick', 'thick', 'thick');
+          });
+          $sheet->cells('AB15:AD17', function($cells) {
+            $cells->setBorder('thick', 'thick', 'thick', 'thick');
+          });
+          $sheet->cells('AE17:AH17', function($cells) {
+            $cells->setBorder('thick', 'thick', 'thick', 'thick');
+          });
+          $sheet->cells('AB16:AB17', function($cells) {
+            $cells->setBorder('thick', 'thin', 'thick', 'thick');
+          });
+          $sheet->cells('AC16:AC17', function($cells) {
+            $cells->setBorder('thick', 'thin', 'thick', 'thin');
+          });
+          $sheet->cells('AD16:AD17', function($cells) {
+            $cells->setBorder('thick', 'thick', 'thick', 'thin');
+          });
+          $sheet->cells('AE17', function($cells) {
+            $cells->setBorder('thick', 'thin', 'thick', 'thick');
+          });
+          $sheet->cells('AF17', function($cells) {
+            $cells->setBorder('thick', 'thin', 'thick', 'thin');
+          });
+          $sheet->cells('AG17', function($cells) {
+            $cells->setBorder('thick', 'thin', 'thick', 'thin');
+          });
+          $sheet->cells('AH17', function($cells) {
+            $cells->setBorder('thick', 'thick', 'thick', 'thin');
+          });
+          $sheet->cells('AB15:AB17', function($cells) {
+            $cells->setBorder('thick', 'thin', 'thick', 'thick');
+          });
+          $sheet->cells('AC15:AC17', function($cells) {
+            $cells->setBorder('thick', 'thin', 'thick', 'thin');
+          });
+          $sheet->cells('AD15:AD17', function($cells) {
+            $cells->setBorder('thick', 'thick', 'thick', 'thin');
+          });
+
+          // MERGE TOTAL
+
+          $sheet->mergeCells('AB14:AH14');
+          $sheet->mergeCells('AB15:AB17');
+          $sheet->mergeCells('AC15:AC17');
+          $sheet->mergeCells('AD15:AD17');
+          $sheet->mergeCells('AE15:AH16');
+
+          // TEXT STYLING TOTAL
+
+          $sheet->cells('AB14', function($cells){
+            $cells->setAlignment('center');
+            $cells->setVAlignment('center');
+            $cells->setFontWeight('bold');
+          });
+          $sheet->cells('AH15', function($cells){
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
           });
-          $sheet->cells('AC17', function($cells){
+          $sheet->cells('AB15', function($cells){
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
           });
-          $sheet->cells('AD17', function($cells){
+          $sheet->cells('AC15', function($cells){
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
           });
+          $sheet->cells('AD15', function($cells){
+            $cells->setAlignment('center');
+            $cells->setVAlignment('center');
+          });
+          $sheet->cells('AE15', function($cells){
+            $cells->setAlignment('center');
+            $cells->setVAlignment('center');
+          });
+
           $sheet->cells('AE17', function($cells){
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
@@ -615,162 +662,7 @@ class ExcelController extends Controller
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
           });
-
-          $sheet->setCellValue('AH14', 'NON VERBAL');
-
-          $sheet->setCellValue('AH15', 'No. of Items');
-          $sheet->setCellValue('AI15', 'RS');
-          $sheet->setCellValue('AJ15', 'SS');
-
-          $sheet->setCellValue('AK15', 'GRADE NORMS');
-          $sheet->setCellValue('AK17', 'PR');
-          $sheet->setCellValue('AL17', 'S');
-          $sheet->setCellValue('AM17', 'CL');
-
-          $sheet->setCellValue('AN15', 'AGE NORMS');
-          $sheet->setCellValue('AN17', 'SAI');
-          $sheet->setCellValue('AO17', 'PR');
-          $sheet->setCellValue('AP17', 'S');
-          $sheet->setCellValue('AQ17', 'CL');
-
-          $sheet->setCellValue('AR14', 'Normal Curve Equivalent');
-          $sheet->setCellValue('AR17', 'Age');
-          $sheet->setCellValue('AS17', 'Grade');
-
-          $sheet->cells('AH14:AQ14', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
-          });
-          $sheet->cells('AH15:AJ17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
-          });
-          $sheet->cells('AK15:AM16', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
-          });
-          $sheet->cells('AN15:AQ16', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
-          });
-          $sheet->cells('AK17:AM17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
-          });
-          $sheet->cells('AN17:AQ17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
-          });
-          $sheet->cells('AR14:AS16', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
-          });
-          $sheet->cells('AR17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
-          });
-          $sheet->cells('AS17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thick');
-          });
-          $sheet->cells('AH15:AH17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thick');
-          });
-          $sheet->cells('AJ15:AJ17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thin');
-          });
-          $sheet->cells('AI15:AI17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thin');
-          });
-          $sheet->cells('AL17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thick');
-          });
-          $sheet->cells('AM17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thin');
-          });
-          $sheet->cells('AN17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thick');
-          });
-          $sheet->cells('AO17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thin');
-          });
-          $sheet->cells('AP17', function($cells) {
-            $cells->setBorder('thick', 'thin', 'thick', 'thin');
-          });
-          $sheet->cells('AQ17', function($cells) {
-            $cells->setBorder('thick', 'thick', 'thick', 'thin');
-          });
-
-          $sheet->mergeCells('AH14:AQ14');
-          $sheet->mergeCells('AH15:AH17');
-          $sheet->mergeCells('AI15:AI17');
-          $sheet->mergeCells('AJ15:AJ17');
-          $sheet->mergeCells('AK15:AM16');
-          $sheet->mergeCells('AN15:AQ16');
-          $sheet->mergeCells('AR14:AS16');
-
-
-          $sheet->cells('AL15', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AN15', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AH14', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-            $cells->setFontWeight('bold');
-          });
-          $sheet->cells('AH15', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AI15', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AJ15', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AK15', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AN15', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AR14', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AK17', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AL17', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AM17', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AN17', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AO17', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AP17', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AQ17', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AR17', function($cells){
-            $cells->setAlignment('center');
-            $cells->setVAlignment('center');
-          });
-          $sheet->cells('AS17', function($cells){
+          $sheet->cells('AH17', function($cells){
             $cells->setAlignment('center');
             $cells->setVAlignment('center');
           });
