@@ -70,8 +70,16 @@
   <div class="col">
   <div class="card">
   <div class="card-header">
-    <h2>Student Information</h2>
+  <div class="row">
+    <div class="col-lg">
+    <h2>Student Information for <b>{{$student_details->student_name}}</b></h2>
+    </div>
+    <div class="col-sm-2 less-width">
+    <a href="/students/view/studentinfo/{{$student_details->id}}/edit" class="btn btn-sm btn-default float-right ml--3">Edit Profile</a>
+    </div>
   </div>
+    
+    </div>
   <div class="card-body">
   <div class="row">
     <div class="col-sm">
